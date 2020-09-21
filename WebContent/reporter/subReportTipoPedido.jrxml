@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="subReport_planoOrcamental" pageWidth="472" pageHeight="50" columnWidth="472" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="5f64751b-4450-4eb9-9a80-3fc765ac7416">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="SUBREPORT_DIR1" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="imagemsim" class="java.io.InputStream"/>
+	<parameter name="imagemnao" class="java.io.InputStream"/>
+	<parameter name="imagemLogo" class="java.io.InputStream"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\Users\\CIUEM\\git\\sinamar\\WebContent\\reporter\\"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="id" class="java.lang.Long"/>
+	<field name="created" class="java.util.Date"/>
+	<field name="updated" class="java.util.Date"/>
+	<field name="nome" class="java.lang.String"/>
+	<field name="pedidos" class="java.util.List"/>
+	<variable name="subTotal" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="1" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="23" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="472" height="13" forecolor="#FFFFFF" backcolor="#CCCCCC" uuid="b1ddc22e-60da-4682-96eb-e15ea251a72d"/>
+			</rectangle>
+			<textField>
+				<reportElement x="0" y="0" width="10" height="13" uuid="1464a380-6ba3-4474-9c60-128c22286552"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="11" y="0" width="2" height="13" uuid="90a87f4f-4ed0-4c88-9513-37932a208392"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[.]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="13" y="0" width="459" height="13" uuid="f0d5df95-6caf-4ea6-a98c-d625a6194577"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nome}]]></textFieldExpression>
+			</textField>
+			<subreport>
+				<reportElement x="29" y="13" width="443" height="10" uuid="6b68bd40-bdb2-4020-81a9-03761175d668"/>
+				<subreportParameter name="SUBREPORT_DIR">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORT_DIR1}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="imagemsim"/>
+				<subreportParameter name="imagemnao"/>
+				<subreportParameter name="imagemLogo"/>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{pedidos})]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "/subSubPedido.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

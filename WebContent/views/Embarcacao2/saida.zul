@@ -1,0 +1,428 @@
+<zk xmlns:x="xhtml" xmlns:zk="zk">
+	<window apply="mz.ciuem.inamar.controller.SaidaCtrl" id="win_regSaida">
+		<div class="row">
+			<div zclass="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+				<div zclass="box box-default">
+					<div zclass="box-header">
+				<separator/>
+				
+				<div zclass="box-header">
+				<div zclass="box-title">
+								</div>
+				
+													<x:label class="box-title"
+							style="font-family:Georgia,serif;color:#4E443C; font-variant: small-caps; text-transform: none; font-weight: 100; margin-bottom: 0;">
+							Entradas
+						</x:label>
+						<separator></separator>
+						</div>
+					<div zclass="box-body">
+						<div class="row">
+							<div zclass="col-lg-10 col-md-10 col-sm-12 col-xs-12">
+							
+							
+							
+							<div zclass="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+								<div>
+									<textbox zclass="form-control"
+										placeholder="Procurar pelo nome do Navio ou Embarcação "
+										id="txb_embarcacaoFind" />
+											<x:span forward="onClick=onClickprcurar()">
+									</x:span>
+								
+								</div>
+							</div>
+							<div>
+								<button zclass="btn btn-info btn-sm "
+								type="button" id="btn_procurar" iconSclass="fa  fa-search" width="" forward="onClick=onClickprcurar()">
+								Procurar
+							</button>
+							</div>
+							</div>
+						</div>
+                        <x:hr/>
+
+						<div class="row">
+							<div
+								zclass="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+								<separator></separator>
+								<listbox id="lbx_entrada"
+									checkmark="true" rows="5">
+									<listhead>
+										<listheader label="#"
+											width="5%" />
+											<listheader style="color:red" label="Nº de Ordem" width="10%"
+											sort="auto(nrOrdem)" />
+											<listheader label="Barco"
+											sort="auto(embarcacao.nome)" />
+											<listheader label="Data da Entrada"
+											sort="auto(dataEntrada)" />
+											<listheader label="Hora da Entrada"
+											sort="auto(horaEntrada)" />
+<!-- 											<listheader label="Procedência" -->
+<!-- 											sort="auto(pais.designacao)" /> -->
+											<listheader label="Cais" width="10%"
+											sort="auto(cais)" />
+										<listheader label="Saida" width="10%" align="center"/>
+									</listhead>
+									<template name="model">
+										<listitem >
+											<listcell></listcell>
+											<listcell 
+													label="${each.nrOrdem}"
+												/>
+											<listcell 
+													label="${each.embarcacao.nome}"
+												/>
+												<listcell
+												label="${each.dataEntrada}" />
+												<listcell
+												label="${each.horaEntrada}" />
+<!-- 												<listcell -->
+<!-- 												label="${each.pais.designacao}" /> -->
+												<listcell
+												label="${each.cais}" />
+												
+										<listcell>
+												<div align="center">
+											<x:button type="button"
+												class="btn btn-info btn-sm" data-toggle="modal"
+												data-target="#myModal">
+											<x:i class="fa fa-plus"></x:i>
+											</x:button>
+										</div>
+										
+										
+										</listcell>
+												
+										</listitem>
+									</template>
+								</listbox>
+							</div>
+						</div>
+						
+					<separator/>
+					<separator/>
+				<div zclass="box box-success">
+				
+				<div zclass="box-header">
+				<div zclass="box-title">
+								</div>
+				
+													<x:label class="box-title"
+							style="font-family:Georgia,serif;color:#4E443C; font-variant: small-caps; text-transform: none; font-weight: 100; margin-bottom: 0;">
+							Saídas
+						</x:label>
+						<separator></separator>
+						</div>
+					<div zclass="box-body">
+						<div class="row">
+							<div zclass="col-lg-10 col-md-10 col-sm-12 col-xs-12">
+							
+							
+							
+							<div zclass="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+								<div>
+									<textbox zclass="form-control"
+										placeholder="Procurar pelo nome do Navio ou Embarcação "
+										 />
+											<x:span forward="onClick=onClickprcurar()">
+									</x:span>
+								
+								</div>
+							</div>
+							<div>
+								<button zclass="btn btn-info btn-sm "
+								type="button" iconSclass="fa  fa-search" width="" forward="onClick=onClickprcurar()">
+								Procurar
+							</button>
+							</div>
+							
+							
+							
+
+							</div>
+							
+							
+						</div>
+                        
+                        <x:hr/>
+
+						<div class="row">
+							<div id="lbx_saida"
+								zclass="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+								<separator ></separator>
+								<listbox emptyMessage="Nenhuma saída registada"
+									checkmark="true" rows="10">
+									<listhead>
+										<listheader label="#"
+											width="5%" />
+											<listheader style="color:red" label="Nº de Ordem" width="10%"
+											sort="auto(nrOrdem)" />
+											<listheader label="Barco"
+											sort="auto(embarcacao.nome)" />
+											<listheader label="Data da Saída"
+											sort="auto(dataEntrada)" />
+											<listheader label="Hora da Saída"
+											sort="auto(horaEntrada)" />
+<!-- 											<listheader label="Procedência" -->
+<!-- 											sort="auto(pais.designacao)" /> -->
+											<listheader label="Cais" width="10%"
+											sort="auto(cais)" />
+										<listheader label="Editar" width="10%" align="center"/>
+									</listhead>
+									<template name="model">
+										<listitem>
+											<listcell></listcell>
+											<listcell 
+													label="${each.}"
+												/>
+											<listcell 
+													label="${each.}"
+												/>
+												<listcell
+												label="${each.}" />
+												<listcell
+												label="${each.}" />
+<!-- 												<listcell -->
+<!-- 												label="${each.pais.designacao}" /> -->
+												<listcell
+												label="${each.cais}" />
+												
+										<listcell>
+												<div align="center">
+											<x:button type="button"
+												class="btn btn-info btn-sm" data-toggle="modal"
+												data-target="#myModal">
+											<x:i class="fa fa-edit"></x:i>
+											</x:button>
+										</div>
+										
+										
+										</listcell>
+												
+										</listitem>
+									</template>
+								</listbox>
+							</div>
+						</div>
+
+
+					</div>
+					</div>
+
+
+					</div>
+					<div zclass="box-footer">
+					  <div align="center">
+	                     <button zclass="btn btn-warning btn-sm"
+							type="button" id="btn_imprimir" iconSclass="fa fa-print">
+
+							Imprimir PDF
+						</button>
+					  </div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+
+
+
+
+		<!-- Modal Candidato-->
+		<x:div class="modal fade" id="myModal" tabindex="-1"
+			role="dialog" aria-labelledby="myModalLabel">
+			<x:div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<x:button type="button" class="close"
+							data-dismiss="modal" aria-label="Close">
+							<x:label style="color:red">x</x:label>
+						</x:button>
+						<x:h4 class="modal-title" id="myModalLabel">
+							Nova Saída
+						</x:h4>
+					</div>
+					<div class="modal-body">
+						<div class="row">
+						
+						<div
+								zclass="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+								<x:label>Nº de Ordem</x:label><x:label style="color:red">*</x:label>
+								<div class="input-group">
+									<intbox zclass="form-control" 
+										placeholder="Número de ordem"
+										constraint="no empty : Não pode ser vazio nem conter apenas espaços em branco!"
+										id="ibx_nrOrdem" />
+									<x:span class="input-group-addon">
+										<x:i class="fa  fa-edit"></x:i>
+									</x:span>
+								</div>
+							</div>
+						
+						<div zclass="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+								<x:label>Barco</x:label><x:label style="color:red">*</x:label>
+								<combobox id="cbx_embarcacao" cols="60" disabled="true"
+									placeholder="Selecione a Embarcação ou o Navio" readonly="true"
+									constraint="no empty : Não pode ser vazio nem conter apenas espaços em branco!">
+									<template name="model">
+										<comboitem
+											label="${each.nome}" />
+									</template>
+								</combobox>
+							</div>
+							
+							<div
+								zclass="col-lg-12 col-md-12 col-sm-24 col-xs-24">
+								<separator></separator>
+								<x:label>Porto de Saída</x:label>
+								<div class="input-group">
+									<textbox zclass="form-control" readonly="true"
+										placeholder="Descrição do Porto de Entrada"
+										id="txb_portoEntrada" />
+									<x:span class="input-group-addon">
+										<x:i class="fa  fa-edit"></x:i>
+									</x:span>
+								</div>
+							</div>
+														
+							
+							<div 
+								zclass="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+								<separator></separator>
+								<div class="form-group">
+        							<x:label >Data da Saída</x:label><x:label style="color:red">*</x:label>
+						        	<datebox id="dbx_dataEntrada"  cols="36"
+								readonly="false" visible="true" buttonVisible="true" constraint="no empty; no future"
+								format="dd/MM/yyyy"
+								 />      							
+						               	</div>
+							</div>
+							
+										<div 
+								zclass="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+								<separator></separator>
+								<div class="form-group">
+        							<x:label >Hora da Saída</x:label><x:label style="color:red">*</x:label>
+        							
+						        	<timebox id="tbx_horaEntrada"  cols="36"
+								readonly="false" visible="true" buttonVisible="true" constraint="no empty"
+								
+								 />      							
+						               	</div>
+							</div>
+							
+							<div
+								zclass="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+								<x:label>Cais</x:label><x:label style="color:red">*</x:label>
+								<div class="input-group">
+									<textbox zclass="form-control" readonly="true" 
+										placeholder="Descrição do Cais"
+										constraint="no empty : Não pode ser vazio nem conter apenas espaços em branco!"
+										id="txb_cais" />
+									<x:span class="input-group-addon">
+										<x:i class="fa  fa-edit"></x:i>
+									</x:span>
+								</div>
+							</div>
+							
+							<div style="font-weight:bold"
+								zclass="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+								<x:label>Agência</x:label><x:label style="color:red">*</x:label>
+								<div class="input-group">
+									<textbox zclass="form-control" readonly="true" 
+										placeholder="Descrição da Agência"
+										constraint="no empty : Não pode ser vazio nem conter apenas espaços em branco!"
+										id="txb_agencia" />
+									<x:span class="input-group-addon">
+										<x:i class="fa  fa-edit"></x:i>
+									</x:span>
+								</div>
+							</div>
+							
+							<div
+								zclass="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+								<separator></separator>
+								<x:label>Calado</x:label>
+								<div class="input-group">
+									<textbox zclass="form-control" readonly="true"
+										placeholder="Descrição do Calado"
+										id="txb_calado" />
+									<x:span class="input-group-addon">
+										<x:i class="fa  fa-edit"></x:i>
+									</x:span>
+								</div>
+							</div>
+							
+							<div
+								zclass="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+								<separator></separator>
+								<x:label>Livrete Prático</x:label>
+								<div class="input-group">
+									<textbox zclass="form-control" readonly="true"
+										placeholder="Descrição do Livrete Prático"
+										id="txb_livretePratico" />
+									<x:span class="input-group-addon">
+										<x:i class="fa  fa-edit"></x:i>
+									</x:span>
+								</div>
+							</div>
+							
+							<div zclass="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+							<separator></separator>
+								<x:label>Procedência</x:label><x:label style="color:red">*</x:label>
+								<combobox  id="cbx_paises" cols="36" disabled="true"
+									placeholder="Selecione a Procedência" readonly="true"
+								constraint="no empty : Não pode ser vazio nem conter apenas espaços em branco!">
+									<template name="model">
+										<comboitem
+											label="${each.designacao}" />
+									</template>
+								</combobox>
+							</div>
+							
+							<div 
+								zclass="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+								<separator></separator>
+								<x:label>Funcionário em serviço na saída</x:label>
+								<div class="input-group">
+									<textbox zclass="form-control"
+										placeholder="Nome do funcionário em serviço na entrada"
+										id="txb_funServEntrada" />
+									<x:span class="input-group-addon">
+										<x:i class="fa  fa-edit"></x:i>
+									</x:span>
+								</div>
+							</div>
+							
+						</div>
+
+
+					</div>
+
+					<div class="modal-footer">
+
+						<div align="center">
+
+							<button zclass="btn btn-success btn-sm " visible="true"
+								type="button" id="btn_gravar" iconSclass="fa  fa-save">
+								Gravar
+							</button>
+
+							<label width="5%"></label>
+							<button zclass="btn btn-danger btn-sm "
+								type="button" id="btn_cancelar" iconSclass="fa  fa-undo">
+								Cancelar
+							</button>
+
+						</div>
+
+					</div>
+				</div>
+			</x:div>
+		</x:div>
+</div>
+	</window>
+</zk>

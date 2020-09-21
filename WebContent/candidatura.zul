@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?link rel="icon" type="image/x-icon" href="img/uem_md.png"?>
+<?link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" ?>
+<?link href="css/font-awesome.min.css" rel="stylesheet" type="text/css" ?>
+<?link href="css/ionicons.min.css" rel="stylesheet" type="text/css" ?>
+<?link href="css/morris/morris.css" rel="stylesheet" type="text/css" ?>
+<?link href="css/jvectormap/jquery-jvectormap-1.2.2.css" rel="stylesheet" type="text/css" ?>
+<?link href="css/datepicker/datepicker3.css" rel="stylesheet" type="text/css" ?>
+<?link href="css/daterangepicker/daterangepicker-bs3.css" rel="stylesheet" type="text/css" ?>
+<?link href="css/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css" rel="stylesheet" type="text/css" ?>
+<?link href="css/AdminLTE.css" rel="stylesheet" type="text/css" ?>
+<?link href="css/zk.wcs" rel="stylesheet" type="text/css" ?>
+<?link href="css/inoLab.css" rel="stylesheet" type="text/css" ?>
+<?link href="css/listbox.css" rel="stylesheet" type="text/css" ?>
+<?link href="css/chosenBox.css" rel="stylesheet" type="te\xt/css" ?>
+
+<?link href="css/metro/style.css" rel="stylesheet" type="text/css" ?>
+<?link href="css/metro/style-responsive.css" rel="stylesheet" type="text/css" ?>
+<?link href="css/metro/style-default.css" rel="stylesheet" type="text/css" ?>
+<?meta name="viewport" content="width=device-width, initial-scale=1.0"?> 
+<?link href="css/datatables/dataTables.bootstrap.css" rel="stylesheet" type="text/css" ?>
+<?link href="css/holidays.css" rel="stylesheet" type="text/css" ?>
+<zk  xmlns:x="xhtml" xmlns:zk="zk">
+<window contentStyle="background-color:white" width="100%"  style="margin:-5px">
+<div style="margin-bottom:15px">
+			<div class="row"
+				style="/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+23,83c783+28,83c783+28,83c783+28,83c783+28,83c783+28,52b152+37,008a00+47,005700+69,002400+100 */
+background: #ffffff; /* Old browsers */
+background: -moz-linear-gradient(-45deg,  #ffffff 23%, #83c783 28%, #83c783 28%, #83c783 28%, #83c783 28%, #83c783 28%, #52b152 37%, #008a00 47%, #005700 69%, #002400 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, right bottom, color-stop(23%,#ffffff), color-stop(28%,#83c783), color-stop(28%,#83c783), color-stop(28%,#83c783), color-stop(28%,#83c783), color-stop(28%,#83c783), color-stop(37%,#52b152), color-stop(47%,#008a00), color-stop(69%,#005700), color-stop(100%,#002400)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(-45deg,  #ffffff 23%,#83c783 28%,#83c783 28%,#83c783 28%,#83c783 28%,#83c783 28%,#52b152 37%,#008a00 47%,#005700 69%,#002400 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(-45deg,  #ffffff 23%,#83c783 28%,#83c783 28%,#83c783 28%,#83c783 28%,#83c783 28%,#52b152 37%,#008a00 47%,#005700 69%,#002400 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(-45deg,  #ffffff 23%,#83c783 28%,#83c783 28%,#83c783 28%,#83c783 28%,#83c783 28%,#52b152 37%,#008a00 47%,#005700 69%,#002400 100%); /* IE10+ */
+background: linear-gradient(135deg,  #ffffff 23%,#83c783 28%,#83c783 28%,#83c783 28%,#83c783 28%,#83c783 28%,#52b152 37%,#008a00 47%,#005700 69%,#002400 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#002400',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
+
+">
+				<div class="col-lg-4 col-md-4 col-sm-6 col-xs-6"
+					align="center">
+					<div width="12%" height="12%" >
+					<image src="/img/u4.png" style="margin-top:-1%;  "></image>
+					</div>
+				</div>
+
+				
+				<div class="col-md-8 col-lg-8 col-sm-6 col-xs-6 pull-left">
+					
+					<image src="/img/dp.png"  style="  position:absolute;margin-top:-1%; "></image>
+					
+				</div>
+				
+				
+			</div>
+
+			
+			</div>
+<div class = "row">
+<div class = "col-lg-10 col-md-10 col-sm-10 col-xs-12 col-lg-offset-1 col-md-offst-1 col-sm-offset-1 ">
+
+<include src = "/views/Pre-registo/DadosBasicos.zul" ></include>
+
+
+</div></div>
+
+ <x:script src="js/bootstrap.min.js" type="text/javascript"></x:script>
+    
+      </window>
+</zk>

@@ -1,0 +1,103 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<zk xmlns:h="xhtml" xmlns:zk="zk">
+<window  border="none" apply="">
+  <h:div>
+
+        <h:section class="content-header">
+          <h:h1>RELATÓRIOS -<h:small>Gestor</h:small></h:h1>
+        </h:section>
+
+
+        <h:section class="content">
+       
+        	<h:div class="row">
+        		<!-- left column -->
+        		<h:div class="col-md-12 col-lg-12 col-xs-12 col-sm-12">
+        		
+        			<!-- general form elements -->
+        			<div class="box box-warning"  visible="false">
+        		<div class="col-md-6" visible="false">
+              <h:div class="box box-default">
+                <h:div class="box-header with-border">
+                  <h:i class="fa fa-bullhorn"></h:i>
+                  <h:h3 class="box-title">Callouts</h:h3>
+                </h:div><!-- /.box-header -->
+                <h:div class="box-body">
+                  <h:div class="callout callout-danger">
+                    <h:h4>I am a danger callout!</h:h4>
+                    <h:p>There is a problem that we need to fix. A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart.</h:p>
+                  </h:div>
+                  <h:div class="callout callout-info">
+                    <h:h4>I am an info callout!</h:h4>
+                    <h:p>Follow the steps to continue to payment.</h:p>
+                  </h:div>
+                  <h:div class="callout callout-warning">
+                    <h:h4>I am a warning callout!</h:h4>
+                    <h:p>This is a yellow callout.</h:p>
+                  </h:div>
+                  <h:div class="callout callout-success">
+                    <h:h4>I am a success callout!</h:h4>
+                    <h:p>This is a green callout.</h:p>
+                  </h:div>
+                </h:div><!-- /.box-body -->
+              </h:div><!-- /.box -->
+            </div><!-- /.col -->
+          </div> <!-- /.row -->
+          
+          
+          
+          
+          
+          
+          <!-- END ALERTS AND CALLOUTS -->
+          <!-- START CUSTOM TABS 
+          <h:h2 class="page-header">AdminLTE Custom Tabs</h:h2>-->
+          <h:div class="row">
+            <h:div class="col-md-12">
+              <!-- Custom Tabs -->
+              <h:div class="nav-tabs-custom">
+                <h:ul class="nav nav-tabs">
+                  <h:li  class="active"><h:a href="#tab_2" data-toggle="tab">Configuraçãp de Pedidos/Áreas</h:a></h:li>
+               <h:li  class=""><h:a href="#tab_3" data-toggle="tab">Desempenho por ADMAR</h:a></h:li>
+             
+                  <h:li class="pull-right"><h:a href="#" class="text-muted"><h:i class="fa fa-gear"></h:i></h:a></h:li>
+                </h:ul>
+                
+                <h:div class="tab-content">
+                  
+                  <h:div class="tab-pane active" id="tab_2">
+                       
+                        <include src="views/Relatorios/Gestor/pedidos_area.zul"></include>
+                        
+                  </h:div>
+                   <h:div class="tab-pane active" id="tab_3">
+                       
+                        <include src="views/Relatorios/Gestor/desempenho.zul"></include>
+                        
+                  </h:div>
+                  <!-- /.tab-pane -->
+                </h:div><!-- /.tab-content -->
+              </h:div><!-- nav-tabs-custom -->
+            </h:div><!-- /.col -->
+                        
+                     
+        				
+        				
+        				
+        				<h:hr></h:hr>
+        					<h:div class="box-footer">
+        					
+        						</h:div>
+
+        			</h:div>
+
+        		</h:div>
+
+        	</h:div>
+        </h:section>
+
+  </h:div>
+   
+      
+</window>
+</zk>

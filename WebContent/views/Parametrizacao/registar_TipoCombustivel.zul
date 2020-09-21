@@ -1,0 +1,232 @@
+<zk xmlns:x="xhtml" xmlns:zk="zk">
+	<window apply="mz.ciuem.inamar.controller.TipoCombustivelCtrl" id="win_regTipoCombustivel">
+		<div class="row">
+			<div zclass="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+				<div zclass="box box-default">
+						<div zclass="box-header">
+						<x:label class="box-title"
+							style="font-family:Georgia,serif;color:#4E443C; font-variant: small-caps; text-transform: none; font-weight: 100; margin-bottom: 0;">
+							Tipo Combustivel
+						</x:label>
+					</div>
+					<div zclass="box-body">
+						<div class="row">
+							<div zclass="col-lg-10 col-md-10 col-sm-12 col-xs-12">
+							
+							
+							<groupbox> 
+							<caption>Pesquisa</caption>
+								<div zclass="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+								<div class="input-group">
+									<textbox zclass="form-control"
+										placeholder="Procurar pelo nome do Tipo Combustivel"
+										id="txb_nomefind" />
+											<x:span class="input-group-addon" forward="onClick=onClickprcurar()">
+										<x:i class="fa  fa-search"></x:i>
+									</x:span>
+								
+								</div>
+							</div>
+							
+								<div zclass="col-lg-6 col-md-6 col-sm-12 col-xs-12" align="right">
+								<div class="input-group" align="right" style="margin-top:7px">
+								<x:label>Tipo Combustivel activo?</x:label>
+									<radiogroup>
+										<radio label="SIM" style="margin-left:5px" id="rbx_Simfin" forward="onCheck=onClickprcurar()"/>
+										<radio label="NÃO" style="margin-left:15px" checked="true" id="rbx_Naofind" forward="onCheck=onClickprcurar()"/>
+									</radiogroup>
+								</div>
+							</div>
+							
+							</groupbox>
+							
+							
+							<div zclass="col-lg-2 col-md-2 col-sm-12 col-xs-12" visible="false">
+								<button zclass="btn btn-info btn-sm "
+								type="button" id="btn_procurar" iconSclass="fa  fa-search" width="" forward="onClick=onClickprcurar()">
+								Procurar
+							</button>
+							</div>
+
+							</div>
+							
+							<div zclass="col-lg-2 col-md-2 col-sm-12 col-xs-12" align="left" style="margin-left:-20px; margin-top:16px">
+								<x:a class="btn btn-app"
+									data-toggle="modal" data-target="#myModal" style="width:100%">
+									<x:i class="fa fa-plus"></x:i>
+									Adicionar Novo
+								</x:a>
+							</div>
+						</div>
+                        
+                        <x:hr/>
+
+						<div class="row">
+							<div
+								zclass="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+								<listbox id="lbx_tipoCombustivel"
+									checkmark="true" rows="10">
+									<listhead>
+										<listheader label="#" width="5%" />
+										<listheader label="Nome" sort="auto(nome)" />
+										<listheader label="Activo?" align="center" width="12%"/>
+										<listheader label="Editar" width="10%" align="center"/>
+									</listhead>
+									<template name="model">
+										<listitem>
+											<listcell></listcell>
+											<listcell label="${each.nome}" />
+									       <listcell>
+										   <div align="center">
+											<button zclass="btn btn-sm "
+												visible="${each.activo=='true'}">
+												Sim
+											</button>
+
+											<button
+												zclass="btn btn btn-sm "
+												visible="${each.activo=='false'}">
+												Não
+											</button>
+										  </div>
+
+									     </listcell>
+										<listcell>
+												<div align="center">
+											<x:button type="button"
+												class="btn btn-info btn-sm" data-toggle="modal"
+												data-target="#myModal">
+											<x:i class="fa fa-edit"></x:i>
+											</x:button>
+										</div>
+										
+										
+										</listcell>
+												
+										</listitem>
+									</template>
+								</listbox>
+							</div>
+						</div>
+
+
+					</div>
+					<div zclass="box-footer">
+					  <div align="center">
+	                     <button zclass="btn btn-warning btn-sm"
+							type="button" id="btn_imprimir" iconSclass="fa fa-print">
+
+							Imprimir PDF
+						</button>
+					  </div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+
+
+
+
+		<!-- Modal Candidato-->
+		<x:div class="modal fade" id="myModal" tabindex="-1"
+			role="dialog" aria-labelledby="myModalLabel">
+			<x:div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<x:button type="button" class="close"
+							data-dismiss="modal" aria-label="Close">
+							x
+						</x:button>
+						<x:h4 class="modal-title" id="myModalLabel">
+							Tipo Combustivel
+						</x:h4>
+					</div>
+					<div class="modal-body">
+								<div zclass="box-header">
+									<div zclass="box-body">
+		                        <div zclass="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="background-color:#3c8dbc">
+		                            <div zclass="col-md-2">
+		                            </div>
+		                            <div zclass="col-md-8">
+		                            <div align="center">
+		                            <label id="lbl_descricao2" style="color:white" class="box-title"></label>
+		                            </div>
+		                            </div>
+		                            <div zclass="col-md-2">
+		                            </div>
+								</div>
+								</div>
+					</div>
+
+
+
+
+						<div class="row">
+												<div
+								zclass="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+
+								<x:label>Tipo Combustivel Activo?</x:label>
+								<div class="input-group">
+									<radiogroup>
+										<radio label="Sim"
+											style="margin-left:5px" id="rbx_actSim" />
+										<radio label="Não"
+											style="margin-left:15px" checked="true" id="rbx_actNao" />
+									</radiogroup>
+								</div>
+
+							</div>
+						
+						
+									<div zclass="col-lg-12 col-md-12 col-sm-12 col-xs-12">.</div>
+							<div zclass="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+								<x:label>Nome</x:label>
+								<div class="input-group">
+									<textbox zclass="form-control"
+										placeholder="Nome do Tipo Combustivel"
+										constraint="no empty : Não pode ser vazio nem conter apenas espaços em branco!"
+										id="txb_nome" />
+									<x:span class="input-group-addon">
+										<x:i class="fa  fa-edit"></x:i>
+									</x:span>
+								</div>
+							</div>
+							
+						</div>
+
+
+					</div>
+
+					<div class="modal-footer">
+
+						<div align="center">
+
+							<button zclass="btn btn-success btn-sm "
+								type="button" id="btn_gravar" iconSclass="fa  fa-save">
+								Gravar
+							</button>
+							<label width="5%"></label>
+							<button zclass="btn btn-info btn-sm "
+								type="button" visible="false" id="btn_actualizar"
+								iconSclass="fa  fa-refresh">
+								Actualizar
+							</button>
+
+							<label width="5%"></label>
+							<button zclass="btn btn-danger btn-sm "
+								type="button" id="btn_cancelar" iconSclass="fa  fa-undo">
+								Cancelar
+							</button>
+
+						</div>
+
+					</div>
+				</div>
+			</x:div>
+		</x:div>
+
+	</window>
+</zk>

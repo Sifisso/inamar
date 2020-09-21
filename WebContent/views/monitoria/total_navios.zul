@@ -1,0 +1,90 @@
+<zk xmlns:x="xhtml" xmlns:zk="zk">
+	<window id="win_peticoes" apply="mz.ciuem.inamar.controller.monitoria.TotalNavioCtrl" >
+		<div zclass="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+			
+			<div zclass="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+			
+							<div style="margin-top:10px">
+								<x:legend style="color:green">
+									Total de Navios por Delegação
+								</x:legend>
+							</div>
+							<div zclass="box-body">
+								<div sclass="form-group">
+									<listbox id="lbx_peticoes" rows="10">
+										<listhead>
+											<listheader width="30px"></listheader>
+											<listheader>Delegação</listheader>
+											<listheader width="180px">Nacionalidade</listheader>
+											<listheader width="110px">Navios </listheader>
+											<listheader width="110px">Activo </listheader>
+											<listheader width="110px">Inactivo </listheader>
+											
+										</listhead>
+										<template name="model">
+											<listitem>
+												<listcell></listcell>
+												<listcell
+													label="${each[0] }">
+												</listcell>
+												<listcell
+													label="${each[1] }">
+												</listcell>
+												<listcell
+													label="${each[2] }">
+												</listcell>
+												<listcell
+													label="${each[3] }">
+												</listcell>
+												<listcell
+													label="${each[4] }">
+												</listcell>
+											</listitem>
+										</template>
+										<listfoot>
+											<listfooter></listfooter>
+											<listfooter></listfooter>
+											<listfooter></listfooter>
+
+											<listfooter >
+												<label
+													style="color:black; margin-right:5px;text-weight:800">
+													Total:
+												</label>
+												<label
+													style="color:black; margin-right:5px"
+													id="lbl_total_navio">
+												</label>
+												
+											</listfooter>
+											<listfooter></listfooter>
+											<listfooter></listfooter>
+										</listfoot>
+									</listbox>
+
+								</div>
+							</div>
+						</div>
+						<div zclass="box-footer">
+					  <div align="center">
+	                     <button zclass="btn btn-warning btn-sm"
+							type="button" id="btn_imprimir" iconSclass="fa fa-print">
+
+							Imprimir PDF
+						</button>
+					  </div>
+					</div>
+		</div>
+	</window>
+	<style>
+div.z-listbox-footer {
+    border-top: 1px solid #3B3F39;
+}
+div.z-listbox-footer .z-listfooter {
+    background-image: none;
+    background-color: white;
+}
+
+</style>
+
+</zk>

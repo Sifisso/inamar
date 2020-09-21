@@ -1,0 +1,417 @@
+<zk xmlns:x="xhtml" xmlns:zk="zk">
+	<window apply="mz.ciuem.inamar.controller.EmbarcacaoCtrl" id="win_regEmbarcacao">
+		<div class="row">
+			<div zclass="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+				<div zclass="box box-default">
+					<div zclass="box-header">
+						<x:label class="box-title"
+							style="font-family:Georgia,serif;color:#4E443C; font-variant: small-caps; text-transform: none; font-weight: 100; margin-bottom: 0;">
+							Navio
+						</x:label>
+						
+					</div>
+					<div zclass="box-body">
+						<div class="row">
+							<div zclass="col-lg-10 col-md-10 col-sm-12 col-xs-12">
+							<groupbox> 
+							<caption>Pesquisa</caption>
+								<div zclass="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+								<div>
+									<textbox zclass="form-control" tooltiptext="Procurar pelo nome do Navio"
+										placeholder="Procurar pelo nome do Navio ou pelo Propretário"
+										id="txb_nomefind" />
+											<x:span forward="onClick=onClickprcurar()">
+									</x:span>
+								
+								</div>
+							</div>
+							<div >
+								<button zclass="btn btn-info btn-sm "
+								type="button" id="btn_procurar" iconSclass="fa  fa-search" width="" forward="onClick=onClickprcurar()">
+								Procurar
+							</button>
+							
+							</div>
+							
+<!-- 							<div zclass="col-lg-3 col-md-3 col-sm-8 col-xs-8"> -->
+<!-- 								<div class="input-group"> -->
+<!-- 								<combobox width="100%" id="cbx_paisFind" -->
+<!-- 									placeholder="Selecione o Pais" readonly="true" -->
+<!-- 									constraint="no empty" -->
+<!-- 									 forward="onSelect=onClickprcurar()"> -->
+<!-- 									<template name="model"> -->
+<!-- 										<comboitem -->
+<!-- 											label="${each.designacao}" /> -->
+<!-- 									</template> -->
+<!-- 								</combobox> -->
+								
+<!-- 								</div> -->
+<!-- 							</div> -->
+							
+							
+								<div zclass="col-lg-12 col-md-12 col-sm-24 col-xs-24" align="right">
+								<div class="input-group" align="center" style="margin-top:-28px; padding-left:120px;">
+								<x:label>Navio activo?</x:label>
+									<radiogroup>
+										<radio label="SIM" style="margin-left:5px" id="rbx_Simfin" forward="onCheck=onClickprcurar()"/>
+										<radio label="NÃO" style="margin-left:15px" checked="true" id="rbx_Naofind" forward="onCheck=onClickprcurar()"/>
+										<radio label="TODOS" style="margin-left:15px" checked="true" id="rbx_Todosfind" forward="onCheck=onClickprcurarTodos()"/>
+									
+									</radiogroup>
+									</div>
+								</div>
+							
+<!-- 							<div zclass="col-lg-12 col-md-12 col-sm-24 col-xs-24" align="right"> -->
+<!-- 								<div class="input-group" align="right" style="margin-top:-30px"> -->
+<!-- 								<x:label></x:label> -->
+<!-- 									<radiogroup> -->
+<!-- 										<radio label="EMBARCAÇÃO" style="margin-left:5px" id="rbx_NaoNavioEmbarcacaoFind" forward="onCheck=onClickprcurar()"/> -->
+<!-- 										<radio label="NAVIO" style="margin-left:15px" id="rbx_SimNavioEmbarcacaoFind" forward="onCheck=onClickprcurar()"/> -->
+																				
+<!-- 									</radiogroup> -->
+<!-- 								</div> -->
+<!-- 							</div> -->
+							
+							</groupbox>
+							
+							
+							
+
+							</div>
+							
+							<div zclass="col-lg-2 col-md-2 col-sm-12 col-xs-12" align="left" style="margin-left:-20px; margin-top:16px">
+								<x:a class="btn btn-app"
+									data-toggle="modal" data-target="#myModal" style="width:100%">
+									<x:i class="fa fa-plus"></x:i>
+									Adicionar Novo Navio
+								</x:a>
+							</div>
+						</div>
+                        
+                        <x:hr/>
+
+						<div class="row">
+							<div
+								zclass="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+								<listbox id="lbx_embarcacoes" 
+									checkmark="true" rows="10">
+									<listhead>
+										<listheader label="#"
+											width="5%" />
+										<listheader label="Nome"
+											sort="auto(nome)" />
+										<listheader label="Proprietário"
+											sort="auto(propreitario)" />
+											
+										<listheader label="Navio Activo?" width="10%" align="center"/>
+										
+												
+										<listheader label="Editar" width="10%" align="center"/>
+									</listhead>
+									<template name="model">
+										<listitem>
+											<listcell></listcell>
+											<listcell label="${each.nome}"></listcell>
+											<listcell label="${each.propreitario}"></listcell>
+									        
+									        <listcell>
+										   <div align="center">
+											<button zclass="btn btn-sm "
+												visible="${each.activo=='true'}">
+												SIM
+											</button>
+
+											<button
+												zclass="btn btn btn-sm "
+												visible="${each.activo=='false'}">
+												NÃO 
+											</button>
+										  </div>
+
+									     </listcell>
+									     
+									     
+									        <listcell>
+												<div align="center">
+											<x:button type="button"
+												class="btn btn-info btn-sm" data-toggle="modal"
+												data-target="#myModal">
+											<x:i class="fa fa-edit"></x:i>
+											</x:button>
+										</div>
+										</listcell>
+												
+										</listitem>
+									</template>
+								</listbox>
+							</div>
+						</div>
+
+
+					</div>
+					<div zclass="box-footer">
+					  <div align="center">
+	                     <button zclass="btn btn-warning btn-sm"
+							type="button" id="btn_imprimir" iconSclass="fa fa-print">
+
+							Imprimir PDF
+						</button>
+					  </div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+
+
+
+
+		<!-- Modal Candidato-->
+		<x:div class="modal fade" id="myModal" tabindex="-1"
+			role="dialog" aria-labelledby="myModalLabel">
+			<x:div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<x:button type="button" class="close"
+							data-dismiss="modal" aria-label="Close">
+							x
+						</x:button>
+						<x:h4 class="modal-title" id="myModalLabel">
+							Novo Navio
+						</x:h4>
+					</div>
+					<div class="modal-body">
+
+						<div class="row">
+							
+								<div
+								zclass="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+								<separator></separator>	
+								<x:label>Navio Activo?</x:label><x:label style="color:red">*</x:label>
+								<div class="input-group">
+									<radiogroup id="rg_1"> 
+										<radio label="SIM"
+											style="margin-left:5px" checked="true" id="rbx_actSimA" />
+										<radio label="NÃO"
+											style="margin-left:15px"  id="rbx_actNaoA" />
+									</radiogroup>
+								</div>
+
+							</div>
+							
+<!-- 							<div -->
+<!-- 								zclass="col-lg-6 col-md-6 col-sm-12 col-xs-12"> -->
+<!-- 								<separator></separator>	 -->
+<!-- 								<x:label>Navio/Embarcação?</x:label><x:label style="color:red">*</x:label> -->
+<!-- 								<div class="input-group"> -->
+<!-- 									<radiogroup id="rg_2"> -->
+<!-- 										<radio label="Navio" -->
+<!-- 											style="margin-left:5px" checked="true" id="rbx_navio" /> -->
+<!-- 										<radio label="Embarcação" -->
+<!-- 											style="margin-left:15px" id="rbx_embarcacao" /> -->
+<!-- 									</radiogroup> -->
+<!-- 								</div> -->
+
+<!-- 							</div> -->
+							
+							<div
+								zclass="col-lg-12 col-md-12 col-sm-24 col-xs-24">
+								<separator></separator>
+								<x:label>Proprietário</x:label><x:label style="color:red">*</x:label>
+								<div class="input-group">
+									<textbox zclass="form-control"
+										placeholder="Nome do Proprietário do barco"
+										constraint="no empty : Não pode ser vazio nem conter apenas espaços em branco!"
+										id="txb_propreitario" />
+									<x:span class="input-group-addon">
+										<x:i class="fa  fa-edit"></x:i>
+									</x:span>
+								</div>
+							</div>
+							
+<!-- 							<div -->
+<!-- 								zclass="col-lg-6 col-md-6 col-sm-12 col-xs-12"> -->
+<!-- 								<separator></separator> -->
+<!-- 								<x:label>Código</x:label><x:label style="color:red">*</x:label> -->
+<!-- 								<div class="input-group"> -->
+<!-- 									<textbox zclass="form-control" -->
+<!-- 										placeholder="Código do Barco" -->
+<!-- 										constraint="no empty : Não pode ser vazio nem conter apenas espaços em branco!" -->
+<!-- 										id="txb_codigo" /> -->
+<!-- 									<x:span class="input-group-addon"> -->
+<!-- 										<x:i class="fa  fa-edit"></x:i> -->
+<!-- 									</x:span> -->
+<!-- 								</div> -->
+<!-- 							</div> -->
+							
+							<div
+								zclass="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+								<separator></separator>
+								<x:label>Nome do Navio</x:label><x:label style="color:red">*</x:label>
+								<div class="input-group">
+									<textbox zclass="form-control"
+										placeholder="Nome do Barco"
+										constraint="no empty : Não pode ser vazio nem conter apenas espaços em branco!"
+										id="txb_nome" />
+									<x:span class="input-group-addon">
+										<x:i class="fa  fa-edit"></x:i>
+									</x:span>
+								</div>
+							</div>
+							
+<!-- 							<div zclass="col-lg-6 col-md-6 col-sm-12 col-xs-12"> -->
+<!-- 										<separator></separator> -->
+<!-- 								<x:label>Zona Actividade Marinha</x:label><x:label style="color:red">*</x:label> -->
+<!-- 								<combobox id="cbx_actividadeZonaMaritima" cols="36"  -->
+<!-- 									placeholder="Selecione a Zona Actividade Marinha" readonly="true" -->
+<!-- 									constraint="no empty : Não pode ser vazio nem conter apenas espaços em branco!"> -->
+<!-- 									<template name="model"> -->
+<!-- 										<comboitem -->
+<!-- 											label="${each.nome}" /> -->
+<!-- 									</template> -->
+<!-- 								</combobox> -->
+<!-- 							</div> -->
+							
+<!-- 							<div zclass="col-lg-6 col-md-6 col-sm-12 col-xs-12"> -->
+<!-- 										<separator></separator> -->
+<!-- 								<x:label>Serviço Destino</x:label><x:label style="color:red">*</x:label> -->
+<!-- 								<combobox id="cbx_servicoDestino" cols="36"  -->
+<!-- 									placeholder="Selecione o Serviço Destino" readonly="true" -->
+<!-- 									constraint="no empty : Não pode ser vazio nem conter apenas espaços em branco!"> -->
+<!-- 									<template name="model"> -->
+<!-- 										<comboitem -->
+<!-- 											label="${each.nome}" /> -->
+<!-- 									</template> -->
+<!-- 								</combobox> -->
+<!-- 							</div> -->
+
+<!-- 							<div  -->
+<!-- 								zclass="col-lg-4 col-md-4 col-sm-8 col-xs-8"> -->
+<!-- 								<separator></separator> -->
+<!-- 								<div class="form-group"> -->
+<!--         							<x:label >Data do Fabrico</x:label><x:label style="color:red">*</x:label> -->
+<!-- 						        	<datebox id="dbx_dataFabrico"  cols="20" -->
+<!-- 								readonly="false" visible="true" buttonVisible="true" constraint="no empty; no future" -->
+<!-- 								format="dd/MM/yyyy" -->
+<!-- 								 />      							 -->
+<!-- 						               	</div> -->
+<!-- 							</div> -->
+							
+							
+										<div zclass="col-lg-4 col-md-4 col-sm-8 col-xs-8">
+										<separator></separator>
+								<x:label>Nacionalidade</x:label><x:label style="color:red">*</x:label>
+								<combobox id="cbx_paises" cols="36" 
+									placeholder="Selecione a Nacionalidade" readonly="true"
+									constraint="no empty : Não pode ser vazio nem conter apenas espaços em branco!">
+									<template name="model">
+										<comboitem
+											label="${each.designacao}" />
+									</template>
+								</combobox>
+							</div>
+							
+							<div
+								zclass="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+								<separator></separator>
+								<x:label>Tonelagem</x:label>
+								<div class="input-group">
+									<textbox zclass="form-control"
+										placeholder="Tonelagem"
+										id="txb_tonelagem" />
+									<x:span class="input-group-addon">
+										<x:i class="fa  fa-edit"></x:i>
+									</x:span>
+								</div>
+							</div>
+							
+							<div
+								zclass="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+								<separator></separator>
+								<x:label>Matrícula</x:label>
+								<div class="input-group">
+									<textbox zclass="form-control"
+										placeholder="Matrícula"
+										id="txb_matricula" />
+									<x:span class="input-group-addon">
+										<x:i class="fa  fa-edit"></x:i>
+									</x:span>
+								</div>
+							</div>
+							
+							
+<!-- 							<div zclass="col-lg-4 col-md-4 col-sm-8 col-xs-8"> -->
+<!-- 							<separator></separator> -->
+<!-- 								<x:label>Classe de Embarcação</x:label><x:label style="color:red">*</x:label> -->
+<!-- 								<combobox  id="cbx_classeEmbarcacao" cols="20" -->
+<!-- 									placeholder="Selecione a Classe de Embarcação" readonly="true" -->
+<!-- 									constraint="no empty : Não pode ser vazio nem conter apenas espaços em branco!"> -->
+<!-- 									<template name="model"> -->
+<!-- 										<comboitem -->
+<!-- 											label="${each.nome}" /> -->
+<!-- 									</template> -->
+<!-- 								</combobox> -->
+<!-- 							</div> -->
+							
+							
+										
+							
+							
+
+						</div>
+
+
+					</div>
+
+					<div class="modal-footer">
+
+						<div align="center">
+
+							<button zclass="btn btn-success btn-sm "
+								type="button" id="btn_gravar" iconSclass="fa  fa-save">
+								Gravar
+							</button>
+							<label width="5%"></label>
+							<button zclass="btn btn-info btn-sm "
+								type="button" visible="false" id="btn_actualizar"
+								iconSclass="fa  fa-refresh">
+								Actualizar
+							</button>
+
+							<label width="5%"></label>
+							<button zclass="btn btn-danger btn-sm "
+								type="button" id="btn_cancelar" iconSclass="fa  fa-undo">
+								Cancelar
+							</button>
+
+						</div>
+
+					</div>
+				</div>
+			</x:div>
+		</x:div>
+
+
+<!-- <vlayout> -->
+<!--     <radiogroup> -->
+<!--         <attribute name="onCheck"><![CDATA[ -->
+<!--             lbx_embarcacoes.pagingPosition = self.selectedItem.label; -->
+<!--         ]]></attribute> -->
+<!--         <vlayout> -->
+<!--             <label value="Paging Indicator Placement :" /> -->
+<!--             <radio label="top" /> -->
+<!--             <radio label="bottom" checked="true" /> -->
+<!--             <radio label="both" /> -->
+<!--         </vlayout> -->
+<!--     </radiogroup> -->
+<!--     <div height="10px"/> -->
+<!--     <checkbox label="Switch Paging Mold"> -->
+<!--         <attribute name="onCheck"><![CDATA[ -->
+<!--             lbx_embarcacoes.pagingChild.mold = "os".equals(lbx_embarcacoes.pagingChild.mold) ? "default" : "os"; -->
+<!--         ]]></attribute> -->
+<!--     </checkbox> -->
+<!-- </vlayout> -->
+
+	</window>
+</zk>

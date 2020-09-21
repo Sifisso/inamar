@@ -1,0 +1,185 @@
+
+<zk xmlns:x="xhtml" xmlns:zk="zk">
+<window  border="none" contentStyle="overflow:auto" width="100%" id="win_regTarefaPedido"
+			apply="mz.ciuem.inamar.pedido.controller.TarefaPedidoCtrl"	>
+			
+							<div zclass="box box-primary">
+									<div>
+										<div zclass="box-body">
+											<div class="form-group">
+												<x:label>
+													Tarefas:
+												</x:label>
+												<combobox width="60%"
+													id="cbx_tarefa"
+													placeholder="Selecione uma Tarefa"
+													constraint="no empty:Selecione uma Tarefa"
+													readonly="true">
+													<template
+														name="model">
+														<comboitem
+															label="${each.descricao}" />
+													</template>
+												</combobox>
+
+												<button
+													zclass="btn btn-info btn-sm pull-right" type="button"
+													id="btn_adicionar" iconSclass="fa fa-plus-square">
+
+													Adicionar
+												</button>
+											</div>
+
+
+										</div>
+
+									</div>
+								</div>
+
+								<div zclass="box box-primary">
+									<div zclass="box box-default">
+										<div zclass="box-header">
+											<x:h3 class="box-title">
+												Tarefas a Adicionar
+											</x:h3>
+										</div>
+										<div>
+											<div zclass="box-body">
+												<listbox id="lbx_tarefas"
+									checkmark="true" rows="4">
+									<listhead>
+										<listheader label="#" width="5%" />
+										<listheader label="Nome"/>
+										<listheader label="Activo?" align="center" width="12%"/>
+										<listheader label="Remover" width="10%" align="center"/>
+									</listhead>
+									<template name="model">
+										<listitem>
+											<listcell></listcell>
+											<listcell label="${each.descricao}" />
+									       <listcell>
+										   <div align="center">
+											<button zclass="btn btn-sm "
+												visible="${each.activo=='true'}">
+												Sim
+											</button>
+
+											<button
+												zclass="btn btn btn-sm "
+												visible="${each.activo=='false'}">
+												Não
+											</button>
+										  </div>
+
+									     </listcell>
+									<listcell>
+                                                             <button label = "Remover" 
+                                                             zclass ="btn btn-danger btn-xs" iconSclass="fa fa-trash-o" forward=" onClick = 'onRemover(${ each})'"></button>
+														    </listcell>
+												
+										</listitem>
+									</template>
+								</listbox>
+											</div>
+											<div zclass="box-footer" align="center">
+												<button
+													zclass="btn btn-success btn-sm" type="button"
+													id="btn_gravar" iconSclass="fa fa-save" visible="false">
+
+													Gravar
+												</button>
+												<button
+													zclass="btn btn-info btn-sm" type="button" visible="false"
+													id="btn_actualizar" iconSclass="fa  fa-refresh">
+													Actualizar
+												</button>
+												<label width="5%"></label>
+													<button
+													zclass="btn btn-danger btn-sm" type="button"
+													id="btn_cancelar" iconSclass="fa fa-undo"
+													visible="false">
+
+													Cancelar
+												</button>
+											</div>
+
+										</div>
+									</div>
+								</div>
+
+
+								<div zclass="box box-success">
+									<div zclass="box box-success">
+										<div zclass="box-header">
+											<x:h3 class="box-title">
+												Tarefas do Pedido
+											</x:h3>
+											
+											<div align="right">
+											<separator></separator>
+											<button
+												zclass="btn btn-warning btn-sm" type="button"
+												id="btn_imprimir" style="margin-right:3%"
+												iconSclass="fa fa-print">
+
+												Imprimir PDF
+											</button>
+										</div>
+										
+										</div>
+										<div>
+											<div zclass="box-body">
+												<listbox
+													id="lbx_tarefaPedido" checkmark="true"
+													multiple="true" rows="10"
+													emptyMessage="Sem Dados Registados">
+													<listhead>
+														<listheader
+															width="5%">
+														</listheader>
+														<listheader
+															label="Tarefa"/>
+														<listheader
+															label="Pedido"/>
+														<listheader
+															label="Activo" width="10%" align="center"/>
+													</listhead>
+													<template
+														name="model">
+														<listitem>
+															<listcell />
+
+															<listcell
+																label="${each.tarefa.descricao}" />
+															<listcell
+																label="${each.pedido.descricao}" />
+
+															<listcell>
+																<div
+																	align="center">
+																	<button
+																		zclass="btn btn-sm "
+																		visible="${each.pedido.activo=='true' and each.tarefa.activo=='true'}">
+																		Sim
+																	</button>
+
+																	<button
+																		zclass="btn btn btn-sm"
+																		visible="${each.pedido.activo=='false' or each.tarefa.activo=='false'}">
+																		Não
+																	</button>
+																</div>
+															
+															</listcell>
+
+														</listitem>
+													</template>
+												</listbox>
+											</div>
+
+										</div>
+									</div>
+								</div>
+							
+</window>
+</zk>

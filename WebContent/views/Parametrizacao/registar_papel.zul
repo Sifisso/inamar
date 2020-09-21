@@ -1,0 +1,83 @@
+<zk xmlns:x="xhtml" xmlns:zk="zk">
+<window apply="mz.ciuem.sgea.controller.PapelCtrl" id="win">
+	<div class="row">
+	<div zclass="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+		<div zclass="box box-default">
+		    <div zclass="box-header">
+		        <x:label class="box-title" style="font-family: ATimes New Roman; color: green; font-size: 14px; font-style: normal; font-variant: normal; font-weight: bold; line-height: 26.3999996185303px; margin-top:-9px; margin-bottom:-9px">Novo Papel</x:label>
+		    </div>
+		    <div zclass="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+		        <div zclass="box-body">
+					<div class="form-group">
+					    <x:label>Designação</x:label>
+					    <div class="input-group">
+					    <textbox zclass="form-control" placeholder="Designação do Papel"  
+					    	constraint="no empty : Não deve estar vazio ou conter espaços em branco apenas !" id="txb_designacao"/>
+					    	<x:span class="input-group-addon"><x:i class="fa  fa-edit"></x:i></x:span>
+					    	</div>
+					</div>
+		        </div>
+		        <div zclass="box-footer">
+		         <div align="right">
+		        <button zclass="btn btn-danger btn-sm" type="button" id="btn_cancelar" iconSclass="fa fa-undo">
+				 Cancelar
+	            </button>
+		        <label width="5%"></label>
+		          <button zclass="btn btn-success btn-sm" type="button"	id="btn_gravar" iconSclass="fa fa-save" autodisable="self,btn_actualizar">
+				
+						Gravar
+				  </button>
+				   <label width="5%"></label>
+				  <button zclass="btn btn-info btn-sm" type="button" visible="false"	id="btn_actualizar" iconSclass="fa fa-refresh">
+					
+						Actualizar
+				  </button>
+				  </div>
+		        </div>
+		    </div>
+	</div>
+	</div>
+</div>
+	
+	<div class="row">
+		<div zclass="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+				<div zclass="box box-default">
+		    <div zclass="box-header">
+		        <x:label class="box-title" style="font-family: ATimes New Roman; color: green; font-size: 14px; font-style: normal; font-variant: normal; font-weight: bold; line-height: 26.3999996185303px; margin-top:-9px; margin-bottom:-9px">Papeis Registados</x:label>
+		    <div align="right">
+											<separator/>
+											<button
+												zclass="btn btn-warning btn-sm" type="button"
+												id="btn_imprimir" style="margin-right:1%"
+												iconSclass="fa fa-print">
+
+												Imprimir PDF
+											</button>
+										</div>
+		    </div>
+		    <div>
+		        <div zclass="box-body">
+					<listbox id="lbx_papel" checkmark="true" rows="5">
+	                    <listhead>
+	                        <listheader label="#" width="5%"/>
+	                    	<listheader label="Designação" sort="auto(designacao)" />
+	                  </listhead>
+	                   <template name="model">
+	                    <listitem>
+	                         <listcell></listcell>
+		                     <listcell label="${each.designacao}" />
+                       	</listitem>
+                       </template>
+                    </listbox>
+
+		        </div>
+		        <div zclass="box-footer">
+		        
+		        </div>
+		    </div>
+	</div>
+	</div>
+	</div>
+
+</window>
+</zk>

@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="CicloLocal" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4da41461-b689-4659-93ec-9064c8bf1433">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="imagemLogo" class="java.io.InputStream"/>
+	<parameter name="nome_lista" class="java.lang.String"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<field name="created" class="java.util.Date"/>
+	<field name="codigo" class="java.lang.String"/>
+	<field name="nome" class="java.lang.String"/>
+	<field name="tiposPedidos" class="java.util.List"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="101" splitType="Stretch">
+			<image scaleImage="FillFrame" hAlign="Center">
+				<reportElement x="249" y="3" width="60" height="60" uuid="35819b40-9a46-4407-97c6-c336faec5cd6"/>
+				<imageExpression><![CDATA[$P{imagemLogo}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="0" y="63" width="555" height="19" forecolor="#3399FF" uuid="6c3fbca4-1c58-4c42-9b85-a8287a5d0953"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[INSTITUTO NACIONAL DA MARINHA]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="21" splitType="Stretch">
+			<line>
+				<reportElement x="0" y="0" width="555" height="1" uuid="ef78912e-9589-48ab-9a28-0228be92807c"/>
+				<graphicElement>
+					<pen lineWidth="1.25" lineColor="#000000"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="0" y="20" width="555" height="1" uuid="dc24b05a-5046-4907-ac47-42dcc31933d0"/>
+				<graphicElement>
+					<pen lineWidth="1.25" lineColor="#000000"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement x="14" y="1" width="523" height="20" uuid="18d573dc-5873-4d0f-9801-b90b2c2b2676"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" isBold="true" isUnderline="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{nome_lista}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="33" splitType="Stretch">
+			<rectangle>
+				<reportElement x="14" y="0" width="523" height="15" forecolor="#FFFFFF" backcolor="#CCFFFF" uuid="797defdf-14eb-4a09-b901-543a1a4096ad"/>
+			</rectangle>
+			<textField>
+				<reportElement x="22" y="0" width="13" height="15" uuid="3989e220-6d08-49b9-9a3e-0ac6796d0e63"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{codigo}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="35" y="0" width="2" height="15" uuid="65c3f292-a68f-422c-a9ce-37c1c7689c3d"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<text><![CDATA[.]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="37" y="0" width="500" height="15" uuid="8db1a2c2-722a-45af-aee3-d8beb3a9a209"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nome}]]></textFieldExpression>
+			</textField>
+			<subreport>
+				<reportElement x="65" y="15" width="472" height="17" uuid="b764285c-5ed8-4fc7-a6c5-7cb357fd7f99"/>
+				<subreportParameter name="SUBREPORT_DIR"/>
+				<subreportParameter name="imagemsim"/>
+				<subreportParameter name="imagemnao"/>
+				<subreportParameter name="imagemLogo"/>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{tiposPedidos})]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "/subReportTipoPedido.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="89" splitType="Stretch">
+			<rectangle>
+				<reportElement x="51" y="5" width="435" height="55" uuid="b6ffad3e-636a-4c12-ba1e-b318174515a9"/>
+			</rectangle>
+			<line>
+				<reportElement x="45" y="67" width="438" height="1" forecolor="#000000" uuid="627b9b79-1961-450a-9743-5bbd278c7a0b"/>
+				<graphicElement>
+					<pen lineWidth="1.5" lineColor="#000000"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="191" y="70" width="290" height="10" forecolor="#333333" uuid="a766fc71-b3a1-46e5-aef1-8e833b311239"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="6" isBold="false"/>
+				</textElement>
+				<text><![CDATA[RESERVADO A LEITURA ÓPTICA. NÃO DOBRAR, NÃO ESCREVER, NÃO CARIMBAR, NÃO AGRAFAR.]]></text>
+			</staticText>
+			<textField pattern="d/M/yyyy">
+				<reportElement x="500" y="79" width="55" height="10" forecolor="#333333" backcolor="#000000" uuid="fff4fa4e-3b0f-4fcc-b371-07edc034a588"/>
+				<textElement textAlignment="Right">
+					<font fontName="Times New Roman" size="7" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new Date()]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="22" y="82" width="440" height="1" forecolor="#000000" uuid="ca0b4445-9861-47fa-ac8f-238924ebb662"/>
+				<graphicElement>
+					<pen lineColor="#CCCCCC"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="45" y="4" width="441" height="1" uuid="2119618e-3017-42f7-aa2f-39d4127557be"/>
+				<graphicElement>
+					<pen lineStyle="Dotted" lineColor="#000000"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="348" y="15" width="1" height="35" forecolor="#000000" uuid="a74c4feb-e2cb-41b8-8485-ab7bd154e351"/>
+				<graphicElement>
+					<pen lineWidth="1.5" lineColor="#000000"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="52" y="15" width="229" height="12" forecolor="#000066" uuid="dc689465-f612-42f4-b002-6285956973f7"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Av. Nguguyane, nº 121212, 6º andar - Maputo - Moçambique]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="51" y="38" width="295" height="12" forecolor="#000066" uuid="81b96414-e305-42d8-8e18-061d334d8fb4"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tel.: 21 320 552 - Cel.: +258 847887543 - Fax.: 21 320 552 - Email: inamar@gov.mz]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="360" y="15" width="121" height="12" forecolor="#000066" uuid="852de6f7-8059-4824-83e2-efcf5e37acfe"/>
+				<textElement>
+					<font fontName="Times New Roman" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NUIT: 78653429]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="360" y="29" width="121" height="12" forecolor="#000066" uuid="95d15b40-17e1-4fc8-bfb3-1c688b456337"/>
+				<textElement>
+					<font fontName="Times New Roman" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[inamar.gov.m/site]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="360" y="43" width="121" height="12" forecolor="#000066" uuid="97f4895e-12c8-49de-80ec-33d5418c679a"/>
+				<textElement>
+					<font fontName="Times New Roman" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[inamar.gov.m/sinamar]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="13" splitType="Stretch"/>
+	</summary>
+</jasperReport>

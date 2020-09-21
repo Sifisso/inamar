@@ -1,0 +1,213 @@
+<zk xmlns:h="xhtml" xmlns:zk="zk">
+	<style>
+
+
+
+
+		.stylish { display: block; width: 35px; height: 35px;
+		border-radius: 50%; border: 4px double #ccc; font-size: 25px;
+		color: #666; line-height: 20px; text-align: center;
+		text-decoration: none; text-shadow: 0 1px 0 #fff;
+		background:#ddd }
+
+		.stylishActive { display: block; width: 35px; height: 35px;
+		border-radius: 50%; border: 4px double #ccc; font-size: 25px;
+		color: #666; line-height: 20px; text-align: center;
+		text-decoration: none; text-shadow: 0 1px 0 #fff;
+
+
+		background: #009700
+
+		}
+
+		.stylish:hover { border: 4px double #bbb; color: #aaa;
+		text-decoration: none; background: #ddd }
+
+		.separator{
+
+		width:160%;
+
+		background: #ddd;
+
+		content: '';
+
+		height: 2px;
+
+
+		left: 0%; top: 35px; z-index: -1; }
+
+		.separatorD{
+
+		width:70%; background: #ddd;
+
+		content: '';
+
+		height: 2px;
+
+
+		left: 0%; top: 35px; z-index: -1; }
+
+		.separatorC{
+
+		width:100%;
+
+		background: #009700;
+
+		content: '';
+
+		height: 2px;
+
+
+		left: 50%; top: 35px; z-index: -1; }
+
+
+
+	</style>
+	<window apply="mz.ciuem.inamar.utente.controller.MaritimoCtrl" id="win_regMaritimos">
+	
+
+		<div id="div_content_out">
+		      <div class="box-body" style="margin-right:1%">
+        <div sclass="alert alert-warning alert-dismissable">
+			<label value="Os campos marcados com"></label><h:label style="color:red">*</h:label><label value=" são de preenchimento obrigatório."></label>
+		</div>
+        </div>
+			<h:div class="row">
+
+				<div zclass="col-md-12 col-lg-12 col-sm-12 col-xs-12"
+					align="center">
+
+
+					<div class="form-group">
+						<div
+							zclass="col-md-4 col-lg-4 col-sm-3 col-xs-4">
+
+							<div class="stylishActive" style=" border: 4px double #ccc;">1</div>
+							<div class="separatorC"
+								style="margin-top:-17px; margin-left:50%; ">
+							</div>
+
+						</div>
+
+						<div
+							zclass="col-md-4 col-lg-4 col-sm-4 col-xs-4">
+							<div class="stylish">2</div>
+							<div class="separator" style="margin-top:-17px;margin-left:-5%">
+							</div>
+
+						</div>
+
+						<div
+							zclass="col-md-4 col-lg-4 col-sm-4 col-xs-4">
+							<div class="stylish">3</div>
+						</div>
+
+					</div>
+				</div>
+			</h:div>
+			<separator></separator>
+			<separator></separator>
+			<separator></separator>
+			<separator></separator>
+
+
+	
+	
+	
+
+			<h:div class="row">
+			
+			
+				<div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+        						<div class="box-body">
+        				<groupbox>
+        		   <caption>Dados do Maritimo</caption>
+        		   
+        		   			<div class="row">
+							   <div
+								zclass="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+	                               <div class="form-group">
+									<h:label>Grupo Marítimo</h:label>
+									<combobox width="100%"
+										id="cbx_grupo" constraint="no empty"
+										placeholder="Selecione o Grupo Marítimo" readonly="true">
+										<template name="model">
+											<comboitem
+												label="${each.nome}" />
+										</template>
+									</combobox>
+								</div>
+							</div>
+							
+								   <div
+								zclass="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+	                               <div class="form-group">
+									<h:label>Classe Marítima</h:label>
+									<combobox width="100%"
+										id="cbx_classe" constraint="no empty"
+										placeholder="Selecione a Classe Marítima" readonly="true">
+										<template name="model">
+											<comboitem
+												label="${each.nome}" />
+										</template>
+									</combobox>
+								</div>
+							</div>
+							
+								   <div
+								zclass="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+	                               <div class="form-group">
+									<h:label>Categoria Marítima</h:label>
+									<combobox width="100%"
+										id="cbx_categoria" constraint="no empty"
+										placeholder="Selecione a Categoria Marítima" readonly="true">
+										<template name="model">
+											<comboitem
+												label="${each.nome}" />
+										</template>
+									</combobox>
+								</div>
+							</div>
+							
+							</div>
+        		   		
+          			    <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+        					<h:form role="form">
+        						<div class="box-body">
+        									<div class="form-group">
+        								 <h:label for="exampleInputEmail1">Tipo de Utente</h:label><h:label style="color:red">*</h:label>
+        										<combobox id="cbx_tipoUtente" readonly="true" constraint="no empty:Campo de preenchimento Obrigatório."
+        										width="100%" disabled="true" value="Singular">
+        											<comboitem label="Singular" />
+        											<comboitem label="Empresa" />
+        										</combobox>
+
+        									</div>
+        						</div>
+        						</h:form>
+        						</div>
+        		   
+        		   </groupbox>
+					</div>
+				</div>
+
+        				
+     
+
+
+			</h:div>
+			<h:div class="row">
+				<div align="center" style="margin-top:10px">
+					<label width="5%"></label>
+					<button zclass="btn btn-info btn-sm" label="Próximo"
+						id="btn_proximo" iconSclass="fa fa-chevron-right" dir="reverse">
+					</button>
+				</div>
+			</h:div>
+
+
+		</div>
+		<include id="inc_main"></include>
+
+	</window>
+</zk>

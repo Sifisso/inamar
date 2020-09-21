@@ -1,0 +1,372 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="estudantes_report" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c5d2627a-7009-4979-ab80-ff612100861f">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="logo" class="java.io.InputStream"/>
+	<parameter name="orgao" class="java.lang.String"/>
+	<parameter name="areaPrioritaria" class="java.lang.String"/>
+	<parameter name="ano" class="java.lang.String"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="imagemLogo" class="java.io.InputStream"/>
+	<field name="id" class="java.lang.Long"/>
+	<field name="locaisPraticaPedidos" class="java.util.List"/>
+	<field name="descricao" class="java.lang.String"/>
+	<group name="Rubricas">
+		<groupExpression><![CDATA[]]></groupExpression>
+		<groupHeader>
+			<band height="90">
+				<rectangle>
+					<reportElement x="0" y="3" width="800" height="39" forecolor="#FFFFFF" backcolor="#E8E8E8" uuid="7f8d5e35-7323-4e43-9e85-eccbfbaec0c8"/>
+				</rectangle>
+				<line>
+					<reportElement x="0" y="42" width="802" height="1" uuid="fa5a8383-9d01-4677-a494-e32127cf4400"/>
+					<graphicElement>
+						<pen lineWidth="1.5" lineStyle="Double"/>
+					</graphicElement>
+				</line>
+				<rectangle>
+					<reportElement x="321" y="45" width="479" height="43" forecolor="#FFFFFF" backcolor="#F2F2F2" uuid="22e43db0-c266-4200-8ce1-531843c91259"/>
+				</rectangle>
+				<staticText>
+					<reportElement x="1" y="45" width="319" height="20" uuid="1ec0b5a7-9e91-48c6-b86f-19402ed78181"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Times New Roman" size="12" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Classificação Económica]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="353" y="45" width="93" height="43" uuid="1d68d432-2f82-443f-b2e8-99f5d9b477eb"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Times New Roman" size="12" isBold="true" isStrikeThrough="false"/>
+					</textElement>
+					<text><![CDATA[Distribuição dos Limites]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="511" y="43" width="98" height="45" uuid="2b6af63f-acbe-458f-838c-ccbd60f9fe7c"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Times New Roman" size="12" isBold="true" isStrikeThrough="false"/>
+					</textElement>
+					<text><![CDATA[Reforço Solicitado]]></text>
+				</staticText>
+				<line>
+					<reportElement x="320" y="45" width="1" height="43" uuid="fe51bcf1-6fac-482e-9145-d748d8f1f467"/>
+					<graphicElement>
+						<pen lineWidth="1.5"/>
+					</graphicElement>
+				</line>
+				<line>
+					<reportElement x="1" y="65" width="319" height="1" uuid="1b5450ba-394e-481e-b0d0-73a8130bcc0a"/>
+					<graphicElement>
+						<pen lineWidth="1.25"/>
+					</graphicElement>
+				</line>
+				<line>
+					<reportElement x="640" y="43" width="1" height="45" uuid="d1ade2e0-6883-4e36-bdf6-2be2ba40a8fa"/>
+					<graphicElement>
+						<pen lineWidth="1.5"/>
+					</graphicElement>
+				</line>
+				<line>
+					<reportElement x="480" y="43" width="1" height="45" uuid="61127349-da47-4978-9ab2-f0ada5ff055a"/>
+					<graphicElement>
+						<pen lineWidth="1.5"/>
+					</graphicElement>
+				</line>
+				<staticText>
+					<reportElement x="2" y="66" width="68" height="20" uuid="e7e3bdeb-ec56-48bb-b8fc-0b1a7eeabb84"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Times New Roman" isBold="true" isStrikeThrough="false"/>
+					</textElement>
+					<text><![CDATA[Código]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="680" y="43" width="81" height="46" uuid="bcaecb3f-e90f-4825-a64d-fe4779f64ab2"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Times New Roman" size="12" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Proposta Total]]></text>
+				</staticText>
+				<line>
+					<reportElement x="0" y="89" width="800" height="1" uuid="71b13a01-f86b-475d-a204-a7371d0d6bb0"/>
+					<graphicElement>
+						<pen lineWidth="1.5"/>
+					</graphicElement>
+				</line>
+				<staticText>
+					<reportElement x="10" y="24" width="43" height="18" uuid="82e9c808-ef88-498a-91d6-17f3738dbf3c"/>
+					<textElement>
+						<font fontName="Times New Roman" size="10" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Código:]]></text>
+				</staticText>
+				<line>
+					<reportElement x="0" y="24" width="800" height="1" uuid="5618781e-3050-4d45-a4f3-c4c6d1f7a26b"/>
+					<graphicElement>
+						<pen lineWidth="1.5"/>
+					</graphicElement>
+				</line>
+				<staticText>
+					<reportElement x="285" y="25" width="57" height="17" uuid="b38167ef-c16e-4958-a28e-64fb45aa06d5"/>
+					<textElement>
+						<font fontName="Times New Roman" size="10" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Categoria:]]></text>
+				</staticText>
+				<line>
+					<reportElement x="0" y="2" width="800" height="1" uuid="92622f49-7d06-4365-8c74-4ac8ac3b0fa0"/>
+					<graphicElement>
+						<pen lineWidth="1.5" lineStyle="Double"/>
+					</graphicElement>
+				</line>
+				<staticText>
+					<reportElement x="81" y="65" width="239" height="20" uuid="3ac60809-cc33-41e5-8494-1b8f5adc2c1a"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Times New Roman" isBold="true" isStrikeThrough="false"/>
+					</textElement>
+					<text><![CDATA[Descrição]]></text>
+				</staticText>
+				<line>
+					<reportElement x="70" y="66" width="1" height="22" uuid="5bbbf04d-9b05-4cdc-a9bd-d05aaf1f6cd5"/>
+					<graphicElement>
+						<pen lineWidth="1.5"/>
+					</graphicElement>
+				</line>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="220" splitType="Stretch">
+			<image scaleImage="FillFrame" hAlign="Center">
+				<reportElement x="363" y="0" width="61" height="55" uuid="e4372a52-50fa-4f3b-9065-c99419bdb48e"/>
+				<imageExpression><![CDATA[$P{imagemLogo}]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement x="148" y="76" width="478" height="20" uuid="3a3c5444-5380-4936-b88e-d2c5e660659c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{orgao}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="148" y="55" width="478" height="20" uuid="595a3d69-a599-4482-8ed0-837a39a94960"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Universidade Eduardo Mondlane]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="106" width="802" height="1" uuid="e16080b9-e963-423b-bc99-0c6b6f667794"/>
+				<graphicElement>
+					<pen lineWidth="1.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="0" y="125" width="802" height="1" uuid="eb0a334a-a71d-4f44-84f8-4e4e3b1c226a"/>
+				<graphicElement>
+					<pen lineWidth="1.5"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="0" y="107" width="800" height="19" uuid="4a3ca652-e39e-4efe-b612-9a9944b091f6"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ORÇAMENTO CORRENTE - AMBITO CENTRAL]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="133" width="802" height="1" uuid="d5ec691c-18c9-447b-92ce-b5f7db8d17fd"/>
+				<graphicElement>
+					<pen lineWidth="1.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="0" y="151" width="801" height="1" uuid="2e20eca8-0f7d-4ce7-bcbf-8d9f22631826"/>
+				<graphicElement>
+					<pen lineWidth="1.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="0" y="133" width="1" height="76" uuid="80a437a3-bc28-463a-a6c1-4fac10ad566d"/>
+				<graphicElement>
+					<pen lineWidth="1.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="802" y="133" width="1" height="76" uuid="51c43cf6-7a47-4e06-8532-855ebc0beef5"/>
+				<graphicElement>
+					<pen lineWidth="1.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="1" y="208" width="800" height="1" uuid="6481b87a-6cc8-425e-9b09-415aeeb4abf6"/>
+				<graphicElement>
+					<pen lineWidth="1.5"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="1" y="133" width="800" height="19" uuid="9205a0ce-3452-4ff0-a752-5251970415c0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[GASTOS CORRENTES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="155" width="218" height="15" uuid="a2b5edc7-2020-4f2a-8420-f603d9121b56"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[I. Ano Económico:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="172" width="218" height="15" uuid="912af2ee-a16e-481d-9e7a-fd30544b9a3c"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[II. Classificação Organanica:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="189" width="218" height="15" uuid="7dad107f-bdff-42f7-8724-a63fae4d832e"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[III. Execução e Programação Financeira]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="242" y="172" width="384" height="15" uuid="db199625-bda6-4c0d-8d9f-c7c6d8347204"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="242" y="189" width="384" height="15" uuid="9a8efde7-efac-4211-89ef-bcf712bbec4f"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="646" y="189" width="150" height="15" uuid="e95e8daa-ec0d-48c5-9756-aecc64746b46"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="646" y="189" width="150" height="15" uuid="da6e82fb-f9a3-42fc-833a-fd0abdd94a42"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Unidade: Mil Meticais]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="40">
+			<rectangle>
+				<reportElement x="0" y="1" width="800" height="20" forecolor="#FFFFFF" backcolor="#F2F2F2" uuid="760f86cd-24d2-4704-b38c-2445d2c8b10f"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="320" y="1" width="160" height="20" uuid="1a711642-942a-44e0-94f0-289465520d1b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<text><![CDATA[(1)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="641" y="0" width="160" height="20" uuid="58b1b07e-0fe8-4baf-bdc5-91620f8c1198"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<text><![CDATA[(3=1+2)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="481" y="1" width="160" height="20" uuid="6b7d48e6-38f1-4e9e-8196-7c7d0dc965bf"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<text><![CDATA[(2)]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="21" width="801" height="1" uuid="660cf08b-f082-4a3f-87fd-bd918818b67c"/>
+				<graphicElement>
+					<pen lineWidth="1.5" lineStyle="Double"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="70" y="0" width="1" height="20" uuid="99864f95-f910-4460-8451-db7ffbf3579a"/>
+				<graphicElement>
+					<pen lineWidth="1.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="320" y="-1" width="1" height="23" uuid="f49d8d52-b6fe-4015-96c3-c39426208c6d"/>
+				<graphicElement>
+					<pen lineWidth="1.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="480" y="-1" width="1" height="23" uuid="550d36db-173f-421c-8700-d6b7ad6ce370"/>
+				<graphicElement>
+					<pen lineWidth="1.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="640" y="-1" width="1" height="23" uuid="9a261776-4edc-410f-84e2-281daf1b948d"/>
+				<graphicElement>
+					<pen lineWidth="1.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="0" y="0" width="801" height="1" uuid="c1560621-db13-4c73-a6ea-852b26f4d8f4"/>
+				<graphicElement>
+					<pen lineWidth="1.5" lineStyle="Double"/>
+				</graphicElement>
+			</line>
+			<subreport>
+				<reportElement x="0" y="22" width="800" height="18" uuid="2a2e2b07-20be-424c-a98b-b8f3dce837b7"/>
+				<subreportParameter name="SUBREPORT_DIR"/>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.JREmptyDataSource()]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "/subReportPedidoConfig.jasper"]]></subreportExpression>
+			</subreport>
+			<textField>
+				<reportElement x="4" y="1" width="66" height="20" uuid="846f6ba1-ca69-4699-a1dc-40932c3ee01e"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<lastPageFooter>
+		<band height="91">
+			<rectangle radius="5">
+				<reportElement x="0" y="43" width="800" height="41" uuid="e45cbb35-bd21-4e7b-aa89-6138694aa348"/>
+				<graphicElement>
+					<pen lineColor="#CCCCCC"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="3" y="51" width="239" height="15" uuid="7677f48e-40c7-4eea-b136-5a7a8d21b36a"/>
+				<textElement>
+					<font fontName="Times New Roman" size="6"/>
+				</textElement>
+				<text><![CDATA[Produzido por UEM(eCampus.uem.mz)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="4" y="64" width="238" height="18" uuid="3ab3dfdc-21ae-4281-8e07-cbbe9f02bad5"/>
+				<textElement>
+					<font fontName="Times New Roman" size="6"/>
+				</textElement>
+				<text><![CDATA[Contactos: Telefone: +258848996037, email : ecampus@uem.mz]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="775" y="62" width="21" height="20" uuid="fa0230cc-a463-4322-8914-dcec5f4071e3"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="6" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</lastPageFooter>
+</jasperReport>

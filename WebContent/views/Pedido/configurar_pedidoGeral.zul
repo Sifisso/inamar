@@ -1,0 +1,97 @@
+<zk xmlns:x="xhtml" xmlns:zk="zk">
+	<window apply="mz.ciuem.inamar.pedido.controller.ConfigurarPedidoCtrl" id ="win_configPedidoGeral">
+ <radiogroup id="sv1"  />
+
+		
+
+		<x:div class="row">
+		
+			           <div zclass="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="background-color:#3c8dbc">
+		                            <div zclass="col-md-4">
+		                            </div>
+		                            <div zclass="col-md-4">
+		                            <div align="center">
+		                            <label id="lbl_descricao" style="color:white" class="box-title"></label>
+		                            </div>
+		                            </div>
+		                            <div zclass="col-md-4">
+		                          
+		                            	<x:li class="pull-right" style="color:white; margin-top:8px">
+		                            		<x:a href="#"
+		                            			onClick="@command('registarArea')"
+		                            			class="text-muted" style="color:white">Voltar
+		                            			<x:i
+		                            				class="fa fa-mail-reply-all" style="color:white">
+		                            			</x:i>
+		                            		</x:a>
+		                            	</x:li>
+		                            </div>
+								</div>
+								
+								
+								
+			<x:div class="col-md-12" style="margin-top:10px">
+				<!-- Custom Tabs -->
+				<x:div class="nav-tabs-custom">
+					<x:ul class="nav nav-tabs">
+					
+						<x:li class="active" id="li_requisitos">
+							<x:a href="#tab_1" data-toggle="tab"
+								forward="onClick=onClickRequisitos(${each})">
+								Requisitos
+
+							</x:a>
+						</x:li>
+						<x:li id="li_insLegais">
+							<x:a href="#tab_2" data-toggle="tab"
+								forward="onClick=onClickInsLegais(${each})">
+								Instrumentos Legais
+							</x:a>
+						</x:li>
+						<x:li id="li_taxas">
+							<x:a href="#tab_3" data-toggle="tab"
+								forward="onClick=onClickTaxas(${each})">
+								Taxas 
+
+							</x:a>
+						</x:li>
+					<!-- 	<x:li id="li_tarefasEtapa" style="visible:false">
+							<x:a href="#tab_4" data-toggle="tab" 
+								forward="onClick=onClickTarefaEtapa(${each})">
+								Terefas na Etapa
+
+							</x:a>
+						</x:li> -->
+						
+						
+						<x:li class="pull-right">
+							<x:a href="#"
+								onClick="@command('registarArea')" class="text-muted">
+								<x:i class="fa fa-mail-reply-all"></x:i>
+							</x:a>
+						</x:li>
+					</x:ul>
+
+
+				</x:div><!-- nav-tabs-custom -->
+			</x:div><!-- /.col -->
+
+
+
+
+
+
+		</x:div><!-- /.row -->
+
+
+							<x:div>
+                          						<div id="div_configurar"  ></div>
+                          	</x:div>
+
+
+
+
+
+
+	</window>
+</zk>

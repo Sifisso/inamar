@@ -1,0 +1,33 @@
+<?page title="Brevemente" contentType="text/html;charset=UTF-8"?>
+<zk xmlns:x="xhtml" xmlns:zk="zk">
+<window >
+  <x:div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <x:section class="content-header">
+          <x:h1>
+           Brevemente
+          </x:h1>
+          <x:ol class="breadcrumb">
+            <x:li><x:a href="#" onClick="@command('home')"><x:i class="fa fa-dashboard"></x:i> Home</x:a></x:li>
+        
+          </x:ol>
+        </x:section>
+
+        <!-- Main content -->
+        <x:section class="content">
+
+          <x:div class="error-page">
+            <x:h2 class="headline text-green"> ...!</x:h2>
+            <x:div class="error-content">
+              <x:h3><x:i class="fa fa-warning text-green"></x:i> Oops! A página encontra-se indisponível.</x:h3>
+              <x:p>
+                Não foi possível encontrar a página de está a procura.
+                Enquanto isso, tu podes<x:a href='#' onClick="@command('home')">voltar a página principal</x:a>.
+              </x:p>
+            
+            </x:div><!-- /.error-content -->
+          </x:div><!-- /.error-page -->
+        </x:section><!-- /.content -->
+      </x:div>
+</window>
+</zk>

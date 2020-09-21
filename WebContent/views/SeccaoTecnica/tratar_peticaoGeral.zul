@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zk xmlns:x="xhtml" xmlns:zk="zk">
+<window id = "win_tratarPeticaoST" mode="modal"  border="none" closable="true" apply="mz.ciuem.inamar.seccaoTecnica.controller.TratarPeticaoGeralSeccaoTecnicaCtrl" width="85%" height="70%">
+<custom-attributes composerName="win" />
+
+<div class="row" id="div_content_out" style="overflow:auto" vflex="true">
+			<div zclass="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+				<div zclass="box box-default">
+				<div class="modal-header">
+						<x:button type="button" class="close"
+							data-dismiss="modal" aria-label="Close" forward="onClick=onClickClose()">
+							x
+						</x:button>
+						<x:h4 class="modal-title" id="">
+							TRATAR PETIÇÃO - SECÇÃO TÉCNICA
+						</x:h4>
+					</div>
+					<div zclass="box-body">
+					
+					<div zclass="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+					<vlayout>
+					    <button visible="false"
+							   	         	zclass="btn btn-primary btn-sm" type="button"
+							   	         	id="btn_validar" width="100%"   forward="onClick=onClickVerFactura()">
+							   	         	Ver Factura
+							   	         </button>
+							   	         
+							   	         <button zclass="btn btn-primary btn-sm" width="100%"
+										type="button" id="btn_gravar" forward="onClick=onClickClose()">
+                      						Submeter
+										</button>
+							   	        
+							   	         <button visible="false"
+							   	         	zclass="btn btn-primary btn-sm" type="button"
+							   	         	forward="onClick=onClickVerTramitacao()" width="100%">
+							   	         	Ver Tamitação
+							   	         </button>
+							   	         
+							   	             <button
+							   	         	zclass="btn btn-primary btn-sm" type="button"
+							   	         	id="btn_ver_pagamento" width="100%" visible="${win._peticao.seccaoTecnicaParecer=='true'}"
+							   	         	forward="onClick=onClickDarParecer()">
+							   	         	Dar Parecer
+							   	         
+							   </button>
+					</vlayout>
+		                
+					</div>
+					
+					
+					<div zclass="col-lg-10 col-md-10 col-sm-10 col-xs-10" >
+					  <x:header class="header">
+                  
+                      </x:header>
+          
+						<div class="row">
+							
+							<div zclass="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+							    <groupbox>
+							    <caption>Utente</caption>
+							   	 
+							   	      <div zclass="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+							   	      <label id="lbl_nome" width="100%" value="asdasdasd"/>
+							   	      </div>
+							   	      
+							   	        <div zclass="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+								            <div zclass="col-lg-4 col-md-4 col-sm-4 col-xs-4" style="background-color:">
+								            
+								            </div>
+								            <div zclass="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+								            
+								            </div>
+								     </div>
+									
+	                        	</groupbox>
+							</div>
+							
+						</div>
+                        
+                        <x:hr/>
+
+								<div zclass="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+							    <groupbox>
+							    <caption>Pedido</caption>
+							   	 
+							   	      <div zclass="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+							   	      <x:label>Pedido:</x:label>
+							   	      <label id="lbl_pedido" width="100%" value="asdasdasda asdasdasd adsasdasda"/>
+							   	      </div>
+							   	      
+							   	     <div zclass="col-lg-4 col-md-4 col-sm-12 col-xs-12" align="left">
+							   	     <x:label>Data de Entrada:</x:label>
+							   	      <label id="lbl_dataentrada" width="100%" value="12/02/2018"/>
+							   	      </div>
+							   	      
+							   	       <div zclass="col-lg-4 col-md-4 col-sm-12 col-xs-12" align="left">
+							   	     <x:label>Data Prevista Saída:</x:label>
+							   	      <label id="lbl_datasaida" width="100%" value="26/12/2019"/>
+							   	      </div>
+									
+	                        	</groupbox>
+							</div>
+							
+							<x:hr/>
+							
+							<div zclass="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+							    <groupbox>
+							    <caption>Instrumentos Legais</caption>
+							   	 
+							   	   		<listbox
+												id="lbx_insLegal" rows="3"
+													emptyMessage="Sem Dados Registados">
+														<listhead>
+														<listheader
+															label="Descrição"/>
+													</listhead>
+													<template
+														name="model">
+														<listitem>
+															<listcell
+																label="${each.pedidoEtapa.instrumentoLegal.nome}" />
+														</listitem>
+													</template>
+												</listbox>
+									
+	                        	</groupbox>
+							</div>
+							
+							<x:hr/>
+							
+							
+							
+							
+						<div zclass="col-lg- col-md-12 col-sm-24 col-xs-24">
+							<div class="form-group">
+									<x:label>Etapa</x:label>
+								  	<div class="input-group">
+									<textbox zclass="form-control"
+										placeholder="Etapa"
+										id="tbx_peticaoEtapa"  readonly="true"/>
+											<x:span class="input-group-addon">
+										<x:i class="fa  fa-edit"></x:i>
+									</x:span>
+								
+								</div>
+								</div>
+							    <groupbox>
+							    <caption>Tarefas da Etapa por Realizar</caption>
+							   	 		<listbox
+												id="lbx_peticaoTarefasEtapa" rows="4"
+													emptyMessage="Sem Dados Registados">
+														<listhead>
+														<listheader
+															label="Descrição"/>
+														<listheader
+															label="Realizada?" width="15%" align="center"/>
+													</listhead>
+													<template
+														name="model">
+														<listitem disabled="${each.realizada}">
+															<listcell
+																label="${each.tarefaNaEtapa.tarefa.descricao}" />
+															<listcell>
+															<checkbox checked="${each.realizada=='false'}"></checkbox>
+															</listcell>
+
+														</listitem>
+													</template>
+												</listbox>
+												
+												
+													
+						
+	                        	</groupbox>
+							</div>
+							
+					<div visible="false" zclass="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+							    <groupbox>
+							    <caption>Tarefas Realizadas</caption>
+							   	 	<listbox
+												id="lbx_eventos" rows="3"
+													emptyMessage="Sem Dados Registados">
+													<template
+														name="model">
+														<listitem disabled="${each.realizada}">
+															<listcell
+																label="${each.id}" />
+															<listcell>
+															<checkbox checked="${each.realizada}"></checkbox>
+															</listcell>
+
+														</listitem>
+													</template>
+												</listbox>
+	                        	</groupbox>
+							</div>
+							</div>
+					</div>
+					
+<!-- 						<div zclass="box-footer" align="center" -->
+<!-- 						style="margin-right:10px; margin-top:20px"> -->
+<!-- 						<label width="5%"></label> -->
+<!-- 						<button zclass="btn btn-info btn-sm" -->
+<!-- 							visible="false" autodisable="self,btn_gravar" type="button" -->
+<!-- 							id="btn_actualizar" iconSclass="fa fa-refresh"> -->
+
+<!-- 							Actualizar -->
+<!-- 						</button> -->
+<!-- 						<label width="5%"></label> -->
+<!-- 							<button visible="false" zclass="btn btn-info btn-sm" label="Próximo" id="btn_terminar" -->
+<!-- 											iconSclass="fa fa-chevron-right" dir="reverse"> -->
+<!-- 							Terminar -->
+<!-- 						</button> -->
+<!-- 					</div> -->
+
+				</div>
+			</div>
+		</div>
+       <include id="inc_main"></include>
+	</window>
+</zk>

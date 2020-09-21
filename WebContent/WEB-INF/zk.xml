@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk>
+
+	<library-property>
+		<name>org.zkoss.web.preferred.locale</name>
+		<value>pt</value>
+	</library-property>
+	<library-property>
+		<name>org.zkoss.util.label.web.charset</name>
+		<value>ISO-8859-1</value>
+	</library-property>
+	<library-property>
+		<name>org.zkoss.util.label.classpath.charset</name>
+		<value>ISO-8859-1</value>
+	</library-property>
+
+	<!-- Configure the Hibernate "Open Session In View" Session Lifecycle -->
+	<listener>
+		<description>ThreadLocal Variables Synchronizer</description>
+		<listener-class>org.zkoss.zkplus.util.ThreadLocalListener
+		</listener-class>
+	</listener>
+
+
+	<preference>
+		<name>ThreadLocal</name>
+		<value>
+			org.springframework.security.context.ThreadLocalSecurityContextHolderStrategy=contextHolder
+			org.springframework.transaction.support.TransactionSynchronizationManager=resources,synchronizations,currentTransactionName,currentTransactionReadOnly,actualTransactionActive;
+			org.springframework.orm.hibernate4.SessionFactoryUtils=deferredCloseHolder;
+			org.springframework.transaction.interceptor.TransactionAspectSupport=transactionInfoHolder;
+		</value>
+	</preference>
+
+
+</zk>

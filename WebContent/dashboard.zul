@@ -1,0 +1,212 @@
+<?page title="" contentType="text/html;charset=UTF-8"?>
+
+<zk xmlns:x="xhtml" xmlns:zk="zk">
+	<window apply="mz.ciuem.inamar.controller.DashboardCtrl">
+<div id="div_content_out">
+
+		<div zclass="box-body" id="div_agente">
+			<div zclass="box box-solid col-xs-12">
+			
+
+				<x:br />
+
+				<div zclass="" validationMessages="@id('vmsgs')">
+					<div zclass="row">
+
+						<div class="col-lg-3 col-xs-6">
+							<div zclass="box-body">
+								<div class="form-group">
+									<div sclass="small-box bg-blue">
+										<div class="inner">
+										<x:h3>
+											<label style="font-size:30; font-weight:bold;" >1</label> 
+										</x:h3>
+											<x:p>
+												Fluxo Configurado
+											</x:p>
+										</div>
+										<div sclass="icon">
+											<x:i class="fa fa-cogs" />
+										</div>
+										<x:a href="#"
+											
+											class="small-box-footer">
+											
+											<x:i
+												class="fa fa-arrow-circle">
+											</x:i>
+										</x:a>
+									</div>
+								</div>
+							</div>
+						</div>
+
+
+
+						<div class="col-lg-3 col-xs-6" height="70%">
+							<div zclass="box-body">
+								<div class="form-group">
+									<div class="small-box bg-green">
+										<div class="inner">
+										
+										<x:h3>
+											<label id="lbl_total_funcioanario" style="font-size=40px; font-weight:bold">13
+											
+											</label>
+											</x:h3>
+											
+											<x:p>
+												Funcionários Registados
+											</x:p>
+										</div>
+										<div class="icon">
+											<x:i
+												class="ion ion-person-add">
+											</x:i>
+										</div>
+										<x:a href="#"
+										
+											
+											class="small-box-footer">
+											
+											<x:i
+												class="fa fa-arrow-circle">
+											</x:i>
+										</x:a>
+									</div>
+								</div>
+							</div>
+						</div>
+
+
+						<div class="col-lg-3 col-xs-6">
+							<div zclass="box-body">
+								<div class="form-group">
+									<div sclass="small-box bg-yellow">
+										<div class="inner">
+											<x:h3> 
+											<label id="lbl_total_peticao" style="font-size:40px; font-weight:bold">15
+											
+											</label> 
+											</x:h3>
+											<x:p>
+												Petições registadas 
+											</x:p>
+										</div>
+										<div sclass="icon">
+											<x:i
+												class="fa fa-building-o" />
+										</div>
+										<x:a href="#"
+											
+											class="small-box-footer">
+											
+											<x:i
+												class="fa fa-arrow-circle">
+											</x:i>
+										</x:a>
+									</div>
+								</div>
+							</div>
+						</div>
+						
+						<div class="col-lg-3 col-xs-6">
+							<div zclass="box-body">
+								<div class="form-group">
+									<div sclass="small-box bg-purple">
+										<div class="inner">
+											<x:h3>
+											<label id="lbl_total_navio" style="font-size=40px; font-weight:bold">23</label> 
+										</x:h3>
+											<x:p>
+												Navios Registados
+											</x:p>
+										</div>
+										<div sclass="icon">
+											<x:i
+												class="	fa fa-book" />
+										</div>
+										<x:a href="#"
+											
+											class="small-box-footer">
+											
+											<x:i
+												class="fa fa-arrow-circle">
+											</x:i>
+										</x:a>
+									</div>
+								</div>
+							</div>
+						</div>
+
+
+<!-- 						<div class="col-lg-3 col-xs-6" > -->
+<!-- 							<div zclass="box-body" > -->
+<!-- 								<div class="form-group"> -->
+<!-- 									<div sclass="small-box bg-red"> -->
+<!-- 										<div class="inner"> -->
+<!-- 											<x:h3>...?</x:h3> -->
+<!-- 											<x:p>Sobre o Sistema</x:p> -->
+<!-- 										</div> -->
+
+<!-- 										<div sclass="icon"> -->
+<!-- 											<x:i -->
+<!-- 												class="fa fa-question-circle" /> -->
+<!-- 										</div> -->
+<!-- 										<x:a href="#" -->
+<!-- 											class="small-box-footer"> -->
+<!-- 											Mais informação -->
+<!-- 											<x:i -->
+<!-- 												class="fa fa-arrow-circle-right"> -->
+<!-- 											</x:i> -->
+<!-- 										</x:a> -->
+<!-- 									</div> -->
+<!-- 								</div> -->
+<!-- 							</div> -->
+<!-- 						</div> -->
+
+
+					</div>
+					
+					<!-- <div zclass="row">
+
+							<div zclass="box-body">
+								<div class="form-group">
+									<div class="card">
+             						 	<div class="card-header">	
+             						 		<x:h3 class="card-title">
+             						 			 <x:i class="fas fa-chart-pie mr-1"></x:i>
+             						 			 Peticoes
+             						 		</x:h3>
+             						 		<div class="card-tools">
+             						 			 <x:ul class="nav nav-pills ml-auto">
+             						 			 	 <x:li class="nav-item">
+             						 			 	 	<x:a class="nav-link active" href="#revenue-chart" data-toggle="tab">Area</x:a>
+             						 			 	 </x:li>
+             						 			 	  <x:li class="nav-item">
+									                      <x:a class="nav-link" href="#sales-chart" data-toggle="tab">Donut</x:a>
+									                   </x:li>
+             						 			 </x:ul>
+             						 		</div>
+             						 	</div>
+             						 </div>
+								
+								</div>
+								
+							</div>
+								
+					</div> -->
+
+				</div>
+
+			</div>
+
+		</div>
+
+
+		</div>
+
+		<include id="inc_main"></include>
+		
+	</window>
+</zk>

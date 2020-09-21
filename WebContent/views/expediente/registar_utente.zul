@@ -1,0 +1,351 @@
+<zk xmlns:h="xhtml" xmlns:zk="zk">
+	<style>
+
+
+
+
+		.stylish { display: block; width: 35px; height: 35px;
+		border-radius: 50%; border: 4px double #ccc; font-size: 25px;
+		color: #666; line-height: 20px; text-align: center;
+		text-decoration: none; text-shadow: 0 1px 0 #fff;
+		background:#ddd }
+
+		.stylishActive { display: block; width: 35px; height: 35px;
+		border-radius: 50%; border: 4px double #ccc; font-size: 25px;
+		color: #666; line-height: 20px; text-align: center;
+		text-decoration: none; text-shadow: 0 1px 0 #fff;
+
+
+		background: #009700
+
+		}
+
+		.stylish:hover { border: 4px double #bbb; color: #aaa;
+		text-decoration: none; background: #ddd }
+
+		.separator{
+
+		width:160%;
+
+		background: #ddd;
+
+		content: '';
+
+		height: 2px;
+
+
+		left: 0%; top: 35px; z-index: -1; }
+
+		.separatorD{
+
+		width:70%; background: #ddd;
+
+		content: '';
+
+		height: 2px;
+
+
+		left: 0%; top: 35px; z-index: -1; }
+
+		.separatorC{
+
+		width:100%;
+
+		background: #009700;
+
+		content: '';
+
+		height: 2px;
+
+
+		left: 50%; top: 35px; z-index: -1; }
+
+
+
+	</style>
+	<window apply="mz.ciuem.inamar.utente.controller.UtenteCtrl" id="win_regDados">
+	
+
+		<div id="div_content_out">
+		      <div class="box-body" style="margin-right:1%">
+        <div sclass="alert alert-warning alert-dismissable">
+			<label value="Os campos marcados com"></label><h:label style="color:red">*</h:label><label value=" são de preenchimento obrigatório."></label>
+		</div>
+        </div>
+			<h:div class="row">
+
+				<div zclass="col-md-12 col-lg-12 col-sm-12 col-xs-12"
+					align="center">
+
+
+					<div class="form-group">
+						<div
+							zclass="col-md-4 col-lg-4 col-sm-3 col-xs-4">
+
+							<div class="stylishActive" style=" border: 4px double #ccc;">1</div>
+							<div class="separatorC"
+								style="margin-top:-17px; margin-left:50%; ">
+							</div>
+
+						</div>
+
+						<div
+							zclass="col-md-4 col-lg-4 col-sm-4 col-xs-4">
+							<div class="stylish">2</div>
+							<div class="separator" style="margin-top:-17px;margin-left:-5%">
+							</div>
+
+						</div>
+
+						<div
+							zclass="col-md-4 col-lg-4 col-sm-4 col-xs-4">
+							<div class="stylish">3</div>
+						</div>
+
+					</div>
+				</div>
+			</h:div>
+			<separator></separator>
+			<separator></separator>
+			<separator></separator>
+			<separator></separator>
+
+
+	
+	
+	
+
+			<h:div class="row">
+			
+			
+				<div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+        						<div class="box-body">
+        				<groupbox>
+        		   <caption>Dados Pessoais</caption>
+        		   		
+						<div class="col-md-6 col-lg-6 col-xs-12 col-sm-12">
+        					<h:form role="form">
+        						<div class="box-body">
+        							      	<div class="form-group">
+        								 <h:label for="exampleInputEmail1">Nome do Utente</h:label><h:label style="color:red">*</h:label>
+        						         <textbox zclass="form-control" placeholder="Nome do Utente" id="tbx_nome" />
+										</div>
+        						
+        						  	<div class="form-group">
+        								<h:label >Apelido</h:label><h:label style="color:red">*</h:label>
+                                        <textbox zclass="form-control" placeholder="Apelido do Utente" id="tbx_apelido" />      							
+						               	</div>
+						               	
+						            </div>
+	                              </h:form>
+        						</div>
+
+        				
+        				
+        						<div class="col-md-6 col-lg-6 col-xs-12 col-sm-12">
+        					<h:form role="form">
+        						<div class="box-body">
+        						
+        								<div class="form-group">
+        								<h:label >Nuit/Senha de imposto</h:label>
+                                    <textbox zclass="form-control"
+							           placeholder="NUIT"  
+						               	id="tbx_nuit" />        							
+						               	</div>
+						               	
+						               	<div class="form-group">
+        								<h:label >Data de Nascimento</h:label><h:label style="color:red">*</h:label>
+						        							<datebox id="dtb_dataNascimento" width="100%"
+								readonly="false" visible="true" buttonVisible="true"
+								format="dd/MM/yyyy"
+								constraint="no empty : Não deve estar vazio ou conter espaços em branco apenas !; no future" />      							
+						               	</div>
+						               	
+        						</div>
+
+        					
+        					</h:form>
+        				</div>
+        		   
+        		   </groupbox>
+					</div>
+				</div>
+
+        				
+        				<div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+        						<div class="box-body">
+        		   <groupbox>
+        		   <caption>Endereço</caption>
+        		   
+        		           			<div class="col-md-4 col-lg-4 col-xs-12 col-sm-12">
+        					<h:form role="form">
+        						<div class="box-body">
+        									<div class="form-group">
+        								 <h:label for="exampleInputEmail1">Província</h:label><h:label style="color:red">*</h:label>
+        								<combobox width="100%"
+										id="cbx_provincia" constraint="no empty"
+										placeholder="Selecione a Província" readonly="true">
+										<template name="model">
+											<comboitem
+												label="${each.designacao}" />
+										</template>
+									</combobox>
+										</div>
+        						</div>
+        						</h:form>
+        						</div>
+        						
+        				<div class="col-md-4 col-lg-4 col-xs-12 col-sm-12">
+        					<h:form role="form">
+        						<div class="box-body">
+        						   		<div class="form-group">
+        								 <h:label for="exampleInputEmail1">Distrito</h:label><h:label style="color:red">*</h:label>
+        								<combobox width="100%"
+										id="cbx_distrito" constraint="no empty"
+										placeholder="Selecione o Distrito" readonly="true">
+										<template name="model">
+											<comboitem
+												label="${each.designacao}" />
+										</template>
+									</combobox>
+										</div>
+        						</div>
+        						</h:form>
+        						</div>
+        						
+        				<div class="col-md-4 col-lg-4 col-xs-12 col-sm-12">
+        					<h:form role="form">
+        						<div class="box-body">
+        						   	   		<div class="form-group">
+        								 <h:label for="exampleInputEmail1">Bairro</h:label><h:label style="color:red">*</h:label>
+        						<textbox zclass="form-control" placeholder="Bairro" id="tbx_bairro" /> 
+										</div>
+        						</div>
+        						</h:form>
+        						</div>
+        
+        
+                			<div class="col-md-4 col-lg-4 col-xs-12 col-sm-12">
+        					<h:form role="form">
+        						<div class="box-body">
+        									<div class="form-group">
+        								 <h:label for="exampleInputEmail1">Rua/Avenida</h:label>
+        						         <textbox zclass="form-control" placeholder="Rua/Avenida do Utente" id="tbx_rua" />  
+										</div>
+        						</div>
+        						</h:form>
+        						</div>
+        						
+        				<div class="col-md-4 col-lg-4 col-xs-12 col-sm-12">
+        					<h:form role="form">
+        						<div class="box-body">
+        						   		<div class="form-group">
+        								 <h:label for="exampleInputEmail1">Quarteirão</h:label>
+        					         <textbox zclass="form-control" placeholder="Quarteirão do Utente" id="tbx_quarteirao" />  
+										</div>
+        						</div>
+        						</h:form>
+        						</div>
+        						
+        				<div class="col-md-4 col-lg-4 col-xs-12 col-sm-12">
+        					<h:form role="form">
+        						<div class="box-body">
+        						   	   		<div class="form-group">
+        								 <h:label for="exampleInputEmail1">Casa nº</h:label>
+        						         <textbox zclass="form-control" placeholder="Nº da casa do Utente" id="tbx_nrCasa" />  
+										</div>
+        						</div>
+        						</h:form>
+        						</div>
+        		   
+        		   </groupbox>
+        		
+        		
+        		
+					</div>
+				</div>
+				
+				
+								<div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+        						<div class="box-body">
+        				<groupbox>
+        		   <caption>Contactos</caption>
+        		   		
+						<div class="col-md-4 col-lg-4 col-xs-12 col-sm-12">
+        					<h:form role="form">
+        						<div class="box-body">
+        							  			<div class="form-group">
+
+						<h:label>Celular:     </h:label><h:label style="color:red">*</h:label>
+						<div class="input-group">
+							<div class="input-group-addon">+258</div>
+							<textbox zclass="form-control"
+								id="tbx_celular" constraint="no empty:Campo Obrigatório"/>
+						</div>
+					</div>
+        						
+        	
+						               	
+						            </div>
+	                              </h:form>
+        						</div>
+        						
+        										<div class="col-md-4 col-lg-4 col-xs-12 col-sm-12">
+        					<h:form role="form">
+        						<div class="box-body">
+        						
+        						<div class="form-group">
+
+						<h:label>Celular Opcional:     </h:label>
+						<div class="input-group">
+							<div class="input-group-addon">+258</div>
+							<textbox zclass="form-control"
+								id="tbx_celular2"/>
+						</div>
+					</div>
+						               	
+        						</div>
+
+        					
+        					</h:form>
+        				</div>
+
+        				
+        				
+        						<div class="col-md-4 col-lg-4 col-xs-12 col-sm-12">
+        					<h:form role="form">
+        						<div class="box-body">
+        						
+        									<div class="form-group">
+						<h:label>Email:</h:label>
+						<textbox zclass="form-control" maxlength="60"
+							id="tbx_email"/>
+					</div>
+						               	
+        						</div>
+
+        					
+        					</h:form>
+        				</div>
+        		   
+        		   </groupbox>
+					</div>
+				</div>
+        				
+
+			</h:div>
+			<h:div class="row">
+				<div align="center" style="margin-top:10px">
+					<label width="5%"></label>
+					<button zclass="btn btn-info btn-sm" label="Próximo"
+						id="btn_proximo" iconSclass="fa fa-chevron-right" dir="reverse">
+					</button>
+				</div>
+			</h:div>
+
+
+		</div>
+		<include id="inc_main"></include>
+
+	</window>
+</zk>

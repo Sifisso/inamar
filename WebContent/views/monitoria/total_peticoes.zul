@@ -1,0 +1,130 @@
+<zk xmlns:x="xhtml" xmlns:zk="zk">
+	<window id="win_peticoes" apply="mz.ciuem.inamar.controller.monitoria.TotalPeticaoCtrl" >
+		<div zclass="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+			
+			<div zclass="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+			
+<!-- 			<div class="row"> -->
+<!-- 				<div zclass="col-lg-12 col-md-12 col-sm-12 col-xs-12" -->
+<!-- 					style="margin-bottom:30px;margin-top:20px"> -->
+					
+<!-- 					<div zclass="col-lg-6 col-md-6 col-sm-12 col-xs-12" id="divCiclo"> -->
+<!-- 					<div class="form-group"> -->
+<!-- 						<x:label class="control-label"> -->
+<!-- 							Admar: -->
+<!-- 						</x:label> -->
+<!-- 						<combobox width="100%" id="cbx_ciclos" -->
+<!-- 							constraint="no empty" placeholder="Selecione a Admar" -->
+<!-- 							readonly="true"> -->
+<!-- 							<template name="model"> -->
+<!-- 								<comboitem label="${each.nome}" /> -->
+<!-- 							</template> -->
+<!-- 						</combobox> -->
+
+<!-- 					</div> -->
+					
+<!-- 					</div> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
+							<div style="margin-top:10px">
+								<x:legend style="color:green">
+									Total de Petições por Delegação
+								</x:legend>
+							</div>
+							<div zclass="box-body">
+								<div sclass="form-group">
+									<listbox id="lbx_peticoes" rows="10">
+										<listhead>
+											<listheader width="30px"></listheader>
+											<listheader>Admar</listheader>
+											<listheader>Area</listheader>
+											<listheader width="110px">Petições</listheader>
+											<listheader width="110px">Pagas</listheader>
+											<listheader width="110px">Terminadas</listheader>
+											
+										</listhead>
+										<template name="model">
+											<listitem>
+												<listcell></listcell>
+												<listcell
+													label="${each[0] }">
+												</listcell>
+												<listcell
+													label="${each[1] }">
+												</listcell>
+												<listcell
+													label="${each[2] }">
+												</listcell>
+												<listcell
+													label="${each[3] }">
+												</listcell>
+												<listcell
+													label="${each[4] }">
+												</listcell>
+											</listitem>
+										</template>
+										<listfoot>
+											<listfooter></listfooter>
+											<listfooter></listfooter>
+											<listfooter></listfooter>
+											<listfooter >
+												<label
+													style="color:black; margin-right:5px;text-weight:800">
+													Total:
+												</label>
+												<label
+													style="color:black; margin-right:5px"
+													id="lbl_total_peticao">
+												</label>
+												
+											</listfooter>
+											<listfooter>
+												<label
+													style="color:black; margin-right:5px;text-weight:800">
+													Total:
+												</label>
+												<label
+													style="color:black; margin-right:5px"
+													id="lbl_total_peticao_paga">
+												</label>
+											</listfooter>
+											<listfooter>
+											
+											<label
+													style="color:black; margin-right:5px;text-weight:800">
+													Total:
+												</label>
+												<label
+													style="color:black; margin-right:5px"
+													id="lbl_total_peticao_terminada">
+												</label></listfooter>
+
+										</listfoot>
+									</listbox>
+
+								</div>
+							</div>
+						</div>
+						<div zclass="box-footer">
+					  <div align="center">
+	                     <button zclass="btn btn-warning btn-sm"
+							type="button" id="btn_imprimir" iconSclass="fa fa-print">
+
+							Imprimir PDF
+						</button>
+					  </div>
+					</div>
+		</div>
+	</window>
+	<style>
+div.z-listbox-footer {
+    border-top: 1px solid #3B3F39;
+}
+div.z-listbox-footer .z-listfooter {
+    background-image: none;
+    background-color: white;
+}
+
+</style>
+
+</zk>

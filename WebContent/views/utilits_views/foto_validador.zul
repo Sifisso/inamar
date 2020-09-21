@@ -1,0 +1,83 @@
+<?page title="" contentType="text/html;charset=UTF-8"?>
+<?DOCTYPE html?>
+<zk  xmlns:x="xhtml" xmlns:zk="zk">
+
+
+<window id = "win_photo" title="Take a Photo" mode="modal"  border="none" closable="true" apply="mz.ciuem.sgea.util.TakePhotoValidadorUtil">
+
+
+<div class = "container">
+<div class = "row">
+	<div class = "col-lg-8 col-md-12 col-sm-12 col-xs-12" >
+	<x:video id="videoID" autoplay = "true" style="border: 2px solid lightgray;" width="100%"></x:video>
+	</div>
+	
+	
+	<div class = "col-lg-4 col-md-12 col-sm-12 col-xs-12" >
+	<div class="row">
+	
+	<div class  = "col-lg-12 col-md-12  col-sm-12 col-xs-12">	
+	<x:canvas id="canvasID" style="border: 2px solid lightgray;"></x:canvas>
+	</div>
+	
+	
+		<div class  = "col-lg-12 col-md-12  col-sm-12 col-xs-12">
+		<hbox>
+		 <x:button id = "btn_cancelar" value="Capturar" iconSclass="fa  " class = " btn btn-warning" onclick="cancelar()" >Cancelar</x:button>
+		
+   		<x:button id = "btn_capturar" value="Capturar" iconSclass="fa  fa-camera" class = " btn btn-primary" onclick="capture()" >Capturar</x:button>
+   		<x:button type="button" id = "btn_enviar" value="Send" class = "btn btn-success" onclick="send()" >Enviar</x:button>
+   		</hbox>
+   		</div>
+   		
+   	</div>
+   	</div>
+	</div>
+   
+
+	<x:script type="text/javascript">
+		var localStream;
+		var video = document.getElementById('videoID');
+		var canvas = document.getElementById('canvasID');
+		var context = canvas.getContext('2d');
+
+		window.URL = window.URL || window.webkitURL;
+		navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia	|| 
+                                 navigator.mozGetUserMedia || navigator.msGetUserMedia;
+
+		navigator.getUserMedia({
+			video : true
+		}, function(stream) {
+			video.src = window.URL.createObjectURL(stream);
+			localStream = stream;
+		}, function(e) { console.log('Something wrong has happened:', e); });
+
+		
+		function capture() 
+		{
+			context.drawImage(video, 0, 0, canvas.width, canvas.height);
+		};
+
+		
+		function send()
+        {
+			var imageData =  canvas.toDataURL();
+			
+			var xmlhttp = new XMLHttpRequest();
+			xmlhttp.open("POST", "/receiver", true);
+			xmlhttp.send(imageData);
+			localStream.stop();
+        };
+        
+        	function cancelar()
+        {			
+			
+			localStream.stop();
+        };
+
+	</x:script>
+	
+	</div>
+
+</window>
+</zk>

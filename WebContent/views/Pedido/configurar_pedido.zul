@@ -1,0 +1,118 @@
+<zk xmlns:x="xhtml" xmlns:zk="zk">
+	<window apply="mz.ciuem.inamar.pedido.controller.ConfigurarPedidoCtrl" id ="win_configPedido">
+ <radiogroup id="sv1"  />
+
+		
+
+		<x:div class="row">
+		
+		
+			           <div zclass="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="background-color:#3c8dbc">
+		                            <div zclass="col-md-4">
+		                            </div>
+		                            <div zclass="col-md-4">
+		                            <div align="center">
+		                            <label id="lbl_descricao" style="color:white" class="box-title"></label>
+		                            </div>
+		                            </div>
+		                            <div zclass="col-md-4">
+		                          
+		                            	<x:li class="pull-right" style="color:white; margin-top:8px">
+		                            		<x:a href="#"
+		                            			onClick="@command('registarArea')"
+		                            			class="text-muted" style="color:white">Voltar
+		                            			<x:i
+		                            				class="fa fa-mail-reply-all" style="color:white">
+		                            			</x:i>
+		                            		</x:a>
+		                            	</x:li>
+		                            </div>
+								</div>
+								
+								
+								
+			<x:div class="col-md-12" style="margin-top:10px">
+				<!-- Custom Tabs -->
+				<x:div class="nav-tabs-custom">
+					<x:ul class="nav nav-tabs">
+					
+						<x:li class="active" id="li_locaisPratica">
+							<x:a href="#tab_1" data-toggle="tab"
+								forward="onClick=onClickLocaisPratica(${each})">
+								Locais de Pratica
+
+							</x:a>
+						</x:li>
+						<x:li id="li_rotas">
+							<x:a href="#tab_2" data-toggle="tab"
+								forward="onClick=onClickRotas(${each})">
+								Rotas
+							</x:a>
+						</x:li>
+						<x:li id="li_meioTrasnporte">
+							<x:a href="#tab_3" data-toggle="tab"
+								forward="onClick=onClickMeioTransporte(${each})">
+								Meio de Transporte
+
+							</x:a>
+						</x:li>
+						<x:li id="li_tipoEmbarcacao">
+							<x:a href="#tab_4" data-toggle="tab" 
+								forward="onClick=onClickTipoEmbarcacao(${each})">
+								Tipo de Embarcacao
+
+							</x:a>
+						</x:li>
+						<x:li id="li_equipamento">
+							<x:a href="#tab_5" data-toggle="tab" 
+								forward="onClick=onClickEquipamento(${each})">
+								Equipamento
+							</x:a>
+						</x:li>
+							<x:li id="li_curso">
+							<x:a href="#tab_4" data-toggle="tab" 
+								forward="onClick=onClickCurso(${each})">
+								Curso
+							</x:a>
+						</x:li>
+						
+							<x:li id="li_contagem">
+							<x:a href="#tab_4" data-toggle="tab" 
+								forward="onClick=onClickContagem(${each})">
+								Contagem
+							</x:a>
+						</x:li>
+					
+						
+						
+						<x:li class="pull-right">
+							<x:a href="#"
+								onClick="@command('registarArea')" class="text-muted">
+								<x:i class="fa fa-mail-reply-all"></x:i>
+							</x:a>
+						</x:li>
+					</x:ul>
+
+
+				</x:div><!-- nav-tabs-custom -->
+			</x:div><!-- /.col -->
+
+
+
+
+
+
+		</x:div><!-- /.row -->
+
+
+							<x:div>
+                          						<div id="div_configurar"  ></div>
+                          	</x:div>
+
+
+
+
+
+
+	</window>
+</zk>

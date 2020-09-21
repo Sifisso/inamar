@@ -1,0 +1,122 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<zk xmlns:x="xhtml" xmlns:zk="zk">
+	<window
+		apply="mz.ciuem.sgea.controller.prereg.ValidarDadosGeraisCtrl"
+		id="win3" >
+		
+		
+		<div id="div_content_out">
+
+		
+
+			<separator></separator>
+			<separator></separator>
+			<separator></separator>
+			<separator></separator>
+			<separator></separator>
+			<separator></separator>
+
+			<x:div class="row">
+				<div zclass="col-md-6 col-lg-6 col-sm-12 col-xs-12">
+
+					<div class="form-group">
+						<x:label>Número de Candidato:</x:label>
+						<div class="input-group">
+						<longbox zclass="form-control"
+							placeholder="Número de Candidato" id="long_codigo" />
+							<x:span class="input-group-addon">
+								<x:i class="fa  fa-edit"></x:i>
+							</x:span>
+							</div>
+					</div>
+
+				</div>
+
+				<div zclass="col-md-6 col-lg-6 col-sm-12 col-xs-12">
+
+					<div class="form-group">
+						<x:label>Nome do Candidato:</x:label>
+						<div class="input-group">
+							<textbox zclass="form-control"
+								placeholder="Nome do Candidato:" id="txb_nome" />
+							<x:span class="input-group-addon">
+								<x:i class="fa  fa-edit"></x:i>
+							</x:span>
+						</div>
+						<separator></separator>
+						<separator></separator>
+						<separator></separator>
+						<button zclass="btn btn-info btn-sm pull-right"
+							type="button" id="btn_procurar" iconSclass="fa  fa-search"
+							width="15%">
+							Procurar
+						</button>
+					</div>
+
+
+				</div>
+
+			</x:div>
+
+			<div class="row">
+				<div zclass="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+					<div zclass="box-header">
+						<x:h3 class="box-title">
+							Lista de Candidatos
+						</x:h3>
+					</div>
+					<div>
+						<div zclass="box-body">
+							<listbox id="lbx_candidatos" rows="7">
+								<listhead>
+									<listheader label="Foto" width="5%"
+										align="center" />
+									<listheader label="Número de Candidato" sort="auto(codigo)"
+										width="15%" />
+									<listheader label="Nome" sort="auto(nome)"/>
+									<listheader label="Dados Pessoais"
+										width="15%" align="center" />
+								</listhead>
+								
+								<template name="model">
+									<listitem id ="${each.codigo}" >
+										<listcell  >
+										
+										<image src="${each.foto == null? '/img/camera.png':each.foto }"
+												forward="onClick=onVisualizarFotografia(${each})"
+												width="70%" height="70%" style=" border-radius: 50%" />
+									</listcell>
+										<listcell
+											label="${each.codigo}">
+										</listcell>
+										<listcell
+											label="${each.nome} ${each.apelido}">
+										</listcell>
+										<listcell>
+											<button
+												zclass="btn btn-warning btn-sm" iconSclass="fa  fa-eye"
+												width="75%"
+												forward="onClick=onVisualizarDadosPessoais(${each})">
+												Visualizar
+											</button>
+										</listcell>
+									
+									</listitem>
+								</template>
+							</listbox>
+
+						</div>
+						<div zclass="box-footer">
+
+						</div>
+					</div>
+
+				</div>
+			</div>
+
+
+
+		</div>
+	</window>
+</zk>

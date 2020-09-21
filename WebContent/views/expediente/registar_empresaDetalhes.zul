@@ -1,0 +1,314 @@
+<zk xmlns:h="xhtml" xmlns:zk="zk">
+<style>
+
+
+
+
+
+		.stylish { 
+	    display: block;
+		width: 35px; 
+		height: 35px;
+		border-radius: 50%; 
+		border: 4px double #ccc; 
+		font-size: 25px;
+		color: #666; 
+		line-height: 20px; 
+		text-align: center;
+		text-decoration: none; 
+		text-shadow: 0 1px 0 #fff;
+		background:#ddd
+		 }
+
+		.stylishActive { 
+		display: block;
+		 width: 35px; 
+		height: 35px;
+		border-radius: 50%; 
+		border: 4px double #ccc; 
+		font-size: 25px;
+		color: #666; 
+		line-height: 20px; 
+		text-align: center;
+		text-decoration: none; 
+		text-shadow: 0 1px 0 #fff;
+		
+
+		background: #009700
+
+		}
+
+		.stylish:hover { 
+		border: 4px double #bbb; 
+		color: #aaa;
+		text-decoration: none;
+		 background: #ddd 
+		 }
+
+		.separator{
+
+		width:160%; 
+		
+		background: #ddd;
+
+		content: '';
+
+		height: 2px;
+
+
+		left: 0%; 
+		top: 35px; 
+		z-index: -1; 
+		}
+		
+			.separator2{
+
+		width:150%; 
+		
+		background: #009700;
+
+		content: '';
+
+		height: 2px;
+
+
+		left: 0%; 
+		top: 35px; 
+		z-index: -1; 
+		}
+
+		.separatorD{
+
+		width:70%;
+		 background: #ddd;
+
+		content: '';
+
+		height: 2px;
+
+
+		left: 0%; top: 35px; z-index: -1; }
+
+		.separatorC{
+
+		width:100%; 
+		
+		background: #009700;
+
+		content: '';
+
+		height: 2px;
+
+
+		left: 60%; top: 35px;
+		 z-index: -1; }
+
+
+
+	</style>
+	<window apply="mz.ciuem.inamar.utente.controller.EmpresaDetalhesCtrl"
+		id="win_regEmpresaDetalhes">
+	
+
+		<div id="div_content_out">
+		      <div class="box-body" style="margin-right:1%">
+        <div sclass="alert alert-warning alert-dismissable">
+			<label value="Os campos marcados com"></label><h:label style="color:red">*</h:label><label value=" são de preenchimento obrigatório."></label>
+		</div>
+        </div>
+			<h:div class="row">
+
+					<div zclass="col-md-12 col-lg-12 col-sm-12 col-xs-12"
+					align="center">
+
+
+					<div class="form-group">
+						<div
+							zclass="col-md-4 col-lg-4 col-sm-4 col-xs-4">
+
+							<div class="stylishActive" style=" border: 4px double #ccc;">1</div>
+							<div class="separatorC"
+								style="margin-top:-17px; margin-left:50%; ">
+							</div>
+
+						</div>
+
+						<div
+							zclass="col-md-4 col-lg-4 col-sm-4 col-xs-4">
+							<div class="stylishActive">2</div>
+							<div class="separator2" style="margin-top:-17px;margin-left:-65%">
+							</div>
+
+						</div>
+
+						<div
+							zclass="col-md-4 col-lg-4 col-sm-4 col-xs-4">
+							<div class="stylish">3</div>
+						</div>
+
+					</div>
+				</div>
+			</h:div>
+			<separator></separator>
+			<separator></separator>
+			<separator></separator>
+			<separator></separator>
+
+
+	
+
+			<h:div class="row">
+			
+				<div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+        						<div class="box-body">
+        				<groupbox>
+        		   <caption>Dados Técnicos</caption>
+        		   		
+					
+	<div class="col-md-4 col-lg-4 col-xs-12 col-sm-12">
+        					<h:form role="form">
+        						<div class="box-body">
+        									<div class="form-group">
+        								 <h:label for="exampleInputEmail1">Nome da Empresa</h:label><h:label style="color:red">*</h:label>
+        						         <textbox zclass="form-control" placeholder="Nome da Empresa" id="tbx_nome" />  
+										</div>
+        						</div>
+        						</h:form>
+        						</div>
+        						
+        				<div class="col-md-4 col-lg-4 col-xs-12 col-sm-12">
+        					<h:form role="form">
+        						<div class="box-body">
+        						   		<div class="form-group">
+        								 <h:label for="exampleInputEmail1">Nome do Representante</h:label><h:label style="color:red">*</h:label>
+        					         <textbox zclass="form-control" placeholder="Nome do Representante" id="tbx_nomeRepresentante" />  
+										</div>
+        						</div>
+        						</h:form>
+        						</div>
+        						
+        				<div class="col-md-4 col-lg-4 col-xs-12 col-sm-12">
+        					<h:form role="form">
+        					<div class="box-body">
+        						   		<div class="form-group">
+        								 <h:label for="exampleInputEmail1">Nome do Proprietário</h:label><h:label style="color:red">*</h:label>
+        					         <textbox zclass="form-control" placeholder="Nome do Proprietário" id="tbx_nomeProprietario" />  
+										</div>
+        						</div>
+        						</h:form>
+        						</div>
+        				
+        						<div class="col-md-6 col-lg-6 col-xs-12 col-sm-12">
+        					<h:form role="form">
+        					<div class="box-body">
+        						   	   		<div class="form-group">
+        								 <h:label for="exampleInputEmail1">Gerência</h:label>
+        						         <textbox zclass="form-control" placeholder="Gerência" id="tbx_gerencia" />  
+										</div>
+        						</div>
+        						</h:form>
+        						</div>
+        						
+        				<div class="col-md-6 col-lg-6 col-xs-12 col-sm-12">
+        					<h:form role="form">
+        						<div class="box-body">
+        						   	   		<div class="form-group">
+        								 <h:label for="exampleInputEmail1">Capital Social</h:label>
+        						         <textbox zclass="form-control" placeholder="Capital Social" id="tbx_capital" />  
+										</div>
+        						</div>
+        						</h:form>
+        						</div>
+        				
+        		   
+        		   </groupbox>
+					</div>
+				</div>
+
+        				
+        				<div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+        						<div class="box-body">
+        		   <groupbox>
+        		   <caption>Contactos do Proprietários</caption>
+        		   
+        		           			<div class="col-md-4 col-lg-4 col-xs-12 col-sm-12">
+        					<h:form role="form">
+        								<div class="box-body">
+        				<div class="form-group">
+						<h:label>Celular:     </h:label> 
+						<div class="input-group">
+							<div class="input-group-addon">+258</div>
+							<textbox zclass="form-control"
+								id="tbx_celular" />
+						</div>
+					</div>
+        						
+        	
+						               	
+						            </div>
+        						</h:form>
+        						</div>
+        						
+        				<div class="col-md-4 col-lg-4 col-xs-12 col-sm-12">
+        					<h:form role="form">
+        							<div class="box-body">
+        						
+        						<div class="form-group">
+
+						<h:label>Celular Opcional:     </h:label>
+						<div class="input-group">
+							<div class="input-group-addon">+258</div>
+							<textbox zclass="form-control"
+								id="tbx_celular2" />
+						</div>
+					</div>
+						               	
+        						</div>
+        						</h:form>
+        						</div>
+        						
+        				<div class="col-md-4 col-lg-4 col-xs-12 col-sm-12">
+        					<h:form role="form">
+        							<div class="box-body">
+        						
+        									<div class="form-group">
+						<h:label>Email:</h:label> <h:label style="color:red">*</h:label>
+						<textbox zclass="form-control" maxlength="60"
+							id="tbx_email" constraint="no empty:Campo Obrigatório"/>
+					</div>
+						               	
+        						</div>
+        						</h:form>
+        						</div>
+        
+        		   </groupbox>
+        		
+        		
+        		
+					</div>
+				</div>
+				
+			</h:div>
+			<h:div class="row">
+			<separator></separator>
+			<h:hr></h:hr>
+				<div align="center" style="margin-right:15px">
+					<button zclass="btn btn-success btn-sm"
+						id="btn_anterior" iconSclass="fa fa-chevron-left">
+
+						Anterior
+					</button>
+					<label width="5%"></label>
+					<button zclass="btn btn-info btn-sm" label="Próximo"
+						id="btn_proximo" iconSclass="fa fa-chevron-right" dir="reverse">
+
+					</button>
+				</div>
+			</h:div>
+
+
+		</div>
+		<include id="inc_main"></include>
+
+	</window>
+</zk>

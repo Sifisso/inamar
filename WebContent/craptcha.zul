@@ -1,0 +1,24 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<zk  xmlns:x="xhtml" xmlns:zk="zk">
+	<window apply="mz.ciuem.sgea.controller.prereg.CandidatoLoginCtrl">
+			<div class="row" id="div_dados_acesso"
+						style="margin-top:30px" align="center" >
+						<div class="col-lg-2 col-md-2 col-sm-0 col-xs-0" />
+						<div class="col-lg-8 col-md-8 col-sm-12 col-xs-12" align="center">
+							
+
+								<div class="form-group">
+									<x:label>Código :</x:label>
+									<captcha id="cpt_codigo"></captcha>
+								</div>
+
+								<div class="form-group">
+									<x:label>Senha :</x:label>
+									<captcha id="cpt_senha" ></captcha>
+								</div>
+							
+						</div>
+						<div class="col-lg-2 col-md-2 col-sm-0 col-xs-0" />
+					</div>
+	</window>
+</zk>

@@ -1,0 +1,28 @@
+<hlayout style="padding:10px">
+    <listbox id="candidateLb" hflex="1" vflex="true" multiple="true" rows="5" checkmark="true">
+        <template name="model">
+            <listitem>
+                <listcell label="${each}"/>
+            </listitem>
+        </template>
+    </listbox>
+    <vbox spacing="10px" width="24px">
+        <button iconSclass="fa fa-hand-o-right" tooltiptext="Selecionar Todos" id="chooseAllBtn" zclass="btn btn-default btn-sm"></button>
+        <button iconSclass="fa fa-arrow-circle-right" tooltiptext="Selecionar" id="chooseBtn" zclass="btn btn-default btn-sm"></button>
+        <button iconSclass="fa fa-arrow-circle-left" tooltiptext="Remover" id="removeBtn" zclass="btn btn-default btn-sm"></button>
+        <button iconSclass="fa fa-hand-o-left" tooltiptext="Remover Todos" id="removeAllBtn" zclass="btn btn-default btn-sm"></button>
+    </vbox>
+    <listbox id="chosenLb" hflex="1" vflex="true" multiple="true" rows="5" checkmark="true">
+        <template name="model">
+            <listitem>
+                <listcell label="${each}"/>
+            </listitem>
+        </template>
+    </listbox>
+    <vbox spacing="10px" width="24px">
+    	<button iconSclass="fa fa-hand-o-up" id="topBtn" zclass="btn btn-default btn-sm"></button>
+        <button iconSclass="fa fa-arrow-circle-up" id="upBtn" zclass="btn btn-default btn-sm"></button>
+        <button iconSclass="fa fa-arrow-circle-down" id="downBtn" zclass="btn btn-default btn-sm"></button>
+        <button iconSclass="fa fa-hand-o-down" id="bottomBtn" zclass="btn btn-default btn-sm"></button>
+    </vbox>
+</hlayout>

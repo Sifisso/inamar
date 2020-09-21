@@ -1,0 +1,51 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<zk xmlns:x="xhtml" xmlns:zk="zk">
+	<window mode="modal" closable="true" width="40%">
+		<div id="div_content_out">
+           
+            <x:div class="row">
+            <div align="center" >
+              <x:h3 class="box-title">Validação da Fotografia</x:h3>
+              </div>
+            </x:div>
+            
+            <separator></separator>
+			<separator></separator>
+			<separator></separator>
+			<separator></separator>
+			<separator></separator>
+			<separator></separator>
+			
+			<x:div class="row">
+				<div zclass="col-md-6 col-lg-6 col-sm-12 col-xs-12">
+
+					<div class="form-group" align="center">
+					 <image src="/img/user.png"/>
+					 <separator></separator>
+					 <label value="Júlio Armando" id="lbl_nome"/>
+					</div>
+					
+					</div>
+					
+					<div zclass="col-md-6 col-lg-6 col-sm-12 col-xs-12">
+
+					<div class="form-group" align="center">
+					<separator></separator>
+						 <button zclass="btn btn-danger btn-sm" type="button" iconSclass="fa  fa-times" width="95%"> Remover </button>
+						 <separator></separator>
+			             <separator></separator>
+						 <button zclass="btn btn-success btn-sm" type="button" iconSclass="fa  fa-camera" width="95%"> Capturar </button>
+						 <separator></separator>
+			             <separator></separator>
+						 <button zclass="btn btn-warning btn-sm" type="button" iconSclass="fa  fa-paperclip" width="95%"> Anexar </button>
+					</div>
+
+
+				</div>
+
+			</x:div>
+			
+
+	</div>
+	</window>
+</zk>

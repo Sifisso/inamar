@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="subReport_planoOrcamental" pageWidth="231" pageHeight="400" columnWidth="231" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="5f64751b-4450-4eb9-9a80-3fc765ac7416">
+	<property name="ireport.zoom" value="3.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\Users\\CIUEM\\git\\sinamar\\WebContent\\reportParam\\"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="id" class="java.lang.Long"/>
+	<field name="created" class="java.util.Date"/>
+	<field name="tipoRequisito.nome" class="java.lang.String"/>
+	<field name="tipoRequisito.codigo" class="java.lang.String"/>
+	<variable name="subTotal" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="1" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<rectangle>
+				<reportElement x="30" y="0" width="201" height="19" backcolor="#CCCCCC" uuid="da72430a-d30d-470b-9001-c8682967574b"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="1" y="0" width="29" height="19" backcolor="#CCCCCC" uuid="c652ff3c-5b7d-4bce-b2f9-a3f466bd4a61"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="1" y="1" width="28" height="18" uuid="8d52d2c8-3e67-4634-bd22-a168c15641b1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[#]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="30" y="1" width="201" height="18" uuid="749ee2db-526e-4814-ba6c-9019b7b0e389"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Descrição]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="16" splitType="Stretch">
+			<rectangle>
+				<reportElement x="1" y="-1" width="230" height="17" uuid="d38a530a-9a7c-4d77-9cc1-7ab50dc8485e"/>
+			</rectangle>
+			<textField>
+				<reportElement x="4" y="0" width="25" height="15" uuid="07f9006c-63f8-4f8e-a47f-92d752fdbb33"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tipoRequisito.codigo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="36" y="0" width="195" height="15" uuid="0b80ba13-45f9-4d85-9ac9-1a6620b337bf"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tipoRequisito.nome}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="30" y="0" width="1" height="16" uuid="3900fbd0-52e6-4cdd-8147-e97f06b5cf7a"/>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

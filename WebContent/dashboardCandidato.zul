@@ -1,0 +1,115 @@
+<zk xmlns:x="xhtml" xmlns:zk="zk">
+	<window apply="mz.ciuem.sgea.controller.DashboardCandidato">
+
+		<div class="row">
+<div class="col-xs-12">
+				<!-- jQuery Knob -->
+				<div class="box box-solid">
+					<div class="box-header">
+						<x:i class="fa fa-bar-chart-o"></x:i>
+						<x:h3 class="box-title">
+							Estado da Pré-Incrição
+						</x:h3>
+						<div class="box-tools pull-right">
+							<x:button class="btn btn-default btn-sm"
+								data-widget="collapse">
+								<x:i class="fa fa-minus"></x:i>
+							</x:button>
+							<x:button class="btn btn-default btn-sm"
+								data-widget="remove">
+								<x:i class="fa fa-times"></x:i>
+							</x:button>
+						</div>
+					</div>
+					<div zclass="box-body">
+						<div class="row">
+
+							<x:div
+								class="col-md-3 col-lg-3 col-sm-6 col-xs-12 text-center">
+								<x:input type="text" class="knob"
+									value="0" data-skin="tron" data-thickness="0.1" data-width="90"
+									data-height="90" data-fgColor="#00a65a"
+									id="int_dadosPessoais">
+								</x:input>
+								<x:div class="knob-label">
+									<x:label>Dados Pessoais</x:label>
+								</x:div>
+							</x:div>
+
+							<x:div
+								class="col-md-3 col-lg-3 col-sm-6 col-xs-12 text-center">
+								<x:input type="text" class="knob"
+									value="0" data-skin="tron" data-thickness="0.1" data-width="90"
+									data-height="90" data-fgColor="#00a65a" id="int_curso">
+								</x:input>
+								<x:div class="knob-label">
+									<x:label>Escolha do Curso</x:label>
+								</x:div>
+							</x:div>
+
+							<x:div
+								class="col-md-3 col-lg-3 col-sm-6 col-xs-12 text-center">
+								<x:input type="text" class="knob"
+									value="0" data-skin="tron" data-thickness="0.1" data-width="90"
+									data-height="90" data-fgColor="#00a65a" id="int_factura">
+								</x:input>
+								<x:div class="knob-label">
+									<x:label>Dados da Factura</x:label>
+								</x:div>
+							</x:div>
+
+							<x:div
+								class="col-md-3 col-lg-3 col-sm-6 col-xs-12 text-center">
+								<x:input type="text" class="knob"
+									value="0" data-skin="tron" data-thickness="0.1" data-width="90"
+									data-height="90" data-fgColor="#00a65a" id="int_estado" />
+								<x:div class="knob-label">
+									<x:label>
+										Estado da Pré-Incrição
+									</x:label>
+								</x:div>
+							</x:div>
+
+						</div>
+
+					</div>
+				</div>
+			</div>
+
+
+
+		
+			<x:script src="js/jquery.min.js"></x:script>
+			<x:script src="js/jquery-ui-1.10.3.min.js"
+				type="text/javascript">
+			</x:script>
+			<x:script src="js/bootstrap.min.js"
+				type="text/javascript">
+			</x:script>
+
+
+
+			<x:script src="js/plugins/jqueryKnob/jquery.knob.js"
+				type="text/javascript">
+			</x:script>
+
+			<x:script
+				src="js/plugins/daterangepicker/daterangepicker.js"
+				type="text/javascript">
+			</x:script>
+
+
+			<x:script
+				src="js/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"
+				type="text/javascript">
+			</x:script>
+
+
+			<x:script src="js/AdminLTE/dashboard.js"
+				type="text/javascript">
+			</x:script>
+
+
+		</div>
+	</window>
+</zk>

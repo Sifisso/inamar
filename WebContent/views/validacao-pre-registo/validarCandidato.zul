@@ -1,0 +1,489 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<zk>
+
+
+	<style>
+
+
+
+
+
+		.stylish { display: block; width: 35px; height: 35px;
+		border-radius: 50%; border: 4px double #ccc; font-size: 25px;
+		color: #666; line-height: 20px; text-align: center;
+		text-decoration: none; text-shadow: 0 1px 0 #fff;
+		background:#ddd }
+
+		.stylishActive { display: block; width: 35px; height: 35px;
+		border-radius: 50%; border: 4px double #ccc; font-size: 25px;
+		color: #666; line-height: 20px; text-align: center;
+		text-decoration: none; text-shadow: 0 1px 0 #fff;
+
+
+		background: #009700
+
+		}
+
+		.stylish:hover { border: 4px double #bbb; color: #aaa;
+		text-decoration: none; background: #ddd }
+
+		.separator{
+
+		width:160%;
+
+		background: #ddd;
+
+		content: '';
+
+		height: 2px;
+
+
+		left: 0%; top: 35px; z-index: -1; }
+
+		.separator2{
+
+		width:160%;
+
+		background: #009700;
+
+		content: '';
+
+		height: 2px;
+
+
+		left: 0%; top: 35px; z-index: -1; }
+
+		.separatorD{
+
+		width:70%; background: #ddd;
+
+		content: '';
+
+		height: 2px;
+
+
+		left: 0%; top: 35px; z-index: -1; }
+
+		.separatorC{
+
+		width:100%;
+
+		background: #009700;
+
+		content: '';
+
+		height: 2px;
+
+
+		left: 60%; top: 35px; z-index: -1; }
+
+
+
+	</style>
+
+
+
+	<window xmlns:x="xhtml" id="winValidar" apply="mz.ciuem.sgea.controller.prereg.ValidarCandidato"
+		title="Validar Candidato" closable="true" mode="modal" width="80%">
+
+		<custom-attributes composerName="winValidar" />
+
+		<div id="div_content_out">
+
+				<div class="row">
+					<div
+						zclass="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+						<div zclass="box box-default">
+							<div zclass="box-body">
+								<div class="row" style=""
+									id="div_confirmarDados">
+									<div
+										class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+												<label id="lbl_nome"/>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+				<div class="row">
+				<div zclass="col-md-7 col-lg-7 col-sm-12 col-xs-12">
+					<div class="col-lg-4 col-md-4 col-sm-4">
+						<div class="col-lg-12 col-md-12 col-sm-12">
+
+							<div align="center"
+								class="col-lg-12 col-md-12">
+								<image id="img_pic" src=""
+									class="img-thumbnail" style="cursor:pointer" width="100px"
+									height="100px">
+								</image>
+							</div>
+							<div align="center"
+								class="col-lg-12 col-md-12">
+
+								<div class="col-lg-12 col-md-12">
+									<vlayout>
+										<hlayout
+											id="vly_certificados">
+											<checkbox></checkbox>
+											<label style="color:red">
+												Aprovar
+											</label>
+										</hlayout>
+
+									</vlayout>
+
+								</div>
+								<div align="center">
+									<button label="Visualizar"
+										style="margin-top:4px"
+										zclass="btn  btn-sm btn-block btn-primary"
+										iconSclass="fa fa-eye" id="btn_ver_foto" width="100px">
+									</button>
+								</div>
+							</div>
+
+						</div>
+
+					</div>
+
+
+
+					<div class="col-lg-4 col-md-4 col-sm-4">
+						<div class="col-lg-12 col-md-12 col-sm-12">
+
+							<div align="center"
+								class="col-lg-12 col-md-12">
+								<image id="img_certificate"
+									src="/img/docNao.png" class="img-thumbnail"
+									style="cursor:pointer" width="100px" height="100px">
+								</image>
+							</div>
+							<div align="center"
+								class="col-lg-12 col-md-12">
+
+								<div class="col-lg-12 col-md-12">
+									<vlayout>
+										<hlayout id="vly_doc">
+											<checkbox></checkbox>
+											<label style="color:red">
+												Aprovar
+											</label>
+										</hlayout>
+
+									</vlayout>
+
+								</div>
+								<div align="center">
+									<button label="Visualizar"
+										style="margin-top:4px"
+										zclass="btn  btn-sm btn-block btn-primary"
+										iconSclass="fa fa-eye" id="btn_ver_doc" width="100px">
+									</button>
+								</div>
+							</div>
+
+
+						</div>
+
+					</div>
+
+
+					<div class="col-lg-4 col-md-4 col-sm-4">
+						<div class="col-lg-12 col-md-12 col-sm-12">
+
+							<div align="center"
+								class="col-lg-12 col-md-12">
+								<image id="img_nuit"
+									src="/img/NUITNao.png" class="img-thumbnail"
+									style="cursor:pointer" width="100px" height="100px">
+								</image>
+							</div>
+							<div align="center"
+								class="col-lg-12 col-md-12">
+
+								<div class="col-lg-12 col-md-12">
+									<vlayout>
+										<hlayout
+											id="vly_certificadodss">
+											<checkbox></checkbox>
+											<label style="color:red">
+												Aprovar
+											</label>
+										</hlayout>
+
+									</vlayout>
+
+								</div>
+								<div align="center">
+									<button label="Visualizar"
+										style="margin-top:4px"
+										zclass="btn  btn-sm btn-block btn-primary"
+										iconSclass="fa fa-eye" id="btn_ver_nuit" width="100px">
+									</button>
+								</div>
+							</div>
+
+
+						</div>
+
+					</div>
+
+				
+				</div>
+				
+					<div
+						zclass="col-md-5 col-lg-5 col-sm-12 col-xs-12">
+						<iframe>
+
+
+						</iframe>
+					</div>
+				
+
+				<div zclass="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+
+					<div
+						zclass="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+					<listbox id="lbx_candidatura" checkmark="false">
+						<listhead>
+							
+							<listheader label="Universidade"
+								sort="auto(universidade.sigla)" hflex="1" align="center"/>
+							<listheader hflex="4"
+								label="Curso"  />
+								
+						
+							
+							<listheader hflex="1" label="Pagto Confirmado"
+								align="center" >
+							</listheader>
+							<listheader align="center"  hflex="1">Insc. Validada</listheader>
+							<listheader hflex="1" align="center">Local Exame</listheader>
+							<listheader hflex="1" align="center"></listheader>
+						</listhead>
+										
+						
+						<template name="model">						
+						
+							<listitem disabled="${each.validado }">
+								<custom-attributes
+									cursos="${each.candidaturaCursos}" />
+								<listcell>
+
+									<label
+										value="${each.cicloUniversidade.universidade.sigla}">
+									</label>
+								</listcell>
+
+								<listcell>
+
+									<div class="row">
+										<zk forEach="${cursos }">
+											<div class="col-lg-8">
+												<label
+													value="${each}">
+												</label>
+											</div>
+
+
+											<div class="col-lg-2">
+
+												<label
+													value="${each.opcao } Opção">
+												</label>
+											</div>
+
+											<div class="col-lg-2">
+												<label
+													value="${each.candidatura.valor } MT"
+													visible="${each.opcao == 1 }">
+												</label>
+											</div>
+										</zk>
+									</div>
+
+
+
+
+								</listcell>
+							
+
+								<listcell>
+									<div visible="${each.pago }">
+									<x:span class = "badge">Sim</x:span>
+									</div>
+
+									<div visible="${not each.pago}">
+									<x:span class = "badge">Não</x:span>
+									</div>
+									
+								</listcell>
+								
+								<listcell>
+									<div visible="${each.validado }">
+									<x:span class = "badge">Sim</x:span>
+									</div>
+
+									<div visible="${not each.pago}">
+									<x:span class = "badge">Não</x:span>
+									</div>
+									
+								</listcell>
+								<listcell>
+								<label value="${each.localExame }"></label>
+								</listcell>
+								<listcell>
+								<div class="row">
+								   <div class="col-lg-5 col-md-5 col-sm-5"
+											 align="right" visible="${!each.cicloUniversidade.canais}">
+											<button label="Pagar"
+												disabled="${each.pago}" visible="${!each.cicloUniversidade.canais}"
+												zclass="btn btn-info btn-xs" iconSclass="fa fa-check"
+												forward=" onClick = 'onPagar(${each})'">
+											</button>
+								</div> 
+								
+							    <div class="col-lg-5 col-md-5 col-sm-5"
+											 align="right" visible="${each.pago }">
+											<button label="Validar"
+												disabled="${each.validado }" visible="${each.pago }"
+												zclass="btn btn-primary btn-xs" iconSclass="fa fa-check"
+												forward=" onClick = 'onValidar(${each})'">
+											</button>
+								</div> 
+                                 </div>
+								</listcell>
+								
+							</listitem>
+							
+						</template>
+					
+					</listbox>
+					</div>
+
+	
+				</div>
+.
+				
+				<div class="row" style="margin-left:5%; margin-right:5%">
+					<div
+						zclass="col-md-12 col-lg-12 col-sm-12 col-xs-12"  id="div_visivelIRSI" visible="false" >
+						<div zclass="box box-default">
+							<div zclass="box-body">
+								<div class="row">
+								<div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+								  <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+							<div class="form-group">
+								<x:label>Banco</x:label>
+								<combobox width="100%" id="cbx_banco"
+									constraint="no empty : Não pode ser vazio nem conter apenas espaços em branco!"
+									placeholder="Selecione o Banco" readonly="true">
+									<comboitem label="BCI" />
+									<comboitem label="Barclays" />
+								</combobox>
+							</div>
+						</div>
+									<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+								<div class="form-group">
+								<x:label>Valor:</x:label>
+								<combobox width="100%" id="cbx_valor"
+									constraint="no empty:Escolha o Valor" readonly="true">
+									<comboitem label="300" />
+									<comboitem label="600" />
+									<comboitem label="900" />
+									<comboitem label="1200" />
+									<comboitem label="1500" />
+									<comboitem label="1800" />
+								</combobox>
+							</div>
+							</div>
+							
+									<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+									<div class="form-group">
+								<x:label>Descritivo</x:label>
+								<textbox zclass="form-control"
+									id="tbx_ref"
+									constraint="no empty : Não pode ser vazio nem conter apenas espaços em branco!">
+								</textbox>
+								</div>
+							
+						</div>
+								
+								
+										<div
+							class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+							<div class="form-group">
+						      <x:label>Validado por:</x:label>
+						<label id="lbl_validaor" zclass="form-control"></label>
+						
+					</div>
+
+				</div>
+								
+								
+								
+								</div>
+					
+							
+							
+						
+					
+						
+					  
+						
+						</div>
+
+
+							</div>
+							
+							
+				<div class="modal-footer" align="center">
+					<x:button type="button"
+						class="btn btn-danger"
+						forward="onClick = 'onCancelar()'">
+						Cancelar Pagamento
+					</x:button>
+
+					<x:button type="button" id="btn_sairCandidato"
+						class="btn btn-success" data-dismiss="modal"
+						forward="onClick = 'onConfirmarPagamento()'">
+						Confirmar Pagamento
+					</x:button>
+
+				</div>
+						</div>
+					</div>
+				</div>
+				
+					
+		
+					
+					
+			<div zclass="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+				<div align="right" style="margin-right:20px; margin-top:10px">
+				<label width="5%"></label>
+				<button zclass="btn btn-warning btn-sm" type="button"
+					 id="btn_imprimir"
+					iconSclass="fa fa-print" width="120px">
+
+					Imprimir
+				</button>
+			</div>
+			</div>
+	
+
+
+
+			</div>
+
+
+
+
+		</div>
+
+		<include id="inc_main"></include>
+	</window>
+</zk>

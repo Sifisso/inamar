@@ -1,0 +1,107 @@
+<zk xmlns:x="xhtml" xmlns:zk="zk">
+<style>
+	/* Dropdown Button */
+.dropbtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    font-size: 10px;
+    border: none;
+}
+
+/* The container  needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+    background-color: #3e8e41;
+}
+
+</style>
+
+
+<window id = "win_recusarPedido"  mode="modal"  border="none" closable="true" apply="mz.ciuem.inamar.chefesecretaria.controller.RecusarPedidoCtrl" width="75%">
+<div class="row" id="div_content_out" vflex="true">
+			<div zclass="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+				<div zclass="box box-default">
+				<div class="modal-header">
+						<x:button type="button" class="close"
+							data-dismiss="modal" aria-label="Close" forward="onClick=onClickClose()">
+							x
+						</x:button>
+						<x:h4 class="modal-title" id="myModalLabel">
+							MOTIVO DA RECUSA DO PEDIDO
+						</x:h4>
+					</div>
+					<div zclass="box-body">
+						<div class="row">
+							<div zclass="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+							   	<div class="input-grsoup">
+							   	<x:label>Motivo</x:label>
+									<textbox zclass="form-control"
+										placeholder="Motivo"
+										constraint="no empty : Não pode ser vazio nem conter apenas espaços em branco!"
+										id="txb_recusar"  rows="5" />
+								</div>
+							</div>
+						</div>
+					</div>
+						<div zclass="box-footer" align="center"
+						style="margin-right:10px">
+					
+						<button zclass="btn btn-danger btn-sm"
+							autodisable="self,btn_actualizar"  type="button" id="btn_gravar" onClick="@command('registarExpedienteChefeSecretaria')"
+							iconSclass="fa fa-ban">
+                      		Recusar
+						</button>
+						
+						<label width="5%"></label>
+						<button zclass="btn btn-info btn-sm"
+							visible="false" autodisable="self,btn_gravar" type="button"
+							id="btn_actualizar" iconSclass="fa fa-refresh">
+							Actualizar
+						</button>
+						
+						<label width="5%"></label>
+							<button zclass="btn btn-danger btn-sm"
+							type="button" id="btn_cancelar" iconSclass="fa fa-undo" forward="onClick=onClickClose()">
+							Cancelar
+						</button>
+					</div>
+
+				</div>
+			</div>
+		</div>
+       <include id="inc_main"></include>
+	</window>
+
+</zk>

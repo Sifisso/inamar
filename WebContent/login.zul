@@ -1,0 +1,247 @@
+<!-- <?link rel="shortcut icon" type="image/x-icon" href="img/rh.ico"?> -->
+<?link rel="icon" type="image/x-icon" href="img/uem_md.png"?>
+<?link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" ?>
+<?link href="css/font-awesome.min.css" rel="stylesheet" type="text/css" ?>
+<?link href="css/AdminLTE.css" rel="stylesheet" type="text/css" ?>
+<?link href="css/inoLab.css" rel="stylesheet" type="text/css" ?>
+<?link href="css/zk.wcs" rel="stylesheet" type="text/css" ?>
+
+<?link href="css/metro/style.css" rel="stylesheet" type="text/css" ?>
+<?link href="css/metro/style-responsive.css" rel="stylesheet" type="text/css" ?>
+<?link href="css/metro/style-default.css" rel="stylesheet" type="text/css" ?>
+
+
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
+<?page title="${c:l('title')} Login"?>
+<?link rel="shortcut icon" href="/img/favicon.png" type="image/x-icon"?>
+<?link rel="icon" href="/img/favicon.png" type="image/x-icon"?>
+
+<zk xmlns:x="xhtml" xmlns:zk="zk">
+	<style>
+
+.bg-center {
+  background-color: #ffffff ;
+}
+
+
+       /*#f0f7fb*/
+	</style>
+
+
+	<window  height="100%" style="margin: -5px" contentStyle=" overflow:auto;background:#efefef">
+
+		<zscript>
+	public void removeSessionVariables() {
+
+		Executions.getCurrent().getDesktop().getSession()
+				.removeAttribute("ss_utilizador");
+		Executions.getCurrent().getDesktop().getSession()
+				.removeAttribute("ss_candidato");
+	}
+	public void criarConta() {
+		removeSessionVariables();
+
+		content.detach();
+		Executions.sendRedirect("/candidatura.zul");
+	}
+	public void recuDados() {
+		removeSessionVariables();
+		content.detach();
+		Executions.sendRedirect("/credenciais.zul");
+		
+	}
+	
+	public void login() {
+		div_login.setVisible(true);
+		
+	}
+	
+	public void verCandidatura(){
+	
+	removeSessionVariables();
+	Executions.sendRedirect("/consultar_candidatura.zul");
+	}
+</zscript>
+
+		<div id="content" class = "container" style="overflow:auto">
+		
+		      <div class="row"  align="center" style="margin-top:5%">
+			
+			         <div class="col-md-12 col-lg-12 col-xs-12 col-sm-12">
+              
+                       <div class="col-md-4 col-lg-4 col-xs-12 col-sm-12">
+                       
+                       </div>
+                       
+                       <div class="col-md-4 col-lg-4 col-xs-12 col-sm-12 bg-center">
+                        <image src="/img/inmr.png"  />
+                        <x:br></x:br>
+                        <x:div class="login-logo">
+					        <x:a href="#"><x:b>Si</x:b>namar</x:a>
+					      </x:div><!-- /.login-logo -->
+                       </div>
+                       
+                       <div class="col-md-4 col-lg-4 col-xs-12 col-sm-12">
+                       
+                       </div>
+          
+      				</div>
+      		
+      		</div>
+      		
+      			      <div class="row"  align="center" style="margin-top:2%">
+			
+			         <div class="col-md-12 col-lg-12 col-xs-12 col-sm-12">
+              
+                       <div class="col-md-4 col-lg-4 col-xs-12 col-sm-12">
+                       
+                       </div>
+                       
+                       <div class="col-md-4 col-lg-4 col-xs-12 col-sm-12 ">
+                        
+      				<div class="row">
+							<div
+								class="col-md-12 col-lg-12 col-xs-12 col-sm-12">
+								<div style="margin-left:-4.5%; margin-top:5px">
+
+									<div
+										sclass="alert alert-default alert-dismissable"
+										if="${empty param.login_error and empty param.loggedout}">
+									</div>
+									<div
+										sclass="alert alert-warning alert-dismissable"
+										if="${not empty param.loggedout}">
+										<label
+											value="Você foi desconectado com êxito.">
+										</label>
+									</div>
+									<div
+										if="${not empty param.login_error}"
+										sclass="alert alert-danger alert-dismissable">
+										<label
+											value="Utilizador ou Senha errada. Tente de novo.">
+										</label>
+									</div>
+									
+								</div>
+								
+							</div>
+						</div>
+                       </div>
+                       
+                       <div class="col-md-4 col-lg-4 col-xs-12 col-sm-12">
+                       
+                       </div>
+          
+      				</div>
+      		
+      		</div>
+      		
+      		
+      		
+              <div class="row"  align="center" style="margin-top:2%">
+			
+			         <div class="col-md-12 col-lg-12 col-xs-12 col-sm-12">
+              
+                       <div class="col-md-4 col-lg-4 col-xs-12 col-sm-12">
+                       
+                       </div>
+                       
+                       <div class="col-md-4 col-lg-4 col-xs-12 col-sm-12 bg-center">
+                        
+                        	<x:form id="f" name="f" action="j_spring_security_check"
+					method="POST">
+
+					<div align="center" class="col-lg-12 col-md-12  col-sm-12 col-xs-12">
+						<div class="row " style="margin-top:10px">
+							<div
+								class="col-md-12 col-lg-12 col-xs-12 col-sm-12" id="myModal">
+								<div class="input-group" align="center"
+									width="90%">
+									
+									<x:span class="input-group-addon"
+										style="">
+										<x:i class="fa fa-user"></x:i>
+									</x:span>
+									<textbox zclass="form-control"
+										placeholder="Utilizador" name="j_username" id="username">
+									</textbox>
+								</div>
+							</div>
+						</div>
+
+						<div class="row" style="margin-top:10px">
+							<div
+								class="col-md-12 col-lg-12 col-xs-12 col-sm-12">
+								<div class="input-group" align="center"
+									width="90%">
+
+									<x:span class="input-group-addon">
+										<x:i class="fa fa-key"></x:i>
+									</x:span>
+									<textbox zclass="form-control" name="j_password" id="password" placeholder="Senha" type="password"/>
+									
+								</div>
+							</div>
+						</div>
+
+						<div class="row" align="left" style="margin-left:12%">
+							<x:div class="checkbox icheck">
+								<x:label>
+									<x:input type="checkbox">
+									
+										</x:input>Lembrar
+								</x:label>
+							</x:div>
+						</div>
+
+						<div class="row" style="margin-top:10px">
+							<div zclass="form-group" align="center"
+								width="90%">
+								<button id="btn_login"
+									zclass="btn btn-info btn-flat" type="submit"
+									iconSclass="fa fa-unlock" width="92%">
+									Entrar
+								</button>
+							</div>
+						</div>
+						
+						<div class="row" align="right" style="margin-right:5%">
+						 <button zclass="btn btn-link btn-xs" type="button" id="btn_recuperarSenha" onClick="()" visible="false" >
+								Esqueci a minha Senha
+						</button>
+						
+						<x:br/>
+						
+						</div>
+
+					</div>
+
+				</x:form>
+                       </div>
+                       
+                       <div class="col-md-4 col-lg-4 col-xs-12 col-sm-12">
+                       
+                       </div>
+          
+      				</div>
+      				
+      				<div align="center" visible="true">
+      				<button zclass="btn btn-link btn-xs" type="button" id="btn_registar" onClick="()" visible="false">
+								Registar Novo Membro
+						</button>
+      				
+      				</div>
+      		
+      		</div>
+      		
+        
+		</div>
+		
+		
+
+
+		
+	</window>
+
+</zk>

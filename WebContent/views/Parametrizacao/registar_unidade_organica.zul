@@ -1,0 +1,170 @@
+<zk xmlns:x="xhtml" xmlns:zk="zk">
+	<window apply="mz.ciuem.inamar.controller.UnidadeOrganicaCtrl" id="win">
+		<div class="row">
+			<div zclass="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+				<div zclass="box box-default">
+					<div zclass="box-header">
+						<x:label class="box-title"
+							style="font-family: ATimes New Roman; color: green; font-size: 14px; font-style: normal; font-variant: normal; font-weight: bold; line-height: 26.3999996185303px; margin-top:-9px; margin-bottom:-9px">
+							Nova Unidade Orgânica
+						</x:label>
+					</div>
+					<div>
+						<div zclass="box-body">
+							<div class="row">
+								<div class="form-group">
+									<div
+										zclass="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+										<x:label>Sigla</x:label>
+										<div class="input-group">
+											<textbox
+												zclass="form-control"
+												placeholder="Sigla da Unidade Orgânica"
+												constraint="no empty : Nao pode ser vazio nem conter apenas espaços em branco!"
+												id="txb_sigla" />
+											<x:span
+												class="input-group-addon">
+												<x:i
+													class="fa  fa-edit">
+												</x:i>
+											</x:span>
+										</div>
+									</div>
+
+									<div
+										zclass="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+										<x:label>Universidade</x:label>
+										<combobox width="100%"
+											id="cbx_universidade" readonly="true"
+											placeholder="Selecione a universidade">
+											<template name="model">
+												<comboitem
+													label="${each.designacao}" />
+											</template>
+										</combobox>
+									</div>
+
+									<div
+										zclass="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+										<x:label>Designação</x:label>
+										<div class="input-group">
+											<textbox
+												zclass="form-control"
+												placeholder="Designação da Unidade Orgânica"
+												constraint="no empty : Não pode ser vazio nem conter apenas espaços em branco!"
+												id="txb_designacao" />
+											<x:span
+												class="input-group-addon">
+												<x:i
+													class="fa  fa-edit">
+												</x:i>
+											</x:span>
+										</div>
+									</div>
+
+
+
+									<div
+										zclass="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+										<x:label>Província</x:label>
+										<combobox id="cbx_provincia"
+											readonly="true" width="100%"
+											tooltiptext="Selecione a Província"
+											placeholder="Selecione a Provincia">
+											<template name="model">
+												<comboitem
+													label="${each.designacao}" />
+											</template>
+										</combobox>
+
+									</div>
+								</div>
+							</div>
+						</div>
+						<div zclass="box-footer">
+							<div align="right">
+								<button zclass="btn btn-danger btn-sm "
+									type="button" id="btn_cancelar" iconSclass="fa fa-undo">
+									Cancelar
+								</button>
+								<label width="5%"></label>
+								<button zclass="btn btn-success btn-sm "
+									type="button" autodisable="self,btn_actualizar" id="btn_gravar"
+									iconSclass="fa fa-save">
+
+									Gravar
+								</button>
+								<label width="5%"></label>
+								<button zclass="btn btn-info btn-sm "
+									type="button" autodisable="self,btn_gravar" visible="false"
+									id="btn_actualizar" iconSclass="fa fa-refesh">
+
+									Actualizar
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div zclass="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+				<div zclass="box box-default">
+					<div zclass="box-header">
+						<x:label class="box-title" style="font-family: ATimes New Roman; color: green; font-size: 14px; font-style: normal; font-variant: normal; font-weight: bold; line-height: 26.3999996185303px; margin-top:-9px; margin-bottom:-9px">
+							Unidades Orgânicas Registadas
+						</x:label>
+						<div align="right">
+											<separator/>
+											<button
+												zclass="btn btn-warning btn-sm" type="button"
+												id="btn_imprimir" style="margin-right:1%"
+												iconSclass="fa fa-print">
+
+												Imprimir PDF
+											</button>
+										</div>
+					</div>
+					<div>
+						<div zclass="box-body">
+							<listbox id="lbx_unidades" checkmark="true"
+								rows="7">
+								<listhead>
+									<listheader label="#" width="5%" />
+									<listheader label="Sigla"
+										sort="auto(sigla)" />
+									<listheader label="Designação"
+										sort="auto(designacao)" />
+									<listheader label="Universidade"
+										sort="auto(universidade.designacao)" />
+									<listheader label="Província"
+										sort="auto(provincia.designacao)" />
+								</listhead>
+								<template name="model">
+									<listitem>
+										<listcell></listcell>
+										<listcell label="${each.sigla}" />
+										<listcell
+											label="${each.designacao}" />
+										<listcell
+											label="${each.universidade.designacao}" />
+										<listcell
+											label="${each.provincia.designacao}" />
+									</listitem>
+								</template>
+							</listbox>
+
+						</div>
+						<div zclass="box-footer">
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+
+	</window>
+</zk>

@@ -1,0 +1,145 @@
+.z-loading {
+	background-color: transparent;
+	border: 0px;
+	padding: 0px;
+	height: 66px;
+	width: 171px;
+	background-image: url("../images/processing.gif");
+}
+
+.z-loading-indicator {
+	border: 0px;
+	display: none;
+}
+
+.z-hlayout {
+	white-space: nowrap;
+	padding: 0px !important;
+}
+
+.z-messagebox-question {
+	background-image: url(../images/question.png);
+}
+
+.z-messagebox-icon {
+	font-size: 30px;
+	display: inline-block;
+	width: 128px;
+	height: 128px;
+	border: 0;
+	background-repeat: no-repeat;
+	text-align: center;
+	vertical-align: top;
+	cursor: pointer;
+}
+
+.z-button {
+	display: inline-block;
+	margin-bottom: 0;
+	font-weight: 400;
+	text-align: center;
+	vertical-align: middle;
+	cursor: pointer;
+	background-image: none;
+	border: 1px solid transparent;
+	white-space: nowrap;
+	padding: 6px 12px;
+	font-size: 14px;
+	line-height: 1.42857143;
+	border-radius: 4px;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	font-size: 12px;
+	line-height: 1.5;
+	border-radius: 3px;
+	color: #333;
+	background-color: #fff;
+	border-color: #ccc;
+	margin-bottom: 10px;
+	font: inherit;
+}
+
+.z-messagebox .z-label {
+	font-family: inherit;
+	font-size: 14px;
+	color: #363636;
+}
+
+.z-window-header {
+	font-family: inherit;
+	font-size: 14px;
+	font-weight: normal;
+	font-style: normal;
+	color: #363636;
+	padding: 3px 0 5px 0;
+	line-height: 24px;
+	overflow: hidden;
+	zoom: 1;
+	cursor: default;
+	font-size: 14px;
+}
+
+.z-button:hover {
+	color: #333;
+	background-color: #fff;
+	border-color: #ccc;
+	background: linear-gradient(to bottom, #fff 0%, #fff 100%);
+}
+
+.z-window-close {
+	padding: 0;
+	cursor: pointer;
+	background: 0 0;
+	border: 0;
+	-webkit-appearance: none;
+}
+
+.z-window {
+	overflow: hidden;
+	zoom: 1;
+	padding: 4px;
+	background: #fff;
+	border-radius: 0;
+	-webkit-border-radius: 0;
+	border: none;
+}
+
+.z-window-move-ghost {
+	border: none;
+	-webkit-border-radius: 4px 4px 0 0;
+	border-radius: 4px 4px 0 0;
+	padding: 0;
+	background: #fff;
+	opacity: .65;
+	filter: alpha(opacity = 65);
+	position: absolute;
+	overflow: hidden;
+	cursor: move !important;
+}
+
+.z-icon-times {
+  font-size: 13px;
+  font-weight: 400;
+  color: #000;
+  text-shadow: 0 1px 0 #fff;
+  opacity: .2;
+  filter: alpha(opacity=20);
+}
+
+.z-errorbox-pointer ~ .z-errorbox-close {
+  top: 7px;
+  right: 5px;}
+  
+  .timeColor{
+  	color: #fff;
+    border: 1px solid rgb(101, 206, 167);
+  }
+ 
+ .timeline .timeline-icon {
+ 
+ color: rgb(101, 206, 167);
+ 
+   border: 1px solid rgb(101, 206, 167);
+ }

@@ -1,0 +1,139 @@
+<zk xmlns:x="xhtml" xmlns:zk="zk">
+	<window apply="" id="win">
+
+
+		<div class="row">
+			<div zclass="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+				<div zclass="box box-default">
+					<div zclass="box-header">
+					 
+						<x:label class="box-title"
+							style="font-family:Georgia,serif;color:#4E443C; font-variant: small-caps; text-transform: none; font-weight: 100; margin-bottom: 0;">
+							Registo de Petição
+						</x:label>
+					
+					</div>
+					<div>
+						<div zclass="box-body">
+						<div class="row">
+							
+								
+								<div zclass="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+									<x:label>Área</x:label><x:label style="color:red">*</x:label>
+									<combobox width="100%"
+										id="cbx_area"
+										placeholder="Selecione a área"
+										readonly="true"
+										constraint="no empty : Não pode ser vazio nem conter apenas espaços em branco!">
+										<template name="model">
+											<comboitem
+												label="${each.nome}" />
+										</template>
+									</combobox>
+								</div>
+								
+									<div zclass="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+									<x:label>Tipo de Petição</x:label><x:label style="color:red">*</x:label>
+									<combobox width="100%"
+										id="cbx_tipoPetica" placeholder="Selecione o tipo de embarcação"
+										readonly="true"
+										constraint="no empty : Não pode ser vazio nem conter apenas espaços em branco!">
+										<template name="model">
+											<comboitem
+												label="${each.}" />
+										</template>
+									</combobox>
+								</div>
+								</div>
+								
+								<groupbox> 
+							<caption>Registo de Embarcação Importada</caption>
+							
+							<div zclass="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+							<separator></separator>
+									<x:label>País de Importação</x:label><x:label style="color:red">*</x:label>
+									<combobox width="100%" 
+										id="cbx_paisImportacao" placeholder="Selecione o país de importação"
+										readonly="true"
+										constraint="no empty : Não pode ser vazio nem conter apenas espaços em branco!">
+										<template name="model">
+											<comboitem
+												label="${each.}" />
+										</template>
+									</combobox>
+								</div>
+								
+								<div zclass="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+								<separator></separator>
+									<x:label>Classe de Embarcação</x:label><x:label style="color:red">*</x:label>
+									<combobox width="100%" 
+										id="cbx_classeEmbarcacao" placeholder="Selecione a classe de embarcação"
+										readonly="true"
+										constraint="no empty : Não pode ser vazio nem conter apenas espaços em branco!">
+										<template name="model">
+											<comboitem
+												label="${each.}" />
+										</template>
+									</combobox>
+								</div>
+								
+								<div zclass="col-lg-12 col-md-12 col-sm-24 col-xs-24">
+									<separator></separator>
+									<x:label>Nova Embarcação</x:label><x:label style="color:red">*</x:label>
+									<div class="input-group">
+									<textbox zclass="form-control"
+										placeholder="Nome da nova embarcação"
+										constraint="no empty : Não pode ser vazio nem conter apenas espaços em branco!"
+										id="txb_novaEmbarcacao" />
+										 <x:span class="input-group-addon"><x:i class="fa  fa-edit"></x:i></x:span>
+										</div>
+								</div>
+								
+								
+								<div zclass="col-lg-12 col-md-12 col-sm-24 col-xs-24">
+								<separator></separator>
+									<x:label>Destinada ao Serviço de</x:label><x:label style="color:red">*</x:label>
+									<combobox width="100%" 
+										id="cbx_servicoDe" placeholder="Selecione o serviço"
+										readonly="true"
+										constraint="no empty : Não pode ser vazio nem conter apenas espaços em branco!">
+										<template name="model">
+											<comboitem
+												label="${each.}" />
+										</template>
+									</combobox>
+								</div>
+								<separator></separator>
+								<div class="form-group" zclass=" col-sm-12">
+							<separator></separator>
+							<x:label>Tipo de Importação</x:label>
+									<radiogroup>
+										<radio label="Temporária" style="margin-left:5px" id="rbx_temporaria" forward=""/>
+										<radio label="Definitiva" style="margin-left:15px" checked="true" id="rbx_difinitiva" forward=""/>
+									</radiogroup>
+								</div>
+							</groupbox>
+								
+						</div>
+						<div zclass="box-footer">
+							<div align="center">
+								
+								<label width="5%"></label>
+								<label width="5%"></label>
+								<button zclass="btn btn-info btn-sm"
+									type="button" id="btn_voltar" iconSclass="fa fa-mail-reply-all">
+									Voltar
+								</button>
+								<button zclass="btn btn-success btn-sm "
+									type="button" id="btn_ver" iconSclass="fa  fa-eye">
+									Ver minuta
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+	</window>
+</zk>

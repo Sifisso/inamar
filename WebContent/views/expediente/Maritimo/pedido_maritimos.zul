@@ -1,0 +1,435 @@
+<zk xmlns:x="xhtml" xmlns:zk="zk">
+	<window apply="mz.ciuem.inamar.expediente.controller.PedidoMaritimoCtrl" id="win_regPedidoExpediente" >
+		<div class="row" id="div_content_out">
+			<div zclass="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+				<div zclass="box box-default">
+					<div zclass="box-body">
+						<div class="row">
+						
+						
+             <div class="col-md-12">
+             
+                           <div class="box box-primary" id="div_compor" visible="false">
+                <div class="box-header with-border">
+                  <x:h3 class="box-title">Novo Pedido</x:h3>
+                </div><!-- /.box-header -->
+                <div class="box-body no-padding">
+                
+                   	<div zclass="col-lg-12 col-md-12 col-sm-12">
+								<div class="form-group">
+									<x:label>Utente</x:label>
+									<combobox width="100%"
+										id="cbx_utente" constraint="no empty"
+										placeholder="Para:" autocomplete="true" buttonVisible="true">
+										<template name="model">
+											<comboitem
+												label="${each.nome}" />
+										</template>
+									</combobox>
+								</div>
+				   </div>
+                
+              	<div zclass="col-lg-6 col-md-6 col-sm-12">
+								<div class="form-group">
+									<x:label>Área</x:label>
+									<combobox width="100%"
+										id="cbx_area" constraint="no empty"
+										placeholder="Selecione a Área" readonly="true">
+										<template name="model">
+											<comboitem
+												label="${each.nome}" />
+										</template>
+									</combobox>
+								</div>
+				</div>
+				
+			
+                
+                            	<div zclass="col-lg-6 col-md-6 col-sm-12">
+								<div class="form-group">
+									<x:label>Tipo de Pedido</x:label>
+									<combobox width="100%"
+										id="cbx_tipoPedido" constraint="no empty"
+										placeholder="Selecione o Tipo de Pedido" readonly="true">
+										<template name="model">
+											<comboitem
+												label="${each.nome}" />
+										</template>
+									</combobox>
+								</div>
+				</div>
+				
+				            	<div zclass="col-lg-12 col-md-12 col-sm-12">
+								<div class="form-group">
+									<x:label>Pedido</x:label>
+									<combobox width="100%"
+										id="cbx_pedido" constraint="no empty"
+										placeholder="Selecione o Pedido" readonly="true">
+										<template name="model">
+											<comboitem
+												label="${each.descricao}" />
+										</template>
+									</combobox>
+								</div>
+				</div>  
+                  
+                  <div class="table-responsive mailbox-messages">
+
+                  <tabbox >
+                  	<tabs>
+                  		<tab label="Requisitos" />
+                  		<tab label="Instrumentos Legais"/>
+                  		<tab label="Taxas" />
+                  		<tab label="Etapas" />
+                  	</tabs>
+                  	<tabpanels>
+                  		<tabpanel>
+                  					<listbox id="lbx_requisitos"
+									checkmark="true" rows="10">
+									<listhead>
+										<listheader label="#" width="5%" />
+										<listheader label="Requisito" sort="auto(nome)" />
+										<listheader label="Válido" sort="auto(codigo)"/>
+										<listheader label="Anexado" width="12%" align="center"/>
+										<listheader label="Anexar" width="10%" align="center"/>
+									</listhead>
+									<template name="model">
+										<listitem>
+											<listcell></listcell>
+											<listcell label="${each.tipoRequisito.nome}" />
+											  <listcell label="ND">
+									        </listcell>
+											<listcell >
+											<checkbox></checkbox>
+											</listcell>
+										<listcell>
+												<div align="center">
+											<x:button type="button"
+												class="btn btn-info btn-sm" data-toggle="modal"
+												data-target="#myModal">
+											<x:i class="fa fa-edit"></x:i>
+											</x:button>
+										</div>
+										
+										
+										
+										</listcell>
+												
+										</listitem>
+									</template>
+								</listbox>
+                  		</tabpanel>
+                  		<tabpanel>
+                  					<listbox
+													id="lbx_instLegalPedido" checkmark="true"
+													multiple="true" rows="10"
+													emptyMessage="Sem Dados Registados">
+													<listhead>
+														<listheader
+															width="5%">
+														</listheader>
+														<listheader
+															label="Instrumento Legal"/>
+														<listheader
+															label="Activo" width="7%" align="center"/>
+													</listhead>
+													<template
+														name="model">
+														<listitem>
+															<listcell />
+
+															<listcell
+																label="${each.instrumentoLegal.nome}" />
+															<listcell>
+																<div
+																	align="center">
+																	<button
+																		zclass="btn btn-sm "
+																		visible="${each.pedido.activo=='true' and each.instrumentoLegal.activo=='true'}">
+																		Sim
+																	</button>
+
+																	<button 
+																		zclass="btn btn btn-sm"
+																		visible="${each.pedido.activo=='false' or each.instrumentoLegal.activo=='false'}">
+																		Não
+																	</button>
+																</div>
+															
+															</listcell>
+
+														</listitem>
+													</template>
+												</listbox>
+                  		
+                  		</tabpanel>
+                  		<tabpanel>
+                  		
+                  					<listbox
+													id="lbx_taxasPedido" checkmark="true"
+													multiple="true" rows="10"
+													emptyMessage="Sem Dados Registados" disabled="true">
+													<listhead>
+														<listheader
+															width="5%">
+														</listheader>
+														<listheader
+															label="Taxa"/>
+														<listheader
+															label="Valor"/>
+														<listheader
+															label="Activo" width="10%" align="center"/>
+													</listhead>
+													<template
+														name="model">
+														<listitem>
+															<listcell />
+
+															<listcell
+																label="${each.taxa.nome}" />
+															<listcell
+																label="${each.taxa.valor}Mtn" />
+
+															<listcell>
+																<div
+																	align="center">
+																	<button
+																		zclass="btn btn-sm "
+																		visible="${each.pedido.activo=='true' and each.taxa.activo=='true'}">
+																		Sim
+																	</button>
+
+																	<button
+																		zclass="btn btn btn-sm"
+																		visible="${each.pedido.activo=='false' or each.taxa.activo=='false'}">
+																		Não
+																	</button>
+																</div>
+															
+															</listcell>
+
+														</listitem>
+													</template>
+												</listbox>
+                  		</tabpanel>
+                  		
+                  		<tabpanel>
+                  		
+                  		
+                  					<listbox
+													id="lbx_etapaFluxo" checkmark="true"
+													multiple="true" rows="10"
+													emptyMessage="Sem Dados Registados">
+													<listhead>
+														<listheader
+															width="5%">
+														</listheader>
+														<listheader
+															label="Tarefa"/>
+														<listheader
+															label="Activo" width="10%" align="center"/>
+													</listhead>
+													<template
+														name="model">
+														<listitem>
+															<listcell />
+
+															<listcell
+																label="${each.descricao}" />
+															<listcell>
+																<div
+																	align="center">
+																	<button
+																		zclass="btn btn-sm "
+																		visible="${each.activo=='true'}">
+																		Sim
+																	</button>
+
+																	<button
+																		zclass="btn btn btn-sm"
+																		visible="${each.activo=='false'}">
+																		Não
+																	</button>
+																</div>
+															
+															</listcell>
+
+														</listitem>
+													</template>
+												</listbox>
+                  		</tabpanel>
+                  	</tabpanels>
+                  </tabbox>
+        <x:hr></x:hr>
+		<x:div class="row">
+				<div align="center">
+					<button zclass="btn btn-info btn-sm" label="Próximo"
+						id="btn_proximo" iconSclass="fa fa-chevron-right" dir="reverse">
+
+					</button>
+				</div>
+			</x:div>
+				
+                  </div><!-- /.mail-box-messages -->
+                </div><!-- /.box-body -->
+                <div class="box-footer no-padding">
+                  <div class="mailbox-controls">
+                    <!-- Check all button -->
+                    <x:button class="btn btn-default btn-sm checkbox-toggle"><x:i class="fa fa-square-o"></x:i></x:button>                    
+                    <div class="btn-group">
+                      <x:button class="btn btn-default btn-sm"><x:i class="fa fa-trash-o"></x:i></x:button>
+                      <x:button class="btn btn-default btn-sm"><x:i class="fa fa-reply"></x:i></x:button>
+                      <x:button class="btn btn-default btn-sm"><x:i class="fa fa-share"></x:i></x:button>
+                    </div><!-- /.btn-group -->
+                    <x:button class="btn btn-default btn-sm"><x:i class="fa fa-refresh"></x:i></x:button>
+                    <div class="pull-right">
+                      1-50/200
+                      <div class="btn-group">
+                        <x:button class="btn btn-default btn-sm"><x:i class="fa fa-chevron-left"></x:i></x:button>
+                        <x:button class="btn btn-default btn-sm"><x:i class="fa fa-chevron-right"></x:i></x:button>
+                      </div><!-- /.btn-group -->
+                    </div><!-- /.pull-right -->
+                  </div>
+                </div>
+              </div><!-- /. box -->
+              
+              
+             
+             
+             
+              <div class="box box-primary" id="div_entrada">
+                <div class="box-header with-border">
+                  <x:h3 class="box-title">Caixa de Entrada</x:h3>
+                  <div class="box-tools pull-right">
+                    	<div class="input-group">
+									<textbox zclass="form-control" visible="false"
+										placeholder="Procurar pelo nome do utente ou pedido"
+										id="txb_nomefind" forward="onChanging=onClickProcuarPeticaoUtente()"/>
+											<x:span forward="onClick=onClickProcuarPeticaoUtente()">
+										<!-- <x:i class="fa  fa-search"></x:i> -->
+									</x:span>
+								
+								</div>
+                  </div><!-- /.box-tools -->
+                </div><!-- /.box-header -->
+                
+                <x:hr></x:hr>
+                <div class="box-body no-padding">
+                  <div class="mailbox-controls">
+                    <!-- Check all button -->
+                    <x:button class="btn btn-default btn-sm checkbox-toggle"><x:i class="fa fa-square-o"></x:i></x:button>
+                    <div class="btn-group">
+                      <x:button class="btn btn-default btn-sm"><x:i class="fa fa-trash-o"></x:i></x:button>
+                      <x:button class="btn btn-default btn-sm"><x:i class="fa fa-reply"></x:i></x:button>
+                      <x:button class="btn btn-default btn-sm"><x:i class="fa fa-share"></x:i></x:button>
+                    </div><!-- /.btn-group -->
+                    <x:button class="btn btn-default btn-sm"><x:i class="fa fa-refresh"></x:i></x:button>
+                    <div class="pull-right">
+                      1-50/200
+                      <div class="btn-group">
+                        <x:button class="btn btn-default btn-sm"><x:i class="fa fa-chevron-left"></x:i></x:button>
+                        <x:button class="btn btn-default btn-sm"><x:i class="fa fa-chevron-right"></x:i></x:button>
+                      </div><!-- /.btn-group -->
+                    </div><!-- /.pull-right -->
+                  </div>
+                  
+                  
+                  <div class="table-responsive mailbox-messages">
+                  
+                  
+							<listbox id="lbx_peticao"
+									checkmark="true" rows="10">
+									<listhead>
+										<listheader label="#" width="5%" />
+										<listheader label="Utente" sort="auto(utente)" />
+										<listheader label="Pedido" sort="auto(nome)" />
+										<listheader label="Data e Hora" sort="auto(nome)" />
+										<listheader label="valor" sort="auto(codigo)" width="12%" align="center"/>
+										<listheader label="Estado" width="12%" align="center"/>
+										<listheader label="Localização" width="12%" align="center"/>
+										<listheader label="Acções" width="12%" align="center"/>
+									</listhead>
+									<template name="model">
+										<listitem>
+											<listcell></listcell>
+											<listcell label="${each.utente}" />
+											<listcell label="${each.descricao}" />
+											<listcell label="${each.created}" />
+											<listcell label="${each.valorTaxa}.00Mtn" />
+									       <listcell>
+									         <div align="center">
+									            <button zclass="btn btn-xs btn-warnings" iconSclass="fa  fa-spinner" label="Pendente" visible="${each.validado=='false' and each.recusado=='false'}"/>
+									            <button zclass="btn btn-xs btn-success" iconSclass="fa fa-check" label="Validado" visible="${each.validado=='true'}"/>
+									            <button zclass="btn btn-xs btn-danger"  iconSclass="fa fa-times" label="Recusado" visible="${each.recusado=='true'}"/>
+									         </div>
+									       </listcell>
+									       <listcell label="${each.localizacao}" />
+										<listcell>
+												<div align="center">
+												  <hlayout>
+													<button
+														zclass="btn btn-sm btn-info" iconSclass="fa fa-eye"
+														forward="onClick=onClickDetalhes(${each})" visible="true">
+													</button>
+												  </hlayout>
+												</div>
+										</listcell>
+												
+										</listitem>
+									</template>
+								</listbox>
+
+								<div align="left" class="row"> 
+									<div zclass="box-footer">
+					  <div align="center">
+	                     <button zclass="btn btn-warning btn-sm"
+							type="button" id="btn_imprimir" iconSclass="fa fa-print">
+
+							Imprimir PDF
+						</button>
+					  </div>
+					</div>
+								</div>
+                  </div><!-- /.mail-box-messages -->
+                </div><!-- /.box-body -->
+                <div class="box-footer no-padding">
+                  <div class="mailbox-controls">
+                    <!-- Check all button -->
+                    <x:button class="btn btn-default btn-sm checkbox-toggle"><x:i class="fa fa-square-o"></x:i></x:button>                    
+                    <div class="btn-group">
+                      <x:button class="btn btn-default btn-sm"><x:i class="fa fa-trash-o"></x:i></x:button>
+                      <x:button class="btn btn-default btn-sm"><x:i class="fa fa-reply"></x:i></x:button>
+                      <x:button class="btn btn-default btn-sm"><x:i class="fa fa-share"></x:i></x:button>
+                    </div><!-- /.btn-group -->
+                    <x:button class="btn btn-default btn-sm"><x:i class="fa fa-refresh"></x:i></x:button>
+                    <div class="pull-right">
+                      1-50/200
+                      <div class="btn-group">
+                        <x:button class="btn btn-default btn-sm"><x:i class="fa fa-chevron-left"></x:i></x:button>
+                        <x:button class="btn btn-default btn-sm"><x:i class="fa fa-chevron-right"></x:i></x:button>
+                      </div><!-- /.btn-group -->
+                    </div><!-- /.pull-right -->
+                  </div>
+                </div>
+              </div><!-- /. box -->
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+            </div><!-- /.col -->
+						</div>
+					</div>
+				
+				</div>
+			</div>
+		</div>
+      <include id="inc_main"></include>
+
+	</window>
+</zk>

@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="CicloLocal" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4da41461-b689-4659-93ec-9064c8bf1433">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="imagemLogo" class="java.io.InputStream"/>
+	<parameter name="listNome" class="java.lang.String"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\Users\\CIUEM\\git\\sinamar\\WebContent\\reportParam\\"]]></defaultValueExpression>
+	</parameter>
+	<field name="created" class="java.util.Date"/>
+	<field name="fluxo.nome" class="java.lang.String"/>
+	<field name="descricao" class="java.lang.String"/>
+	<field name="locaisPraticaPedidos" class="java.util.Collection"/>
+	<field name="tipoPedido.nome" class="java.lang.String"/>
+	<field name="admar" class="java.lang.Boolean"/>
+	<field name="activo" class="java.lang.Boolean"/>
+	<field name="rotaPedidos" class="java.util.Collection"/>
+	<field name="pedidoRequisitos" class="java.util.List"/>
+	<field name="taxasPedido" class="java.util.List"/>
+	<field name="pedidosEtapas" class="java.util.List"/>
+	<group name="LocalPrarica">
+		<groupExpression><![CDATA[$F{locaisPraticaPedidos}]]></groupExpression>
+		<groupHeader>
+			<band/>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="82" splitType="Stretch">
+			<image scaleImage="FillFrame" hAlign="Center">
+				<reportElement x="154" y="14" width="71" height="51" uuid="35819b40-9a46-4407-97c6-c336faec5cd6"/>
+				<imageExpression><![CDATA[$P{imagemLogo}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement mode="Opaque" x="154" y="65" width="71" height="17" forecolor="#FFFFFF" backcolor="#000033" uuid="5114dd8f-6b62-40db-8972-f7330f105f9c"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[INAMAR]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="231" y="17" width="163" height="12" forecolor="#000066" uuid="928e3251-647d-44ec-8ca4-5188ec6de609"/>
+				<textElement>
+					<font fontName="Times New Roman" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Av. Ngunhane]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="231" y="32" width="163" height="11" forecolor="#000066" uuid="dc689465-f612-42f4-b002-6285956973f7"/>
+				<textElement>
+					<font fontName="Times New Roman" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Maputo, Moçambique 4317]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="231" y="46" width="163" height="12" forecolor="#000066" uuid="2acf00fb-c555-450e-903e-7405197f93a7"/>
+				<textElement>
+					<font fontName="Times New Roman" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tel: 21 320 552]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="231" y="61" width="163" height="15" forecolor="#000066" uuid="95d15b40-17e1-4fc8-bfb3-1c688b456337"/>
+				<textElement>
+					<font fontName="Times New Roman" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[www.inamar.gov.mz]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="399" y="14" width="238" height="15" forecolor="#3399FF" uuid="b9373626-68fd-4cef-82a1-692a4cf47652"/>
+				<textElement textAlignment="Right">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[INSTITUTO NAÇIONAL DA MARINHA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="399" y="40" width="238" height="8" forecolor="#333333" uuid="4710221b-0fc5-4f0b-8268-3b205f757be1"/>
+				<textElement textAlignment="Right">
+					<font fontName="Times New Roman" size="6" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Contactos: Telefone: +258848996037, email : ecampus@uem.mz]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="511" y="57" width="126" height="8" forecolor="#333333" uuid="2bbc512f-92e0-45ed-a2ea-777766333c78"/>
+				<textElement textAlignment="Right">
+					<font fontName="Times New Roman" size="6" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Processado por Computador]]></text>
+			</staticText>
+			<textField pattern="d/M/yyyy">
+				<reportElement x="532" y="69" width="105" height="8" forecolor="#333333" backcolor="#000000" uuid="c9d11ff1-745e-45de-83a0-2c476ba95ca0"/>
+				<textElement textAlignment="Right">
+					<font fontName="Times New Roman" size="6" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="399" y="30" width="238" height="8" forecolor="#333333" uuid="e09620fc-b5bf-4442-88e1-f4107d608ef5"/>
+				<textElement textAlignment="Right">
+					<font fontName="Times New Roman" size="6" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Produzido por UEM(eCampus.uem.mz)]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="51" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="0" y="14" width="802" height="13" forecolor="#FFFFFF" backcolor="#CCCCFF" uuid="34810944-ae52-4bd8-a8c6-005cc32ff135"/>
+			</frame>
+			<line>
+				<reportElement x="0" y="29" width="802" height="1" uuid="ef78912e-9589-48ab-9a28-0228be92807c"/>
+				<graphicElement>
+					<pen lineColor="#CCCCCC"/>
+				</graphicElement>
+			</line>
+			<rectangle>
+				<reportElement x="0" y="32" width="802" height="13" backcolor="#CCCCCC" uuid="da67abc4-c4a1-4d1f-a7c7-94e4afba51a6"/>
+				<graphicElement>
+					<pen lineStyle="Solid" lineColor="#CCCCCC"/>
+				</graphicElement>
+			</rectangle>
+			<line>
+				<reportElement x="0" y="47" width="802" height="1" uuid="54a5b40d-2189-4efa-abd5-11f2cac67396"/>
+				<graphicElement>
+					<pen lineColor="#CCCCCC"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement x="2" y="32" width="800" height="12" uuid="05764eab-26cd-4d38-833f-fc4ec1dd8f06"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{listNome}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="2" y="14" width="800" height="13" uuid="5c4dec59-dabe-45b6-ac0f-b0774f022d9c"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[FICHA DE PEDIDO]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="127" splitType="Stretch">
+			<rectangle>
+				<reportElement x="573" y="80" width="229" height="19" backcolor="#CCCCCC" uuid="0832caa5-ba58-4c4b-a528-d4efb74947b9"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="234" y="80" width="335" height="19" backcolor="#CCCCCC" uuid="477377eb-9781-4cdf-9f4a-ff6f99e9247e"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="2" y="80" width="227" height="19" backcolor="#CCCCCC" uuid="5d1f4be5-f597-4910-9927-237b3ac5fb8f"/>
+			</rectangle>
+			<line>
+				<reportElement x="1" y="2" width="802" height="1" uuid="e5376b3a-6b49-4fcf-a6ec-09925aec0582"/>
+				<graphicElement>
+					<pen lineWidth="1.5"/>
+				</graphicElement>
+			</line>
+			<rectangle>
+				<reportElement x="243" y="24" width="100" height="15" uuid="04f4b384-ba6a-4090-b28b-9a6514ca484a"/>
+			</rectangle>
+			<line>
+				<reportElement x="1" y="20" width="801" height="1" uuid="9571c0b2-8aa5-4861-98d2-fefc67c1a7f2"/>
+				<graphicElement>
+					<pen lineWidth="1.5"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="647" y="58" width="150" height="15" uuid="36fad1ad-e158-4e34-ac27-5a7bda62411d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Unidade: Mil Meticais]]></text>
+			</staticText>
+			<line>
+				<reportElement x="1" y="2" width="1" height="76" uuid="70ed17c2-970c-419b-825d-a559f874146d"/>
+				<graphicElement>
+					<pen lineWidth="1.5"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="11" y="58" width="218" height="15" uuid="6976f413-c7f4-4248-8029-b1ca354b6e37"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[III. Descrição]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="243" y="58" width="384" height="15" uuid="bb4bf70e-4184-49b1-a88e-61f73bf01fce"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="11" y="24" width="218" height="15" uuid="6387f203-5e01-492d-93d0-60dd73f80f8d"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[I.Activo?]]></text>
+			</staticText>
+			<line>
+				<reportElement x="2" y="77" width="800" height="1" uuid="c5ba76f5-0ca6-4a44-8ddf-41704b66c8d4"/>
+				<graphicElement>
+					<pen lineWidth="1.5"/>
+				</graphicElement>
+			</line>
+			<rectangle>
+				<reportElement x="243" y="41" width="384" height="15" uuid="5fe9490c-c7c9-4dd0-a76b-45db8e850199"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="647" y="58" width="150" height="15" uuid="b854b84a-bac7-4277-8ab4-157567b78a3f"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="11" y="41" width="218" height="15" uuid="ec33e564-de9a-45c8-9208-5e03534d6120"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[II. Fluxo]]></text>
+			</staticText>
+			<line>
+				<reportElement x="803" y="2" width="1" height="76" uuid="7281d20a-1173-4b71-a5ad-86d72d3e470f"/>
+				<graphicElement>
+					<pen lineWidth="1.5"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement x="248" y="24" width="95" height="15" uuid="c8bebf2c-8687-4f5f-a2ff-7d488723dcba"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{activo}.equals( Boolean.TRUE) ? "SIM" : "NÃO"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="647" y="58" width="150" height="15" uuid="5afabd97-3a29-493d-aaaa-b6702c4ae2ec"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{created}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement x="527" y="24" width="100" height="15" uuid="6055bc8a-4680-49d3-8ac6-72cf225b9169"/>
+			</rectangle>
+			<textField>
+				<reportElement x="527" y="24" width="100" height="15" uuid="e84951d8-53d1-4304-a4ab-27cf85d78ad2"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{admar}.equals( Boolean.TRUE) ? "PROVINCIAL" : "CENTRAL"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="248" y="42" width="379" height="12" uuid="b93a41bf-ca2b-4103-b3c5-06704e053905"/>
+				<textElement>
+					<font fontName="Times New Roman" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fluxo.nome}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="248" y="59" width="379" height="14" uuid="f96307b0-7a8d-46fe-9367-9457573daacf"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{descricao}]]></textFieldExpression>
+			</textField>
+			<subreport>
+				<reportElement x="0" y="101" width="231" height="23" uuid="ea8f2481-a5ca-4fa3-b3ac-47a5b4f8c48f"/>
+				<subreportParameter name="SUBREPORT_DIR"/>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{pedidoRequisitos})]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "/subReportRequisitoPedido.jasper"]]></subreportExpression>
+			</subreport>
+			<staticText>
+				<reportElement x="1" y="80" width="230" height="18" uuid="4e1e7130-aa8f-4e5b-83c5-dca45b40b6f5"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[REQUISITOS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="234" y="80" width="335" height="18" uuid="018b3bfd-f0d5-4378-bc49-f23078ace08e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[INSTRUMENTOS LEGAIS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="573" y="80" width="231" height="18" uuid="2dd94560-c9ed-4472-9ffd-beee117a5869"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TAXAS]]></text>
+			</staticText>
+			<subreport>
+				<reportElement x="573" y="101" width="231" height="23" uuid="48a4c127-c8ab-4f73-8b68-6482655aa361"/>
+				<subreportParameter name="SUBREPORT_DIR"/>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{taxasPedido})]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "/subReporttaxasPedido.jasper"]]></subreportExpression>
+			</subreport>
+			<subreport>
+				<reportElement x="234" y="101" width="335" height="23" uuid="f7a88a8a-35f0-4bfc-91cb-710bbd29c8e8"/>
+				<subreportParameter name="SUBREPORT_DIR"/>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{pedidosEtapas})]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "/subReporInstrumentoLegalPedido.jasper"]]></subreportExpression>
+			</subreport>
+			<textField>
+				<reportElement x="2" y="3" width="802" height="17" uuid="de3af35c-85c8-494c-831c-f81161b0e61b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{descricao}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="27" splitType="Stretch">
+			<line>
+				<reportElement x="11" y="3" width="532" height="1" forecolor="#CCCCCC" uuid="532c6535-c387-448f-a7cc-5644be5ade5a"/>
+				<graphicElement>
+					<pen lineColor="#CCCCCC"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="392" y="4" width="126" height="8" forecolor="#333333" uuid="7d334232-c2c9-4b1c-a09e-42678928eb9f"/>
+				<textElement textAlignment="Right">
+					<font fontName="Times New Roman" size="6" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Processado por Computador]]></text>
+			</staticText>
+			<textField pattern="d/M/yyyy">
+				<reportElement x="413" y="14" width="105" height="8" forecolor="#333333" backcolor="#000000" uuid="d88452f1-2ad5-4946-afb1-f59f23b1d038"/>
+				<textElement textAlignment="Right">
+					<font fontName="Times New Roman" size="6" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="38" y="14" width="210" height="8" forecolor="#333333" uuid="904fb2ae-cca4-4814-909e-20caaf8abae4"/>
+				<textElement>
+					<font fontName="Times New Roman" size="6" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Contactos: Telefone: +258848996037, email : ecampus@uem.mz]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="38" y="6" width="210" height="8" forecolor="#333333" uuid="05673257-25f7-41ca-895c-79b92be22e43"/>
+				<textElement>
+					<font fontName="Times New Roman" size="6" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Produzido por UEM(eCampus.uem.mz)]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="15" splitType="Stretch"/>
+	</summary>
+</jasperReport>

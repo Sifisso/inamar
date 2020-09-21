@@ -1,0 +1,194 @@
+<zk xmlns:x="xhtml" xmlns:zk="zk">
+
+<style>
+.z-notification .z-notification-content {
+background: none repeat scroll 0 center transparent;
+font-size: 15px;
+font-weight: bolder;
+margin: 0 !important;
+overflow: hidden;
+background-color: blue;
+color: white;
+width: 300px;
+position: center;
+min-height: 53px;
+</style>
+
+	<window apply="mz.ciuem.inamar.embarcacao.controller.EmbarcacaoImportadaCtrl" id="win_embarcacaoImportada">
+
+		<div class="row" id="div_content_out">
+			<div zclass="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+				<div zclass="box box-default">
+						<div zclass="box-header" align="center">
+						<x:label class="box-title"
+							style="font-family:Georgia,serif;color:#4E443C; font-variant: small-caps; text-transform: none; font-weight: 100; margin-bottom: 0;">
+							PEDIDO DE REGISTO DE UMA EMBARCAÇÃO IMPORTADA
+						</x:label>
+					</div>
+					<div zclass="box-body" id="div_dados">
+
+						<div class="row">
+							<div zclass="col-lg-6 col-md-6 col-sm-12">
+									<div class="form-group">
+									<x:label>País de importação</x:label>
+									<combobox width="100%"
+										id="cbx_pais" constraint="no empty"
+										placeholder="Selecione o País" readonly="true">
+										<template name="model">
+											<comboitem
+												label="${each.designacao}" />
+										</template>
+									</combobox>
+								</div>
+							</div>
+						
+							<div zclass="col-lg-6 col-md-6 col-sm-12">
+								<div class="form-group">
+									<x:label>Classe da Embarcação</x:label>
+									<combobox width="100%"
+										id="cbx_classeEmbarcacao" constraint="no empty"
+										placeholder="Selecione a Classe da Embarcação" readonly="true">
+										<template name="model">
+											<comboitem
+												label="${each.nome}" />
+										</template>
+									</combobox>
+								</div>
+							</div>
+							
+						<div zclass="col-lg-6 col-md-6 col-sm-12">
+								<div class="form-group">
+									<x:label>Destinada ao Serviço de:</x:label>
+									<combobox width="100%"
+										id="cbx_servico" constraint="no empty"
+										placeholder="Selecione o Serviço de Destino" readonly="true">
+										<template name="model">
+											<comboitem
+												label="${each.nome}" />
+										</template>
+									</combobox>
+								</div>
+							</div>
+							
+						<div zclass="col-lg-6 col-md-6 col-sm-12">
+								<div class="form-group">
+								<x:label>Tipo de Importação</x:label>
+									<hlayout style="margin-top:5px">
+									  <radiogroup>
+									     <radio label="Temporária" id="rdx_temporaria"/>
+									     <radio label="Definitiva" id="rdx_definitiva" style="margin-left:40px" checked="true"/>
+									  </radiogroup>
+									</hlayout>
+								</div>
+						</div>
+							
+							<div zclass="col-lg-12 col-md-12 col-sm-12">
+							<div class="form-group">
+									<x:label>Nova denominação</x:label>
+									<div class="input-group">
+									<textbox zclass="form-control"
+										placeholder="Denominação"
+										constraint="no empty : Não pode ser vazio nem conter apenas espaços em branco!"
+										id="tbx_denominacao" />
+								  <x:span class="input-group-addon"><x:i class="fa fa-edit"></x:i></x:span>
+										</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div zclass="box-footer" align="center"
+						style="margin-right:10px">
+						<button zclass="btn btn-info btn-sm" label="Finalizar" onClick="@command('registarExpediente')"  forward="onClick=onClick$btn_prevalidar()"
+						id="btn_voltar" iconSclass="fa fa-chevron-right" dir="reverse">
+					    </button>
+					</div>
+					
+					
+					
+					
+					
+												<!-- Modal Candidato-->
+					<div  id="myModal" visible="false">
+						<x:div class="modal-dialog" role="document">
+							<div class="modal-content">
+								<div class="modal-header">
+									<x:button type="button"
+										class="close" data-dismiss="modal" aria-label="Close">
+										x
+									</x:button>
+									<x:h4 class="modal-title"
+										id="myModalLabel">
+										Parabéns
+									</x:h4>
+								</div>
+								<div class="modal-body"
+									id="div_utente" align="center">
+									<x:h2 style="color:green">
+										A Operação foi efectuada com Sucesso.
+									</x:h2>
+									<x:br></x:br>
+									<x:strong style="color:black">
+								Anote os seu Dados de Acesso no Sistema.
+								<x:br/>
+								Caso não se recorde, vá para recuperar Senha.
+									</x:strong>
+									<x:br></x:br>
+									<x:br></x:br>
+									<div class="form-group">
+        								 <x:label for="exampleInputEmail1" style="color:red">Utilizador</x:label>
+        						         <textbox zclass="form-control" placeholder="username" id="tbx_user" />  
+										</div>
+										
+										<div class="form-group">
+        								 <x:label for="exampleInputEmail1" style="color:red">Senha</x:label>
+        						         <textbox zclass="form-control" placeholder="password" id="tbx_pass" />  
+										</div>
+
+								</div>
+								
+								
+							<div class="modal-body"
+									id="div_secretario" align="center" visible="false">
+									<x:h2 style="color:green">
+									Petição actualizada com Sucesso.
+									</x:h2>
+									<x:br></x:br>
+								</div>
+	                   <div visible="true" id="div_terminar" align="center">
+					 	<button zclass="btn btn-warning btn-sm" label="Ver Factura"
+						id="btn_terminar" iconSclass="fa fa-print">
+					</button>
+					
+					  <button  zclass="btn btn-success btn-sm" label="Pré-Validar Petição"
+						id="btn_prevalidar" iconSclass="fa fa-check" visible="false">
+					</button>
+					
+					 <button zclass="btn btn-success btn-sm" label="Validar Petição"
+						id="btn_validar" iconSclass="fa fa-check">
+					</button>
+					
+						<button zclass="btn btn-danger btn-sm" label="Recusar Petição"
+						id="btn_recusar" iconSclass="fa fa-times">
+					</button>
+											
+					    <button zclass="btn btn-info btn-sm" label="Voltar"
+						id="btn_voltarUtente" iconSclass="fa fa-chevron-right" dir="reverse" onClick="@command('registarExpedienteUtente')" visible="false">
+						</button>
+						
+<!-- 						<button zclass="btn btn-info btn-sm" label="Voltar" -->
+<!-- 						id="btn_voltar" iconSclass="fa fa-chevron-right" dir="reverse" onClick="@command('registarExpediente')" visible="false"> -->
+<!-- 						</button> -->
+					</div>
+					<x:hr/>
+							</div>
+						</x:div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+<include id="inc_main"></include>
+
+	</window>
+</zk>

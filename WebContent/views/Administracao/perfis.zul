@@ -1,0 +1,77 @@
+<?page title="Registar Perfis" contentType="text/html;charset=UTF-8"?>
+<zk xmlns:x="xhtml" xmlns:zk="zk">
+	<?component name="dualListBox" extends="div" class="mz.ciuem.inamar.comps.DualListbox"?>
+
+	<window apply="mz.ciuem.inamar.controller.UserRoleCtrl">
+		<div zclass="col-md-12">
+			<div zclass="box box-primary">
+				<div zclass="box-header">
+					<x:h3 class="box-title">
+						Perfis de Utilizadoress
+					</x:h3>
+				</div>
+				<div>
+					<div zclass="box-body">
+						<div class="form-group">
+							<x:label>Perfil</x:label>
+							<textbox zclass="form-control"
+								placeholder="descricao do perfil"
+								constraint="no empty : Não pode ser vazio nem conter apenas espaços em branco!"
+								id="txb_perfil" />
+						</div>
+						<div class="form-group">
+							<x:label>Permissões</x:label>
+							 <dualListBox id="dual_direitos"></dualListBox>
+						</div>
+						<div zclass="box-footer">
+							<div align="right">
+								<button zclass="btn btn-danger btn-sm"
+									type="button" id="btn_cancelar" iconSclass="fa fa-undo">
+									Cancelar
+								</button>
+								<label width="5%"></label>
+								<button zclass="btn btn-success btn-sm"
+									type="button" id="btn_gravar"
+									iconSclass="fa fa-save">
+									Gravar
+								</button>
+								<button zclass="btn btn-info btn-sm"
+									type="button" visible="false" 
+									id="btn_actualizar" iconSclass="fa fa-refresh">
+									Actualizar
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div zclass="col-md-12">
+			<div zclass="box box-success">
+				<div zclass="box-header">
+					<x:h3 class="box-title">Perfis Registados</x:h3>
+				</div>
+				<div>
+					<div zclass="box-body">
+						<listbox id="lbx_perfis" checkmark="true">
+							<listhead>
+								<listheader width="5%"></listheader>
+								<listheader label="Perfil" width="50%" sort="auto(descricao)" />
+								<listheader label="Tipo" sort="auto(designacao)" />
+							</listhead>
+							<template name="model">
+								<listitem>
+									<listcell></listcell>
+									<listcell label="${each.rolename}" />
+									<listcell label="${each.type}" />
+								</listitem>
+							</template>
+						</listbox>
+					</div>
+					<div zclass="box-footer">
+					</div>
+				</div>
+			</div>
+		</div>
+	</window>
+</zk>

@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="subReport_planoOrcamental" pageWidth="480" pageHeight="850" columnWidth="480" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="5f64751b-4450-4eb9-9a80-3fc765ac7416">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\Users\\CIUEM\\git\\sinamar\\WebContent\\reportParam\\"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="id" class="java.lang.Long"/>
+	<field name="created" class="java.util.Date"/>
+	<field name="localPratica.nome" class="java.lang.String"/>
+	<field name="localPratica.activo" class="java.lang.Boolean"/>
+	<variable name="subTotal" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="1" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="15" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="-1" width="480" height="16" forecolor="#FFFFFF" backcolor="#CCCCFF" uuid="4129e463-4b30-463a-9d02-d3339b663007"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="11" y="0" width="469" height="15" uuid="c38293d3-688d-42bf-8028-44617e2ceefc"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Locais de Prática]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="15" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="480" height="15" forecolor="#FFFFFF" backcolor="#CCCCCC" uuid="812635f8-8e24-4af3-a5b4-46b9e256c69b"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="0" y="0" width="28" height="15" uuid="51dcd08d-10ef-409e-b4c8-eb0202559228"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[#]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="28" y="0" width="336" height="15" uuid="5d04c77f-9067-457e-b90d-3a6f5fab1c8a"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Descrição]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="364" y="0" width="64" height="15" uuid="ca4e3000-1bc9-4098-9bef-f5d7d44c85ac"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Activa?]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="428" y="0" width="52" height="15" uuid="4a3c726a-d9f8-44f4-a529-3904dd0927fd"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Data]]></text>
+			</staticText>
+			<line>
+				<reportElement x="28" y="0" width="1" height="15" uuid="5e5a7bb7-fedd-46d2-9b99-d8e9d93a46ee"/>
+			</line>
+			<line>
+				<reportElement x="364" y="0" width="1" height="15" uuid="46e4f4d4-2abb-413f-8428-0410cb994707"/>
+			</line>
+			<line>
+				<reportElement x="428" y="0" width="1" height="15" uuid="75f15fd9-8aba-4a31-9eea-bff61b554d35"/>
+			</line>
+			<line>
+				<reportElement x="0" y="-1" width="480" height="1" uuid="f7df2a56-2a08-4fb6-8f1b-7b1011876910"/>
+			</line>
+			<line>
+				<reportElement x="0" y="14" width="480" height="1" uuid="306999c7-0272-4713-ab91-6b31b1d66ae2"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="18" splitType="Stretch">
+			<textField>
+				<reportElement positionType="Float" x="0" y="1" width="28" height="17" uuid="03bc6197-82dd-413d-890e-f9f140167ecd"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="428" y="1" width="52" height="17" uuid="8a5ef36d-bd4c-476e-96b5-a30be43d54c5"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{created}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="364" y="1" width="64" height="17" uuid="e23844ee-56b2-4d63-8482-ea97dd7a0a75"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{localPratica.activo}.equals(Boolean.TRUE) ? "SIM" : "NÃO"
+]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="28" y="0" width="336" height="18" uuid="4fe45706-e822-45f7-80c7-138b7a6540a6"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{localPratica.nome}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="15" width="480" height="1" uuid="47e6fda8-f78d-41cc-9aef-91d6d82738b5"/>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

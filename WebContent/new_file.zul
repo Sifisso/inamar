@@ -1,0 +1,227 @@
+<?link rel="shortcut icon" type="image/x-icon" href="img/rh.ico"?>
+<?link rel="icon" type="image/x-icon" href="img/rh.ico"?>
+<?link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" ?>
+<?link href="css/font-awesome.min.css" rel="stylesheet" type="text/css" ?>
+<?link href="css/AdminLTE.css" rel="stylesheet" type="text/css" ?>
+<?link href="css/inoLab.css" rel="stylesheet" type="text/css" ?>
+<?link href="css/zk.wcs" rel="stylesheet" type="text/css" ?>
+
+<?link href="css/metro/style.css" rel="stylesheet" type="text/css" ?>
+<?link href="css/metro/style-responsive.css" rel="stylesheet" type="text/css" ?>
+<?link href="css/metro/style-default.css" rel="stylesheet" type="text/css" ?>
+
+
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
+<?page title="${c:l('title')} - Login"?>
+<zk xmlns:x="xhtml" xmlns:zk="zk">
+	<style>
+		h1 { color: #7c795d; font-family: 'Trocchi', serif; font-size:
+		45px; font-weight: normal; line-height: 48px; margin: 0; }
+
+
+		h2 { color: #7c795d; font-family: 'Source Sans Pro', sans-serif;
+		font-size: 28px; font-weight: 400; line-height: 32px; margin: 0
+		0 24px; }
+
+
+		.subheader { font-size: 26px; font-weight: 300; color: #ffcc66;
+		margin: 0 0 24px; }
+
+
+		p { color: #4c4a37; font-family: 'Source Sans Pro', sans-serif;
+		font-size: 18px; line-height: 32px; margin: 0 0 24px; }
+
+
+		a { color: #ff9900; background: #fff4a3; text-decoration: none;
+		}
+
+
+		a:hover { color: #ffcc66 }
+
+.head{
+
+background-color: #e6e6e6;
+color:green;
+}
+
+
+
+
+	</style>
+	
+
+	<window >
+	
+		<zscript>
+		
+		
+		public void removeSessionVariables(){
+		
+		Executions.getCurrent().getDesktop().getSession().removeAttribute("ss_utilizador");
+		Executions.getCurrent().getDesktop().getSession().removeAttribute("ss_candidato");
+	}
+	
+	public void criarConta(){
+	    removeSessionVariables();
+	
+		content.detach();
+		inc_main.setSrc("/views/Pre-registo/DadosBasicos.zul");
+	}
+	
+		public void recuDados(){
+	    removeSessionVariables();
+		content.detach();
+		inc_main.setSrc("/views/Pre-registo/recuperar_dados_acesso.zul");
+	}
+	</zscript>
+
+		<div id="content" style="background-color: #f4f4f4">
+
+
+			<div class="row"
+				style="/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+23,83c783+28,83c783+28,83c783+28,83c783+28,83c783+28,52b152+37,008a00+47,005700+69,002400+100 */
+background: #ffffff; /* Old browsers */
+background: -moz-linear-gradient(-45deg,  #ffffff 23%, #83c783 28%, #83c783 28%, #83c783 28%, #83c783 28%, #83c783 28%, #52b152 37%, #008a00 47%, #005700 69%, #002400 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, right bottom, color-stop(23%,#ffffff), color-stop(28%,#83c783), color-stop(28%,#83c783), color-stop(28%,#83c783), color-stop(28%,#83c783), color-stop(28%,#83c783), color-stop(37%,#52b152), color-stop(47%,#008a00), color-stop(69%,#005700), color-stop(100%,#002400)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(-45deg,  #ffffff 23%,#83c783 28%,#83c783 28%,#83c783 28%,#83c783 28%,#83c783 28%,#52b152 37%,#008a00 47%,#005700 69%,#002400 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(-45deg,  #ffffff 23%,#83c783 28%,#83c783 28%,#83c783 28%,#83c783 28%,#83c783 28%,#52b152 37%,#008a00 47%,#005700 69%,#002400 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(-45deg,  #ffffff 23%,#83c783 28%,#83c783 28%,#83c783 28%,#83c783 28%,#83c783 28%,#52b152 37%,#008a00 47%,#005700 69%,#002400 100%); /* IE10+ */
+background: linear-gradient(135deg,  #ffffff 23%,#83c783 28%,#83c783 28%,#83c783 28%,#83c783 28%,#83c783 28%,#52b152 37%,#008a00 47%,#005700 69%,#002400 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#002400',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
+
+">
+				<div class="col-lg-4 col-md-4 col-sm-6 col-xs-6"
+					align="center">
+					<image src="/img/uem_md.PNG" width="12%" height="12%" style="margin-top:-1%"></image>
+				</div>
+
+				
+				<div class="col-md-8 col-lg-8 col-sm-6 col-xs-6">
+					<!--  <x:h1 class="subheader" style="color:#ffffff; margin-top:3%; margin-left:-23%; position:absolute; ">
+						Direcção Pedagógica
+					</x:h1>-->
+					<image src="/img/dp.png"  style="margin-top:1%; margin-left:-34%; position:absolute; "></image>
+				</div>
+				
+				
+			</div>
+
+			<div class="row">
+				<div class="box box-success"></div>
+			</div>
+			
+			
+			
+			
+        <div class="row" align="center" style=" margin-top:2%" >
+			<x:form id="f" name="f" action="j_spring_security_check"
+				method="POST" sclass="form-signin">
+				<div class="" style="background-image:url('img/bg2.png')" align="center" width="25%">
+					
+
+
+                  <div width="" align="center" >
+                   <div class="row">
+					<div class="col-md-12 col-lg-12 col-xs-12 col-sm-12">
+						<div style="margin-left:-4.5%" >
+							
+							<div
+								sclass="alert alert-default alert-dismissable"
+								if="${empty param.login_error and empty param.loggedout}">
+								<x:h4 class="head" style="color:green">Autentique com seu utilizador e senha!</x:h4>
+							</div>
+							<div
+								sclass="alert alert-warning alert-dismissable"
+								if="${not empty param.loggedout}">
+								<label
+									value="Você foi desconectado com êxito.">
+								</label>
+							</div>
+							<div if="${not empty param.login_error}"
+								sclass="alert alert-danger alert-dismissable">
+								<label
+									value="Utilizador ou Senha errada. Tente de novo.">
+								</label>
+							</div>
+						</div>
+						<include src="craptcha.zul"></include>
+					</div>
+					</div>
+					   
+					   <separator></separator>
+					    <div class="row">
+					   <div class="col-md-12 col-lg-12 col-xs-12 col-sm-12" >
+					   <div zclass="form-group" width="40%">
+					    <image src="/img/graduation_hat2.png"></image>
+					    </div>
+				     	</div>
+				     	</div>
+						
+                       <div class="row">
+						<div class="col-md-12 col-lg-12 col-xs-12 col-sm-12">
+							<div zclass="form-group" align="center" width="90%">
+								<x:label>Código:</x:label>
+								<textbox zclass="form-control"
+									name="j_username" id="username" placeholder="Utilizador"/>
+							</div>
+							<div zclass="form-group" align="center" width="90%">
+								<x:label>Senha:</x:label>
+								<textbox zclass="form-control"
+									name="j_password" id="password" placeholder="Senha"
+									type="password" />
+							</div>
+							<div zclass="form-group" align="center" width="90%">
+								<button id="btn_login"
+									zclass="btn btn-success btn-flat pull-right" type="submit"
+									iconSclass="fa fa-unlock" width="100%">
+									Entrar
+								</button>
+							</div>
+						</div>
+						</div>
+						<separator></separator>
+						<div class="row">
+						<div align="center">
+						 <button zclass="btn btn-link btn-sm pull-right " type="button" id="btn_recuperarDados" iconSclass="fa fa-refresh" style="margin-right:9%" onClick="recuDados()">Recuperar dados de acesso</button>
+		
+						 </div>
+						</div>
+						<separator></separator>
+						<separator></separator>
+						<separator></separator>
+						
+				
+					
+					</div>
+					
+				</div>
+				        <separator></separator>
+						<separator></separator>
+						<separator></separator>
+				<div align="center">
+					<button zclass="btn btn-link btn-sm" type="button" id="btn_criarConta" iconSclass="fa fa-pencil-square-o" style="border-radius: 59px;"   onClick="criarConta()">Criar Conta</button>
+				</div>
+				   <separator></separator>
+						<separator></separator>
+						<separator></separator> 
+					    <separator></separator>
+						<separator></separator>
+						<separator></separator>   
+						<separator></separator>
+						<separator></separator>
+						<separator></separator>
+			</x:form>
+			
+			</div>
+			
+			
+			
+		</div>
+		<div class="row">
+				<div class="box box-success"></div>
+			</div>
+		<include id="inc_main"></include>
+	</window>
+
+</zk>

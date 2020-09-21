@@ -1,0 +1,433 @@
+<zk xmlns:x="xhtml" xmlns:zk="zk">
+	<window apply="mz.ciuem.inamar.controller.DelegacaoCtrl" id="win_regDelegacao">
+		<div class="row">
+			<div zclass="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+				<div zclass="box box-default">
+					<div zclass="box-header">
+									<div zclass="box-body">
+		                        <div zclass="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="background-color:#3c8dbc">
+		                            <div zclass="col-md-4">
+		                            </div>
+		                            <div zclass="col-md-4">
+		                            <div align="center">
+		                            <label id="lbl_descricao" style="color:white" class="box-title"></label>
+		                            </div>
+		                            </div>
+		                            <div zclass="col-md-4">
+		                          
+		                            	<x:li class="pull-right" style="color:white; margin-top:8px">
+		                            		<x:a href="#"
+		                            			onClick="@command('registarIntituicao')"
+		                            			class="text-muted" style="color:white">Voltar
+		                            			<x:i
+		                            				class="fa fa-mail-reply-all" style="color:white">
+		                            			</x:i>
+		                            		</x:a>
+		                            	</x:li>
+		                            </div>
+								</div>
+								</div>
+													<x:label class="box-title"
+							style="font-family:Georgia,serif;color:#4E443C; font-variant: small-caps; text-transform: none; font-weight: 100; margin-bottom: 0;">
+							Delegações
+						</x:label>
+						
+					</div>
+					<div zclass="box-body">
+						<div class="row">
+							<div zclass="col-lg-10 col-md-10 col-sm-12 col-xs-12">
+							
+							
+							<groupbox> 
+							<caption>Pesquisa</caption>
+								<div zclass="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+								<div class="input-group">
+									<textbox zclass="form-control"
+										placeholder="Procurar pelo nome da delegacao"
+										id="txb_nomefind" />
+											<x:span class="input-group-addon" forward="onClick=onClickprcurar()">
+										<x:i class="fa  fa-search"></x:i>
+									</x:span>
+								
+								</div>
+							</div>
+							
+								<div zclass="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+								<div class="input-group">
+								<combobox width="100%" id="cbx_provinciaFind"
+									placeholder="Selecione a Provincia" readonly="true"
+									 forward="onSelect=onClickprcurar()">
+									<template name="model">
+										<comboitem
+											label="${each.designacao}" />
+									</template>
+								</combobox>
+								
+								</div>
+							</div>
+							
+							</groupbox>
+							
+							
+							<div zclass="col-lg-2 col-md-2 col-sm-12 col-xs-12" visible="false">
+								<button zclass="btn btn-info btn-sm "
+								type="button" id="btn_procurar" iconSclass="fa  fa-search" width="" forward="onClick=onClickprcurar()">
+								Procurar
+							</button>
+							</div>
+
+							</div>
+							
+							<div zclass="col-lg-2 col-md-2 col-sm-12 col-xs-12" align="left" style="margin-left:-20px; margin-top:16px">
+								<x:a class="btn btn-app"
+									data-toggle="modal" data-target="#myModal" style="width:100%">
+									<x:i class="fa fa-plus"></x:i>
+									Adicionar Nova
+								</x:a>
+							</div>
+						</div>
+                        
+                        <x:hr/>
+
+						<div class="row">
+							<div
+								zclass="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+								<listbox id="lbx_delegacao"
+									checkmark="true" rows="10">
+									<listhead>
+										<listheader label="#"
+											width="5%" />
+										<listheader label="Codigo"
+											sort="auto(codigo)" />
+										<listheader label="Nome"
+											sort="auto(nome)" />
+										<listheader label="Entidade"
+											sort="auto(entidade)" width="12%"/>
+										<listheader label="Provincia" width="17%"/>
+										<listheader label="D. de Serviço" width="10%" align="center"/>
+										<listheader label="Departamentos" width="10%" align="center"/>
+										<listheader label="Editar" width="10%" align="center"/>
+									</listhead>
+									<template name="model">
+										<listitem>
+											<listcell></listcell>
+											<listcell 
+													label="${each.codigo}"
+												/>
+											<listcell
+												label="${each.nome}" />
+											<listcell label="${each.entidade}"></listcell>
+												<listcell
+												label="${each.provincia.designacao}" />
+									       <listcell>
+										   <div align="center">
+											<button zclass="btn btn-sm "
+												visible="${each.admar=='true'}">
+												PROVINCIAL
+											</button>
+
+											<button
+												zclass="btn btn btn-sm "
+												visible="${each.admar=='false'}">
+												CENTRAL
+											</button>
+										  </div>
+
+									     </listcell>
+										 <listcell>
+										 		<div align="center">
+									<button
+											zclass="btn btn-sm btn-info"
+											iconSclass="fa fa-gears"
+											style="background-color:#00dddd"
+										     forward="onClick=onClickConfig(${each})">
+										</button>
+										</div>
+										 
+										 </listcell>
+										<listcell>
+												<div align="center">
+											<x:button type="button"
+												class="btn btn-info btn-sm" data-toggle="modal"
+												data-target="#myModal">
+											<x:i class="fa fa-edit"></x:i>
+											</x:button>
+										</div>
+										
+										
+										</listcell>
+												
+										</listitem>
+									</template>
+								</listbox>
+							</div>
+						</div>
+
+
+					</div>
+					<div zclass="box-footer">
+					  <div align="center">
+	                     <button zclass="btn btn-warning btn-sm"
+							type="button" id="btn_imprimir" iconSclass="fa fa-print">
+
+							Imprimir PDF
+						</button>
+					  </div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+
+
+
+
+		<!-- Modal Candidato-->
+		<x:div class="modal fade" id="myModal" tabindex="-1"
+			role="dialog" aria-labelledby="myModalLabel">
+			<x:div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<x:button type="button" class="close"
+							data-dismiss="modal" aria-label="Close">
+							x
+						</x:button>
+						<x:h4 class="modal-title" id="myModalLabel">
+							Nova Delegação
+						</x:h4>
+					</div>
+					<div class="modal-body">
+								<div zclass="box-header">
+									<div zclass="box-body">
+		                        <div zclass="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="background-color:#3c8dbc">
+		                            <div zclass="col-md-2">
+		                            </div>
+		                            <div zclass="col-md-8">
+		                            <div align="center">
+		                            <label id="lbl_descricao2" style="color:white" class="box-title"></label>
+		                            </div>
+		                            </div>
+		                            <div zclass="col-md-2">
+		                            </div>
+								</div>
+								</div>
+						
+					</div>
+
+						<div class="row">
+							
+								<div
+								zclass="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+
+								<x:label>Direção de Serviço?</x:label>
+								<div class="input-group">
+									<radiogroup id="rg_1">
+										<radio label="PROVINCIAL"
+											style="margin-left:5px" id="rbx_actSimA" />
+										<radio label="CENTRAL"
+											style="margin-left:15px" checked="true" id="rbx_actNaoA" />
+									</radiogroup>
+								</div>
+
+							</div>
+							
+								<div
+								zclass="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+
+								<x:label>Entidade Própria?</x:label>
+									<div class="input-group">
+									<radiogroup id="rg_2">
+										<radio label="Sim"
+											style="margin-left:5px"  checked="true" id="rbx_entidadeSim" forward="onCheck=onCheckRadioE()"/>
+										<radio label="Não"
+											style="margin-left:15px"  id="rbx_entidadeNao" forward="onCheck=onCheckRadioE()"/>
+									</radiogroup>
+								</div>
+
+							</div>
+							
+							<div
+								zclass="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+
+								<x:label>Codigo</x:label>
+								<div class="input-group">
+									<intbox zclass="form-control"
+										placeholder="Codigo da Instituicao"
+										constraint="no empty : Não pode ser vazio nem conter apenas espaços em branco!"
+										id="ibx_codigo" />
+									<x:span class="input-group-addon">
+										<x:i class="fa  fa-edit"></x:i>
+									</x:span>
+								</div>
+							</div>
+							
+							<div
+								zclass="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+
+								<x:label>Nome</x:label>
+								<div class="input-group">
+									<textbox zclass="form-control"
+										placeholder="Nome da Instituicao"
+										constraint="no empty : Não pode ser vazio nem conter apenas espaços em branco!"
+										id="txb_nome" />
+									<x:span class="input-group-addon">
+										<x:i class="fa  fa-edit"></x:i>
+									</x:span>
+								</div>
+							</div>
+
+							<div
+								zclass="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+								<x:label>Entidade</x:label>
+								<div class="input-group">
+									<intbox zclass="form-control"
+										placeholder="Entidade"
+										constraint="no empty : Nao pode ser vazio nem conter apenas espaços em branco!"
+										id="ibx_entidade" />
+									<x:span class="input-group-addon">
+										<x:i class="fa  fa-edit"></x:i>
+									</x:span>
+								</div>
+							</div>
+
+							<div
+								zclass="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+
+								<x:label>NUIT</x:label>
+								<div class="input-group">
+									<textbox zclass="form-control"
+										placeholder="NUIT"
+										constraint="no empty : Nao pode ser vazio nem conter apenas espaços em branco!"
+										id="txb_nuit"/>
+									<x:span class="input-group-addon">
+										<x:i
+											class="fa  fa-pencil-square">
+										</x:i>
+									</x:span>
+								</div>
+							</div>
+							
+							
+										<div zclass="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+								<x:label>Sediada em:</x:label>
+								<combobox width="100%" id="cbx_provincia"
+									placeholder="Selecione a Sede" readonly="true"
+									constraint="no empty : Não pode ser vazio nem conter apenas espaços em branco!">
+									<template name="model">
+										<comboitem
+											label="${each.designacao}" />
+									</template>
+								</combobox>
+							</div>
+
+							
+									<div
+								zclass="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+								<x:label>Bairro</x:label>
+								<div class="input-group">
+									<textbox zclass="form-control"
+										placeholder="Bairro"
+										constraint="no empty : Não pode ser vazio nem conter apenas espaços em branco!"
+										id="txb_bairro" />
+									<x:span class="input-group-addon">
+										<x:i
+											class="fa  fa-envelope-o">
+										</x:i>
+									</x:span>
+								</div>
+							</div>
+							
+						
+							<div
+								zclass="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+								<x:label>Quarteirão/Andar</x:label>
+								<div class="input-group">
+									<textbox zclass="form-control"
+										placeholder="Quarteirão/Andar"
+										constraint="no empty : Não pode ser vazio nem conter apenas espaços em branco!"
+										id="txb_quarteirao_andar" />
+									<x:span class="input-group-addon">
+										<x:i
+											class="fa  fa-envelope-o">
+										</x:i>
+									</x:span>
+								</div>
+							</div>
+							
+							
+									<div
+								zclass="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+								<x:label>Avenida/Rua</x:label>
+								<div class="input-group">
+									<textbox zclass="form-control"
+										placeholder="Avenida/Rua"
+										constraint="no empty : Não pode ser vazio nem conter apenas espaços em branco!"
+										id="txb_avenida_rua" />
+									<x:span class="input-group-addon">
+										<x:i
+											class="fa  fa-envelope-o">
+										</x:i>
+									</x:span>
+								</div>
+							</div>
+							
+									<div zclass="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+							<groupbox>
+							<caption>Contas</caption>
+							    <listbox id="lbx_conta">
+									<listhead>
+										<listheader label="Banco" align="center"/>
+										<listheader label="Nr de Conta" align="center"/>
+										<listheader label="NIB" align="center"/>
+										<listheader align="center" width="7%"/>
+									</listhead>
+								</listbox>
+								
+								   <div class="form-group" align="left">
+						          	<button zclass="btn btn-warning btn-sm"
+									type="button" id="btn_addConta"
+									iconSclass="fa fa-plus-square" >
+									Adicionar Conta
+								</button>
+						        </div>  
+							</groupbox>
+							
+							</div>
+							
+
+						</div>
+
+
+					</div>
+
+					<div class="modal-footer">
+
+						<div align="center">
+
+							<button zclass="btn btn-success btn-sm "
+								type="button" id="btn_gravar" iconSclass="fa  fa-save">
+								Gravar
+							</button>
+							<label width="5%"></label>
+							<button zclass="btn btn-info btn-sm "
+								type="button" visible="false" id="btn_actualizar"
+								iconSclass="fa  fa-refresh">
+								Actualizar
+							</button>
+
+							<label width="5%"></label>
+							<button zclass="btn btn-danger btn-sm "
+								type="button" id="btn_cancelar" iconSclass="fa  fa-undo">
+								Cancelar
+							</button>
+
+						</div>
+
+					</div>
+				</div>
+			</x:div>
+		</x:div>
+
+	</window>
+</zk>

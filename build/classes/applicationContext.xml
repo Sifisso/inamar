@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans  
+		http://www.springframework.org/schema/beans/spring-beans-4.1.xsd  
+		http://www.springframework.org/schema/context  
+		http://www.springframework.org/schema/context/spring-context-4.1.xsd  
+		http://www.springframework.org/schema/tx  
+		http://www.springframework.org/schema/tx/spring-tx-4.1.xsd  
+		http://www.springframework.org/schema/aop  
+		http://www.springframework.org/schema/aop/spring-aop-4.1.xsd" default-lazy-init="false">
+
+	<!-- Autowired -->
+	<!-- used to activate annotations in beans already registered in the application 
+		context (no matter if they were defined with XML or by package scanning) -->
+	<context:annotation-config />
+	<!-- scans packages to find and register beans within the application context. -->
+	<context:component-scan
+		base-package="mz.ciuem.inamar.dao, mz.ciuem.inamar.dao.impl, mz.ciuem.inamar.service, mz.ciuem.inamar.service.impl" />
+
+	<!-- enable @Transactional Annotation -->
+	<tx:annotation-driven transaction-manager="transactionManager" />
+
+	<!-- @PersistenceUnit annotation -->
+	<bean
+		class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" />
+
+	<!-- data source with c3p0 -->
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+		<property name="driverClass" value="com.mysql.jdbc.Driver"></property>
+		<!-- inamar4dev -->
+		<property name="user" value="root"></property> 
+		<!-- #sistemas@dba# ciuem*teste #develop4inam@r#-->
+		<property name="password" value="root"></property>
+		<!-- 196.3.97.133 -->
+		<property name="jdbcUrl"
+			value="jdbc:mysql://localhost/inamar_db_h?sessionVariables=sql_mode=only_full_group_by" />
+		<property name="maxPoolSize" value="25"></property>
+		<property name="minPoolSize" value="3"></property>
+		<property name="maxStatements" value="25"></property>
+		<property name="acquireIncrement" value="3"></property>
+		<property name="unreturnedConnectionTimeout" value="20"></property>
+		<property name="maxIdleTime" value="1200"></property>
+	</bean>
+
+	<!-- Hibernate as JPA vendor -->
+	<bean id="jpaAdapter"
+		class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+		<property name="database" value="MYSQL"></property>
+	</bean>
+
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="packagesToScan" value="mz.ciuem.inamar.entity" />
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+				<prop key="hibernate.show_sql">true</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="entityManagerFactory"
+		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="packagesToScan" value="mz.ciuem.inamar.entity" />
+		<property name="jpaVendorAdapter" ref="jpaAdapter"></property>
+		<property name="jpaProperties">
+			<props>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
+				<prop key="hibernate.connection.autocommit">true</prop>
+				<prop key="hibernate.enable_lazy_load_no_trans">true</prop>
+				<prop key="hibernate.default_batch_fetch_size">32</prop>
+				<!--useful for debugging -->
+				<prop key="hibernate.generate_statistics">true</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="emailService" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<property name="host" value="smtp.gmail.com"/>
+		<property name="port" value="25"/>
+		<property name="username" value="root"/>
+		<property name="password" value=""/>
+		<property name="javaMailProperties">
+			<props>
+				<prop key="mail.transport.protocol">smtp</prop>
+				<prop key="mail.smtp.auth">true</prop>
+				<prop key="mail.smtp.starttls.enable">true</prop>
+				<prop key="mail.debug">true</prop>
+			</props>
+		</property>
+	</bean>
+
+	
+
+	<bean id="performanceMonitor"
+		class="org.springframework.aop.interceptor.PerformanceMonitorInterceptor" />
+
+	<aop:config>
+		<aop:pointcut id="allServiceMethods"
+			expression="execution(* mz.ciuem.inamar.service.*.*(..))" />
+		<aop:advisor pointcut-ref="allServiceMethods" advice-ref="performanceMonitor"
+			order="2" />
+	</aop:config>
+
+	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="entityManagerFactory" ref="entityManagerFactory"></property>
+	</bean>
+</beans>

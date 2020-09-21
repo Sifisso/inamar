@@ -1,0 +1,108 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<zk xmlns:x="xhtml" xmlns:zk="zk">
+	<window>
+		<div id="div_content_out">
+           
+            <x:div class="row">
+            <div align="center" >
+              <x:h3 class="box-title"><label value="150" id="lbl_nrPagamento" style="margin-right:10px"/>Pagamentos foram actualizados com sucesso</x:h3>
+              </div>
+            </x:div>
+            
+            <separator></separator>
+			<separator></separator>
+			<separator></separator>
+			<separator></separator>
+			<separator></separator>
+			<separator></separator>
+			
+			<x:div class="row">
+				<div zclass="col-md-6 col-lg-6 col-sm-12 col-xs-12">
+
+					<div class="form-group">
+					        <x:label>Unidade Orgânica</x:label>
+								<combobox width="100%"
+									id="cbx_unidadeOrganica" constraint="no empty" readonly="true"
+									placeholder="Selecione a Unidade Organizacional">
+									<template name="model">
+										<comboitem
+											label="${each.designacao}" />
+									</template>
+								</combobox>
+					</div>
+					
+					</div>
+					
+					<div zclass="col-md-6 col-lg-6 col-sm-12 col-xs-12">
+
+					<div class="form-group">
+						<x:label>Nome do Ficheiro:</x:label>
+						<div class="input-group">
+						<textbox zclass="form-control"
+									placeholder="Nome do ficheiro"
+									constraint="no empty : Não pode ser vazio nem conter apenas espaços em branco!"
+									id="txb_nomeFicheiro" />
+									<x:span class="input-group-addon">
+								<x:i class="fa  fa-edit"></x:i>
+							</x:span>
+							</div>
+					<separator></separator>
+		          	<separator></separator>
+			        <separator></separator>
+						<button zclass="btn btn-info btn-sm pull-right" type="button" id="btn_actualizarU" iconSclass="fa  fa-refresh">
+						  Actualizar Pagamento
+						</button>
+					</div>
+
+
+				</div>
+
+			</x:div>
+			
+		<div class="row">
+		<div zclass="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+		
+				<div zclass="box-header">
+					<x:h3 class="box-title">Pagamentos Registados</x:h3>
+				</div>
+				<div>
+					<div zclass="box-body">
+						<listbox id="lbx_agentes" checkmark="true"
+							rows="7">
+							<listhead>
+								<listheader label="Código da Tansação"/>
+								<listheader label="Código do Estudante"/>
+								<listheader label="Nome do Estudante"/>
+								<listheader label="Estado"/>
+							</listhead>
+							<template name="model">
+								<listitem>
+									<listcell label="" />
+									<listcell label="" />
+									<listcell label="" />
+									<listcell label="" />
+								</listitem>
+							</template>
+						</listbox>
+
+					</div>
+					<div zclass="box-footer">
+
+					</div>
+				</div>
+			
+		</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+		</div>
+	</window>
+</zk>

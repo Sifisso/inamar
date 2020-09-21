@@ -1,0 +1,246 @@
+<zk xmlns:x="xhtml" xmlns:zk="zk">
+	<window apply="mz.ciuem.inamar.utente.controller.ConfirmarRegistoMaritimoCtrl" id="win_confirmarRegisto">
+	 <div id="div_content_out">
+		<div class="row">
+			<div zclass="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+				<div zclass="box box-default">
+					<div zclass="box-header">
+			.
+					</div>
+					<div zclass="box-body">
+						<div class="row">
+							<div zclass="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+							  	<div zclass="col-lg-2 col-md-2 col-sm-12 col-xs-12">
+							  .
+							  </div>
+			<x:div class="col-lg-12 col-xs-12 col-md-12 col-lg-12">
+              <!-- small box -->
+              <x:div class="small-box bg-green">
+                <x:div class="inner">
+                  <x:h1 style="font-family:Georgia,serif;color:white; font-variant: small-caps; text-transform: none; font-weight: 100; margin-bottom: 0;">Confirmação do Registo</x:h1>
+                </x:div>
+                <x:div class="icon">
+                  <x:i class="fa fa-check"></x:i>
+                </x:div>
+              </x:div>
+              
+              
+              
+              <x:form role="form">
+        						<div class="box-body">
+        						
+        						<x:div class="col-sm-12 col-xs-12 col-md-6 col-lg-6">
+        							<div class="form-group">
+        								 <x:label for="exampleInputEmail1">Nome do Utente</x:label><x:label style="color:red">*</x:label>
+        						         <textbox zclass="form-control" placeholder="Nome do Utente" id="tbx_nome" disabled="true"/>
+									</div>
+        						
+        						  	<div class="form-group">
+        								<x:label >Apelido</x:label><x:label style="color:red">*</x:label>
+                                        <textbox zclass="form-control" placeholder="Apelido do Utente" id="tbx_apelido" disabled="true"/>      							
+						            </div>
+						            
+						            	<div class="form-group">
+        								 <x:label for="exampleInputEmail1">Nome do Pai</x:label><x:label style="color:red">*</x:label>
+        						         <textbox zclass="form-control" placeholder="Nome do Pai" id="tbx_nomePai" disabled="true"/>  
+										</div>
+										
+									<div class="form-group">
+        								 <x:label for="exampleInputEmail1">Nome da Mãe</x:label><x:label style="color:red">*</x:label>
+        					         <textbox zclass="form-control" placeholder="Nome da Mãe" id="tbx_nomeMae" disabled="true"/>  
+										</div>
+										
+				
+					<div class="form-group">
+        								<x:label >Nuit</x:label><x:label style="color:red">*</x:label>
+                                    <textbox zclass="form-control"
+							           placeholder="NUIT"
+							               constraint="no empty : Não deve estar vazio ou conter espaços em branco apenas !"
+						               	id="tbx_nuit" disabled="true"/>        							
+						               	</div>
+										
+										
+												<div class="form-group">
+        								 <x:label for="exampleInputEmail1">Tipo de Documento:</x:label><x:label style="color:red">*</x:label>
+						<combobox width="99.9%" id="cbx_tipoDocumento"
+							constraint="no empty:Introduza o tipo de Documento" readonly="true"
+							disabled="true">
+							<comboitem label="Bilhete de Identidade" />
+							<comboitem
+								label="Talão de Bilhete de Identidade">
+							</comboitem>
+							<comboitem label="Carta de Condução">
+							</comboitem>
+							<comboitem label = "Cartão de eleitor"></comboitem>
+							<comboitem label="Passaporte" />
+							<comboitem label="DIRE" />
+						</combobox>
+										</div>
+										
+										</x:div>
+										
+										
+											<x:div class="col-sm-12 col-xs-12 col-md-6 col-lg-6">
+							   		<div class="form-group">
+        								 <x:label for="exampleInputEmail1">Número do Documento:</x:label><x:label style="color:red">*</x:label>
+						<textbox zclass="form-control" maxlength="25"
+							
+							constraint="no empty,/(\d|\w)+/ : Introduza um número válido"
+							id="tbx_nrDocumento" disabled="true"/> 
+
+										</div>
+										
+							   	   		<div class="form-group">
+        								 <x:label for="exampleInputEmail1">Local de Emissão</x:label><x:label style="color:red">*</x:label>
+        							 <textbox zclass="form-control" placeholder="Local de Emissão" id="tbx_localEmissao" disabled="true"/> 
+										</div>
+										
+														<div class="form-group">
+			<x:label >Data de Emissão</x:label><x:label style="color:red">*</x:label>
+						        							<datebox id="dtb_dataEmissao" width="100%"
+								readonly="false" visible="true" buttonVisible="true"
+								format="dd/MM/yyyy"
+								constraint="no empty : Não deve estar vazio ou conter espaços em branco apenas !" disabled="true"/>  
+										</div>
+										
+						               												<div class="form-group">
+						<x:label>Email:</x:label><x:label style="color:red">*</x:label>
+						<textbox zclass="form-control" maxlength="60"
+							
+							id="tbx_email" disabled="true"/>
+					</div>
+					
+					 	<div class="form-group">
+        								 <x:label for="exampleInputEmail1">Senha</x:label>
+        						         <textbox disabled="true" zclass="form-control" placeholder="Digite a sua senha" id="senha1" />  
+										</div>
+							<div visible="false" id="div_senhas"><label style="color:red">Senhas não Corespondentes</label></div>			
+						 	<div class="form-group">
+        								 <x:label for="exampleInputEmail1">Confirmar a Senha</x:label>
+        						         <textbox disabled="true" zclass="form-control" placeholder="Confirme a senha" id="senha2" />  
+										</div>
+					
+						               	
+						           </x:div>    	
+						               	
+						               	
+						               	
+						            </div>
+	                              </x:form>
+            
+            <!-- ./col -->
+            </x:div>
+            
+            
+            			
+            
+              	<div zclass="col-lg-2 col-md-2 col-sm-12 col-xs-12">
+             .
+							  </div>
+				
+							</div>
+						</div>
+
+			<x:div class="row">
+				<div align="center">
+				<button zclass="btn btn-success btn-sm"
+						id="btn_anterior" iconSclass="fa fa-chevron-left">
+
+						Anterior
+					</button>
+					<label width="5%"></label>
+				<button zclass="btn btn-warning btn-sm"
+						id="btn_actualizar" iconSclass="fa fa-edit">
+
+						Editar
+					</button>	
+				<label width="5%"></label>
+				<button zclass="btn btn-primary btn-sm" onClick="@command('gerirMaritimoMaritimo')" 
+						id="btn_confirmar" iconSclass="fa fa-check">
+
+						Confirmar
+					</button>
+					<label width="5%"></label>
+					<div id="div_modal" visible="false">
+											<x:button type="button"
+												class="btn btn-info btn-sm" data-toggle="modal"
+												data-target="#myModal" >
+												<x:i class="fa fa-chevron-right" dir="reverse"></x:i>
+												Próximo
+											</x:button>
+					
+						</div>
+							<label width="5%"></label>
+					<button zclass="btn btn-success btn-sm"
+						id="btn_peticao" iconSclass="fa fa-edit" visible="false">
+
+						Petições
+					</button>	
+			</div>
+			</x:div>
+
+					</div>
+					
+					
+										<!-- Modal Candidato-->
+					<x:div class="modal fade" id="myModal" tabindex="-1"
+						role="dialog" aria-labelledby="myModalLabel">
+						<x:div class="modal-dialog" role="document">
+							<div class="modal-content">
+								<div class="modal-header">
+									<x:button type="button" class="close"
+							data-dismiss="modal" aria-label="Close">
+							x
+						</x:button>
+									<x:h4 class="modal-title"
+										id="myModalLabel">
+										Parabéns
+									</x:h4>
+								</div>
+								<div class="modal-body"
+									id="div_candidato" align="center">
+									<x:h2 style="color:green">
+										O seu registo foi efectuado com
+										sucesso.
+									</x:h2>
+									<x:br></x:br>
+									<x:strong style="color:black">
+								Anote os seus Dados de Acesso no Sistema.
+									</x:strong>
+									<x:br></x:br>
+									<x:br></x:br>
+									<div class="form-group">
+        								 <x:label for="exampleInputEmail1" style="color:red">Utilizador</x:label>
+        						         <textbox zclass="form-control" placeholder="username" id="tbx_user" />  
+										</div>
+										
+										<div class="form-group">
+        								 <x:label for="exampleInputEmail1" style="color:red">Senha</x:label>
+        						         <textbox zclass="form-control" placeholder="password" id="tbx_pass" />  
+										</div>
+
+								</div>
+
+								<div class="modal-footer">
+									<div class="pull-left">
+                      <x:a href="j_spring_security_logout" style="color:orange" class="btn btn-flat">Sair</x:a>
+                    </div>
+                    
+                    				<div class="pull-right">
+                      <x:a  style="color:orange" class="btn btn-flat" data-dismiss="modal" forward="onClick=onClicPeticao()">Petições</x:a>
+                    </div>
+
+								</div>
+							</div>
+						</x:div>
+					</x:div>
+			
+				</div>
+			</div>
+		</div>
+
+
+</div>
+<include id="inc_main"></include>
+	</window>
+</zk>

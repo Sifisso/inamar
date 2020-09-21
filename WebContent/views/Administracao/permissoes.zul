@@ -1,0 +1,33 @@
+<?page title="REgistar Permissoes" contentType="text/html;charset=UTF-8"?>
+<zk xmlns:x="xhtml" xmlns:zk="zk">
+<window apply="mz.ciuem.inamar.controller.PermissaoCtrl">
+		<div zclass="col-md-12 col-lg-12 col-xs-12 col-sm-12">
+		<div zclass="box box-success" >
+		    <div zclass="box-header">
+		        <x:h3 class="box-title">Permissões Registadas</x:h3>
+		    </div>
+		    <div>
+		        <div zclass="box-body">
+					<listbox id="lbx_permissoes" checkmark="true" width="100%"  height="100%">
+	                    <listhead>
+	                        <listheader label="#" width="5%"/>
+	                         <listheader label="Permissões"  width="30%" sort="auto(designacao)" />
+	                    	<listheader label="Descrição"  width="55%" sort="auto(descricao)" />
+	                  </listhead>
+	                   <template name="model">
+	                    <listitem>
+	                         <listcell></listcell>
+	                          <listcell label="${each.permissionname}" />
+		                     <listcell label="${each.description}" />
+		   
+                       	</listitem>
+                       </template>
+                    </listbox>
+		        </div>
+		        <div zclass="box-footer">
+		        </div>
+		    </div>
+		</div>
+	</div>
+</window>
+</zk>

@@ -1,0 +1,231 @@
+<zk xmlns:x="xhtml" xmlns:zk="zk">
+<style>
+/* Dropdown Button */
+.dropbtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    font-size: 10px;
+    border: none;
+}
+
+/* The container  needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+    background-color: #3e8e41;
+}
+
+</style>
+
+<window id = "win_confirmarPeticao"  mode="modal"  border="none" closable="true" apply="mz.ciuem.inamar.tesouraria.controller.EmitirFacturaCtrl" width="45%">
+<div class="row" id="div_content_out">
+			<div zclass="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+				<div zclass="box box-default">
+				<div class="modal-header">
+						<x:button type="button" class="close"
+							data-dismiss="modal" aria-label="Close" forward="onClick=onClickClose()">
+							x
+						</x:button>
+						<x:h4 class="modal-title" id="myModalLabel">
+							Itens do Pedido
+						</x:h4>
+					</div>
+					<div zclass="box-body">
+						
+						<div class="form-group">
+						
+						<div class="row">
+							
+							<div zclass="col-lg-12 col-md-12 col-sm-24 col-xs-24">
+							    <groupbox>
+							    <caption>Utente</caption>
+							   	 
+							   	      <div zclass="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+							   	      <label id="lbl_nome" width="100%" value="asdasdasd"/>
+							   	      </div>
+							   	      
+	                        	</groupbox>
+							</div>
+						</div>
+                        
+                        <div class="row">
+                        
+                        <div zclass="col-lg-12 col-md-12 col-sm-24 col-xs-24">
+							    <groupbox>
+							    <caption>Pedido</caption>
+							   	 
+							   	      <div zclass="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+							   	      <label id="lbl_pedido" width="100%" value="asdasdasda asdasdasd adsasdasda"/>
+							   	      </div>
+									
+	                        	</groupbox>
+							</div>
+							</div>
+							
+											<groupbox>
+											 <caption>Adicionar Itens</caption>	
+											<div  zclass="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+												<x:label>
+													Descrição
+												</x:label>
+											
+												<textbox width="100%"
+													id="txb_descricaoI"
+													placeholder="Descrição do item a adicionar"
+													
+													readonly="false">
+													
+												</textbox>
+												</div>
+												
+												<div  zclass="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+												<x:label>
+													Custo
+												</x:label>
+												
+												<doublebox width="100%"
+													id="dxb_custo"
+													placeholder="Custo do item a adicionar"
+													
+													readonly="false">
+													
+												</doublebox>
+												</div>
+												
+												
+												<div style="padding-top:22px">
+												<button
+													zclass="btn btn-info btn-sm pull-right" type="button"
+													id="btn_adicionar" iconSclass="fa fa-plus-square">
+
+													Adicionar
+												</button>
+												</div>
+												</groupbox>
+											</div>
+
+
+							
+						</div>
+						
+						<listbox visible="true" id="lbx_addItens"
+									 rows="4">
+									<listhead>
+										<listheader label="Descrição" sort="auto(descricaoI)" />
+										<listheader label="Custo" width="12%" sort="auto(custo)"/>
+										<listheader label="Remover" width="12%" align="center"/>
+									</listhead>
+									<template name="model">
+										<listitem>
+											<listcell label="${each.descricao}" />
+											  <listcell label="${each.custo}">
+									        </listcell>
+									        <listcell>
+												<div align="center">
+											<button label="Remover" iconSclass="fa fa-trash-o" forward="onClick=onRemover(${each})"
+												zclass ="btn btn-danger btn-xs" >
+											</button>
+										</div>
+										
+										
+										
+										</listcell>
+										</listitem>
+									</template>
+								</listbox>
+								<div zclass="box-footer" align="center"
+						style="margin-right:10px">
+					
+						<button
+							zclass="btn btn-success btn-sm" type="button"
+							id="btn_gravar" iconSclass="fa fa-save" visible="false">
+							Gravar
+						</button>
+						
+						<label width="5%"></label>
+						<button zclass="btn btn-info btn-sm"
+							visible="false" autodisable="self,btn_gravar" type="button"
+							id="btn_actualizar" iconSclass="fa fa-refresh">
+
+							Actualizar
+						</button>
+						<label width="5%"></label>
+							<button zclass="btn btn-danger btn-sm" visible="false"
+							type="button" id="btn_cancelar" iconSclass="fa fa-undo" forward="onClick=onClickClose()">
+							Cancelar
+						</button>
+					</div>
+                        
+                        <listbox visible="true" id="lbx_itens"
+									 rows="5">
+									<listhead>
+										<listheader label="Descrição" sort="auto(descricao)" />
+										<listheader label="Custo" width="12%" sort="auto(custo)"/>
+									</listhead>
+									<template name="model">
+										<listitem>
+											<listcell label="${each.descricao}" />
+											  <listcell label="${each.custo}"/>
+										</listitem>
+									</template>
+									
+										<listfoot>
+											<listfooter align="right" label="TOTAL DE CUSTOS:"/>
+											<listfooter>
+												<label id="lbl_custo" />
+											</listfooter>
+											
+											
+										</listfoot>
+										
+								</listbox>
+					</div>
+				</div>
+			</div>
+		
+       <include id="inc_main"></include>
+	</window>
+
+<style>
+div.z-listbox-footer {
+    border-top: 1px solid #3B3F39;
+}
+div.z-listbox-footer .z-listfooter {
+    background-image: none;
+    background-color: white;
+}
+
+</style>
+
+</zk>
