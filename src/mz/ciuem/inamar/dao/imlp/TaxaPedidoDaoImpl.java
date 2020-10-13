@@ -37,4 +37,16 @@ public class TaxaPedidoDaoImpl extends GenericDaoImpl<TaxaPedido> implements Tax
 		query.setParameter("pedido", pedido);
 		return query.list();
 	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<TaxaPedido> findTaxaPedidoByPedido(Pedido pedido) {
+	
+		org.hibernate.Query query = getCurrentSession().createQuery("select tp from TaxaPedido tp "
+				+ "join fetch tp.taxa tx "
+				+ "join fetch tp.pedido p "
+				+ "");
+		//query.setParameter("pedido", pedido);
+		return query.list();
+	}
 }

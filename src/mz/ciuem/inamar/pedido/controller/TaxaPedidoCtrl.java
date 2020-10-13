@@ -55,8 +55,8 @@ public class TaxaPedidoCtrl extends GenericForwardComposer{
 	
 	private Execution ex = Executions.getCurrent();
 
-	private Pedido _pedido;
 	private Taxa _selectedTaxa;
+	private Pedido _pedido;
 	
 	@WireVariable
 	private TaxaService _taxaService;
@@ -78,8 +78,8 @@ public class TaxaPedidoCtrl extends GenericForwardComposer{
 		super.doBeforeComposeChildren(comp);
 		
 		_taxaService =   (TaxaService) SpringUtil.getBean("taxaService");
-		_taxaPedidoService =  (TaxaPedidoService) SpringUtil.getBean("taxaPedidoService");
 		_subAreaService = (SubAreaService) SpringUtil.getBean("subAreaService");
+		_taxaPedidoService =  (TaxaPedidoService) SpringUtil.getBean("taxaPedidoService");
 		_pedido = (Pedido) ex.getArg().get("_pedido");
 	}
 	
@@ -168,9 +168,10 @@ public class TaxaPedidoCtrl extends GenericForwardComposer{
 		showNotifications("Taxas Adicionadas com Sucesso", "info");
 	}
 	
-	private void listaLocalTaxasPedido(Pedido _pedido) {
+	private void listaLocalTaxasPedido(Pedido pedido) {
 		//Filtrar
 		_listTaxaPedido = _taxaPedidoService.findByPedido(_pedido);
+		//System.out.println(">>>>>>>>>>>>>>>>>>>>>>"+_pedido);
 		lbx_taxasPedido.setModel(new ListModelList<TaxaPedido>(_listTaxaPedido));
 	}
 

@@ -154,6 +154,8 @@
 														</listheader>
 														<listheader
 															label="Taxa"/>
+														<listheader width="12%"
+															label="valor"/>
 														<listheader
 															label="Pedido"/>
 														<listheader
@@ -166,6 +168,8 @@
 
 															<listcell
 																label="${each.taxa.nome}" />
+															<listcell
+																label="${each.taxa.valor}0" />
 															<listcell
 																label="${each.pedido.descricao}" />
 

@@ -42,6 +42,7 @@ import org.zkoss.zul.Div;
 import org.zkoss.zul.Intbox;
 import org.zkoss.zul.ListModelList;
 import org.zkoss.zul.Listbox;
+import org.zkoss.zul.Messagebox;
 import org.zkoss.zul.Textbox;
 import org.zkoss.zul.Timebox;
 import org.zkoss.zul.Window;
@@ -297,7 +298,8 @@ public class EntradaCtrl extends GenericForwardComposer{
 				}
 				
 				else{
-					showNotifications("O Nr de Ordem introduzido ja existe", "error");
+					//showNotifications("O Nr de Ordem introduzido ja existe", "error");
+					Messagebox.show("O Nr de Ordem introduzido ja existe");
 				}
 		 }
 		 

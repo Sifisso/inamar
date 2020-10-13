@@ -1,6 +1,8 @@
 package mz.ciuem.inamar.utente.controller;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 
 import mz.ciuem.inamar.entity.User;
 import mz.ciuem.inamar.entity.UserRole;
@@ -61,6 +63,8 @@ public class ConfirmarRegistoCtrl extends GenericForwardComposer{
 	Utente _utente;
 	Utente _utentePass;
 	
+	private List<Utente> listUtente = new ArrayList<Utente>();
+	
 	@SuppressWarnings("unchecked")
 	@Override
 	public void doBeforeComposeChildren(Component comp) throws Exception {
@@ -89,14 +93,31 @@ public class ConfirmarRegistoCtrl extends GenericForwardComposer{
 	}
 	
 	public void onClick$btn_confirmar(){
-		gravar();
-		div_modal.setVisible(true);
-		btn_confirmar.setVisible(false);
-		btn_actualizar.setVisible(false);
-		btn_anterior.setVisible(false);
-		showNotifications("Utente gravado com sucesso", "info");
-		_utente = new Utente();
-		session.removeAttribute("ss_utente");
+		
+		boolean existe = false;
+		
+		for(Utente utente: listUtente){
+			if((_utente.getNumeroDocumento()==(utente.getNumeroDocumento()))){
+				existe=true;
+			}
+		}
+		
+		if(existe==false){
+			gravar();
+			div_modal.setVisible(true);
+			btn_confirmar.setVisible(false);
+			btn_actualizar.setVisible(false);
+			btn_anterior.setVisible(false);
+			showNotifications("Utente gravado com sucesso", "info");
+			_utente = new Utente();
+			session.removeAttribute("ss_utente");
+		
+		}else{
+			Messagebox.show("O Número de documento já foi registado anteriormente, "
+					+ "certifique a existência deste utente primeiro");
+		}
+		
+		
 		 
 	}
 	
@@ -139,6 +160,7 @@ public class ConfirmarRegistoCtrl extends GenericForwardComposer{
 	}
 	
 	public void gravar(){
+		
 		if(_utente.getUserLogin()==null){
 			if(validarSenha()){
 				pegarValores();
@@ -152,7 +174,24 @@ public class ConfirmarRegistoCtrl extends GenericForwardComposer{
 			pegarValores();
 		}
 		
-		_utenteService.update(_utente);
+		boolean exist = false;
+		
+		for(Utente utente: listUtente){
+			
+			if((_utente.getNumeroDocumento()==(utente.getNumeroDocumento()))){
+				exist=true;
+			}
+		}
+		
+		if(exist=false){
+			_utenteService.update(_utente);
+		}else{
+			Messagebox.show("O Número de documento já foi registado anteriormente, "
+					+ "certifique a existência deste utente primeiro");
+		}
+		
+		
+		
 	}
 	
 	private void verificarUser() {

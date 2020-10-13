@@ -11,4 +11,6 @@ public interface TaxaPedidoService extends GenericService<TaxaPedido>{
 	
 	public List<TaxaPedido> findByPedidoTaxaPedido(Pedido pedido);
 
+	public List<TaxaPedido> findTaxaPedidoByPedido(Pedido pedido);
+
 }

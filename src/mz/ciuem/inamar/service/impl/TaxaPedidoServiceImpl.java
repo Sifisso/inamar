@@ -26,5 +26,11 @@ public class TaxaPedidoServiceImpl extends GenericServiceImpl<TaxaPedido> implem
 		
 		return _tpDao.findByPedidoTaxaPedido(pedido);
 	}
+	
+	@Override
+	public List<TaxaPedido> findTaxaPedidoByPedido(Pedido pedido) {
+		
+		return _tpDao.findTaxaPedidoByPedido(pedido);
+	}
 
 }

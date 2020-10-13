@@ -48,7 +48,7 @@
 
 </style>
 
-<window id = "win_confirmarPeticao"  mode="modal"  border="none" closable="true" apply="mz.ciuem.inamar.tesouraria.controller.EmitirFacturaCtrl" width="45%">
+<window id = "win_itensPeticaoReg"  mode="modal"  border="none" closable="true" apply="mz.ciuem.inamar.tesouraria.controller.PeticaoMaritmaTaxaPedidoCtrl" width="45%">
 <div class="row" id="div_content_out">
 			<div zclass="col-md-12 col-lg-12 col-sm-12 col-xs-12">
 				<div zclass="box box-default">
@@ -109,7 +109,7 @@
 													<template
 														name="model">
 														<comboitem
-															label="${each.nome}" />
+															label="${each.taxa.nome}" />
 													</template>
 												</combobox>
 												</div>
@@ -177,7 +177,7 @@
 <!-- 					</div> -->
 
 
-<div zclass="box-body">
+										<div zclass="box-body">
 												<listbox
 													id="lbx_taxasPedido" checkmark="true"
 													multiple="true" rows="5"
@@ -219,7 +219,7 @@
 											<listcell label="${each.taxaPedido.taxa.valor}"/>
 											<listcell>
 												<div align="center">
-											<button label="Remover" iconSclass="fa fa-trash-o" forward="onClick=onRemover(${each})"
+											<button label="Remover" iconSclass="fa fa-trash-o"  forward="onClick=onRemover(${each})"
 												zclass ="btn btn-danger btn-xs" >
 											</button>
 										</div>
@@ -232,7 +232,7 @@
 											<listfooter></listfooter>
 											<listfooter align="left" label="Total:"/>
 											<listfooter>
-											<!-- <label id="lbl_custo" /> -->
+											<label id="lbl_custo" />
 											</listfooter>
 											
 										</listfoot>

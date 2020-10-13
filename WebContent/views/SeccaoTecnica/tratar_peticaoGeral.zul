@@ -25,7 +25,7 @@
 							   	         	Ver Factura
 							   	         </button>
 							   	         
-							   	         <button zclass="btn btn-primary btn-sm" width="100%"
+							   	         <button zclass="btn btn-primary btn-sm" width="100%" visible="false"
 										type="button" id="btn_gravar" forward="onClick=onClickClose()">
                       						Submeter
 										</button>

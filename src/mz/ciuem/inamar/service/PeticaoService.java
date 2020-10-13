@@ -75,6 +75,7 @@ public interface PeticaoService extends GenericService<Peticao>{
 	public List<Peticao> buscarPeticoesPorDelegacaoMaritimos(Delegacao delegacao);
 	public void onClickDetalhess(Peticao pet, Include inc_main,Div div_content_out);
 	public List<Peticao> buscarPeticoesPorDelegacaoTesouraria(Delegacao delegacao);
+	public List<Peticao> buscarPeticoesPorDelegacaoSeccaoTecnica(Delegacao delegacao);
 	
 	
 	

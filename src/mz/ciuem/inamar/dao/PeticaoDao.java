@@ -42,8 +42,9 @@ public interface PeticaoDao extends GenericDao<Peticao>{
 	public List<Peticao> findByUtentePeticaoNaoPago(List<Peticao> list);
 	public List<Peticao> findByUtentePeticaoTerminados(List<Peticao> list);
 	public List<Peticao> findByUtentePeticaoEntregues(List<Peticao> list);
-	List<Peticao> buscarPeticoesPorDelegacaoEmbarcacao(Delegacao delegacao);
-	List<Peticao> buscarPeticoesPorDelegacaoMaritimos(Delegacao delegacao);
+	public List<Peticao> buscarPeticoesPorDelegacaoEmbarcacao(Delegacao delegacao);
+	public List<Peticao> buscarPeticoesPorDelegacaoMaritimos(Delegacao delegacao);
+	public List<Peticao> buscarPeticoesPorDelegacaoSeccaoTecnica(Delegacao delegacao);
 	
 	
 	

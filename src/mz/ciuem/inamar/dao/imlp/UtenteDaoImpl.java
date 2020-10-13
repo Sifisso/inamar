@@ -38,11 +38,10 @@ public class UtenteDaoImpl extends GenericDaoImpl<Utente> implements UtenteDao{
 	
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Utente> findAllByMaritimoOuUtente (String nome, boolean maritimo){
-		org.hibernate.Query query = getCurrentSession().createQuery("select u from Utente u where u.nome like :nome and u.maritimo=:maritimo");
+	public List<Utente> findAllByMaritimoOuUtente (String nome){
+		org.hibernate.Query query = getCurrentSession().createQuery("select u from Utente u where u.nome like :nome");
 		
 		query.setParameter("nome", "%"+nome+"%");
-		query.setParameter("maritimo", maritimo);
 		return query.list();
 
 	}

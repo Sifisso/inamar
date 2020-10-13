@@ -422,6 +422,7 @@
 <!-- 									            <button zclass="btn btn-xs btn-success" iconSclass="fa fa-check" label="Validado" visible="${each.validado=='true'}"/> -->									            
 												<button zclass="btn btn-xs btn-success" iconSclass="fa fa-check" label="Pago" visible="${each.pago=='true'}"/>
 									            <button zclass="btn btn-xs btn-danger"  iconSclass="fa fa-times" label="Recusado" visible="${each.recusado=='true'}"/>
+									            <button zclass="btn btn-xs btn-success"  iconSclass="fa fa-check" label="Parecer dado" visible="${each.temRespostaSTecnica=='true'}"/>
 									         </div>
 									       </listcell>
 									       <listcell label="${each.localizacao}" />
@@ -437,7 +438,7 @@
 														height="20px" class="treeview-menu">
 														<menupopup>
 														<menuitem
-																label="Ver Factura"  iconSclass="fa  fa-stethoscope pull-left"
+																label="Ver Factura" visible="false"  iconSclass="fa  fa-stethoscope pull-left"
                                                           forward="onClick=onClickVerFactura(${each})">
 															         </menuitem>
 															

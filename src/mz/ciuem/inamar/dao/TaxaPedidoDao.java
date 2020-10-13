@@ -11,4 +11,6 @@ public interface TaxaPedidoDao extends GenericDao<TaxaPedido>{
 	
 	//valores
     public List<TaxaPedido> findByPedidoTaxaPedido(Pedido pedido);
+
+	public List<TaxaPedido> findTaxaPedidoByPedido(Pedido pedido);
 }

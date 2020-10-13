@@ -10,6 +10,6 @@ public interface UtenteService extends GenericService<Utente>{
 	public Utente buscarUtenteByUser(User user);
 	public List<Utente> findUtentesNotMaritimos();
 	public List<Utente> findUtentesMaritimos();
-	public List<Utente> findAllByMaritimoOuUtente(String nome, boolean maritimo);
+	public List<Utente> findAllByMaritimoOuUtente(String nome);
 
 }

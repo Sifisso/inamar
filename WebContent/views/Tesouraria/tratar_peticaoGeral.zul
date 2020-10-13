@@ -50,16 +50,16 @@
 							   	             <button 
 							   	         	zclass="btn btn-primary btn-sm" type="button"
 							   	         	id="btn_ver_pagamento" width="100%" visible="${win._peticao.validado=='true' and win._peticao.pago=='true'}"
-							   	         	forward="onClick=onClickCinfirmar()">
+							   	         	forward="onClick=onClickVerPagamento()">
 							   	         	Ver Pagamento
 							   	         </button>
 							   	         
-							   	         <!-- <button 
+							   	          <button 
 							   	         	zclass="btn btn-primary btn-sm" type="button"
 							   	         	id="btn_emitir_factura" width="100%" visible="${win._peticao.validado=='true' and win._peticao.pago=='false'}"
-							   	         	forward="onClick=onClickEmitirFactura">
-							   	         	Adicionar Itens
-							   	         </button> -->
+							   	         	forward="onClick=onClickAdicionarItens">
+							   	         	Ver/Adicionar Itens
+							   	         </button> 
 							   	     
 					
 					</vlayout>

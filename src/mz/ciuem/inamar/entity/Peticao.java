@@ -72,6 +72,7 @@ public class Peticao extends IdEntity{
 	@Column(name="valor")
 	private double valor;
 	
+	@Transient
 	private double valorTotal;
 	private double taxa;
 	
@@ -633,6 +634,7 @@ public class Peticao extends IdEntity{
 	public void setMotivoRecusa(String motivoRecusa) {
 		this.motivoRecusa = motivoRecusa;
 	}
+	
 
 	public double getValorTotal() {
 		valorTotal=0;
@@ -642,7 +644,6 @@ public class Peticao extends IdEntity{
 		return valorTotal;
 	}
 
-	
 	public boolean isNaoMostraPago() {
 		return naoMostraPago;
 	}

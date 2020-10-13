@@ -132,25 +132,10 @@
 					</div>
 						<div zclass="box-footer" align="center"
 						style="margin-right:10px">
-					
-						<button zclass="btn btn-success btn-sm"
-							autodisable="self,btn_actualizar" type="button" id="btn_gravar" onClick="@command('registarExpedienteTesouraria')"
-							iconSclass="fa fa-check">
-
-							
-                      Confirmar
-						</button>
-						<label width="5%"></label>
-						<button zclass="btn btn-info btn-sm"
-							visible="false" autodisable="self,btn_gravar" type="button"
-							id="btn_actualizar" iconSclass="fa fa-refresh">
-
-							Actualizar
-						</button>
 						<label width="5%"></label>
 							<button zclass="btn btn-danger btn-sm"
-							type="button" id="btn_cancelar" iconSclass="fa fa-undo" forward="onClick=onClickClose()">
-							Cancelar
+							type="button" id="btn_cancelar" iconSclass="fa fa-ban" forward="onClick=onClickClose()">
+							Fechar
 						</button>
 					</div>
 

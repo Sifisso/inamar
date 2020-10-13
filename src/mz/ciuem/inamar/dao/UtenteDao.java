@@ -10,6 +10,6 @@ public interface UtenteDao extends GenericDao<Utente>{
 	public Utente buscarUtenteByUser(User user);
 	public List<Utente> findUtentesNotMaritimos();
 	public List<Utente> findUtentesMaritimos();
-	public List<Utente> findAllByMaritimoOuUtente(String nome, boolean isEmpresa);
+	public List<Utente> findAllByMaritimoOuUtente(String nome);
 
 }

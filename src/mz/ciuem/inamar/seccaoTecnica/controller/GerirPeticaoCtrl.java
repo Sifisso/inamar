@@ -203,7 +203,7 @@ public class GerirPeticaoCtrl extends GenericForwardComposer{
 		if(funcionario==null){
 			listPeticao = _peticaoService.seccaoTecnica();
 		}else{
-			listPeticao = _peticaoService.buscarPeticoesPorDelegacao(funcionario.getSector().getDelegacaoDepartamento().getDelegacao());
+			listPeticao = _peticaoService.buscarPeticoesPorDelegacaoSeccaoTecnica(funcionario.getSector().getDelegacaoDepartamento().getDelegacao());
 		}
 	    /*for (Peticao peticao : listPeticao) {
 	    	

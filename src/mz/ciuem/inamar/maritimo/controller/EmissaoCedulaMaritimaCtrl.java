@@ -161,7 +161,7 @@ public class EmissaoCedulaMaritimaCtrl extends GenericForwardComposer{
    	}
 	
 	private void gravar() {
-       _peticaoMaritimo.setCorOlhos(cbx_olhos.getSelectedItem().getValue());
+       _peticaoMaritimo.setCorOlhos(cbx_olhos.getValue());
        _peticaoMaritimo.setAltura(dbx_altura.getValue());
        _peticaoMaritimoService.saveOrUpdate(_peticaoMaritimo);
        

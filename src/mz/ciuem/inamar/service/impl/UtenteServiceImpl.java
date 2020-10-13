@@ -32,8 +32,8 @@ public class UtenteServiceImpl extends GenericServiceImpl<Utente> implements Ute
 	}
 	
 	@Override
-	public List<Utente> findAllByMaritimoOuUtente(String nome, boolean maritimo){
-		return _uDao.findAllByMaritimoOuUtente(nome, maritimo);
+	public List<Utente> findAllByMaritimoOuUtente(String nome){
+		return _uDao.findAllByMaritimoOuUtente(nome);
 	}
 
 }

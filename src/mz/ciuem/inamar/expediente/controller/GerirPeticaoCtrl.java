@@ -214,7 +214,7 @@ public class GerirPeticaoCtrl extends GenericForwardComposer{
 		cbx_utente.setModel(new ListModelList<Utente>(listu));
 		}else{
 			onClickCompor(null);
-			cbx_utente.setValue(utente.getNome()+utente.getApelido());
+			cbx_utente.setValue(utente.getNome()+" "+utente.getApelido());
 		}
 	}
 

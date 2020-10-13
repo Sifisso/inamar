@@ -402,7 +402,7 @@
 										<listheader label="Utente" sort="auto(utente)" />
 										<listheader label="Pedido" sort="auto(nome)" />
 										<listheader label="Data e Hora" sort="auto(nome)" />
-										<listheader label="valor" sort="auto(codigo)" width="12%" align="center"/>
+<!-- 										<listheader label="valor" sort="auto(codigo)" width="12%" align="center"/> -->
 										<listheader label="Estado" width="12%" align="center"/>
 										<listheader label="Localização" width="12%" align="center"/>
 										<listheader label="Acções" width="12%" align="center"/>
@@ -413,7 +413,7 @@
 											<listcell label="${each.utente}" />
 											<listcell label="${each.descricao}" />
 											<listcell label="${each.created}" />
-											<listcell label="${each.valorTotal}0 MZN" />
+<!-- 											<listcell label="${each.valorTotal}0 MZN" /> -->
 									       <listcell>
 									         <div align="center">
 									            <button zclass="btn btn-xs btn-warnings" iconSclass="fa  fa-spinner" label="Pendente" visible="${each.validado=='true' and each.recusado=='false' and each.pago=='false'}"/>
@@ -435,7 +435,7 @@
 														height="20px" class="treeview-menu">
 														<menupopup>
 														<menuitem 
-																label="Ver Factura"  iconSclass="fa  fa-stethoscope pull-left"
+																label="Ver Factura" visible="false" iconSclass="fa  fa-stethoscope pull-left"
                                                           forward="onClick=onClickVerFacturaa(${each})">
 															         </menuitem>
 															

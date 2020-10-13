@@ -39,8 +39,8 @@
 											<listheader>Admar</listheader>
 											<listheader>Area</listheader>
 											<listheader width="110px">Petições</listheader>
-											<listheader width="110px">Pagas</listheader>
-											<listheader width="110px">Terminadas</listheader>
+<!-- 											<listheader width="110px">Pagas</listheader> -->
+<!-- 											<listheader width="110px">Terminadas</listheader> -->
 											
 										</listhead>
 										<template name="model">
@@ -55,12 +55,12 @@
 												<listcell
 													label="${each[2] }">
 												</listcell>
-												<listcell
-													label="${each[3] }">
-												</listcell>
-												<listcell
-													label="${each[4] }">
-												</listcell>
+<!-- 												<listcell -->
+<!-- 													label="${each[3] }"> -->
+<!-- 												</listcell> -->
+<!-- 												<listcell -->
+<!-- 													label="${each[4] }"> -->
+<!-- 												</listcell> -->
 											</listitem>
 										</template>
 										<listfoot>
@@ -78,26 +78,26 @@
 												</label>
 												
 											</listfooter>
-											<listfooter>
-												<label
-													style="color:black; margin-right:5px;text-weight:800">
-													Total:
-												</label>
-												<label
-													style="color:black; margin-right:5px"
-													id="lbl_total_peticao_paga">
-												</label>
-											</listfooter>
-											<listfooter>
+<!-- 											<listfooter> -->
+<!-- 												<label -->
+<!-- 													style="color:black; margin-right:5px;text-weight:800"> -->
+<!-- 													Total: -->
+<!-- 												</label> -->
+<!-- 												<label -->
+<!-- 													style="color:black; margin-right:5px" -->
+<!-- 													id="lbl_total_peticao_paga"> -->
+<!-- 												</label> -->
+<!-- 											</listfooter> -->
+<!-- 											<listfooter> -->
 											
-											<label
-													style="color:black; margin-right:5px;text-weight:800">
-													Total:
-												</label>
-												<label
-													style="color:black; margin-right:5px"
-													id="lbl_total_peticao_terminada">
-												</label></listfooter>
+<!-- 											<label -->
+<!-- 													style="color:black; margin-right:5px;text-weight:800"> -->
+<!-- 													Total: -->
+<!-- 												</label> -->
+<!-- 												<label -->
+<!-- 													style="color:black; margin-right:5px" -->
+<!-- 													id="lbl_total_peticao_terminada"> -->
+<!-- 												</label></listfooter> -->
 
 										</listfoot>
 									</listbox>

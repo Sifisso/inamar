@@ -205,6 +205,12 @@ public class PeticaoServiceImpl extends GenericServiceImpl<Peticao> implements P
 		return _pDao.buscarPeticoesPorDelegacaoTesouraria(delegacao);
 	}
 	
+
+	@Override
+	public List<Peticao> buscarPeticoesPorDelegacaoSeccaoTecnica(Delegacao delegacao) {
+		return _pDao.buscarPeticoesPorDelegacaoSeccaoTecnica(delegacao);
+	}
+	
 	@Override
 	public List<Peticao> buscarPeticoesPorDelegacaoEmbarcacao(Delegacao delegacao) {
 		return _pDao.buscarPeticoesPorDelegacaoEmbarcacao(delegacao);

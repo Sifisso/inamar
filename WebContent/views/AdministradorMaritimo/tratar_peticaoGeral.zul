@@ -52,7 +52,7 @@
 							   	         </button>
 							   	         <button
 							   	         	zclass="btn btn-primary btn-sm" type="button"
-							   	         	forward="onClick=onClickDarParecer()" width="100%" visible="${win._peticao.validado=='true' and win._peticao.autorizada=='false'}">
+							   	         	forward="onClick=onClickDarParecer()" width="100%" visible="${win._peticao.validado=='true' and win._peticao.autorizada=='false' or win._peticao.temRespostaSTecnica=='true'}">
 							   	         	Autorizar Facturação
 							   	         </button>
 							   	         

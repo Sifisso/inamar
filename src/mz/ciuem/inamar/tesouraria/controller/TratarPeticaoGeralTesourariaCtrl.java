@@ -155,6 +155,15 @@ public class TratarPeticaoGeralTesourariaCtrl extends GenericForwardComposer{
 		Executions.createComponents("/views/Tesouraria/confirmar_recepcao.zul", win_tratarPeticaoTs, mapContaReceber);
 	}
 	
+	public void onClickVerPagamento(ForwardEvent e){
+		Peticao _pet = (Peticao) _peticao;
+		Map<String, Object> mapContaReceber = new HashMap<String, Object>();
+		mapContaReceber.put("peticao", _pet);
+		saveOrUpdate(_peticao);
+		saveOrUpdate(_pet);
+		Executions.createComponents("/views/Tesouraria/ver_pagamento.zul", win_tratarPeticaoTs, mapContaReceber);
+	}
+	
 	
 	public void onClickEmitirFactura(ForwardEvent e){
 		Peticao _pet = (Peticao) _peticao;
@@ -163,6 +172,15 @@ public class TratarPeticaoGeralTesourariaCtrl extends GenericForwardComposer{
 		saveOrUpdate(_peticao);
 		saveOrUpdate(_pet);
 		Executions.createComponents("/views/Tesouraria/emitir_factura.zul", win_tratarPeticaoTs, mapContaReceber);
+	}
+	
+	public void onClickAdicionarItens(ForwardEvent e){
+		Peticao _pet = (Peticao) _peticao;
+		Map<String, Object> mapContaReceber = new HashMap<String, Object>();
+		mapContaReceber.put("peticao", _pet);
+		saveOrUpdate(_peticao);
+		saveOrUpdate(_pet);
+		Executions.createComponents("/views/Tesouraria/peticao_maritima_taxa_pedido.zul", win_tratarPeticaoTs, mapContaReceber);
 	}
 
 	public void onClick$btn_terminar(){

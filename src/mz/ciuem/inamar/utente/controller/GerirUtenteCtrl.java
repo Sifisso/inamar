@@ -76,12 +76,12 @@ public class GerirUtenteCtrl extends GenericForwardComposer{
 	
 	public void onClickprcurar(ForwardEvent e){
 		String nome = txb_nomefind.getValue();
-		boolean maritimo = (rbx_NaoMaritimoUtntenFind.isChecked() ? false : true);
-		findAllByMaritimoOuUtente(nome, maritimo);
+		//boolean maritimo = (rbx_NaoMaritimoUtntenFind.isChecked() ? false : true);
+		findAllByMaritimoOuUtente(nome);
 	}
 	
-	public void findAllByMaritimoOuUtente(String nome, boolean maritimo){
-		listUtente = _utenteService.findAllByMaritimoOuUtente(nome, maritimo);
+	public void findAllByMaritimoOuUtente(String nome){
+		listUtente = _utenteService.findAllByMaritimoOuUtente(nome);
 		lbx_utentes.setModel(new ListModelList<Utente>(listUtente));
 	}
 	
