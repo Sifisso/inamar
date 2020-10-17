@@ -128,7 +128,7 @@ public class PeticaoMaritmaTaxaPedidoCtrl extends GenericForwardComposer{
 		for(PeticaoMaritimoTaxaPedido valor:_peticaoMaritimoTaxaPedidos){
 			total = total+valor.getTaxaPedido().getTaxa().getValor();
 		}
-		lbl_custo.setValue(""+total+"MT"+"0");
+		lbl_custo.setValue(""+total+"0"+"MT");
 	}
 	
 	public void preecherTaxas(){
