@@ -135,22 +135,9 @@ public class AreaCtrl extends GenericForwardComposer{
         _area.setCodigo(txb_codigo.getValue());
         _area.setDescricao(txb_descricao.getValue());
         
-        boolean existe = false;
-        
-		for (Area area: listArea ){
-		   			
-		   			if (area.getCodigo().equals(_area.getCodigo())){
-		   				existe=true;
-		   			}
-		}
-        
-		if (existe==false){
 			_areaService.update(_area);
-	   		showNotifications("Area actualizada com sucesso!", "info");
+	   		showNotifications("√Årea actualizada com sucesso!", "info");
 	   		limparCampos();
-		}else{
-			showNotifications("O cÛdigo introduzido j·a existe!", "error");
-		}   		
 
    	}
 
@@ -178,10 +165,10 @@ public class AreaCtrl extends GenericForwardComposer{
    		
    		if (existe==false){
 		   		_areaService.create(_ar);
-		   		showNotifications("Area registada com sucesso!", "info");
+		   		showNotifications("√Årea registada com sucesso!", "info");
 		   		limparCampos();
    		}else{
-   				showNotifications("O cÛdigo introduzido j· existe", "error");
+   				showNotifications("O c√≥digo introduzido j√° existe", "error");
    		}
    	}
 
@@ -210,7 +197,7 @@ public class AreaCtrl extends GenericForwardComposer{
    		final Execution ex = Executions.getCurrent();
    		InputStream inputV= ex.getDesktop().getWebApp().getResourceAsStream("/img/inmr.png");       
            mapaParam.put("imagemLogo", inputV);
-           mapaParam.put("listNome", "Lista de ¡reas");
+           mapaParam.put("listNome", "Lista de ÔøΩreas");
    		MasterRep.imprimir("/reportParam/reportArea.jrxml", listArea, mapaParam, win_regArea);
    	}
    	

@@ -105,7 +105,7 @@
 											<listcell
 												label="${each.nome}" />
 												<listcell
-												label="${each.valor}0 MZN" />
+												label="${each.valor}0MT" />
 									       <listcell>
 										   <div align="center">
 											<button zclass="btn btn-sm "

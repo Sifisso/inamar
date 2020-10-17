@@ -138,7 +138,6 @@ public class TipoPedidoCtrl extends GenericForwardComposer{
    		showNotifications("Tipo de Pedido actualizado com sucesso!", "info");
    		limparCampos();
    		
-   		showNotifications("O código introduzido já existe", "error");
    	}
 
    	public void onClick$btn_gravar(Event e) throws InterruptedException{

@@ -129,23 +129,9 @@ public class SubAreaCtrl extends GenericForwardComposer{
    		_subArea.setDescricao(txb_descricao.getValue());
    		_subArea.setArea(_area);
 
-   		boolean existe = false;
-   		
-   		for (SubArea subArea: listSubArea ){
-   			
-   			if (subArea.getCodigo().equals(_subArea.getCodigo())){
-   				existe=true;
-   			}
-   		}
-   		
-        if(existe==false){
-        	_subAreaService.update(_subArea);
-       		showNotifications("Sub-Area actualizada com sucesso!", "info");
-       		limparCampos();
-        }else{
-        	showNotifications("O cÛdigo introduzido j· existe", "error");
-        }
-   		
+        _subAreaService.update(_subArea);
+       	showNotifications("Sub-√Årea actualizada com sucesso!", "info");
+       	limparCampos();
 
    	}
 
@@ -171,10 +157,10 @@ public class SubAreaCtrl extends GenericForwardComposer{
    		
    		if (existe==false){
    			_subAreaService.create(_subA);
-   	   		showNotifications("Sub-Area registada com sucesso!", "info");
+   	   		showNotifications("Sub-√Årea registada com sucesso!", "info");
    	   		limparCampos();	
    		}else{
-   			showNotifications("O cÛdigo introduzido j· existe", "error");
+   			showNotifications("O c√≥digo introduzido j√° existe", "error");
    		}
    		
    	}

@@ -1,29 +1,7 @@
 package mz.ciuem.inamar.tesouraria.controller;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-
-import mz.ciuem.inamar.entity.Conta;
-import mz.ciuem.inamar.entity.ItensPeticao;
-import mz.ciuem.inamar.entity.Pagamento;
-import mz.ciuem.inamar.entity.Pais;
-import mz.ciuem.inamar.entity.Pedido;
-import mz.ciuem.inamar.entity.Peticao;
-import mz.ciuem.inamar.entity.PeticaoMaritimoTaxaPedido;
-import mz.ciuem.inamar.entity.ServicoDestino;
-import mz.ciuem.inamar.entity.Taxa;
-import mz.ciuem.inamar.entity.TaxaPedido;
-import mz.ciuem.inamar.entity.TipoRequisito;
-import mz.ciuem.inamar.service.ContaService;
-import mz.ciuem.inamar.service.ItensPeticaoService;
-import mz.ciuem.inamar.service.PagamentoService;
-import mz.ciuem.inamar.service.PedidoService;
-import mz.ciuem.inamar.service.PeticaoMaritimoTaxaPedidoService;
-import mz.ciuem.inamar.service.PeticaoService;
-import mz.ciuem.inamar.service.TaxaPedidoService;
-import mz.ciuem.inamar.service.TaxaService;
 
 import org.zkoss.spring.SpringUtil;
 import org.zkoss.zk.ui.Component;
@@ -37,21 +15,26 @@ import org.zkoss.zk.ui.util.Clients;
 import org.zkoss.zk.ui.util.GenericForwardComposer;
 import org.zkoss.zul.Button;
 import org.zkoss.zul.Combobox;
-import org.zkoss.zul.Datebox;
-import org.zkoss.zul.Div;
-import org.zkoss.zul.Doublebox;
-import org.zkoss.zul.Include;
 import org.zkoss.zul.Label;
 import org.zkoss.zul.ListModelList;
 import org.zkoss.zul.Listbox;
-import org.zkoss.zul.Listitem;
 import org.zkoss.zul.Messagebox;
-import org.zkoss.zul.Textbox;
 import org.zkoss.zul.Window;
 
-import com.lowagie.text.pdf.AcroFields.Item;
-import com.sun.xml.internal.fastinfoset.algorithm.IntEncodingAlgorithm;
+import mz.ciuem.inamar.entity.ItensPeticao;
+import mz.ciuem.inamar.entity.Pedido;
+import mz.ciuem.inamar.entity.Peticao;
+import mz.ciuem.inamar.entity.PeticaoMaritimoTaxaPedido;
+import mz.ciuem.inamar.entity.TaxaPedido;
+import mz.ciuem.inamar.service.ItensPeticaoService;
+import mz.ciuem.inamar.service.PagamentoService;
+import mz.ciuem.inamar.service.PedidoService;
+import mz.ciuem.inamar.service.PeticaoMaritimoTaxaPedidoService;
+import mz.ciuem.inamar.service.PeticaoService;
+import mz.ciuem.inamar.service.TaxaPedidoService;
+import mz.ciuem.inamar.service.TaxaService;
 
+@SuppressWarnings({ "serial", "rawtypes" })
 public class PeticaoMaritmaTaxaPedidoCtrl extends GenericForwardComposer{
 	
 	//Superior
@@ -60,7 +43,7 @@ public class PeticaoMaritmaTaxaPedidoCtrl extends GenericForwardComposer{
 	private Label lbl_pedido, lbl_nome, lbl_custo, lbl_descricao;
 	private Listbox lbx_addItens;
 	
-	private Listbox lbx_itens, lbx_taxasPedido; 
+	private Listbox lbx_itens; 
 	
 	private Combobox cbx_taxaPedido;
 	
@@ -133,8 +116,6 @@ public class PeticaoMaritmaTaxaPedidoCtrl extends GenericForwardComposer{
 		super.doAfterCompose(comp);
 		preencherCampos();
 		listarPeticao();
-		//listaLocalTaxasPedido(_pedido);
-		//preecherTaxa(_pedido);
 		preecherTaxas();
 		
 	}
@@ -147,31 +128,20 @@ public class PeticaoMaritmaTaxaPedidoCtrl extends GenericForwardComposer{
 		for(PeticaoMaritimoTaxaPedido valor:_peticaoMaritimoTaxaPedidos){
 			total = total+valor.getTaxaPedido().getTaxa().getValor();
 		}
-		//Messagebox.show("valor="+total);
-		lbl_custo.setValue(""+total+"Mtn");
-	}
-	private void listaLocalTaxasPedido(Pedido pedido) {
-		//Filtrar
-		_listTaxaPedido = _taxaPedidoService.findByPedido(_pedido);
-		lbx_taxasPedido.setModel(new ListModelList<TaxaPedido>(_listTaxaPedido));
-		cbx_taxaPedido.setModel(new ListModelList<TaxaPedido>(_listTaxaPedido));
+		lbl_custo.setValue(""+total+"MT"+"0");
 	}
 	
 	public void preecherTaxas(){
-		_listTaxaPedido = _taxaPedidoService.findTaxaPedidoByPedido(_pedido);
+		_listTaxaPedido = _taxaPedidoService.findByPedidoTaxaPedido(_pedido);
 		cbx_taxaPedido.setModel(new ListModelList<TaxaPedido>(_listTaxaPedido));
 	}
 	
-	public void preecherTaxa(Pedido pedido){
-		_peticaoMaritimoTaxaPedidos = _peticaoMaritimoTaxaPedidoService.findByTaxaPedido(_pedido);
-		cbx_taxaPedido.setModel(new ListModelList<PeticaoMaritimoTaxaPedido>(_peticaoMaritimoTaxaPedidos));
-		
-	}
 	
 	private void preencherCampos() {
 		if(_peticao!=null){
 			lbl_nome.setValue(_peticao.getUtente());
 			lbl_pedido.setValue(_peticao.getDescricao());
+			_pedido=_peticao.getPedido();
 		}
 	}
 	
@@ -187,7 +157,6 @@ public class PeticaoMaritmaTaxaPedidoCtrl extends GenericForwardComposer{
 					PeticaoMaritimoTaxaPedido ip = (PeticaoMaritimoTaxaPedido) e.getData();
 					
 					if(_peticaoMaritimoTaxaPedidos.contains(ip)){
-						//_peticaoMaritimoTaxaPedidos.remove(ip);
 						
 						_peticaoMaritimoTaxaPedidoService.delete(ip);
 						
