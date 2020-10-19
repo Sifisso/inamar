@@ -24,10 +24,15 @@ public class Taxa extends IdEntity{
 	private String descricao;
 	
 	@Column(name="valor")
-	private double valor;
+	private Double valor;
+	
+	
+    @Column(name="emolumento")
+	private Double emolumento;
 	
 	@Column(name="isActivo")
 	private boolean isActivo;
+	
 	
 	@Column(name="isLegal")
 	private boolean isLegal;
@@ -102,6 +107,15 @@ public class Taxa extends IdEntity{
 		this.nome = nome;
 	}
 
+
+
+	public double getEmolumento() {
+		return emolumento;
+	}
+
+	public void setEmolumento(double emolumento) {
+		this.emolumento = emolumento;
+	}
 	public List<TaxaPedido> getTaxasPedido() {
 		return taxasPedido;
 	}

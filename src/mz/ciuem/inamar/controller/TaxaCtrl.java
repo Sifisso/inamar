@@ -50,6 +50,8 @@ public class TaxaCtrl extends GenericForwardComposer{
 	private Textbox txb_nome;
 	private Doublebox dbx_valor;
 	private Textbox txb_descricao;
+	private Doublebox txb_emolumentos;
+	
 	private Radio rbx_actSim;
 	private Radio rbx_actNao;
 	private Button btn_gravar;
@@ -80,7 +82,6 @@ public class TaxaCtrl extends GenericForwardComposer{
     private TaxaService _taxaService;
 
     private List<Taxa> listTaxa = new ArrayList<Taxa>();
-    
     
     @SuppressWarnings("unchecked")
    	@Override
@@ -134,16 +135,19 @@ public class TaxaCtrl extends GenericForwardComposer{
    		
    		t.setActivo(rbx_actSim.isChecked() ? true : false);
  		t.setNome(txb_nome.getValue());
+ 		t.setEmolumento((txb_emolumentos.getValue()));
    		t.setValor(dbx_valor.getValue()+0);
    		t.setDescricao(txb_descricao.getValue());
    		t.setSubArea(_subArea);
+   		
 
         
    		_taxaService.saveOrUpdate(t);
    		showNotifications("Taxa actualizada com sucesso!", "info");
    		limparCampos();
    	}
-
+   	
+   	
    	public void onClick$btn_cancelar(Event e) throws InterruptedException{
 
    		limparCampos();
@@ -153,6 +157,7 @@ public class TaxaCtrl extends GenericForwardComposer{
    	public void onSelect$lbx_taxa(Event e){
    		_taxa = lbx_taxa.getSelectedItem().getValue();
    		txb_nome.setValue(_taxa.getNome());
+   		txb_emolumentos.setValue(_taxa.getEmolumento());
    		dbx_valor.setValue(_taxa.getValor());
    		txb_descricao.setValue(_taxa.getDescricao());
    	    rbx_actNao.setChecked(!_taxa.isActivo());
@@ -170,7 +175,8 @@ public class TaxaCtrl extends GenericForwardComposer{
         mapaParam.put("listNome",_area.getNome());
         mapaParam.put("subArea",_subArea.getNome());
    		MasterRep.imprimir("/reportParam/reportTaxas.jrxml", listTaxa, mapaParam, win_regTaxa);
-   	}
+   	
+   }
    	
   	public void findByNomeIsActivo(String nome, boolean isActivo){
    		listTaxa = _taxaService.findByNomeActivo(nome, isActivo);
@@ -180,13 +186,13 @@ public class TaxaCtrl extends GenericForwardComposer{
    	private void limparCampos() {
    		txb_nome.setRawValue(null);
    		dbx_valor.setRawValue(null);
+   		txb_emolumentos.setRawValue(null);
    		txb_descricao.setRawValue(null);
    		rbx_actSim.setChecked(false);
    	    rbx_actNao.setChecked(true);
    		btn_gravar.setVisible(true);
    		btn_actualizar.setVisible(false);
    		listar();
-   		
    	}
    	
 	private void preencherCabecalho() {

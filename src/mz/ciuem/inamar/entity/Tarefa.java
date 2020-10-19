@@ -18,6 +18,18 @@ public class Tarefa extends IdEntity{
 	@Column(name="descricao")
 	private String descricao;
 
+	
+	@Column(name="emolumento")
+	private String emolumento;
+	
+	public String getEmolumento() {
+		return emolumento;
+	}
+
+	public void setEmolumento(String emolumento) {
+		this.emolumento = emolumento;
+	}
+
 	@Column(name="isActivo")
 	private boolean isActivo;
 	
@@ -47,7 +59,4 @@ public class Tarefa extends IdEntity{
 	public void setTarefasNasEtapas(List<TarefaNaEtapa> tarefasNasEtapas) {
 		this.tarefasNasEtapas = tarefasNasEtapas;
 	}
-	
-	
-
 }

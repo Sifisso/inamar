@@ -33,10 +33,10 @@
 		<!-- inamar4dev -->
 		<property name="user" value="root"></property> 
 		<!-- #sistemas@dba# ciuem*teste #develop4inam@r#-->
-		<property name="password" value="root"></property>
+		<property name="password" value=""></property>
 		<!-- 196.3.97.133 -->
 		<property name="jdbcUrl"
-			value="jdbc:mysql://localhost/inamar_db_h?sessionVariables=sql_mode=only_full_group_by" />
+			value="jdbc:mysql://localhost/inamar_db?sessionVariables=sql_mode=only_full_group_by" />
 		<property name="maxPoolSize" value="25"></property>
 		<property name="minPoolSize" value="3"></property>
 		<property name="maxStatements" value="25"></property>

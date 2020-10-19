@@ -100,7 +100,6 @@
 												<x:label>
 													Taxas:
 												</x:label>
-												
 												<combobox 
 													id="cbx_taxaPedido" width="100%"
 													placeholder="Selecione uma Taxa"
@@ -109,7 +108,7 @@
 													<template
 														name="model">
 														<comboitem
-															label="${each.taxa.nome} - ${each.taxa.valor}0MT" />
+															label="${each.taxa.nome}" />
 													</template>
 												</combobox>
 												</div>
@@ -124,21 +123,103 @@
 												</button>
 												</div>
 											</div>
+
+
 							
 						</div>
 						
+<!-- 						<listbox visible="true" id="lbx_addItens" -->
+<!-- 									 rows="4"> -->
+<!-- 									<listhead> -->
+<!-- 										<listheader label="Descrição" sort="auto(descricaoI)" /> -->
+<!-- 										<listheader label="Custo" width="12%" sort="auto(custo)"/> -->
+<!-- 										<listheader label="Remover" width="12%" align="center"/> -->
+<!-- 									</listhead> -->
+<!-- 									<template name="model"> -->
+<!-- 										<listitem> -->
+<!-- 											<listcell label="${each.descricao}" /> -->
+<!-- 											  <listcell label="${each.custo}"> -->
+<!-- 									        </listcell> -->
+<!-- 									        <listcell> -->
+<!-- 												<div align="center"> -->
+<!-- 											<button label="Remover" iconSclass="fa fa-trash-o" forward="onClick=onRemover(${each})" -->
+<!-- 												zclass ="btn btn-danger btn-xs" > -->
+<!-- 											</button> -->
+<!-- 										</div> -->
+										
+										
+										
+<!-- 										</listcell> -->
+<!-- 										</listitem> -->
+<!-- 									</template> -->
+<!-- 								</listbox> -->
+								
+					
+<!-- 						<button -->
+<!-- 							zclass="btn btn-success btn-sm" type="button" -->
+<!-- 							id="btn_gravar" iconSclass="fa fa-save" visible="false"> -->
+<!-- 							Gravar -->
+<!-- 						</button> -->
+						
+<!-- 						<label width="5%"></label> -->
+<!-- 						<button zclass="btn btn-info btn-sm" -->
+<!-- 							visible="false" autodisable="self,btn_gravar" type="button" -->
+<!-- 							id="btn_actualizar" iconSclass="fa fa-refresh"> -->
+
+<!-- 							Actualizar -->
+<!-- 						</button> -->
+<!-- 						<label width="5%"></label> -->
+<!-- 							<button zclass="btn btn-danger btn-sm" visible="false" -->
+<!-- 							type="button" id="btn_cancelar" iconSclass="fa fa-undo" forward="onClick=onClickClose()"> -->
+<!-- 							Cancelar -->
+<!-- 						</button> -->
+<!-- 					</div> -->
+
+
+<!-- 										<div zclass="box-body"> -->
+<!-- 												<listbox -->
+<!-- 													id="lbx_taxasPedido" checkmark="true" -->
+<!-- 													multiple="true" rows="5" -->
+<!-- 													emptyMessage="Sem Dados Registados"> -->
+<!-- 													<listhead> -->
+<!-- 														<listheader -->
+<!-- 															width="5%"> -->
+<!-- 														</listheader> -->
+<!-- 														<listheader -->
+<!-- 															label="Taxa"/> -->
+<!-- 														<listheader -->
+<!-- 															label="Valor"/> -->
+<!-- 															</listhead> -->
+<!-- 													<template -->
+<!-- 														name="model"> -->
+<!-- 														<listitem> -->
+<!-- 															<listcell /> -->
+
+<!-- 															<listcell -->
+<!-- 																label="${each.taxa.nome}" /> -->
+<!-- 															<listcell -->
+<!-- 																label="${each.taxa.valor}" /> -->
+
+<!-- 														</listitem> -->
+<!-- 													</template> -->
+<!-- 												</listbox> -->
+<!-- 											</div> -->
                         
                         <listbox visible="true" id="lbx_itens"
 									 rows="5">
 									<listhead>
 										<listheader label="Descrição" sort="auto(descricao)" />
-										<listheader label="Custo(MT)" width="15%" sort="auto(custo)"/>
+										
+										
+										<listheader label="Taxa" width="15%" sort="auto(custo)"/>
+										<listheader label="Emolumento" width="15%" sort="auto(custo)"/>
 										<listheader label="Remover" width="15%" align="center"/>
 									</listhead>
 									<template name="model">
 										<listitem>
 											<listcell label="${each.taxaPedido.taxa.nome}" />
-											<listcell label="${each.taxaPedido.taxa.valor}0"/>
+												<listcell label="${each.taxaPedido.taxa.valor}" />
+											<listcell label="${each.taxaPedido.taxa.emolumento}"/>
 											<listcell>
 												<div align="center">
 											<button label="Remover" iconSclass="fa fa-trash-o"  forward="onClick=onRemover(${each})"
@@ -158,7 +239,12 @@
 											</listfooter>
 											
 										</listfoot>
+										
 								</listbox>
+								
+								
+								
+								
 					</div>
 				</div>
 			</div>

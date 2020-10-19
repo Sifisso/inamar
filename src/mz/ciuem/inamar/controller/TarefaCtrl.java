@@ -41,6 +41,7 @@ public class TarefaCtrl extends GenericForwardComposer{
 		
 		//Modal Div
 		private Textbox txb_nome;
+		private Textbox txb_emolumentofind;
 		private Radio rbx_actSim;
 		private Radio rbx_actNao;
 		private Button btn_gravar;
@@ -81,27 +82,31 @@ public class TarefaCtrl extends GenericForwardComposer{
 
 	 public void onClickprcurar(ForwardEvent e)  {
 	        String nome = txb_nomefind.getValue();
+	       double emolumento =Double.parseDouble(txb_emolumentofind.getText()); 
 	        boolean isActivo = (rbx_Naofind.isChecked() ? false : true);
 	        findByNomeIsActivo(nome,isActivo);
 	   	}
-	   	
+	 
 	   	public void onClick$btn_actualizar() throws InterruptedException {
 	   		
 	        _tarefa.setActivo(rbx_actSim.isChecked() ? true : false);
 	   	    
 	        _tarefa.setDescricao(txb_nome.getValue());
-	   		
+	      //  _tarefa.setEmolumento(txb_emolumentofind.getValue());
+	        
 	   		_tarefaService.update(_tarefa);
 	   		showNotifications("Estado actualizado com sucesso!", "info");
 	   		limparCampos();
-
 	   	}
 
 	   	public void onClick$btn_gravar(Event e) throws InterruptedException{
 
 	   		Tarefa _taref = new Tarefa();
+	   		
 	   		_taref.setActivo(rbx_actSim.isChecked() ? true : false);
 	   		_taref.setDescricao(txb_nome.getValue());
+	   		_taref.setEmolumento(txb_emolumentofind.getValue());
+	   		
 	   		_tarefaService.create(_taref);
 	   		
 	   		showNotifications("Tarefa registada com sucesso!", "info");

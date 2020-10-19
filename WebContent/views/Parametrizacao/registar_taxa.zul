@@ -73,6 +73,7 @@
 
 							</div>
 							
+													
 							<div zclass="col-lg-2 col-md-2 col-sm-12 col-xs-12" align="left" style="margin-left:-20px; margin-top:16px">
 								<x:a class="btn btn-app"
 									data-toggle="modal" data-target="#myModal" style="width:100%">
@@ -94,18 +95,28 @@
 											width="5%" />
 										<listheader label="Nome"
 											sort="auto(nome)" />
-										<listheader label="Valor(MZN)"
+										<listheader label="Taxa"
 											sort="auto(valor)" width="12%"/>
-										<listheader label="Activa?" width="7%" align="center"/>
+											<listheader label="Emolumento"
+											sort="auto(emolumento)" width="12%"/>
+										<listheader label="Valor Total(MZN)" 
+											sort="auto(valor)" width="12%"/>
+											<listheader label="ACTIVO?" 
+											sort="auto(valor)" width="12%"/>
 										<listheader label="Actualizar" width="10%" align="center"/>
 									</listhead>
 									<template name="model">
 										<listitem>
 											<listcell></listcell>
-											<listcell
+										  	<listcell
 												label="${each.nome}" />
 												<listcell
-												label="${each.valor}0MT" />
+												label="${each.valor}0 MZN" />
+												<listcell
+												label="${each.emolumento}0 MZN" />
+													<listcell
+												label="${(each.emolumento)+(each.valor)}0 MZN" />
+												
 									       <listcell>
 										   <div align="center">
 											<button zclass="btn btn-sm "
@@ -156,9 +167,6 @@
 
 
 
-
-
-
 		<!-- Modal Candidato-->
 		<x:div class="modal fade" id="myModal" tabindex="-1"
 			role="dialog" aria-labelledby="myModalLabel">
@@ -170,7 +178,7 @@
 							x
 						</x:button>
 						<x:h4 class="modal-title" id="myModalLabel">
-							Nova Taxa
+							Nova Taxa/Emolumentos
 						</x:h4>
 					</div>
 					<div class="modal-body">
@@ -193,9 +201,6 @@
 					</div>
 
 
-
-
-					
 						<div class="row">
 							
 								<div
@@ -216,7 +221,7 @@
 							<div
 								zclass="col-lg-6 col-md-6 col-sm-12 col-xs-12">
 
-								<x:label>Nome</x:label>
+								<x:label>Nome de Taxa</x:label>
 								<div class="input-group">
 									<textbox zclass="form-control"
 										placeholder="Nome da Taxa"
@@ -230,7 +235,7 @@
 
 							<div
 								zclass="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-								<x:label>Valor</x:label>
+								<x:label>Valor de Taxa</x:label>
 								<div class="input-group">
 									<doublebox zclass="form-control"
 										placeholder="0.00"
@@ -242,6 +247,35 @@
 								</div>
 								
 							</div>
+							
+							<div
+								zclass="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+								<x:label></x:label>
+								<x:label></x:label>
+								<x:label></x:label>
+								<div class="input-group">
+								
+									
+									<x:label>Emolumentos</x:label>
+								</div>
+							</div>
+							
+							
+								<div
+								zclass="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+								<x:label>Valor</x:label>
+								<div class="input-group">
+									<doublebox zclass="form-control"
+										placeholder="0.00"
+										constraint="no empty : Não pode ser vazio nem conter apenas espaços em branco!"
+										id="txb_emolumentos" />
+									<x:span class="input-group-addon">
+										<x:i class="fa  fa-edit"></x:i>
+									</x:span>
+								</div>
+								
+							</div>
+					
 							
 							<div
 								zclass="col-lg-12 col-md-12 col-sm-12 col-xs-12">
