@@ -234,6 +234,8 @@
 										<listfoot>
 											<listfooter></listfooter>
 											<listfooter align="left" label="Total:"/>
+											<listfooter></listfooter>
+											
 											<listfooter>
 											<label id="lbl_custo" />
 											</listfooter>

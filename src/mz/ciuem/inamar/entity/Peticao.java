@@ -639,7 +639,7 @@ public class Peticao extends IdEntity{
 	public double getValorTotal() {
 		valorTotal=0;
 		for(PeticaoMaritimoTaxaPedido pmtp:peticoesTaxaPedido){
-			valorTotal=valorTotal+pmtp.getTaxaPedido().getTaxa().getValor();
+			valorTotal=valorTotal+pmtp.getTaxaPedido().getTaxa().getValor()+pmtp.getTaxaPedido().getTaxa().getEmolumento();
 		}
 		return valorTotal;
 	}
