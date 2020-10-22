@@ -4,28 +4,28 @@
 			
 			<div zclass="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 			
-<!-- 			<div class="row"> -->
-<!-- 				<div zclass="col-lg-12 col-md-12 col-sm-12 col-xs-12" -->
-<!-- 					style="margin-bottom:30px;margin-top:20px"> -->
+			<div class="row">
+				<div zclass="col-lg-12 col-md-12 col-sm-12 col-xs-12"
+					style="margin-bottom:30px;margin-top:20px">
 					
-<!-- 					<div zclass="col-lg-6 col-md-6 col-sm-12 col-xs-12" id="divCiclo"> -->
-<!-- 					<div class="form-group"> -->
-<!-- 						<x:label class="control-label"> -->
-<!-- 							Admar: -->
-<!-- 						</x:label> -->
-<!-- 						<combobox width="100%" id="cbx_ciclos" -->
-<!-- 							constraint="no empty" placeholder="Selecione a Admar" -->
-<!-- 							readonly="true"> -->
-<!-- 							<template name="model"> -->
-<!-- 								<comboitem label="${each.nome}" /> -->
-<!-- 							</template> -->
-<!-- 						</combobox> -->
+					<div zclass="col-lg-6 col-md-6 col-sm-12 col-xs-12" id="divCiclo">
+					<div class="form-group">
+						<x:label class="control-label">
+							Admar:
+						</x:label>
+						<combobox width="100%" id="cbx_ciclos"
+							constraint="no empty" placeholder="Selecione a Admar"
+							readonly="true">
+							<template name="model">
+								<comboitem label="${each.nome}" />
+							</template>
+						</combobox>
 
-<!-- 					</div> -->
+					</div>
 					
-<!-- 					</div> -->
-<!-- 				</div> -->
-<!-- 			</div> -->
+					</div>
+				</div>
+			</div>
 							<div style="margin-top:10px">
 								<x:legend style="color:green">
 									Total de Petições por Delegação

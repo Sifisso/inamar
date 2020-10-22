@@ -19,7 +19,7 @@ public class DelegacaoDepartamento extends IdEntity{
 	@Column(name="isActivol")
 	private boolean isActivo;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "departamento_id", insertable = true, updatable = true)
 	private Departamento departamento;
 	

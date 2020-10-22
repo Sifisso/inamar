@@ -95,7 +95,7 @@ public class TratarPeticaoCtrl extends GenericForwardComposer{
 		_petic.setLocalizacao("Administrador Maritimo");
 		_petic.setAutorizada(true);
 		_petic.setTemRespostaSTecnica(true);
-		_petic.setSeccaoTecnica(false);
+		//_petic.setSeccaoTecnica(false);
 		_petic.setAdmMaritima(true);
 		 _petic.setPedeParecer(false);
 		_petic.setSeccaoTecnicaParecer(false);

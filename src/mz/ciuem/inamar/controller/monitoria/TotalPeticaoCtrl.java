@@ -75,12 +75,13 @@ public class TotalPeticaoCtrl extends GenericForwardComposer{
 		super.doAfterCompose(comp);
 		listar();
 		//listarPeticoes();
+		listarAdmars();
 	}
 	
-	/*private void listarAdmars(){
+	private void listarAdmars(){
 		List<Delegacao> delegacoes = _delegacaoService.getAll();
 		cbx_ciclos.setModel(new ListModelList<Delegacao>(delegacoes));
-	}*/
+	}
 	
 	/*private void listarPeticoes(){
 		List<Peticao> peticaos = _peticaoService.getAll();

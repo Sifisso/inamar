@@ -49,6 +49,13 @@ public class Funcionario extends IdEntity{
 	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "user_id")
 	private User userLogin;
+	
+	/*
+	 * @ManyToOne(fetch = FetchType.LAZY)
+	 * 
+	 * @JoinColumn(name = "userLoggado_id", insertable = true, updatable = true)
+	 * private User userLoggado;
+	 */
 
 	public DelegacaoDepartamentoSector getSector() {
 		return sector;

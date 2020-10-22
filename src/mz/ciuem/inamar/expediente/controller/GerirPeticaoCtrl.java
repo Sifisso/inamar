@@ -226,21 +226,6 @@ public class GerirPeticaoCtrl extends GenericForwardComposer{
 		}else{
 			listPeticao = _peticaoService.buscarPeticoesPorDelegacao(funcionario.getSector().getDelegacaoDepartamento().getDelegacao());
 		}
-		
-		/*for (Peticao peticao : listPeticao) {
-			
-			int index = listPeticao.indexOf(peticao);
-			
-			List<TaxaPedido> taxasPedidos = _taxaPedidoService.findByPedido(peticao.getPedido());
-			
-			peticao.setValorTaxa(taxasPedidos.get(0).getTaxa().getValor());
-			
-			listPeticao.set(index, peticao);
-			
-			peticao.setValorImpressao(taxasPedidos.get(0).getTaxa().getValor());
-		}*/
-		
-		
 		lbx_peticao.setModel(new ListModelList<Peticao>(listPeticao));
 	}
 	

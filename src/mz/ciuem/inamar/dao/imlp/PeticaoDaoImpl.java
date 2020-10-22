@@ -127,6 +127,22 @@ public class PeticaoDaoImpl extends GenericDaoImpl<Peticao> implements PeticaoDa
 	    return query.list();
 	}
 	
+	/*
+	 * @SuppressWarnings("unchecked")
+	 * 
+	 * @Override public List<Peticao> buscarPeticoesPorDelegacaoTesouraria(Delegacao
+	 * delegacao) { Query query =
+	 * getCurrentSession().createQuery("select distinct p from Peticao p " +
+	 * "left join fetch p.pedido ped " + "left join fetch ped. taxasPedido tp " +
+	 * "left  join fetch tp.taxa t " + "join fetch p.userLoggado us " +
+	 * "join fetch us.funcionario f " + "left JOIN FETCH f.sector s " +
+	 * "left join fetch s.delegacaoDepartamento dd " +
+	 * "left join fetch dd.delegacao del " +
+	 * "  where del=:delegacao and p.isValidado=true and p.pedeParecer=false and p.tesouraria=true and p.admMaritima2=false or p.pago=true order by p.updated desc"
+	 * ); query.setParameter("delegacao", delegacao); return query.list(); }
+	 */
+	
+	
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Peticao> buscarPeticoesPorDelegacaoTesouraria(Delegacao delegacao) {
@@ -139,7 +155,7 @@ public class PeticaoDaoImpl extends GenericDaoImpl<Peticao> implements PeticaoDa
 				+ "left JOIN FETCH f.sector s "
 				+ "left join fetch s.delegacaoDepartamento dd "
 				+ "left join fetch dd.delegacao del "
-				+ "  where del=:delegacao and p.isValidado=true and p.pedeParecer=false and p.tesouraria=true and p.admMaritima2=false or p.pago=true order by p.updated desc");
+				+ "  where del=:delegacao and p.tesouraria=true order by p.updated desc");
 		query.setParameter("delegacao", delegacao);
 	    return query.list();
 	}
@@ -156,7 +172,7 @@ public class PeticaoDaoImpl extends GenericDaoImpl<Peticao> implements PeticaoDa
 				+ "left JOIN FETCH f.sector s "
 				+ "left join fetch s.delegacaoDepartamento dd "
 				+ "left join fetch dd.delegacao del "
-				+ "  where p.seccaoTecnica=true or p.temRespostaSTecnica=true and del=:delegacao order by p.updated desc");
+				+ "  where del=:delegacao and p.seccaoTecnica=true order by p.updated desc");
 		query.setParameter("delegacao", delegacao);
 	    return query.list();
 	}
@@ -183,6 +199,22 @@ public class PeticaoDaoImpl extends GenericDaoImpl<Peticao> implements PeticaoDa
 	    return query.list();
 	}
 	
+	/*
+	 * @SuppressWarnings("unchecked")
+	 * 
+	 * @Override public List<Peticao>
+	 * buscarPeticoesPorDelegacaoAdmMaritimo(Delegacao delegacao) { Query query =
+	 * getCurrentSession().createQuery("select distinct p from Peticao p " +
+	 * "left join fetch p.pedido ped " + "left join fetch ped. taxasPedido tp " +
+	 * "left  join fetch tp.taxa t " + "join fetch p.userLoggado us " +
+	 * "join fetch us.funcionario f " + "left JOIN FETCH f.sector s " +
+	 * "left join fetch s.delegacaoDepartamento dd " +
+	 * "left join fetch dd.delegacao del " +
+	 * "  where del=:delegacao and p.admMaritima=true or p.admMaritima2=true or p.tesouraria=true or p.terminada=true or p.tratada=true order by p.updated desc"
+	 * ); query.setParameter("delegacao", delegacao); return query.list(); }
+	 */
+	
+	
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Peticao> buscarPeticoesPorDelegacaoAdmMaritimo(Delegacao delegacao) {
@@ -195,7 +227,7 @@ public class PeticaoDaoImpl extends GenericDaoImpl<Peticao> implements PeticaoDa
 				+ "left JOIN FETCH f.sector s "
 				+ "left join fetch s.delegacaoDepartamento dd "
 				+ "left join fetch dd.delegacao del "
-				+ "  where del=:delegacao and p.admMaritima=true or p.admMaritima2=true or p.tesouraria=true or p.terminada=true or p.tratada=true order by p.updated desc");
+				+ "  where del=:delegacao and p.admMaritima=true order by p.updated desc");
 		query.setParameter("delegacao", delegacao);
 	    return query.list();
 	}

@@ -92,9 +92,9 @@ public class TratarPeticaoCtrl extends GenericForwardComposer{
 		_petic.setAutorizada(true);
 		/*_petic.setTerminada(true);*/
 		_petic.setLocalizacao("Tesouraria");
-		_petic.setSeccaoTecnica(false);
+		//_petic.setSeccaoTecnica(false);
 		_petic.setChefeSecretaria(false);
-		_petic.setAdmMaritima2(false);
+		//_petic.setAdmMaritima2(false);
 		_petic.setTesouraria(true);
 		_petic.setPedeParecer(false);
 		_peticaoService.saveOrUpdate(_petic);

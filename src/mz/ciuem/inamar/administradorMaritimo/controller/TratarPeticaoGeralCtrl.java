@@ -253,9 +253,9 @@ public class TratarPeticaoGeralCtrl extends GenericForwardComposer{
 				if("onYes".equals(event.getName())){
 					Peticao _pet = (Peticao) _peticao;
 					_pet.setPedeParecer(true);
-					_pet.setAdmMaritima(false);
-					_pet.setAdmMaritima2(false);
-					_pet.setAdmMaritima3(false);
+					//_pet.setAdmMaritima(false);
+					//_pet.setAdmMaritima2(false);
+					//_pet.setAdmMaritima3(false);
 					_pet.setSeccaoTecnica(true);
 					_pet.setSeccaoTecnicaParecer(true);
 					_pet.setTemRespostaSTecnica(false);
@@ -289,9 +289,9 @@ public class TratarPeticaoGeralCtrl extends GenericForwardComposer{
 				if("onYes".equals(event.getName())){
 					Peticao _pet = (Peticao) _peticao;
 					_pet.setPedeParecer(true);
-					_pet.setAdmMaritima(false);
-					_pet.setAdmMaritima2(false);
-					_pet.setAdmMaritima3(false);
+					//_pet.setAdmMaritima(false);
+					//_pet.setAdmMaritima2(false);
+					//_pet.setAdmMaritima3(false);
 					_pet.setChefeSecretaria(true);
 					_pet.setChefeSecretariaParecer(true);
 					_pet.setTemResposta(false);

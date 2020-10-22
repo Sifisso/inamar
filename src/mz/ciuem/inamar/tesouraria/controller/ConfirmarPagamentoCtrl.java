@@ -117,7 +117,7 @@ public class ConfirmarPagamentoCtrl extends GenericForwardComposer{
 		_pagamentoService.saveOrUpdate(pag);
 		_petic.setPago(true);
 		_petic.setAdmMaritima2(true);
-		_petic.setTesouraria(false);
+		//_petic.setTesouraria(false);
 		_petic.setLocalizacao("Administrador Marítimo 2");
 		_petic.setPagamento(pag);
 		pag.setPeticao(_petic);

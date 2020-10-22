@@ -149,7 +149,7 @@ public class TratarPeticaoGeralSeccaoTecnicaCtrl extends GenericForwardComposer{
 	private void enviarParaAssinaturaAdministrador() {
 		 //Por analizar a parte dos estados da peticao
 		if(_peticao!=null){
-			_peticao.setSeccaoTecnica(false);
+			//_peticao.setSeccaoTecnica(false);
 			_peticao.setSeccaoTecnica2(true);
 			_peticao.setSeccaoTecnicaParecer(false);
 			
@@ -157,7 +157,7 @@ public class TratarPeticaoGeralSeccaoTecnicaCtrl extends GenericForwardComposer{
 			_peticao.setAdmMaritima2(true);
 			
 			
-			_peticao.setLocalizacao("Administrador Maritimo2");
+			_peticao.setLocalizacao("Administrador Maritimo 2");
             _peticaoService.saveOrUpdate(_peticao);			
 		}
 	}

@@ -15,6 +15,7 @@ import org.zkoss.bind.annotation.ContextParam;
 import org.zkoss.bind.annotation.ContextType;
 import org.zkoss.bind.annotation.Init;
 import org.zkoss.bind.annotation.NotifyChange;
+import org.zkoss.zhtml.Messagebox;
 import org.zkoss.zhtml.Ol;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.Executions;
@@ -24,6 +25,7 @@ import org.zkoss.zk.ui.select.annotation.Wire;
 import org.zkoss.zk.ui.select.annotation.WireVariable;
 import org.zkoss.zul.Div;
 import org.zkoss.zul.Image;
+import org.zkoss.zul.Label;
 
 @VariableResolver(org.zkoss.zkplus.spring.DelegatingVariableResolver.class)
 public class MainVM extends PagVM {
@@ -64,8 +66,9 @@ public class MainVM extends PagVM {
 	private String aproovPage;
 
 	private String morePage;
-
-
+	
+	private String delegacao;
+	
 	
 	@WireVariable
 	private InstituicaoService _instituicaoService;
@@ -115,6 +118,9 @@ public class MainVM extends PagVM {
 				.setAttribute("ss_utilizador", loggeduser);
 		/*ciclo = new Ciclo();
 		agente = new Agente();*/
+		delegacao=loggeduser.getFuncionario().getSector().getDelegacaoDepartamento().getDelegacao().getNome();
+		
+	Messagebox.show(loggeduser.getFuncionario().getNome()+"-"+delegacao);
 
 	}
 

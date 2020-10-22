@@ -104,7 +104,11 @@
           <div class="content">
           	<div id="mainlayout" height="100%">
 				<include src="" id="conteudo"/>
+				
+				
 			</div>
+			
+			<label visible="false" id="lbl_delegacao" value="Delegação: "></label>
           </div>
         </x:aside>
       </div>

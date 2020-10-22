@@ -3,7 +3,9 @@ package mz.ciuem.inamar.dao.imlp;
 import java.util.List;
 
 import mz.ciuem.inamar.dao.FuncionarioDao;
+import mz.ciuem.inamar.entity.Delegacao;
 import mz.ciuem.inamar.entity.Funcionario;
+import mz.ciuem.inamar.entity.Peticao;
 
 import org.hibernate.Query;
 import org.springframework.stereotype.Repository;
@@ -61,6 +63,19 @@ public class FuncionarioDaoImpl extends GenericDaoImpl<Funcionario> implements F
 		
 		return query.list();
 	}*/
-
+	
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Funcionario> buscarFuncionarioPorDelegacao(Delegacao delegacao) {
+		Query query = getCurrentSession().createQuery("select f from Funcionario f "
+				+ "join fetch f.userLogin us "
+				+ "inner JOIN FETCH f.sector s "
+				+ "inner join fetch s.delegacaoDepartamento dd "
+				+ "inner join fetch dd.delegacao del "
+				+ "  where del=:delegacao order by f.updated desc");
+		query.setParameter("delegacao", delegacao);
+	    return query.list();
+	}
 	
 }

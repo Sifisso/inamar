@@ -3,8 +3,10 @@ package mz.ciuem.inamar.service.impl;
 import java.util.List;
 
 import mz.ciuem.inamar.dao.FuncionarioDao;
+import mz.ciuem.inamar.entity.Delegacao;
 import mz.ciuem.inamar.entity.DelegacaoDepartamentoSector;
 import mz.ciuem.inamar.entity.Funcionario;
+import mz.ciuem.inamar.entity.Peticao;
 import mz.ciuem.inamar.service.FuncionarioService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,5 +35,13 @@ public class FuncionarioServiceImpl extends GenericServiceImpl<Funcionario> impl
 		// TODO Auto-generated method stub
 		return _funDao.getDelegacaoFuncionario();
 	}
+
+	@Override
+	public List<Funcionario> buscarFuncionarioPorDelegacao(Delegacao delegacao) {
+		// TODO Auto-generated method stub
+		return _funDao.buscarFuncionarioPorDelegacao(delegacao);
+	}
+	
+	
 
 }

@@ -139,7 +139,7 @@
                   	<tabpanels>
                   		<tabpanel>
                   					<listbox id="lbx_requisitos"
-									checkmark="true" rows="10">
+									checkmark="true" rows="10" >
 									<listhead>
 										<listheader label="#" width="5%" />
 										<listheader label="Requisito" sort="auto(nome)" />
@@ -220,8 +220,7 @@
                   		<tabpanel>
                   		
                   					<listbox
-													id="lbx_taxasPedido" checkmark="true"
-													multiple="true" rows="10"
+													id="lbx_taxasPedido" multiple="true" checkmark="true" rows="10"
 													emptyMessage="Sem Dados Registados" disabled="true">
 													<listhead>
 														<listheader

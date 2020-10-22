@@ -27,6 +27,8 @@ import mz.ciuem.inamar.service.UserService;
 import net.sf.jasperreports.engine.JRException;
 
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.w3c.dom.ls.LSInput;
 import org.zkoss.spring.SpringUtil;
@@ -96,7 +98,9 @@ public class FuncionarioCtrl extends GenericForwardComposer{
 	Execution ex = Executions.getCurrent();
 	
 	private List<Funcionario> listAgen = new ArrayList<Funcionario>(); 
-	
+	private Funcionario funcionario=null;
+	protected User loggeduser;
+	protected Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 	Funcionario _selectedFuncionario;
 	DelegacaoDepartamentoSector _selectedSector;
 	
@@ -109,14 +113,21 @@ public class FuncionarioCtrl extends GenericForwardComposer{
 	        _delegacaoService = (DelegacaoService) SpringUtil.getBean("delegacaoService");
 	        _delegacaoDepartamentoSectorService = (DelegacaoDepartamentoSectorService) SpringUtil.getBean("delegacaoDepartamentoSectorService");
 	        _funcionarioService = (FuncionarioService) SpringUtil.getBean("funcionarioService");
+	        
+	        loggeduser = _userService.getUser(authentication.getName());
 	 }
 	
 	public void doAfterCompose (Component comp) throws Exception{
 		super.doAfterCompose(comp);
 		preencherPerfis();
 		listarIntituicao();
-		visualizarAgente();
+		
 		preencherPerfil();
+		
+		if(loggeduser.getFuncionario() != null){
+			funcionario = _funcionarioService.buscarDadosDoFuncionario(loggeduser.getFuncionario());
+		}
+		visualizarAgente();
 	}
 	
 	public void listarIntituicao(){
@@ -358,8 +369,15 @@ public class FuncionarioCtrl extends GenericForwardComposer{
 		
 	
 	private void visualizarAgente(){
-		List<Funcionario> listF = _funcionarioService.getAll();
-		lbx_agentes.setModel(new ListModelList<Funcionario>(listF));
+		
+		if(funcionario==null){
+			listAgen = _funcionarioService.getAll();
+		}else {
+			listAgen = _funcionarioService.buscarFuncionarioPorDelegacao(funcionario.getSector().getDelegacaoDepartamento().getDelegacao());
+		}
+		
+		
+		lbx_agentes.setModel(new ListModelList<Funcionario>(listAgen));
 	} 
 	
 	

@@ -167,7 +167,7 @@
 							x
 						</x:button>
 						<x:h4 class="modal-title" id="myModalLabel">
-							Novo Departamento da Delegação
+							Novo Sector/Área de Departamento
 						</x:h4>
 					</div>
 					<div class="modal-body">
@@ -196,7 +196,7 @@
 							
 						<div zclass="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
-								<x:label>Activar Departamentos?</x:label>
+								<x:label>Activar Sector/Área?</x:label>
 								<div class="input-group">
 									<radiogroup>
 										<radio label="Sim" style="margin-left:5px" id="rbx_actSim" />
