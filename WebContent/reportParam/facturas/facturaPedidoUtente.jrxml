@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="CicloLocal" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isFloatColumnFooter="true" uuid="4da41461-b689-4659-93ec-9064c8bf1433">
 	<property name="ireport.zoom" value="1.9965000000000082"/>
 	<property name="ireport.x" value="146"/>
-	<property name="ireport.y" value="481"/>
+	<property name="ireport.y" value="222"/>
 	<parameter name="imagemLogo" class="java.io.InputStream"/>
 	<parameter name="pedido" class="java.lang.String"/>
 	<parameter name="nome" class="java.lang.String"/>
@@ -35,6 +35,7 @@
 	<field name="created" class="java.util.Date"/>
 	<field name="taxaPedido.taxa.nome" class="java.lang.String"/>
 	<field name="taxaPedido.taxa.valor" class="java.lang.Double"/>
+	<field name="taxaPedido.taxa.emolumento" class="java.lang.Double"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -189,10 +190,10 @@
 				</graphicElement>
 			</line>
 			<rectangle>
-				<reportElement x="97" y="25" width="323" height="16" forecolor="#FFFFFF" backcolor="#EAEAEA" uuid="a7cc5842-9f32-4b85-b907-0b6512e78210"/>
+				<reportElement x="97" y="25" width="245" height="16" forecolor="#FFFFFF" backcolor="#EAEAEA" uuid="a7cc5842-9f32-4b85-b907-0b6512e78210"/>
 			</rectangle>
 			<staticText>
-				<reportElement x="97" y="25" width="323" height="16" uuid="cca1da1c-cb16-41c2-b6b4-7f5459b4a21a"/>
+				<reportElement x="97" y="25" width="244" height="16" uuid="cca1da1c-cb16-41c2-b6b4-7f5459b4a21a"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="8" isBold="true"/>
 				</textElement>
@@ -206,7 +207,7 @@
 				<text><![CDATA[Número]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="422" y="25" width="78" height="16" uuid="9b213917-e5d3-4b04-a9f8-2813dd57f94b"/>
+				<reportElement x="422" y="25" width="77" height="16" uuid="9b213917-e5d3-4b04-a9f8-2813dd57f94b"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="8" isBold="true"/>
 				</textElement>
@@ -231,15 +232,32 @@
 					<pen lineWidth="1.25" lineColor="#000000"/>
 				</graphicElement>
 			</line>
+			<staticText>
+				<reportElement x="342" y="24" width="78" height="16" uuid="9207bc9b-4141-4905-8f82-0f5e6912e6b6"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Valor (MT)]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="342" y="24" width="79" height="16" forecolor="#FFFFFF" backcolor="#EAEAEA" uuid="eba6db5b-7db8-4b6e-850a-b2670c0b8d1a"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="342" y="24" width="78" height="16" uuid="cc102a27-8aea-46bb-b0c3-4e8e372fcdc0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Emolumento (MT)]]></text>
+			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
 		<band height="15" splitType="Stretch">
 			<rectangle>
-				<reportElement x="97" y="0" width="323" height="15" forecolor="#FFFFFF" backcolor="#EAEAEA" uuid="797defdf-14eb-4a09-b901-543a1a4096ad"/>
+				<reportElement x="97" y="0" width="245" height="15" forecolor="#FFFFFF" backcolor="#EAEAEA" uuid="797defdf-14eb-4a09-b901-543a1a4096ad"/>
 			</rectangle>
 			<textField>
-				<reportElement x="97" y="0" width="323" height="15" uuid="9267f815-90bd-4e2f-971e-d987fb394db8"/>
+				<reportElement x="97" y="0" width="244" height="15" uuid="9267f815-90bd-4e2f-971e-d987fb394db8"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="7"/>
 				</textElement>
@@ -272,6 +290,23 @@
 				</textElement>
 				<text><![CDATA[0]]></text>
 			</staticText>
+			<rectangle>
+				<reportElement x="343" y="0" width="78" height="15" forecolor="#FFFFFF" backcolor="#EAEAEA" uuid="e11fa500-54d8-4442-9537-40ff62fb94ef"/>
+			</rectangle>
+			<textField>
+				<reportElement x="343" y="0" width="50" height="15" uuid="17626242-3eab-46ef-98f0-49ce1754ca9d"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{taxaPedido.taxa.emolumento}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="393" y="0" width="13" height="15" forecolor="#000000" uuid="084f4f1d-e3e1-4eb2-aa1e-6c578e15c273"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="7" isBold="false"/>
+				</textElement>
+				<text><![CDATA[0]]></text>
+			</staticText>
 		</band>
 	</detail>
 	<columnFooter>
@@ -283,10 +318,10 @@
 				</graphicElement>
 			</line>
 			<rectangle>
-				<reportElement x="267" y="1" width="153" height="14" forecolor="#FFFFFF" backcolor="#EAEAEA" uuid="a61079f2-4719-4e08-8f76-aa6db79ff68a"/>
+				<reportElement x="268" y="1" width="153" height="14" forecolor="#FFFFFF" backcolor="#EAEAEA" uuid="a61079f2-4719-4e08-8f76-aa6db79ff68a"/>
 			</rectangle>
 			<staticText>
-				<reportElement x="267" y="1" width="153" height="14" forecolor="#333333" uuid="3bd9ef96-f4f2-4456-86c7-a170582e0402"/>
+				<reportElement x="268" y="1" width="153" height="14" forecolor="#333333" uuid="3bd9ef96-f4f2-4456-86c7-a170582e0402"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="8" isBold="true"/>
 				</textElement>

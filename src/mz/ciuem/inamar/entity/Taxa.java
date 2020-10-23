@@ -9,6 +9,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 
 @Entity
@@ -24,11 +25,14 @@ public class Taxa extends IdEntity{
 	private String descricao;
 	
 	@Column(name="valor")
-	private Double valor;
+	private double valor;
 	
 	
     @Column(name="emolumento")
-	private Double emolumento;
+	private double emolumento;
+    
+    @Transient
+   	private double somaTxaEmolumento;
 	
 	@Column(name="isActivo")
 	private boolean isActivo;
@@ -123,6 +127,15 @@ public class Taxa extends IdEntity{
 	public void setTaxasPedido(List<TaxaPedido> taxasPedido) {
 		this.taxasPedido = taxasPedido;
 	}
+
+	public double getSomaTxaEmolumento() {
+		//somaTxaEmolumento=0;
+		somaTxaEmolumento = valor+emolumento;
+		return somaTxaEmolumento;
+	}
+	
+	
+	
 	
 	
 }

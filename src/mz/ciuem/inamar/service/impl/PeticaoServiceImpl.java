@@ -1382,14 +1382,19 @@ public class PeticaoServiceImpl extends GenericServiceImpl<Peticao> implements P
 			PeticaoEmbarcacao _peticaoEmbarcacao = p.getPeticaoEmbarcacao();
 			verFacturaEmbarcacao(_peticaoEmbarcacao, p, win);
 			
-    	}else if(p.getPedido().getId()==43 || p.getPedido().getId()==44 || p.getPedido().getId()==45 || 
+    	}
+    	
+    	if(p.getPedido().getId()==43 || p.getPedido().getId()==44 || p.getPedido().getId()==45 || 
     			p.getPedido().getId()==46){
     		PeticaoMaritimo _peticaoMaritimo = p.getPeticaoMaritimo();
 			verFacturaMaritimo(_peticaoMaritimo, p, win);
-
     }
     	
-   }
+ }
+    	
+    
+    	
+   
 	
 	
 	public void onClickVerRecibo(Peticao p, Window win) throws JRException{
@@ -1399,7 +1404,9 @@ public class PeticaoServiceImpl extends GenericServiceImpl<Peticao> implements P
 			PeticaoEmbarcacao _peticaoEmbarcacao = p.getPeticaoEmbarcacao();
 			verReciboEmbarcacao(_peticaoEmbarcacao, p, win);
 			
-    	}else if(p.getPedido().getId()==43 || p.getPedido().getId()==44 || p.getPedido().getId()==45 || 
+    	}
+    	
+    	if(p.getPedido().getId()==43 || p.getPedido().getId()==44 || p.getPedido().getId()==45 || 
     			p.getPedido().getId()==46){
     		PeticaoMaritimo _peticaoMaritimo = p.getPeticaoMaritimo();
 			verReciboMaritimo(_peticaoMaritimo, p, win);

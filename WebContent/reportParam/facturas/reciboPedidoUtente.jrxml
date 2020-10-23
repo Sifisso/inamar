@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="CicloLocal" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isFloatColumnFooter="true" uuid="4da41461-b689-4659-93ec-9064c8bf1433">
 	<property name="ireport.zoom" value="1.9965000000000082"/>
 	<property name="ireport.x" value="174"/>
-	<property name="ireport.y" value="274"/>
+	<property name="ireport.y" value="178"/>
 	<parameter name="imagemLogo" class="java.io.InputStream"/>
 	<parameter name="pedido" class="java.lang.String"/>
 	<parameter name="nome" class="java.lang.String"/>
@@ -40,6 +40,7 @@
 	<field name="taxaPedido.taxa.nome" class="java.lang.String"/>
 	<field name="taxaPedido.taxa.valor" class="java.lang.Double"/>
 	<field name="valor" class="java.lang.Double"/>
+	<field name="taxaPedido.taxa.emolumento" class="java.lang.Double"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -194,10 +195,10 @@
 				</graphicElement>
 			</line>
 			<rectangle>
-				<reportElement x="97" y="25" width="323" height="16" forecolor="#FFFFFF" backcolor="#EAEAEA" uuid="a7cc5842-9f32-4b85-b907-0b6512e78210"/>
+				<reportElement x="97" y="25" width="244" height="16" forecolor="#FFFFFF" backcolor="#EAEAEA" uuid="a7cc5842-9f32-4b85-b907-0b6512e78210"/>
 			</rectangle>
 			<staticText>
-				<reportElement x="97" y="25" width="323" height="16" uuid="cca1da1c-cb16-41c2-b6b4-7f5459b4a21a"/>
+				<reportElement x="97" y="25" width="244" height="16" uuid="cca1da1c-cb16-41c2-b6b4-7f5459b4a21a"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="8" isBold="true"/>
 				</textElement>
@@ -236,12 +237,22 @@
 					<pen lineWidth="1.25" lineColor="#000000"/>
 				</graphicElement>
 			</line>
+			<rectangle>
+				<reportElement x="341" y="24" width="79" height="16" forecolor="#FFFFFF" backcolor="#EAEAEA" uuid="16f7a920-2895-4f79-9a80-aa3386c59625"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="342" y="25" width="78" height="16" uuid="2d9228ab-874b-478c-baad-8d4647d5b82e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Emolumento (MT)]]></text>
+			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
 		<band height="15" splitType="Stretch">
 			<rectangle>
-				<reportElement x="97" y="0" width="323" height="15" forecolor="#FFFFFF" backcolor="#EAEAEA" uuid="797defdf-14eb-4a09-b901-543a1a4096ad"/>
+				<reportElement x="97" y="0" width="244" height="15" forecolor="#FFFFFF" backcolor="#EAEAEA" uuid="797defdf-14eb-4a09-b901-543a1a4096ad"/>
 			</rectangle>
 			<rectangle>
 				<reportElement x="61" y="0" width="36" height="15" forecolor="#FFFFFF" backcolor="#EAEAEA" uuid="09982aa6-8560-44e8-92f4-ca6b53ed82f3"/>
@@ -257,7 +268,7 @@
 				<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="97" y="0" width="323" height="15" uuid="e6400870-881c-4331-a61b-d7fa42329f28"/>
+				<reportElement x="97" y="0" width="244" height="15" uuid="e6400870-881c-4331-a61b-d7fa42329f28"/>
 				<textElement>
 					<font fontName="Times New Roman" size="8"/>
 				</textElement>
@@ -265,10 +276,20 @@
 			</textField>
 			<textField>
 				<reportElement x="422" y="0" width="78" height="15" uuid="847a729d-596e-4570-92d7-94df6a1e0686"/>
-				<textElement textAlignment="Center">
+				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{taxaPedido.taxa.valor}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement x="341" y="0" width="79" height="15" forecolor="#FFFFFF" backcolor="#EAEAEA" uuid="42c81782-5f11-44bc-8d67-a380c75edd6e"/>
+			</rectangle>
+			<textField>
+				<reportElement x="342" y="0" width="78" height="15" uuid="a96bc456-f085-4847-8d0a-1021d20784ac"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{taxaPedido.taxa.emolumento}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

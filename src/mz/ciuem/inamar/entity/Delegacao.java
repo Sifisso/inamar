@@ -62,7 +62,7 @@ public class Delegacao extends IdEntity{
 	@Column(name="isEntidadePropria")
 	private boolean isEntidadePropria;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "instituicao_id", insertable = true, updatable = true)
 	private Instituicao instituicao;
 	
