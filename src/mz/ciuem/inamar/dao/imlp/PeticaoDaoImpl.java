@@ -254,21 +254,21 @@ public class PeticaoDaoImpl extends GenericDaoImpl<Peticao> implements PeticaoDa
 			return lista = query.list();
 		}
 	
-	/*
+	
 	@SuppressWarnings({ "unchecked", "unused" })
 	@Override
-	public List<Object[]> getPeticaoDelegacao() {
-		Query query = getCurrentSession().createQuery("SELECT dele.nome, are.nome, COUNT(p.id) "
-				+ ""
-				+ " (SELECT COUNT(pet.id) FROM Peticao pet left join pet.pedido ped join ped.tipoPedido tp join tp.area ar join pet.userLoggado us join us.funcionario f left JOIN f.sector s join s.delegacaoDepartamento dd join dd.delegacao del where pet.pago=true), "
-				+ " (SELECT COUNT(pet.id) FROM Peticao pet left join pet.pedido ped join ped.tipoPedido tp join tp.area ar join pet.userLoggado us join us.funcionario f left JOIN f.sector s join s.delegacaoDepartamento dd join dd.delegacao del where pet.terminada=true) "
-				+ "FROM Peticao p left join p.pedido pe left join pe.tipoPedido tipPe join tipPe.area are join pe.taxasPedido txp join txp.taxa tx join p.userLoggado usr join usr.funcionario fu left JOIN fu.sector se join se.delegacaoDepartamento dde join dde.delegacao dele group by dele.nome, are.nome");
+	public List<Object[]> getPeticaoDelegacaoDesempenhoProcessual() {
+		Query query = getCurrentSession().createQuery("select p.delegacao.nome, "
+				+ "(SELECT COUNT(pet.id) FROM Peticao pet join pet.delegacao d where pet.delegacao.id=d.id and d.id=p.delegacao.id), "
+				+ "(SELECT COUNT(pet.id) FROM Peticao pet join pet.delegacao d where pet.pago=true and pet.delegacao.id=d.id and d.id=p.delegacao.id), "
+				+ "(SELECT COUNT(pet.id) FROM Peticao pet join pet.delegacao d where pet.pago=false and pet.delegacao.id=d.id and d.id=p.delegacao.id) "
+				+ "from Peticao p group by p.delegacao.id");
 		
 		List<Object[]> lista = query.list();
 		
 
 			return lista = query.list();
-		}*/
+		}
 	
 	
 	/*@SuppressWarnings({ "unchecked", "unused" })

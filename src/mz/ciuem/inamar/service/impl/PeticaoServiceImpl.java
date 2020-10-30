@@ -227,6 +227,11 @@ public class PeticaoServiceImpl extends GenericServiceImpl<Peticao> implements P
 	}
 	
 	@Override
+	public List<Object[]> getPeticaoDelegacaoDesempenhoProcessual(){
+		return _pDao.getPeticaoDelegacaoDesempenhoProcessual();
+	}
+	
+	@Override
 	public List<Object[]> getPeticaoDelegacaoImprimir() {
 		// TODO Auto-generated method stub
 		return _pDao.getPeticaoDelegacaoImprimir();

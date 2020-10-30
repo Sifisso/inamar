@@ -141,6 +141,7 @@
 						<x:li if="${sec:isAnyGranted('GESTÃO_DE_PROVINCIAS')}"><x:a href="#" onClick="@command('totalPeticoes')"><x:i class="fa fa-dot-circle-o"></x:i>Total de petições</x:a></x:li>
 						<x:li if="${sec:isAnyGranted('GESTÃO_DE_PROVINCIAS')}"><x:a href="#" onClick="@command('totalNavios')"><x:i class="fa fa-dot-circle-o"></x:i>Total de Navios</x:a></x:li>
 						<x:li if="${sec:isAnyGranted('GESTÃO_DE_PROVINCIAS')}"><x:a href="#" onClick="@command('totalFuncionarios')"><x:i class="fa fa-dot-circle-o"></x:i>Total de Funcionários</x:a></x:li>
+						<x:li if="${sec:isAnyGranted('GESTÃO_DE_PROVINCIAS')}"><x:a href="#" onClick="@command('totalFuncionariosDesempenhoProcessual')"><x:i class="fa fa-dot-circle-o"></x:i>Desempenho Processual</x:a></x:li>
 <!-- 						<x:li if="${sec:isAnyGranted('GESTÃO_DE_PROVINCIAS')}"><x:a href="#" onClick="@command('totalMaritimos')"><x:i class="fa fa-dot-circle-o"></x:i>Total de Marítimos</x:a></x:li> -->
 					</x:ul>
 				</x:li>
