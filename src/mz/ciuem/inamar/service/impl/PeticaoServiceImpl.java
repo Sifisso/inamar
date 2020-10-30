@@ -1377,18 +1377,30 @@ public class PeticaoServiceImpl extends GenericServiceImpl<Peticao> implements P
 	
 	public void onClickVerFacturaa(Peticao p, Window win) throws JRException{
 		//EMBARCACAO
-    	if(p.getPedido().getId()==36 || p.getPedido().getId()==37 || p.getPedido().getId()==38 || p.getPedido().getId()==39 ||
-    			p.getPedido().getId()==40 || p.getPedido().getId()==41 || p.getPedido().getId()==42 || p.getPedido().getId()==47){
+//    	if(p.getPedido().getId()==36 || p.getPedido().getId()==37 || p.getPedido().getId()==38 || p.getPedido().getId()==39 ||
+//    			p.getPedido().getId()==40 || p.getPedido().getId()==41 || p.getPedido().getId()==42 || p.getPedido().getId()==47){
+//			PeticaoEmbarcacao _peticaoEmbarcacao = p.getPeticaoEmbarcacao();
+//			verFacturaEmbarcacao(_peticaoEmbarcacao, p, win);
+//			
+//    	}
+//    	
+//    	if(p.getPedido().getId()==43 || p.getPedido().getId()==44 || p.getPedido().getId()==45 || 
+//    			p.getPedido().getId()==46){
+//    		PeticaoMaritimo _peticaoMaritimo = p.getPeticaoMaritimo();
+//			verFacturaMaritimo(_peticaoMaritimo, p, win);
+//    	}
+		
+		if(p.getPedido().getTipoPedido().getArea().getId()==1) {
 			PeticaoEmbarcacao _peticaoEmbarcacao = p.getPeticaoEmbarcacao();
 			verFacturaEmbarcacao(_peticaoEmbarcacao, p, win);
-			
-    	}
-    	
-    	if(p.getPedido().getId()==43 || p.getPedido().getId()==44 || p.getPedido().getId()==45 || 
-    			p.getPedido().getId()==46){
-    		PeticaoMaritimo _peticaoMaritimo = p.getPeticaoMaritimo();
+		}else
+		
+		if(p.getPedido().getTipoPedido().getArea().getId()==2) {
+			PeticaoMaritimo _peticaoMaritimo = p.getPeticaoMaritimo();
 			verFacturaMaritimo(_peticaoMaritimo, p, win);
-    	}
+		}
+		
+		
     	
 	}
     	
@@ -1399,19 +1411,29 @@ public class PeticaoServiceImpl extends GenericServiceImpl<Peticao> implements P
 	
 	public void onClickVerRecibo(Peticao p, Window win) throws JRException{
 		//EMBARCACAO
-    	if(p.getPedido().getId()==36 || p.getPedido().getId()==37 || p.getPedido().getId()==38 || p.getPedido().getId()==39 ||
-    			p.getPedido().getId()==40 || p.getPedido().getId()==41 || p.getPedido().getId()==42 || p.getPedido().getId()==47){
-			PeticaoEmbarcacao _peticaoEmbarcacao = p.getPeticaoEmbarcacao();
-			verReciboEmbarcacao(_peticaoEmbarcacao, p, win);
-			
-    	}
+//    	if(p.getPedido().getId()==36 || p.getPedido().getId()==37 || p.getPedido().getId()==38 || p.getPedido().getId()==39 ||
+//    			p.getPedido().getId()==40 || p.getPedido().getId()==41 || p.getPedido().getId()==42 || p.getPedido().getId()==47){
+//			PeticaoEmbarcacao _peticaoEmbarcacao = p.getPeticaoEmbarcacao();
+//			verReciboEmbarcacao(_peticaoEmbarcacao, p, win);
+//			
+//    	}
+//    	
+//    	if(p.getPedido().getId()==43 || p.getPedido().getId()==44 || p.getPedido().getId()==45 || 
+//    			p.getPedido().getId()==46){
+//    		PeticaoMaritimo _peticaoMaritimo = p.getPeticaoMaritimo();
+//			verReciboMaritimo(_peticaoMaritimo, p, win);
+//
+//    	}
     	
-    	if(p.getPedido().getId()==43 || p.getPedido().getId()==44 || p.getPedido().getId()==45 || 
-    			p.getPedido().getId()==46){
-    		PeticaoMaritimo _peticaoMaritimo = p.getPeticaoMaritimo();
+    	if(p.getPedido().getTipoPedido().getArea().getId()==1) {
+    		PeticaoEmbarcacao _peticaoEmbarcacao = p.getPeticaoEmbarcacao();
+    		verReciboEmbarcacao(_peticaoEmbarcacao, p, win);
+		}else
+		
+		if(p.getPedido().getTipoPedido().getArea().getId()==2) {
+			PeticaoMaritimo _peticaoMaritimo = p.getPeticaoMaritimo();
 			verReciboMaritimo(_peticaoMaritimo, p, win);
-
-    	}
+		}
 
    }
 	

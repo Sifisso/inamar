@@ -47,7 +47,7 @@ public class Pedido extends IdEntity{
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "pedido")
 	private List<TarefaNaEtapa> tarefasNaEtapa;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "tipoPedido_id", insertable = true, updatable = true)
 	private TipoPedido tipoPedido;
 	

@@ -27,7 +27,7 @@ public class TipoPedido extends IdEntity{
 	@Column(name="isActivo")
 	private boolean isActivo;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "area_id", insertable = true, updatable = true)
 	private Area area;
 	

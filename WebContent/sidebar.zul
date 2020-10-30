@@ -173,7 +173,7 @@
 						<!-- Maritimos -->
 					    <x:li if="${sec:isAnyGranted('E_SUPER_ADMINISTRADOR')}"><x:a href="#" onClick="@command('registarGrupoMaritimo')"><x:i class="fa fa-dot-circle-o"></x:i>Grupo Marítimo</x:a></x:li>
 						<x:li if="${sec:isAnyGranted('PARAM_MARITIMO,E_SUPER_ADMINISTRADOR')}"><x:a href="#" onClick="@command('gerirMaritimoMaritimo')"><x:i class="fa fa-dot-circle-o"></x:i>Registo de Marítimos</x:a></x:li>
-				  		<x:li if="${sec:isAnyGranted('PEDIDO_MARITIMO,E_SUPER_ADMINISTRADOR')}"><x:a href="#" onClick="@command('pedidoMaritimos')"><x:i class="fa fa-dot-circle-o"></x:i>Pedidos Marítimos</x:a></x:li>
+<!-- 				  		<x:li if="${sec:isAnyGranted('PEDIDO_MARITIMO,E_SUPER_ADMINISTRADOR')}"><x:a href="#" onClick="@command('pedidoMaritimos')"><x:i class="fa fa-dot-circle-o"></x:i>Pedidos Marítimos</x:a></x:li> -->
 				   </x:ul>
 			    </x:li>
 			    
@@ -225,17 +225,17 @@
 					</x:ul>
 			  </x:li>
 			  
-			  <x:li if="${sec:isAnyGranted('PEDIDO_EMBARCACAO,E_SUPER_ADMINISTRADOR')}" sclass="treeview ${vm.hoursPage}">
-					<x:a href="#" >
-						<x:i class="fa  fa-retweet"></x:i>
-						<x:span>Embarcações</x:span>
-						<x:i class="fa fa-angle-left pull-right"></x:i>
-					</x:a>
-					<x:ul class="treeview-menu">
-						<x:li if="${sec:isAnyGranted('PEDIDO_EMBARCACAO,E_SUPER_ADMINISTRADOR')}"><x:a href="#" onClick="@command('pedidoEmbarcacao')"><x:i class="fa fa-dot-circle-o"></x:i>Pedidos Embarcações</x:a></x:li>
+<!-- 			  <x:li if="${sec:isAnyGranted('PEDIDO_EMBARCACAO,E_SUPER_ADMINISTRADOR')}" sclass="treeview ${vm.hoursPage}"> -->
+<!-- 					<x:a href="#" > -->
+<!-- 						<x:i class="fa  fa-retweet"></x:i> -->
+<!-- 						<x:span>Embarcações</x:span> -->
+<!-- 						<x:i class="fa fa-angle-left pull-right"></x:i> -->
+<!-- 					</x:a> -->
+<!-- 					<x:ul class="treeview-menu"> -->
+<!-- 						<x:li if="${sec:isAnyGranted('PEDIDO_EMBARCACAO,E_SUPER_ADMINISTRADOR')}"><x:a href="#" onClick="@command('pedidoEmbarcacao')"><x:i class="fa fa-dot-circle-o"></x:i>Pedidos Embarcações</x:a></x:li> -->
 					
-					</x:ul>
-			  </x:li>
+<!-- 					</x:ul> -->
+<!-- 			  </x:li> -->
 			  
 			  
 			  	   <x:li if="${sec:isAnyGranted('CHEFE_SECRETARIA,E_SUPER_ADMINISTRADOR')}" sclass="treeview ${vm.hoursPage}">
