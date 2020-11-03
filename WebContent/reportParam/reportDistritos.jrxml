@@ -61,7 +61,7 @@
 				<textElement>
 					<font fontName="Times New Roman" size="8" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Av. Ngunhane]]></text>
+				<text><![CDATA[Av. Ngungunhane]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="114" y="24" width="163" height="11" forecolor="#000066" uuid="526611d7-8dce-4d28-a849-1e5fe8d4d76f"/>

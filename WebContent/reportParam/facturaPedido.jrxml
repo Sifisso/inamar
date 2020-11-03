@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="CicloLocal" pageWidth="842" pageHeight="595" orientation="Landscape" whenNoDataType="AllSectionsNoDetail" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4da41461-b689-4659-93ec-9064c8bf1433">
 	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="75"/>
+	<property name="ireport.y" value="14"/>
 	<parameter name="imagemLogo" class="java.io.InputStream"/>
 	<parameter name="pedido" class="java.lang.String"/>
 	<parameter name="nome" class="java.lang.String"/>
@@ -59,7 +59,7 @@
 				<textElement>
 					<font fontName="Times New Roman" size="6" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Av. Nguguyane, nº 121212, 6º andar - Maputo - Moçambique]]></text>
+				<text><![CDATA[Av. Ngungunhane, nº 121212, 6º andar - Maputo - Moçambique]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="186" y="119" width="60" height="12" forecolor="#000066" uuid="852de6f7-8059-4824-83e2-efcf5e37acfe"/>

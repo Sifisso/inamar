@@ -29,7 +29,7 @@
 				<textElement>
 					<font fontName="Times New Roman" size="8" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Av. Ngunhane; Maputo, Moçambique 4317;]]></text>
+				<text><![CDATA[Av. Ngungunhane; Maputo, Moçambique 4317;]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="38" y="64" width="60" height="12" forecolor="#000066" uuid="d4671914-93c4-4f82-8c88-a91e0aabfe20"/>
