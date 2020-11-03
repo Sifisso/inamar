@@ -271,6 +271,23 @@ public class PeticaoDaoImpl extends GenericDaoImpl<Peticao> implements PeticaoDa
 		}
 	
 	
+	@SuppressWarnings({ "unchecked", "unused" })
+	@Override
+	public List<Object[]> getPeticaoDelegacaoDesempenhoProcessualNaoFinanceiro() {
+		Query query = getCurrentSession().createQuery("select p.delegacao.nome, "
+				+ "(SELECT COUNT(pet.id) FROM Peticao pet join pet.delegacao d where pet.delegacao.id=d.id and d.id=p.delegacao.id), "
+				+ "(SELECT COUNT(pet.id) FROM Peticao pet join pet.delegacao d where pet.isRecusado=true and pet.delegacao.id=d.id and d.id=p.delegacao.id), "
+				+ "(SELECT COUNT(pet.id) FROM Peticao pet join pet.delegacao d where pet.isValidado=true and pet.terminada=false and pet.delegacao.id=d.id and d.id=p.delegacao.id), "
+				+ "(SELECT COUNT(pet.id) FROM Peticao pet join pet.delegacao d where pet.terminada=false and pet.delegacao.id=d.id and d.id=p.delegacao.id) "
+				+ "from Peticao p group by p.delegacao.id");
+		
+		List<Object[]> lista = query.list();
+		
+
+			return lista = query.list();
+		}
+	
+	
 	/*@SuppressWarnings({ "unchecked", "unused" })
 	@Override
 	public List<Object[]> getPeticaoDelegacao() {

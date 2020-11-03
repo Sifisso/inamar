@@ -33,6 +33,7 @@ public interface PeticaoDao extends GenericDao<Peticao>{
 	public List<Object[]> getPeticaoDelegacaoDashBoard();
 	public List<Object[]> getPeticaoDelegacaoImprimir();
 	public List<Object[]> getPeticaoDelegacaoDesempenhoProcessual();
+	public List<Object[]> getPeticaoDelegacaoDesempenhoProcessualNaoFinanceiro();
 	
 	//Pesquisas
 	public List<Peticao> findByUtentePeticao(String utentepeticao, List<Peticao> list);
@@ -46,6 +47,7 @@ public interface PeticaoDao extends GenericDao<Peticao>{
 	public List<Peticao> buscarPeticoesPorDelegacaoEmbarcacao(Delegacao delegacao);
 	public List<Peticao> buscarPeticoesPorDelegacaoMaritimos(Delegacao delegacao);
 	public List<Peticao> buscarPeticoesPorDelegacaoSeccaoTecnica(Delegacao delegacao);
+	
 	
 	
 	

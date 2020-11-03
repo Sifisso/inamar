@@ -5,7 +5,6 @@ public class PeticaoDelegacao {
 	private String admar;
 	private String area;
 	private String tipoPeticao;
-	private String paga;
 	private String terminada;
 	private String quantidade;
 	public String getAdmar() {
@@ -27,12 +26,6 @@ public class PeticaoDelegacao {
 		this.tipoPeticao = tipoPeticao;
 	}
 	
-	public String getPaga() {
-		return paga;
-	}
-	public void setPaga(String paga) {
-		this.paga = paga;
-	}
 	public String getTerminada() {
 		return terminada;
 	}

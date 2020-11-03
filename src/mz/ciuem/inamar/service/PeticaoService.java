@@ -51,6 +51,7 @@ public interface PeticaoService extends GenericService<Peticao>{
 	public List<Object[]> getPeticaoDelegacaoDashBoard();
 	public List<Object[]> getPeticaoDelegacaoImprimir();
 	public List<Object[]> getPeticaoDelegacaoDesempenhoProcessual();
+	public List<Object[]> getPeticaoDelegacaoDesempenhoProcessualNaoFinanceiro();
 
 
 	//Pesquisas
@@ -77,6 +78,7 @@ public interface PeticaoService extends GenericService<Peticao>{
 	public void onClickDetalhess(Peticao pet, Include inc_main,Div div_content_out);
 	public List<Peticao> buscarPeticoesPorDelegacaoTesouraria(Delegacao delegacao);
 	public List<Peticao> buscarPeticoesPorDelegacaoSeccaoTecnica(Delegacao delegacao);
+	
 	
 	
 	

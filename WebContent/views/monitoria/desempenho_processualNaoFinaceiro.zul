@@ -1,5 +1,5 @@
 <zk xmlns:x="xhtml" xmlns:zk="zk">
-	<window apply="mz.ciuem.inamar.controller.monitoria.DesempenhoProcessualCtrl" id="win_peticoes">
+	<window apply="mz.ciuem.inamar.controller.monitoria.DesempenhoProcessualNaoFinanceiroCtrl" id="win_peticoes">
 
 
 		<div class="row">
@@ -8,7 +8,7 @@
 					<div zclass="box-header">
 						<x:label class="box-title"
 							style="font-family:Georgia,serif;color:#4E443C; font-variant: small-caps; text-transform: none; font-weight: 100; margin-bottom: 0;">
-							Desempenho Financeiro por Delegação
+							Desempenho Processual por Delegação
 						</x:label>
 						
 						
@@ -152,10 +152,12 @@
 								<listheader label="#" width="5%" />
 								<listheader label="Delegação"
 									sort="auto(nome)" />
-										<listheader width="100px" align="center" label="Total Entrados" />
-								<listheader width="75px" align="center" label="Pagos"/>
+								<listheader width="100px" align="center" label="Total Entrados" />
+								<listheader width="75px" align="center" label="Inválidos"/>
 								<listheader width="40px" align="center" label="%"/>
-								<listheader width="75px" align="center" label="Não Pagos"/>
+								<listheader width="75px" align="center" label="Prontos"/>
+								<listheader width="40px" align="center" label="%"/>
+								<listheader width="100px" align="center" label="Em Tratamento"/>
 								<listheader width="40px" align="center" label="%"/>
 								
 							</listhead>
@@ -180,6 +182,12 @@
 									<listcell
 										label="${(each[3]*100)/each[1]}" >
 									</listcell>
+									<listcell
+										label="${each[4]}">
+									</listcell>
+									<listcell
+										label="${(each[4]*100)/each[1]}" >
+									</listcell>
 									
 									<!--  <listcell label="${each.total}" />-->
 								</listitem>
@@ -188,10 +196,6 @@
 								<listfooter></listfooter>
 								<listfooter></listfooter>
 								<listfooter align="center">
-									<label visible="false"
-										style="color:black; margin-right:5px;text-weight:800">
-										Total:
-									</label>
 									<label 
 										style="color:black; bold:bolder"
 										id="lbl_total_peticao">
@@ -201,44 +205,45 @@
 								<listfooter align="center">
 									<label 
 										style="color:black; bold:bolder"
-										id="lbl_total_peticao_paga">
+										id="lbl_total_peticao_invalida">
 									</label>
 								</listfooter>
 								<listfooter align="center">
-<!-- 								<label  -->
-<!-- 									style="color:black; bold:bolder" -->
-<!-- 									id="lbl_total_peticao_paga_percentual"> -->
-<!-- 								</label> -->
 								</listfooter>
 								<listfooter align="center">
 									<label 
 										style="color:black; bold:bolder"
-										id="lbl_total_peticao_nao_paga">
+										id="lbl_total_peticao_pronta">
 									</label>
 								</listfooter>	
 								<listfooter align="center">
-<!-- 									<label  -->
-<!-- 										style="color:black; bolder:bold" -->
-<!-- 										id="lbl_total_peticao_nao_paga_percentual"> -->
-<!-- 									</label> -->
 								</listfooter>	
+								
+								<listfooter align="center">
+									<label 
+										style="color:black; bold:bolder"
+										id="lbl_total_peticao_em_tratamento">
+									</label>
+								</listfooter>
+								
+								<listfooter align="center">
+								</listfooter>		
 								
 							</listfoot>
 						</listbox>
 
 					</div>
 					<div zclass="box-footer">
-								<div align="center">
+										<div align="center">
 											<separator/>
 											<button
 												zclass="btn btn-warning btn-sm" type="button"
-												id="btn_imprimir" 
+												id="btn_imprimirGlobal" 
 												iconSclass="fa fa-print" visible="true">
 
-												Desempenho Financeiro por Delegação
+												Desempenho Processual por Delegação
 											</button>
 										</div>
-										
 					</div>
 				</div>
                </div>

@@ -247,23 +247,11 @@
 								</div>
 								
 							</div>
-							
-							<div
-								zclass="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-								<x:label></x:label>
-								<x:label></x:label>
-								<x:label></x:label>
-								<div class="input-group">
-								
-									
-									<x:label>Emolumentos</x:label>
-								</div>
-							</div>
-							
+							<separator></separator>
 							
 								<div
-								zclass="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-								<x:label>Valor</x:label>
+								zclass="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+								<x:label>Emulumento</x:label>
 								<div class="input-group">
 									<doublebox zclass="form-control"
 										placeholder="0.00"
