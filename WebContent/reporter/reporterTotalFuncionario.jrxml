@@ -22,66 +22,24 @@
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="82" splitType="Stretch">
+		<band height="105" splitType="Stretch">
 			<image scaleImage="FillFrame" hAlign="Center">
-				<reportElement x="1" y="0" width="73" height="64" uuid="35819b40-9a46-4407-97c6-c336faec5cd6"/>
+				<reportElement x="252" y="5" width="60" height="60" uuid="199890f1-2795-4e11-849d-658860455eaf"/>
 				<imageExpression><![CDATA[$P{imagemLogo}]]></imageExpression>
 			</image>
 			<staticText>
-				<reportElement x="337" y="0" width="219" height="18" forecolor="#3399FF" uuid="742c0cce-acc7-4663-b27f-d211d01e274e"/>
-				<textElement textAlignment="Right">
-					<font fontName="Times New Roman" size="12" isBold="true"/>
+				<reportElement x="60" y="65" width="440" height="18" forecolor="#000000" uuid="308872af-15a4-4beb-b2fb-0f4aeea239f6"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="10" isBold="true"/>
 				</textElement>
 				<text><![CDATA[INSTITUTO NACIONAL DA MARINHA]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="377" y="27" width="177" height="12" forecolor="#000066" uuid="c1286669-f538-476b-b7fd-4d0650b3a8ff"/>
-				<textElement textAlignment="Right">
-					<font fontName="Times New Roman" size="8" isBold="true"/>
+				<reportElement x="61" y="83" width="440" height="18" forecolor="#000000" uuid="6c9faf12-db7c-40e1-818a-5729ea26a1c0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="10" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Av. Ngungunhane; Maputo, Moçambique 4317]]></text>
-			</staticText>
-			<staticText>
-				<reportElement mode="Opaque" x="1" y="64" width="73" height="17" forecolor="#FFFFFF" backcolor="#00CCCC" uuid="e89a0a66-c37d-42a5-945b-090b425a4a23"/>
-				<textElement textAlignment="Center">
-					<font fontName="Times New Roman" size="13" isBold="true"/>
-				</textElement>
-				<text><![CDATA[INAMAR]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="218" y="17" width="336" height="12" forecolor="#000066" uuid="6c41c01a-8f07-41bb-a30f-dbf3fcc37579"/>
-				<textElement textAlignment="Right">
-					<font fontName="Times New Roman" size="8" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Tel.: 21 320 552 - Cel.: +258 847887543 - Fax.: 21 320 552 - Email: inamar@gov.mz]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="292" y="39" width="100" height="12" forecolor="#000070" uuid="b2e69970-361f-479e-8663-9644a2b3ecd1"/>
-				<textElement textAlignment="Right">
-					<font fontName="Times New Roman" size="8" isBold="true"/>
-				</textElement>
-				<text><![CDATA[www.inamar.gov.mz]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="481" y="53" width="70" height="12" forecolor="#000070" uuid="b04c2ca8-302d-4f38-a133-118a3c8258f3"/>
-				<textElement textAlignment="Right">
-					<font fontName="Times New Roman" size="8" isBold="true"/>
-				</textElement>
-				<text><![CDATA[NUIT: 78653429]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="394" y="40" width="91" height="12" forecolor="#000070" uuid="0e7adcc6-ef21-4d35-8ad8-ee150a2442aa"/>
-				<textElement textAlignment="Right">
-					<font fontName="Times New Roman" size="8" isBold="true"/>
-				</textElement>
-				<text><![CDATA[inamar.gov.m/sinamar;]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="481" y="40" width="73" height="12" forecolor="#000070" uuid="399b3ab1-4741-4355-8cc4-5ba2bb710597"/>
-				<textElement textAlignment="Right">
-					<font fontName="Times New Roman" size="8" isBold="true"/>
-				</textElement>
-				<text><![CDATA[inamar.gov.m/site]]></text>
+				<text><![CDATA[DESEMPENHO FINANCEIRO POR DELEGAÇÃO]]></text>
 			</staticText>
 		</band>
 	</title>
@@ -91,21 +49,14 @@
 	<columnHeader>
 		<band height="46" splitType="Stretch">
 			<frame>
-				<reportElement mode="Opaque" x="0" y="16" width="555" height="16" forecolor="#FFFFFF" backcolor="#00CCCC" uuid="34810944-ae52-4bd8-a8c6-005cc32ff135"/>
+				<reportElement mode="Opaque" x="0" y="16" width="555" height="16" forecolor="#FFFFFF" uuid="34810944-ae52-4bd8-a8c6-005cc32ff135"/>
 			</frame>
 			<rectangle>
-				<reportElement x="0" y="30" width="555" height="13" forecolor="#CCFFFF" backcolor="#CCCCCC" uuid="da67abc4-c4a1-4d1f-a7c7-94e4afba51a6"/>
+				<reportElement x="0" y="30" width="555" height="13" forecolor="#CCFFFF" uuid="da67abc4-c4a1-4d1f-a7c7-94e4afba51a6"/>
 				<graphicElement>
 					<pen lineWidth="0.0" lineStyle="Solid" lineColor="#CCCCCC"/>
 				</graphicElement>
 			</rectangle>
-			<textField>
-				<reportElement mode="Opaque" x="1" y="16" width="555" height="15" forecolor="#000000" backcolor="#00FFFF" uuid="05764eab-26cd-4d38-833f-fc4ec1dd8f06"/>
-				<textElement textAlignment="Center">
-					<font fontName="Times New Roman" size="11" isBold="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$P{listNome}]]></textFieldExpression>
-			</textField>
 			<staticText>
 				<reportElement x="42" y="33" width="207" height="13" uuid="5bf74122-095c-4287-a079-025296ebc253"/>
 				<textElement textAlignment="Left">

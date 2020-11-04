@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="CicloLocal" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isFloatColumnFooter="true" uuid="4da41461-b689-4659-93ec-9064c8bf1433">
 	<property name="ireport.zoom" value="1.9965000000000082"/>
-	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="192"/>
+	<property name="ireport.x" value="58"/>
+	<property name="ireport.y" value="144"/>
 	<parameter name="imagemLogo" class="java.io.InputStream"/>
 	<parameter name="pedido" class="java.lang.String"/>
 	<parameter name="nome" class="java.lang.String"/>
@@ -119,7 +119,7 @@
 				<textElement>
 					<font fontName="Times New Roman" size="6" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Av. Ngunhane; Maputo, Moçambique 4317;]]></text>
+				<text><![CDATA[Av. Ngungunhane; Maputo, Moçambique 4317;]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="123" y="115" width="69" height="12" forecolor="#000066" uuid="d88dfffa-6dc9-4c37-a278-9de0ef6368b1"/>
@@ -178,10 +178,10 @@
 	<columnHeader>
 		<band height="42" splitType="Stretch">
 			<rectangle>
-				<reportElement x="422" y="25" width="79" height="16" forecolor="#FFFFFF" backcolor="#EAEAEA" uuid="d1f530d5-1e92-446d-82dc-9eb856f8c1cd"/>
+				<reportElement x="422" y="25" width="79" height="16" forecolor="#FFFFFF" uuid="d1f530d5-1e92-446d-82dc-9eb856f8c1cd"/>
 			</rectangle>
 			<rectangle>
-				<reportElement x="61" y="25" width="36" height="16" forecolor="#FFFFFF" backcolor="#EAEAEA" uuid="f73f3de0-15e4-498d-a913-dd9cda492db3"/>
+				<reportElement x="61" y="25" width="36" height="16" forecolor="#FFFFFF" uuid="f73f3de0-15e4-498d-a913-dd9cda492db3"/>
 			</rectangle>
 			<line>
 				<reportElement x="60" y="3" width="441" height="1" uuid="ef78912e-9589-48ab-9a28-0228be92807c"/>
@@ -190,7 +190,7 @@
 				</graphicElement>
 			</line>
 			<rectangle>
-				<reportElement x="97" y="25" width="245" height="16" forecolor="#FFFFFF" backcolor="#EAEAEA" uuid="a7cc5842-9f32-4b85-b907-0b6512e78210"/>
+				<reportElement x="97" y="25" width="245" height="16" forecolor="#FFFFFF" uuid="a7cc5842-9f32-4b85-b907-0b6512e78210"/>
 			</rectangle>
 			<staticText>
 				<reportElement x="97" y="25" width="244" height="16" uuid="cca1da1c-cb16-41c2-b6b4-7f5459b4a21a"/>
@@ -240,7 +240,7 @@
 				<text><![CDATA[Valor (MT)]]></text>
 			</staticText>
 			<rectangle>
-				<reportElement x="342" y="24" width="79" height="16" forecolor="#FFFFFF" backcolor="#EAEAEA" uuid="eba6db5b-7db8-4b6e-850a-b2670c0b8d1a"/>
+				<reportElement x="342" y="24" width="79" height="16" forecolor="#FFFFFF" uuid="eba6db5b-7db8-4b6e-850a-b2670c0b8d1a"/>
 			</rectangle>
 			<staticText>
 				<reportElement x="342" y="24" width="78" height="16" uuid="cc102a27-8aea-46bb-b0c3-4e8e372fcdc0"/>
@@ -254,7 +254,7 @@
 	<detail>
 		<band height="15" splitType="Stretch">
 			<rectangle>
-				<reportElement x="97" y="0" width="245" height="15" forecolor="#FFFFFF" backcolor="#EAEAEA" uuid="797defdf-14eb-4a09-b901-543a1a4096ad"/>
+				<reportElement x="97" y="0" width="245" height="15" forecolor="#FFFFFF" uuid="797defdf-14eb-4a09-b901-543a1a4096ad"/>
 			</rectangle>
 			<textField>
 				<reportElement x="97" y="0" width="244" height="15" uuid="9267f815-90bd-4e2f-971e-d987fb394db8"/>
@@ -264,10 +264,10 @@
 				<textFieldExpression><![CDATA[$F{taxaPedido.taxa.nome}]]></textFieldExpression>
 			</textField>
 			<rectangle>
-				<reportElement x="61" y="0" width="36" height="15" forecolor="#FFFFFF" backcolor="#EAEAEA" uuid="09982aa6-8560-44e8-92f4-ca6b53ed82f3"/>
+				<reportElement x="61" y="0" width="36" height="15" forecolor="#FFFFFF" uuid="09982aa6-8560-44e8-92f4-ca6b53ed82f3"/>
 			</rectangle>
 			<rectangle>
-				<reportElement x="422" y="0" width="79" height="15" forecolor="#FFFFFF" backcolor="#EAEAEA" uuid="2d747fdc-1ba2-425c-8ad0-9c938527500d"/>
+				<reportElement x="422" y="0" width="79" height="15" forecolor="#FFFFFF" uuid="2d747fdc-1ba2-425c-8ad0-9c938527500d"/>
 			</rectangle>
 			<textField>
 				<reportElement x="439" y="0" width="35" height="15" uuid="6889cade-4567-49b7-9633-35c527639893"/>
@@ -291,7 +291,7 @@
 				<text><![CDATA[0]]></text>
 			</staticText>
 			<rectangle>
-				<reportElement x="343" y="0" width="78" height="15" forecolor="#FFFFFF" backcolor="#EAEAEA" uuid="e11fa500-54d8-4442-9537-40ff62fb94ef"/>
+				<reportElement x="343" y="0" width="78" height="15" forecolor="#FFFFFF" uuid="e11fa500-54d8-4442-9537-40ff62fb94ef"/>
 			</rectangle>
 			<textField>
 				<reportElement x="343" y="0" width="50" height="15" uuid="17626242-3eab-46ef-98f0-49ce1754ca9d"/>
@@ -318,7 +318,7 @@
 				</graphicElement>
 			</line>
 			<rectangle>
-				<reportElement x="268" y="1" width="153" height="14" forecolor="#FFFFFF" backcolor="#EAEAEA" uuid="a61079f2-4719-4e08-8f76-aa6db79ff68a"/>
+				<reportElement x="268" y="1" width="153" height="14" forecolor="#FFFFFF" uuid="a61079f2-4719-4e08-8f76-aa6db79ff68a"/>
 			</rectangle>
 			<staticText>
 				<reportElement x="268" y="1" width="153" height="14" forecolor="#333333" uuid="3bd9ef96-f4f2-4456-86c7-a170582e0402"/>
@@ -328,7 +328,7 @@
 				<text><![CDATA[Total (MT):]]></text>
 			</staticText>
 			<rectangle>
-				<reportElement x="422" y="1" width="79" height="14" forecolor="#FFFFFF" backcolor="#EAEAEA" uuid="e80740e0-19da-4a5d-82d2-1c0b5d5ba722"/>
+				<reportElement x="422" y="1" width="79" height="14" forecolor="#FFFFFF" uuid="e80740e0-19da-4a5d-82d2-1c0b5d5ba722"/>
 			</rectangle>
 			<textField>
 				<reportElement x="439" y="1" width="35" height="14" uuid="abaa5486-0ac6-43af-bc28-da75d2d06862"/>

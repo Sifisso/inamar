@@ -81,7 +81,7 @@ public class TotalNavioCtrl extends GenericForwardComposer{
 	public void onClick$btn_imprimir(Event e) throws JRException{
 		_countByEmbarcacao = _embarcacaoService.getNaviosByDelegacaoDeRegisto();
 		preencherNavioDelegacao(_countByEmbarcacao);
-		imprimir("/reporter/reporterTotalNavio.jrxml", "Lista de Navios por Delegação");
+		imprimir("/reporter/reporterTotalNavio.jrxml", "Total de Navios por Delegação");
 	}
 
 	private void imprimir(String path, String title) throws JRException{
