@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="CicloLocal" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4da41461-b689-4659-93ec-9064c8bf1433">
 	<property name="ireport.zoom" value="1.5000000000000002"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="1"/>
+	<property name="ireport.y" value="65"/>
 	<parameter name="imagemLogo" class="java.io.InputStream"/>
 	<parameter name="pedido" class="java.lang.String"/>
 	<parameter name="nome" class="java.lang.String"/>
@@ -111,7 +111,7 @@
 				<text><![CDATA[RECIBO]]></text>
 			</staticText>
 			<line>
-				<reportElement x="557" y="78" width="1" height="53" uuid="154b6863-a0d9-4c80-9f9f-73caf978b1a5"/>
+				<reportElement x="557" y="125" width="1" height="6" uuid="154b6863-a0d9-4c80-9f9f-73caf978b1a5"/>
 			</line>
 			<line>
 				<reportElement x="296" y="131" width="261" height="1" uuid="2503f82c-35d3-466c-a297-59d6cb5dca9a"/>
