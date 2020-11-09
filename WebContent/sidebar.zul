@@ -264,6 +264,7 @@
 					</x:a>
 					<x:ul class="treeview-menu">
 						<x:li if="${sec:isAnyGranted('ADMINISTRADOR_MARITIMO,E_SUPER_ADMINISTRADOR')}"><x:a href="#" onClick="@command('registarExpedienteAdminMaritimo')"><x:i class="fa fa-dot-circle-o"></x:i>Entrada de Pedidos</x:a></x:li>
+						<x:li if="${sec:isAnyGranted('ADMINISTRADOR_MARITIMO,E_SUPER_ADMINISTRADOR')}"><x:a href="#" onClick="@command('totalPeticoesPedido')"><x:i class="fa fa-dot-circle-o"></x:i>Desempenho Financeiro</x:a></x:li>
 					</x:ul>
 			  </x:li>
 			  
@@ -289,16 +290,16 @@
 					</x:ul>
 			  </x:li>
 			  
-			 <x:li if="${sec:isAnyGranted('E_SUPER_ADMINISTRADOR')}" sclass="treeview ${vm.hoursPage}">
-					<x:a href="#" >
-						<x:i class="fa  fa-retweet"></x:i>
-						<x:span>Relatórios</x:span>
-						<x:i class="fa fa-angle-left pull-right"></x:i>
-					</x:a>
-					<x:ul class="treeview-menu">
-						<x:li if="${sec:isAnyGranted('E_SUPER_ADMINISTRADOR')}"><x:a href="#" onClick="@command('relatorioGestor')"><x:i class="fa fa-dot-circle-o"></x:i>Gestor</x:a></x:li>
-					</x:ul>
-			  </x:li>
+<!-- 			 <x:li if="${sec:isAnyGranted('E_SUPER_ADMINISTRADOR')}" sclass="treeview ${vm.hoursPage}"> -->
+<!-- 					<x:a href="#" > -->
+<!-- 						<x:i class="fa  fa-retweet"></x:i> -->
+<!-- 						<x:span>Relatórios</x:span> -->
+<!-- 						<x:i class="fa fa-angle-left pull-right"></x:i> -->
+<!-- 					</x:a> -->
+<!-- 					<x:ul class="treeview-menu"> -->
+<!-- 						<x:li if="${sec:isAnyGranted('E_SUPER_ADMINISTRADOR')}"><x:a href="#" onClick="@command('relatorioGestor')"><x:i class="fa fa-dot-circle-o"></x:i>Gestor</x:a></x:li> -->
+<!-- 					</x:ul> -->
+<!-- 			  </x:li> -->
 		
 
 				 <x:li if="${sec:isAnyGranted('E_SUPER_ADMINISTRADOR')}" sclass="treeview ${vm.hoursPage}">

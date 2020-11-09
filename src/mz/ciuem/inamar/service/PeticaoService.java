@@ -52,6 +52,7 @@ public interface PeticaoService extends GenericService<Peticao>{
 	public List<Object[]> getPeticaoDelegacaoImprimir();
 	public List<Object[]> getPeticaoDelegacaoDesempenhoProcessual();
 	public List<Object[]> getPeticaoDelegacaoDesempenhoProcessualNaoFinanceiro();
+	public List<Object[]> getPeticaoPedido(Delegacao delegacao);
 
 
 	//Pesquisas
@@ -63,6 +64,7 @@ public interface PeticaoService extends GenericService<Peticao>{
 	public List<Peticao> findByUtentePeticaoNaoPago(List<Peticao> list);
 	public List<Peticao> findByUtentePeticaoTerminados(List<Peticao> list);
 	public List<Peticao> findByUtentePeticaoEntregues(List<Peticao> list);
+	
 	
 	//Alterar
 	public void procurarPeloNomePedido(Listbox lbx_peticao, String utentepeticao, List<Peticao> list);
@@ -78,6 +80,7 @@ public interface PeticaoService extends GenericService<Peticao>{
 	public void onClickDetalhess(Peticao pet, Include inc_main,Div div_content_out);
 	public List<Peticao> buscarPeticoesPorDelegacaoTesouraria(Delegacao delegacao);
 	public List<Peticao> buscarPeticoesPorDelegacaoSeccaoTecnica(Delegacao delegacao);
+	
 	
 	
 	

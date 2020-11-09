@@ -842,6 +842,23 @@ public class MainVM extends PagVM {
 		setMorePage("active");
 	}
 	
+	@Command
+	public void totalPeticoesPedido() {
+		final HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("target", target);
+		map.put("breadcrumb", ol);
+		target.getChildren().clear();
+		Executions.createComponents("views/monitoria/desempenho_processualNaoFinaceiroPorPedido.zul",
+				target, map);
+
+		links = new ArrayList<String>();
+		links.add("Inicio");
+		drawnBreadcrumb("fa fa-sort", "Mais", links);
+
+		menuReset();
+		setMorePage("active");
+	}
+	
 	
 	@Command
 	public void totalMaritimos() {
@@ -1273,6 +1290,26 @@ public class MainVM extends PagVM {
 		menuReset();
 		setMorePage("active");
 	}
+	
+	@Command
+	public void registarExpedienteTesourariaMaluquice() {
+		final HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("target", target);
+		map.put("breadcrumb", ol);
+		target.getChildren().clear();
+		Executions.createComponents("views/Tesouraria/registar_pedido.zul", target,map);
+		Executions.createComponents("views/Tesouraria/tratar_peticaoGeral.zul", target,map);
+
+		links = new ArrayList<String>();
+		links.add("Inicio");
+		drawnBreadcrumb("fa fa-sort", "Mais", links);
+
+		menuReset();
+		setMorePage("active");
+	}
+	
+	
+	
 	
 	@Command
 	public void registarExpedienteAdminMaritimo() {

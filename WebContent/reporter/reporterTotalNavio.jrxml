@@ -80,7 +80,7 @@
 				<textElement textAlignment="Left">
 					<font fontName="Times New Roman" size="10" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Área]]></text>
+				<text><![CDATA[Delegação]]></text>
 			</staticText>
 			<line>
 				<reportElement x="1" y="45" width="474" height="1" uuid="24fc89d5-d8e7-4133-8b80-2ba4ec37bf91"/>

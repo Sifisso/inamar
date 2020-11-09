@@ -231,32 +231,38 @@ public class TratarPeticaoGeralCtrl extends GenericForwardComposer{
 	@SuppressWarnings({ "unchecked" })
 	public void onClickValidar(final ForwardEvent e) {
 		
-		if(executouTodasTarefas()){
-			Messagebox.show("Deseja  Validar esta Peticao?", "Validar Peticao",Messagebox.YES|Messagebox.NO, Messagebox.QUESTION, new EventListener() {
-				
-				@Override
-				public void onEvent(Event event) throws Exception {
-					
-					if("onYes".equals(event.getName())){
-						Peticao p = _peticao;
-						p.setValidado(true);
-						p.setAdmMaritima(true);
-						p.setRecusado(false);
-						
-						//Caso a chefe de secretaria nao tenha que a ver mais 
-						//p.setChefeSecretaria(false);
-						p.setLocalizacao("Administrador Maritimo");
-						_peticaoService.update(p);
-						showNotifications("Peticao Validada com sucesso.", "info");
-						onClickClose(e);
-					}
-					onClickClose(e);
-				}
-			});
-			
-		}else{
-			showNotifications("Confirme a realiza��o de todas a tarefas antes de validar.", "error");
-		}
+//		if(executouTodasTarefas()){
+//			Messagebox.show("Deseja  Validar esta Peticao?", "Validar Peticao",Messagebox.YES|Messagebox.NO, Messagebox.QUESTION, new EventListener() {
+//				
+//				@Override
+//				public void onEvent(Event event) throws Exception {
+//					
+//					if("onYes".equals(event.getName())){
+//						Peticao p = _peticao;
+//						p.setValidado(true);
+//						p.setAdmMaritima(true);
+//						p.setRecusado(false);
+//						
+//						//Caso a chefe de secretaria nao tenha que a ver mais 
+//						//p.setChefeSecretaria(false);
+//						p.setLocalizacao("Administrador Maritimo");
+//						_peticaoService.update(p);
+//						showNotifications("Peticao Validada com sucesso.", "info");
+//						onClickClose(e);
+//					}
+//					onClickClose(e);
+//				}
+//			});
+//			
+//		}else{
+//			showNotifications("Confirme a realiza��o de todas a tarefas antes de validar.", "error");
+//		}
+		
+		
+		Peticao _pet = (Peticao) _peticao;
+		Map<String, Object> mapContaReceber = new HashMap<String, Object>();
+		mapContaReceber.put("peticao", _pet);
+		Executions.createComponents("/views/ChefeSecretaria/telinha.zul", win_tratarPeticao, mapContaReceber);
 		
 		
 	}

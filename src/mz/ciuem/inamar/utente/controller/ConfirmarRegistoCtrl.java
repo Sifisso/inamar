@@ -94,15 +94,6 @@ public class ConfirmarRegistoCtrl extends GenericForwardComposer{
 	
 	public void onClick$btn_confirmar(){
 		
-		boolean existe = false;
-		
-		for(Utente utente: listUtente){
-			if((_utente.getNumeroDocumento()==(utente.getNumeroDocumento()))){
-				existe=true;
-			}
-		}
-		
-		if(existe==false){
 			gravar();
 			div_modal.setVisible(true);
 			btn_confirmar.setVisible(false);
@@ -111,13 +102,6 @@ public class ConfirmarRegistoCtrl extends GenericForwardComposer{
 			showNotifications("Utente gravado com sucesso", "info");
 			_utente = new Utente();
 			session.removeAttribute("ss_utente");
-		
-		}else{
-			Messagebox.show("O Número de documento já foi registado anteriormente, "
-					+ "certifique a existência deste utente primeiro");
-		}
-		
-		
 		 
 	}
 	

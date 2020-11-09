@@ -18,7 +18,9 @@ import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
 import mz.ciuem.inamar.service.TaxaPedidoService;
+import mz.ciuem.inamar.tesouraria.controller.PeticaoMaritmaTaxaPedidoCtrl;
 
+import org.bouncycastle.mail.smime.handlers.pkcs7_mime;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
@@ -90,6 +92,9 @@ public class Peticao extends IdEntity{
 	
 	@Column(name="naoMostraPago")
 	private boolean naoMostraPago; // Usada para o control de visualizacao de pago
+	
+	@Column(name="nao_visivel")
+	private boolean naoVisivel; //Se for true, a petição não será visível, NB: ao registar sempre será false
 	
 	private boolean pedeParecer; //1
 	
@@ -651,9 +656,13 @@ public class Peticao extends IdEntity{
 	public void setNaoMostraPago(boolean naoMostraPago) {
 		this.naoMostraPago = naoMostraPago;
 	}
-	
-	
-	
 
+	public boolean isNaoVisivel() {
+		return naoVisivel;
+	}
+
+	public void setNaoVisivel(boolean naoVisivel) {
+		this.naoVisivel = naoVisivel;
+	}
 
 }

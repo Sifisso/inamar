@@ -11,7 +11,7 @@
 					<div zclass="col-lg-6 col-md-6 col-sm-12 col-xs-12" id="divCiclo">
 					<div class="form-group">
 						<x:label class="control-label">
-							Admar:
+							Delegação:
 						</x:label>
 						<combobox width="100%" id="cbx_ciclos"
 							constraint="no empty" placeholder="Selecione a Admar"
@@ -36,11 +36,9 @@
 									<listbox id="lbx_peticoes" rows="10">
 										<listhead>
 											<listheader width="30px"></listheader>
-											<listheader>Admar</listheader>
+											<listheader>Delegação</listheader>
 											<listheader>Area</listheader>
 											<listheader width="110px">Petições</listheader>
-<!-- 											<listheader width="110px">Pagas</listheader> -->
-<!-- 											<listheader width="110px">Terminadas</listheader> -->
 											
 										</listhead>
 										<template name="model">
@@ -55,12 +53,6 @@
 												<listcell
 													label="${each[2] }">
 												</listcell>
-<!-- 												<listcell -->
-<!-- 													label="${each[3] }"> -->
-<!-- 												</listcell> -->
-<!-- 												<listcell -->
-<!-- 													label="${each[4] }"> -->
-<!-- 												</listcell> -->
 											</listitem>
 										</template>
 										<listfoot>

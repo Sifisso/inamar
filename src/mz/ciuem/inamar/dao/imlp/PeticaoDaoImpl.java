@@ -122,7 +122,7 @@ public class PeticaoDaoImpl extends GenericDaoImpl<Peticao> implements PeticaoDa
 				+ "left JOIN FETCH f.sector s "
 				+ "left join fetch s.delegacaoDepartamento dd "
 				+ "left join fetch dd.delegacao del "
-				+ "  where del=:delegacao order by p.updated desc");
+				+ "  where p.naoVisivel=false and del=:delegacao order by p.updated desc");
 		query.setParameter("delegacao", delegacao);
 	    return query.list();
 	}
@@ -155,7 +155,7 @@ public class PeticaoDaoImpl extends GenericDaoImpl<Peticao> implements PeticaoDa
 				+ "left JOIN FETCH f.sector s "
 				+ "left join fetch s.delegacaoDepartamento dd "
 				+ "left join fetch dd.delegacao del "
-				+ "  where del=:delegacao and p.tesouraria=true order by p.updated desc");
+				+ "  where p.naoVisivel=false and del=:delegacao and p.tesouraria=true order by p.updated desc");
 		query.setParameter("delegacao", delegacao);
 	    return query.list();
 	}
@@ -172,7 +172,7 @@ public class PeticaoDaoImpl extends GenericDaoImpl<Peticao> implements PeticaoDa
 				+ "left JOIN FETCH f.sector s "
 				+ "left join fetch s.delegacaoDepartamento dd "
 				+ "left join fetch dd.delegacao del "
-				+ "  where del=:delegacao and p.seccaoTecnica=true order by p.updated desc");
+				+ "  where p.naoVisivel=false and del=:delegacao and p.seccaoTecnica=true order by p.updated desc");
 		query.setParameter("delegacao", delegacao);
 	    return query.list();
 	}
@@ -227,7 +227,7 @@ public class PeticaoDaoImpl extends GenericDaoImpl<Peticao> implements PeticaoDa
 				+ "left JOIN FETCH f.sector s "
 				+ "left join fetch s.delegacaoDepartamento dd "
 				+ "left join fetch dd.delegacao del "
-				+ "  where del=:delegacao and p.admMaritima=true order by p.updated desc");
+				+ "  where p.naoVisivel=false and del=:delegacao and p.admMaritima=true order by p.updated desc");
 		query.setParameter("delegacao", delegacao);
 	    return query.list();
 	}
@@ -245,7 +245,7 @@ public class PeticaoDaoImpl extends GenericDaoImpl<Peticao> implements PeticaoDa
 				+ "join us.funcionario f left JOIN"
 				+ " f.sector s "
 				+ "join s.delegacaoDepartamento dd "
-				+ "join dd.delegacao del "
+				+ "join dd.delegacao del where p.naoVisivel=false "
 				+ "group by del.nome, ar.nome");
 		
 		List<Object[]> lista = query.list();
@@ -255,6 +255,23 @@ public class PeticaoDaoImpl extends GenericDaoImpl<Peticao> implements PeticaoDa
 		}
 	
 	
+	
+	@SuppressWarnings({ "unchecked", "unused" })
+	@Override
+	public List<Object[]> getPeticaoPedido(Delegacao delegacao) {
+		Query query = getCurrentSession().createQuery("SELECT ped.descricao, "
+				+ " COUNT(pet.id)"
+				+ "FROM Peticao pet "
+				+ "left join pet.pedido ped "
+				+ "join pet.delegacao del "
+				+ "where pet.naoVisivel=false "
+				+ "group by ped.descricao");
+		
+//		query.setParameter("delegacao", delegacao);
+		List<Object[]> lista = query.list();
+		return lista = query.list();
+		}
+	
 	@SuppressWarnings({ "unchecked", "unused" })
 	@Override
 	public List<Object[]> getPeticaoDelegacaoDesempenhoProcessual() {
@@ -262,7 +279,7 @@ public class PeticaoDaoImpl extends GenericDaoImpl<Peticao> implements PeticaoDa
 				+ "(SELECT COUNT(pet.id) FROM Peticao pet join pet.delegacao d where pet.delegacao.id=d.id and d.id=p.delegacao.id), "
 				+ "(SELECT COUNT(pet.id) FROM Peticao pet join pet.delegacao d where pet.pago=true and pet.delegacao.id=d.id and d.id=p.delegacao.id), "
 				+ "(SELECT COUNT(pet.id) FROM Peticao pet join pet.delegacao d where pet.pago=false and pet.delegacao.id=d.id and d.id=p.delegacao.id) "
-				+ "from Peticao p group by p.delegacao.id");
+				+ "from Peticao p where p.naoVisivel=false group by p.delegacao.id");
 		
 		List<Object[]> lista = query.list();
 		
@@ -279,7 +296,7 @@ public class PeticaoDaoImpl extends GenericDaoImpl<Peticao> implements PeticaoDa
 				+ "(SELECT COUNT(pet.id) FROM Peticao pet join pet.delegacao d where pet.isRecusado=true and pet.delegacao.id=d.id and d.id=p.delegacao.id), "
 				+ "(SELECT COUNT(pet.id) FROM Peticao pet join pet.delegacao d where pet.isValidado=true and pet.terminada=false and pet.delegacao.id=d.id and d.id=p.delegacao.id), "
 				+ "(SELECT COUNT(pet.id) FROM Peticao pet join pet.delegacao d where pet.terminada=false and pet.delegacao.id=d.id and d.id=p.delegacao.id) "
-				+ "from Peticao p group by p.delegacao.id");
+				+ "from Peticao p where p.naoVisivel=false group by p.delegacao.id");
 		
 		List<Object[]> lista = query.list();
 		

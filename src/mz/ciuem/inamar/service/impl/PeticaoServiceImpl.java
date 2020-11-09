@@ -235,6 +235,11 @@ public class PeticaoServiceImpl extends GenericServiceImpl<Peticao> implements P
 	public List<Object[]> getPeticaoDelegacaoDesempenhoProcessualNaoFinanceiro(){
 		return _pDao.getPeticaoDelegacaoDesempenhoProcessualNaoFinanceiro();
 	}
+
+	@Override
+	public List<Object[]> getPeticaoPedido(Delegacao delegacao){
+		return _pDao.getPeticaoPedido(delegacao);
+	}
 	
 	@Override
 	public List<Object[]> getPeticaoDelegacaoImprimir() {

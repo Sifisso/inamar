@@ -1,0 +1,215 @@
+<zk xmlns:x="xhtml" xmlns:zk="zk">
+	<window apply="mz.ciuem.inamar.controller.monitoria.DesempenhoFinanceiroPedidoCtrl" id="win_peticoes">
+
+
+		<div class="row">
+			<div zclass="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+				<div zclass="box box-default">
+					<div zclass="box-header">
+						<x:label class="box-title"
+							style="font-family:Georgia,serif;color:#4E443C; font-variant: small-caps; text-transform: none; font-weight: 100; margin-bottom: 0;">
+							Desempenho Finaceiro por Tipo de Serviço
+						</x:label>
+						
+						
+					</div>
+					<div>
+						<div zclass="box-body">
+						<div class="row">
+								<div zclass="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+									<x:label>Delegação</x:label>
+									<combobox width="100%"
+										id="cbx_delegacao" placeholder="Selecione a Delegação"
+										readonly="true">
+										<template name="model">
+											<comboitem
+												label="${each.nome}" />
+										</template>
+									</combobox>
+								</div>
+								
+						
+									<div zclass="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+									
+									<x:label>Data Inicial</x:label >
+								
+								<label></label>
+						        	<datebox id="dbx_dataEntrada" width="85%" 
+								readonly="false" visible="true" buttonVisible="true" constraint="no future"
+								format="dd/MM/yyyy"
+								 />
+								</div>
+								
+							<div zclass="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+									<x:label>Data Final</x:label>
+									<datebox id="dbx_dataEntradaq" width="85%" 
+								readonly="false" visible="true" buttonVisible="true" constraint="no future"
+								format="dd/MM/yyyy"
+								 />
+								 
+								 
+								</div>
+								
+								<div zclass="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+								<x:label></x:label>
+								<x:label></x:label>
+								<button style="margin-top:29px" zclass="btn btn-info btn-sm "
+								type="button" id="btn_procurar" iconSclass="fa  fa-search" width="" forward="onClick=onClickprcurar()">
+								Pesquisar
+							</button>
+							</div>
+								
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="row" visible="false">
+		<div zclass="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+		<button zclass="btn btn-danger btn-sm " type="button" visible="true" id="btn_magia" iconSclass="fa  fa-refresh" width="100%">
+									Magic
+		</button>
+		</div>
+		</div>
+
+		<div class="row">
+			<div zclass="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+               <div zclass="box box-default">
+				<div zclass="box-header">
+		
+
+<!-- 				<div zclass="col-lg-12 col-md-12 col-sm-24 col-xs-24"> -->
+<!-- 						<groupbox >  -->
+<!-- 							<caption>Pesquisa</caption> -->
+<!-- 								<div zclass="col-lg-3 col-md-3 col-sm-6 col-xs-6"> -->
+<!-- 								<div class="input-group"> -->
+<!-- 									<textbox zclass="form-control" forward="onClick=onClickprcurar()" -->
+<!-- 										placeholder="Procurar pelo nome do funcionário ou email" -->
+<!-- 										id="txb_nomefind" /> -->
+<!-- 											<x:span class="input-group-addon" forward="onClick=onClickprcurar()"> -->
+<!-- 										<x:i class="fa  fa-search"></x:i> -->
+<!-- 									</x:span> -->
+								
+<!-- 								</div> -->
+<!-- 							</div> -->
+							
+<!-- 								<div zclass="col-lg-3 col-md-3 col-sm-6 col-xs-6"> -->
+<!-- 								<div class="input-group"> -->
+<!-- 								<combobox  id="cbx_delegacaoNomeFind" -->
+<!-- 									placeholder="Selecione a Delegação" readonly="true" -->
+<!-- 									 forward="onSelect=onClickprcurar()"> -->
+<!-- 									<template name="model"> -->
+<!-- 										<comboitem -->
+<!-- 											label="${each}" /> -->
+<!-- 									</template> -->
+<!-- 								</combobox> -->
+								
+<!-- 								</div> -->
+<!-- 							</div> -->
+							
+<!-- 							<div zclass="col-lg-3 col-md-3 col-sm-6 col-xs-6"> -->
+<!-- 								<div class="input-group"> -->
+<!-- 								<combobox id="cbx_deparamentoNomeFind" -->
+<!-- 									placeholder="Selecione o Departamento" readonly="true" -->
+<!-- 									 forward="onSelect=onClickprcurar()"> -->
+<!-- 									<template name="model"> -->
+<!-- 										<comboitem -->
+<!-- 											label="${each}" /> -->
+<!-- 									</template> -->
+<!-- 								</combobox> -->
+								
+<!-- 								</div> -->
+<!-- 							</div> -->
+							
+<!-- 							<div zclass="col-lg-3 col-md-3 col-sm-6 col-xs-6"> -->
+<!-- 								<div class="input-group"> -->
+<!-- 								<combobox id="cbx_sectorNomeFind" -->
+<!-- 									placeholder="Selecione o Sector" readonly="true" -->
+<!-- 									 forward="onSelect=onClickprcurar()"> -->
+<!-- 									<template name="model"> -->
+<!-- 										<comboitem -->
+<!-- 											label="${each}" /> -->
+<!-- 									</template> -->
+<!-- 								</combobox> -->
+								
+<!-- 								</div> -->
+<!-- 							</div> -->
+							
+<!-- 							</groupbox> -->
+<!-- </div> -->
+
+
+
+			</div>
+				<div>
+					<div zclass="box-body">
+						<listbox id="lbx_peticoesPedido" checkmark="true"
+							rows="7">
+							<listhead>
+								<listheader label="#" width="5%" />
+								<listheader label="Pedido"
+									sort="auto(nome)" />
+								<listheader width="100px" align="center" label="Pedido" />
+								
+							</listhead>
+							<template name="model">
+								<listitem>
+									<listcell></listcell>
+									<listcell
+										label="${each[0]}"> 
+									</listcell>
+									<listcell
+										label="${each[1]}">
+									</listcell>
+									
+									<!--  <listcell label="${each.total}" />-->
+								</listitem>
+							</template>
+							<listfoot>
+								<listfooter></listfooter>
+								<listfooter></listfooter>
+								<listfooter></listfooter>
+								
+							</listfoot>
+						</listbox>
+
+					</div>
+					<div zclass="box-footer">
+										<div align="center">
+											<separator/>
+											<button
+												zclass="btn btn-warning btn-sm" type="button"
+												id="btn_imprimirGlobal" 
+												iconSclass="fa fa-print" visible="true">
+
+												Desempenho Finaceiro por Tipo de Serviço
+											</button>
+										</div>
+					</div>
+				</div>
+               </div>
+			</div>
+		</div>
+
+
+
+
+
+
+
+	</window>
+	
+	<style>
+div.z-listbox-footer {
+    border-top: 1px solid #3B3F39;
+}
+div.z-listbox-footer .z-listfooter {
+    background-image: none;
+    background-color: white;
+}
+
+</style>
+</zk>

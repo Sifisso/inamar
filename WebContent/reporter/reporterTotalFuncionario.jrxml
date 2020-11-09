@@ -68,7 +68,7 @@
 				<textElement textAlignment="Left">
 					<font fontName="Times New Roman" size="10" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Admar]]></text>
+				<text><![CDATA[Delegação]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="328" y="31" width="106" height="14" uuid="e855f030-1fc5-4ab1-969c-46ae5f1cc0c0"/>

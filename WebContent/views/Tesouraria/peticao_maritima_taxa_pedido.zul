@@ -54,7 +54,7 @@
 				<div zclass="box box-default">
 				<div class="modal-header">
 						<x:button type="button" class="close"
-							data-dismiss="modal" aria-label="Close" forward="onClick=onClickClose()">
+							data-dismiss="modal" aria-label="Close"  forward="onClick=onClickClose()">
 							x
 						</x:button>
 						<x:h4 class="modal-title" id="myModalLabel">

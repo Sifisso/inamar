@@ -15,6 +15,7 @@ import org.zkoss.zk.ui.util.Clients;
 import org.zkoss.zk.ui.util.GenericForwardComposer;
 import org.zkoss.zul.Button;
 import org.zkoss.zul.Combobox;
+import org.zkoss.zul.Doublebox;
 import org.zkoss.zul.Label;
 import org.zkoss.zul.ListModelList;
 import org.zkoss.zul.Listbox;
@@ -121,6 +122,8 @@ public class PeticaoMaritmaTaxaPedidoCtrl extends GenericForwardComposer{
 	}
 	
 	public void listarPeticao(){
+		
+		
 		_peticaoMaritimoTaxaPedidos = _peticaoMaritimoTaxaPedidoService.findByPeticao(_peticao);
 		lbx_itens.setModel(new ListModelList<PeticaoMaritimoTaxaPedido>(_peticaoMaritimoTaxaPedidos));
 		
@@ -129,7 +132,20 @@ public class PeticaoMaritmaTaxaPedidoCtrl extends GenericForwardComposer{
 			total = total+valor.getTaxaPedido().getTaxa().getValor()+valor.getTaxaPedido().getTaxa().getEmolumento();
 		}
 		lbl_custo.setValue(""+total+"0"+"MT");
+
+		}
+	
+	public double tentativa() {
+		
+		double total=0;
+		for(PeticaoMaritimoTaxaPedido valor:_peticaoMaritimoTaxaPedidos){
+			total = total+valor.getTaxaPedido().getTaxa().getValor()+valor.getTaxaPedido().getTaxa().getEmolumento();
+		}
+		
+		return total;
 	}
+	
+	
 	
 	public void preecherTaxas(){
 		_listTaxaPedido = _taxaPedidoService.findByPedidoTaxaPedido(_pedido);
