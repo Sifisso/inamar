@@ -50,6 +50,7 @@ import mz.ciuem.inamar.service.TaxaPedidoService;
 import mz.ciuem.inamar.service.TipoPedidoService;
 import mz.ciuem.inamar.service.UserService;
 import mz.ciuem.inamar.service.UtenteService;
+import mz.ciuem.inamar.tesouraria.controller.PeticaoMaritmaTaxaPedidoCtrl;
 import mz.ciuem.inamar.util.Gerador;
 import net.sf.jasperreports.engine.JRException;
 
@@ -1452,7 +1453,7 @@ public class PeticaoServiceImpl extends GenericServiceImpl<Peticao> implements P
 
    }
 	
-	
+	 
 	private void verReciboEmbarcacao(PeticaoEmbarcacao _peticaoEmbarcacao, Peticao p, Window win) throws JRException {
 	    Map<String, Object> mapaParam = new HashMap<String, Object>();	
    		final Execution ex = Executions.getCurrent();
@@ -1462,8 +1463,16 @@ public class PeticaoServiceImpl extends GenericServiceImpl<Peticao> implements P
         //Parametros
         //Fazer query
         
+        
+        List<PeticaoMaritimoTaxaPedido> _listt = _peticaoMaritimoTaxaPedidoService.findByPeticaoEmbarcacao(_peticaoEmbarcacao);
+                
+                double valorTeste=0;
+                for(PeticaoMaritimoTaxaPedido ptxp:_listt) {
+                	valorTeste = valorTeste+ptxp.getTaxaPedido().getTaxa().getValor()+ptxp.getTaxaPedido().getTaxa().getEmolumento();
+                }
+                
+        mapaParam.put("valorTotal", ""+valorTeste+"0");
         mapaParam.put("pedido", ""+_peticaoEmbarcacao.getPedido().getDescricao());
-        mapaParam.put("valorTotal", ""+p.getValorTotal()+"0");
         mapaParam.put("dataPagamento", ""+p.getPagamento().getDataRecepcaoValor());
         mapaParam.put("nome", ""+u.getNome()+" "+u.getApelido());
         mapaParam.put("nomePai", ""+u.getNomePai());
@@ -1516,8 +1525,16 @@ public class PeticaoServiceImpl extends GenericServiceImpl<Peticao> implements P
         //Parametros
         //Fazer query
        // Messagebox.show("Valor total vindo de pedido = "+p.getPedido().getTotal());
+        
+        List<PeticaoMaritimoTaxaPedido> _listt = _peticaoMaritimoTaxaPedidoService.findByPeticaoMaritimo(_peticaoMaritimo);
+        
+        double valorTeste=0;
+        for(PeticaoMaritimoTaxaPedido ptxp:_listt) {
+        	valorTeste = valorTeste+ptxp.getTaxaPedido().getTaxa().getValor()+ptxp.getTaxaPedido().getTaxa().getEmolumento();
+        }
+        
+        mapaParam.put("valorTotal", ""+valorTeste+"0");
         mapaParam.put("dataPagamento", ""+p.getPagamento().getDataRecepcaoValor());
-        mapaParam.put("valorTotal", ""+p.getValorTotal()+"0");
         mapaParam.put("pedido", ""+_peticaoMaritimo.getPedido().getDescricao());
         mapaParam.put("nome", ""+u.getNome()+" "+u.getApelido());
         mapaParam.put("nomePai", ""+u.getNomePai());
@@ -1569,8 +1586,17 @@ public class PeticaoServiceImpl extends GenericServiceImpl<Peticao> implements P
         Utente u = _utenteService.buscarUtenteByUser(_peticaoEmbarcacao.getUser());
         //Parametros
         //Fazer query
+        
+        List<PeticaoMaritimoTaxaPedido> _listt = _peticaoMaritimoTaxaPedidoService.findByPeticaoEmbarcacao(_peticaoEmbarcacao);
+        
+        double valorTeste=0;
+        for(PeticaoMaritimoTaxaPedido ptxp:_listt) {
+        	valorTeste = valorTeste+ptxp.getTaxaPedido().getTaxa().getValor()+ptxp.getTaxaPedido().getTaxa().getEmolumento();
+        }
+        
+        
         mapaParam.put("pedido", ""+_peticaoEmbarcacao.getPedido().getDescricao());
-        mapaParam.put("valorTotal", ""+p.getValorTotal());
+        mapaParam.put("valorTotal", ""+valorTeste);
         mapaParam.put("nome", ""+u.getNome()+" "+u.getApelido());
         mapaParam.put("nomePai", ""+u.getNomePai());
         mapaParam.put("primeiroNome", ""+u.getNome());
@@ -1623,7 +1649,14 @@ public class PeticaoServiceImpl extends GenericServiceImpl<Peticao> implements P
         //Parametros
         //Fazer query
        // Messagebox.show("Valor total vindo de pedido = "+p.getPedido().getTotal());
-        mapaParam.put("valorTotal", ""+p.getValorTotal());
+        
+        List<PeticaoMaritimoTaxaPedido> _listt = _peticaoMaritimoTaxaPedidoService.findByPeticaoMaritimo(_peticaoMaritimo);
+        double valorTeste=0;
+        for(PeticaoMaritimoTaxaPedido ptxp:_listt) {
+        	valorTeste = valorTeste+ptxp.getTaxaPedido().getTaxa().getValor()+ptxp.getTaxaPedido().getTaxa().getEmolumento();
+        }
+        
+        mapaParam.put("valorTotal", ""+valorTeste);
         mapaParam.put("pedido", ""+_peticaoMaritimo.getPedido().getDescricao());
         mapaParam.put("nome", ""+u.getNome()+" "+u.getApelido());
         mapaParam.put("nomePai", ""+u.getNomePai());

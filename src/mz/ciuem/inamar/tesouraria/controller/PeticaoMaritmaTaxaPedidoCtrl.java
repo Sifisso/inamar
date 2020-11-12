@@ -26,6 +26,7 @@ import mz.ciuem.inamar.entity.ItensPeticao;
 import mz.ciuem.inamar.entity.Pedido;
 import mz.ciuem.inamar.entity.Peticao;
 import mz.ciuem.inamar.entity.PeticaoMaritimoTaxaPedido;
+import mz.ciuem.inamar.entity.Taxa;
 import mz.ciuem.inamar.entity.TaxaPedido;
 import mz.ciuem.inamar.service.ItensPeticaoService;
 import mz.ciuem.inamar.service.PagamentoService;
@@ -72,6 +73,8 @@ public class PeticaoMaritmaTaxaPedidoCtrl extends GenericForwardComposer{
 	private Pedido _pedido;
 	private TaxaPedido _taxaPedido;
 	
+	private PeticaoMaritimoTaxaPedido peticaoMaritimoTaxaPedido;
+	
 	private List<PeticaoMaritimoTaxaPedido> listpmtp = new ArrayList<PeticaoMaritimoTaxaPedido>();
 	private List<ItensPeticao> listItemPeticao, listItemPeticaoAdd = new ArrayList<ItensPeticao>();
 	private ListModelList<ItensPeticao> listModelItemPeticaoAdd, listModelItemPeticao;
@@ -92,6 +95,7 @@ public class PeticaoMaritmaTaxaPedidoCtrl extends GenericForwardComposer{
 	private Peticao _peticao;
 	private ItensPeticao _selectedItemPeticao;
 	private ItensPeticao _itensPeticao;
+	private TaxaPedido selected_pmtx;
 	
 	@SuppressWarnings("unchecked")
 	@Override
@@ -116,8 +120,9 @@ public class PeticaoMaritmaTaxaPedidoCtrl extends GenericForwardComposer{
 	public void doAfterCompose(Component comp) throws Exception {
 		super.doAfterCompose(comp);
 		preencherCampos();
-		listarPeticao();
+		//listarPeticao();
 		preecherTaxas();
+		retorno();
 		
 	}
 	
@@ -132,25 +137,32 @@ public class PeticaoMaritmaTaxaPedidoCtrl extends GenericForwardComposer{
 			total = total+valor.getTaxaPedido().getTaxa().getValor()+valor.getTaxaPedido().getTaxa().getEmolumento();
 		}
 		lbl_custo.setValue(""+total+"0"+"MT");
+		//Messagebox.show("VALOR="+peticaoMaritimoTaxaPedido.getValor());
 
 		}
 	
-	public double tentativa() {
+	public double retorno(){
+		
+		_peticaoMaritimoTaxaPedidos = _peticaoMaritimoTaxaPedidoService.findByPeticao(_peticao);
+		lbx_itens.setModel(new ListModelList<PeticaoMaritimoTaxaPedido>(_peticaoMaritimoTaxaPedidos));
 		
 		double total=0;
 		for(PeticaoMaritimoTaxaPedido valor:_peticaoMaritimoTaxaPedidos){
 			total = total+valor.getTaxaPedido().getTaxa().getValor()+valor.getTaxaPedido().getTaxa().getEmolumento();
 		}
-		
+		lbl_custo.setValue(""+total+"0"+"MT");
+
 		return total;
 	}
-	
-	
 	
 	public void preecherTaxas(){
 		_listTaxaPedido = _taxaPedidoService.findByPedidoTaxaPedido(_pedido);
 		cbx_taxaPedido.setModel(new ListModelList<TaxaPedido>(_listTaxaPedido));
 	}
+	
+	public void onSelect$cbx_taxaPedido() {
+		selected_pmtx = (TaxaPedido) cbx_taxaPedido.getSelectedItem().getValue();
+    }
 	
 	
 	private void preencherCampos() {
@@ -195,6 +207,9 @@ public class PeticaoMaritmaTaxaPedidoCtrl extends GenericForwardComposer{
 		_peticaoMaritimoTaxaPedidoService.create(pmtp);
 		_listTaxaPedido.remove((TaxaPedido)cbx_taxaPedido.getSelectedItem().getValue());
 		cbx_taxaPedido.removeChild(cbx_taxaPedido.getSelectedItem());
+		
+		selected_pmtx = null;
+		cbx_taxaPedido.setRawValue(null);
 		
 		limparCampos();
 		listarPeticao();

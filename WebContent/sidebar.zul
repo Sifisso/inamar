@@ -264,7 +264,6 @@
 					</x:a>
 					<x:ul class="treeview-menu">
 						<x:li if="${sec:isAnyGranted('ADMINISTRADOR_MARITIMO,E_SUPER_ADMINISTRADOR')}"><x:a href="#" onClick="@command('registarExpedienteAdminMaritimo')"><x:i class="fa fa-dot-circle-o"></x:i>Entrada de Pedidos</x:a></x:li>
-						<x:li if="${sec:isAnyGranted('ADMINISTRADOR_MARITIMO,E_SUPER_ADMINISTRADOR')}"><x:a href="#" onClick="@command('totalPeticoesPedido')"><x:i class="fa fa-dot-circle-o"></x:i>Desempenho Financeiro</x:a></x:li>
 					</x:ul>
 			  </x:li>
 			  

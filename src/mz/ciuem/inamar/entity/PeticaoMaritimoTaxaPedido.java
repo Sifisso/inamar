@@ -6,7 +6,9 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name="peticao_maritimo_taxa_pedido")
@@ -22,8 +24,6 @@ public class PeticaoMaritimoTaxaPedido extends IdEntity{
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "taxaPedido_id", insertable = true, updatable = true, nullable=true)
 	private TaxaPedido taxaPedido;
-	
-	private double valor;
 	
 	private boolean pago;
 
@@ -51,11 +51,5 @@ public class PeticaoMaritimoTaxaPedido extends IdEntity{
 		this.peticao = peticao;
 	}
 
-	public double getValor() {
-
-		return valor;
-	}
-
-	
 
 }
