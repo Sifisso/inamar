@@ -243,6 +243,11 @@ public class TratarPeticaoGeralCtrl extends GenericForwardComposer{
 		_peticaoService.onClickVerTramitacao(p, win_tratarPeticaoAd);
 	}
 	
+	public void onClickVerRecibo(ForwardEvent e) throws JRException{
+    	Peticao p = (Peticao) _peticao;
+    	_peticaoService.onClickVerRecibo(p, win_tratarPeticaoAd);
+	}
+	
 	@SuppressWarnings({ "unchecked" })
 	public void onClickPedirParecer(final ForwardEvent e) {
 		Messagebox.show("Deseja submeter a Parecer da Secção Técnica?", "Parecer",Messagebox.YES|Messagebox.NO, Messagebox.QUESTION, new EventListener() {

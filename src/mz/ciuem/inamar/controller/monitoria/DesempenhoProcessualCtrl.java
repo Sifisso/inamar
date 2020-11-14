@@ -152,7 +152,7 @@ public class DesempenhoProcessualCtrl extends GenericForwardComposer{
 			
 			double peticoess = Double.valueOf(peticoes);
 			double pagass = Double.valueOf(pagas);
-			double percentual = ((pagass*100)/peticoess);
+			double percentual = (Math.round(pagass*100)/peticoess);
 			String percentuaal = String.valueOf(percentual);
 			dp.setPagasPercentual(percentuaal);
 			
@@ -160,7 +160,7 @@ public class DesempenhoProcessualCtrl extends GenericForwardComposer{
 			dp.setNaoPagas(naoPagas);
 			
 			double naoPagass = Double.valueOf(naoPagas);
-			double naoPagasPercentual = ((naoPagass*100)/peticoess);
+			double naoPagasPercentual = (Math.round(naoPagass*100)/peticoess);
 			String naoPagasPercentuaal = String.valueOf(naoPagasPercentual);
 			dp.setNaoPagasPercentual(naoPagasPercentuaal);
 			

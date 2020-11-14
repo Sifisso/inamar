@@ -55,7 +55,12 @@
 							   	         	forward="onClick=onClickDarParecer()" width="100%" visible="${win._peticao.validado=='true' and win._peticao.autorizada=='false' or win._peticao.temRespostaSTecnica=='true'}">
 							   	         	Autorizar Facturação
 							   	         </button>
-							   	         
+							   	          <button visible="${win._peticao.pago=='true'}"
+					    
+							   	         	zclass="btn btn-primary btn-sm" type="button"
+							   	         	width="100%"   forward="onClick=onClickVerRecibo()">
+							   	         	Ver Recibo
+							   	         </button>
 							   	         <button
 							   	         	zclass="btn btn-primary btn-sm" type="button"
 							   	         	id="btn_requerimento" width="100%" visible="false">

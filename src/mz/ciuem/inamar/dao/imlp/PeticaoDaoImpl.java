@@ -294,8 +294,8 @@ public class PeticaoDaoImpl extends GenericDaoImpl<Peticao> implements PeticaoDa
 		Query query = getCurrentSession().createQuery("select p.delegacao.nome, "
 				+ "(SELECT COUNT(pet.id) FROM Peticao pet join pet.delegacao d where pet.delegacao.id=d.id and d.id=p.delegacao.id), "
 				+ "(SELECT COUNT(pet.id) FROM Peticao pet join pet.delegacao d where pet.isRecusado=true and pet.delegacao.id=d.id and d.id=p.delegacao.id), "
-				+ "(SELECT COUNT(pet.id) FROM Peticao pet join pet.delegacao d where pet.isValidado=true and pet.terminada=false and pet.delegacao.id=d.id and d.id=p.delegacao.id), "
-				+ "(SELECT COUNT(pet.id) FROM Peticao pet join pet.delegacao d where pet.terminada=false and pet.delegacao.id=d.id and d.id=p.delegacao.id) "
+				+ "(SELECT COUNT(pet.id) FROM Peticao pet join pet.delegacao d where pet.terminada=true and pet.delegacao.id=d.id and d.id=p.delegacao.id), "
+				+ "(SELECT COUNT(pet.id) FROM Peticao pet join pet.delegacao d where pet.isValidado=true and pet.terminada=false and pet.isRecusado=false and pet.delegacao.id=d.id and d.id=p.delegacao.id) "
 				+ "from Peticao p where p.naoVisivel=false group by p.delegacao.id");
 		
 		List<Object[]> lista = query.list();

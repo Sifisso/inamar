@@ -45,7 +45,7 @@ public class ConfirmarPagamentoCtrl extends GenericForwardComposer{
 	private Doublebox dxb_valor ,dxb_valorImpressao;
 	private Datebox dbx_data;
 	private Combobox cbx_forma, cbx_conta;
-	private Textbox txb_observacoes, txb_valorImpressao;
+	private Textbox txb_observacoes, txb_valorImpressao, txt_nrDocumento;
 	
 	private Button btn_gravar, btn_actualizar, btn_cancelar;
 	
@@ -106,7 +106,8 @@ public class ConfirmarPagamentoCtrl extends GenericForwardComposer{
 	}*/
 
 	private void saveOrUpdateP(Pagamento pag, Peticao _petic) {
-
+		
+		pag.setNrDocumento(txt_nrDocumento.getValue());
 		pag.setDataRecepcaoValor(dbx_data.getValue());
 		//_petic.setValorImpressao(dxb_valorImpressao.getValue());
 		pag.setFormaRecepcao(cbx_forma.getValue());
@@ -133,6 +134,7 @@ public class ConfirmarPagamentoCtrl extends GenericForwardComposer{
 			if(_pagamento!=null){
 				//dxb_valor.setValue(_peticao.getPedido().getTotal());
 				//dxb_valorImpressao.setValue(_peticao.getValorImpressao());
+				txt_nrDocumento.setValue(_pagamento.getNrDocumento());
 				dbx_data.setValue(_pagamento.getDataRecepcaoValor());
 				cbx_forma.setValue(_pagamento.getFormaRecepcao());
 				cbx_conta.setValue(_pagamento.getConta());

@@ -319,822 +319,888 @@ public class PeticaoServiceImpl extends GenericServiceImpl<Peticao> implements P
 	public  void gravarRedicionar(Pedido pd, Utente utente, Delegacao del, User loggedUser, Listbox lbx_requisitos,Listbox lbx_instrumentoLegal, Listbox lbx_taxasPedido,Listbox lbx_etapasFluxo,Include inc_main, Div div_content_out) {
 		User u = utente.getUserLogin();
 		
-		
-		
+		if(pd.getTipoPedido().getArea().getId()==2) {
+			// Emissao de Cedula Maritima
+			if (pd != null && pd.getId() == 43) {
+				PeticaoMaritimo pm = new PeticaoMaritimo();
+				pm.setPedido(pd);
+				pm.setUser(u);
 
-		// Emissao de Cedula Maritima
-		if (pd != null && pd.getId() == 43) {
-			PeticaoMaritimo pm = new PeticaoMaritimo();
-			pm.setPedido(pd);
-			pm.setUser(u);
-
-			// Gerar Peticao (temporario)
-			Peticao peticao = new Peticao();
-			peticao.setDelegacao(del);
-			peticao.setUserLoggado(loggedUser);
-			peticao.setPeticaoMaritimo(pm);
-			peticao.setUser(u);
-			peticao.setUtente(u.getUtente().getNome() + " " + u.getUtente().getApelido());
-			//if (u.getUtente() != null)peticao.setUtente(u.getUtente().getNome() +" "+ u.getUtente().getApelido());
-			peticao.setTipo("1");
-			peticao.setDescricao(pd.getDescricao());
-			peticao.setValor(pm.getValor());
-			peticao.setLocalizacao("Secretaria");
-			peticao.setEntidade(pm.getEntidade());
-			peticao.setPedido(pm.getPedido());
-			
-
-			_peticaoService.saveOrUpdate(peticao);
-			long nr = peticao.getId() + 10000;
-
-			pm.setReferencia(Gerador.gerarReferencia(pd.getTipoPedido().getArea().getCodigo(), pd.getTipoPedido().getCodigo(),""+ nr, "08"));
-			pm.setEntidade(Gerador.gerarEntidade("700", pd.getTipoPedido().getCodigo()));
-			
-			// Gerar REquisitos
-			gerarPedidoRequisitos(lbx_requisitos.getItems(), peticao);
-			
-			// Gerar Instrumentos Legais
-			gerarPedidoInstrumentosLegais(lbx_instrumentoLegal.getItems(), peticao);
-			
-			// Gerar Taxas
-			gerarPedidoTaxas(lbx_taxasPedido.getItems(), peticao);
-			
-			//Gerar PeticaoEtapa
-			gerarPeticaoEtapa(lbx_etapasFluxo.getItems(), peticao);
-
-			Date data = new Date();
-			SimpleDateFormat formatador = new SimpleDateFormat("ddMMyy");
-			String f = formatador.format(data);
-			String nrFact = "" + nr + "" + f;
-			peticao.setNrFactura("" + nrFact);
-			peticao.setNrExpediente("" + nr);
-			peticao.setReferencia(pm.getReferencia());
-			peticao.setEntidade(pm.getEntidade());
-			peticao.setPedido(pm.getPedido());
-			_peticaoService.saveOrUpdate(peticao);
-
-			pm.setPeticao(peticao);
-			_peticaoMaritimoService.saveOrUpdate(pm);
-
-			Executions.getCurrent().getSession().setAttribute("ss_peticaoMaritimo", pm);
-			div_content_out.detach();
-			inc_main.setSrc("/views/Maritimo/emissaoCedulaMaritima.zul");
-		
-		}
-		
-		// Segunda via de Emissao de Cedula Maritima
-				if (pd != null && pd.getId() == 44) {
-					PeticaoMaritimo pm = new PeticaoMaritimo();
-					pm.setPedido(pd);
-					pm.setUser(u);
-
-					// Gerar Peticao (temporario)
-					Peticao peticao = new Peticao();
-					peticao.setPeticaoMaritimo(pm);
-					peticao.setDelegacao(del);
-					peticao.setUserLoggado(loggedUser);
-					peticao.setUser(u);
-					if (u.getUtente() != null)peticao.setUtente(u.getUtente().getNome() +" "+ u.getUtente().getApelido());
-					peticao.setTipo("11");
-					peticao.setDescricao(pd.getDescricao());
-					peticao.setValor(pm.getValor());
-					peticao.setLocalizacao("Secretaria");
-					peticao.setEntidade(pm.getEntidade());
-					peticao.setPedido(pm.getPedido());
-
-					_peticaoService.saveOrUpdate(peticao);
-					long nr = peticao.getId() + 10000;
-
-					pm.setReferencia(Gerador.gerarReferencia(pd.getTipoPedido().getArea().getCodigo(), pd.getTipoPedido().getCodigo(),""+ nr, "08"));
-					pm.setEntidade(Gerador.gerarEntidade("700", pd.getTipoPedido().getCodigo()));
-					
-					// Gerar REquisitos
-					gerarPedidoRequisitos(lbx_requisitos.getItems(), peticao);
-					
-					// Gerar Instrumentos Legais
-					gerarPedidoInstrumentosLegais(lbx_instrumentoLegal.getItems(), peticao);
-					
-					// Gerar Taxas
-					gerarPedidoTaxas(lbx_taxasPedido.getItems(), peticao);
-					
-					//Gerar PeticaoEtapa
-					gerarPeticaoEtapa(lbx_etapasFluxo.getItems(), peticao);
-
-					Date data = new Date();
-					SimpleDateFormat formatador = new SimpleDateFormat("ddMMyy");
-					String f = formatador.format(data);
-					String nrFact = "" + nr + "" + f;
-					peticao.setNrFactura("" + nrFact);
-					peticao.setNrExpediente("" + nr);
-					peticao.setReferencia(pm.getReferencia());
-					peticao.setEntidade(pm.getEntidade());
-					peticao.setPedido(pm.getPedido());
-					_peticaoService.saveOrUpdate(peticao);
-
-					pm.setPeticao(peticao);
-					_peticaoMaritimoService.saveOrUpdate(pm);
-
-					Executions.getCurrent().getSession().setAttribute("ss_peticaoMaritimo", pm);
-					div_content_out.detach();
-					inc_main.setSrc("/views/Maritimo/segundaViaEmissaoCedulaMaritima.zul");
-
-				}
+				// Gerar Peticao (temporario)
+				Peticao peticao = new Peticao();
+				peticao.setDelegacao(del);
+				peticao.setUserLoggado(loggedUser);
+				peticao.setPeticaoMaritimo(pm);
+				peticao.setUser(u);
+				peticao.setUtente(u.getUtente().getNome() + " " + u.getUtente().getApelido());
+				//if (u.getUtente() != null)peticao.setUtente(u.getUtente().getNome() +" "+ u.getUtente().getApelido());
+				peticao.setTipo("1");
+				peticao.setDescricao(pd.getDescricao());
+				peticao.setValor(pm.getValor());
+				peticao.setLocalizacao("Secretaria");
+				peticao.setEntidade(pm.getEntidade());
+				peticao.setPedido(pm.getPedido());
 				
-				// Averbamento de cedula Maritima
-				if (pd != null && pd.getId() == 45) {
-					PeticaoMaritimo pm = new PeticaoMaritimo();
-					pm.setPedido(pd);
-					pm.setUser(u);
 
-					// Gerar Peticao (temporario)
-					Peticao peticao = new Peticao();
-					peticao.setPeticaoMaritimo(pm);
-					peticao.setDelegacao(del);
-					peticao.setUserLoggado(loggedUser);
-					peticao.setUser(u);
-					if (u.getUtente() != null)peticao.setUtente(u.getUtente().getNome() +" "+ u.getUtente().getApelido());
-					peticao.setTipo("11");
-					peticao.setDescricao(pd.getDescricao());
-					peticao.setValor(pm.getValor());
-					peticao.setLocalizacao("Secretaria");
-					peticao.setEntidade(pm.getEntidade());
-					peticao.setPedido(pm.getPedido());
+				_peticaoService.saveOrUpdate(peticao);
+				long nr = peticao.getId() + 10000;
 
-					_peticaoService.saveOrUpdate(peticao);
-					long nr = peticao.getId() + 10000;
+				pm.setReferencia(Gerador.gerarReferencia(pd.getTipoPedido().getArea().getCodigo(), pd.getTipoPedido().getCodigo(),""+ nr, "08"));
+				pm.setEntidade(Gerador.gerarEntidade("700", pd.getTipoPedido().getCodigo()));
+				
+				// Gerar REquisitos
+				gerarPedidoRequisitos(lbx_requisitos.getItems(), peticao);
+				
+				// Gerar Instrumentos Legais
+				gerarPedidoInstrumentosLegais(lbx_instrumentoLegal.getItems(), peticao);
+				
+				// Gerar Taxas
+				gerarPedidoTaxas(lbx_taxasPedido.getItems(), peticao);
+				
+				//Gerar PeticaoEtapa
+				gerarPeticaoEtapa(lbx_etapasFluxo.getItems(), peticao);
 
-					pm.setReferencia(Gerador.gerarReferencia(pd.getTipoPedido().getArea().getCodigo(), pd.getTipoPedido().getCodigo(),""+ nr, "08"));
-					pm.setEntidade(Gerador.gerarEntidade("700", pd.getTipoPedido().getCodigo()));
+				Date data = new Date();
+				SimpleDateFormat formatador = new SimpleDateFormat("ddMMyy");
+				String f = formatador.format(data);
+				String nrFact = "" + nr + "" + f;
+				peticao.setNrFactura("" + nrFact);
+				peticao.setNrExpediente("" + nr);
+				peticao.setReferencia(pm.getReferencia());
+				peticao.setEntidade(pm.getEntidade());
+				peticao.setPedido(pm.getPedido());
+				_peticaoService.saveOrUpdate(peticao);
+
+				pm.setPeticao(peticao);
+				_peticaoMaritimoService.saveOrUpdate(pm);
+
+				Executions.getCurrent().getSession().setAttribute("ss_peticaoMaritimo", pm);
+				div_content_out.detach();
+				inc_main.setSrc("/views/Maritimo/emissaoCedulaMaritima.zul");
+			
+			}
+			
+			// Segunda via de Emissao de Cedula Maritima
+					if (pd != null && pd.getId() == 44) {
+						PeticaoMaritimo pm = new PeticaoMaritimo();
+						pm.setPedido(pd);
+						pm.setUser(u);
+
+						// Gerar Peticao (temporario)
+						Peticao peticao = new Peticao();
+						peticao.setPeticaoMaritimo(pm);
+						peticao.setDelegacao(del);
+						peticao.setUserLoggado(loggedUser);
+						peticao.setUser(u);
+						if (u.getUtente() != null)peticao.setUtente(u.getUtente().getNome() +" "+ u.getUtente().getApelido());
+						peticao.setTipo("11");
+						peticao.setDescricao(pd.getDescricao());
+						peticao.setValor(pm.getValor());
+						peticao.setLocalizacao("Secretaria");
+						peticao.setEntidade(pm.getEntidade());
+						peticao.setPedido(pm.getPedido());
+
+						_peticaoService.saveOrUpdate(peticao);
+						long nr = peticao.getId() + 10000;
+
+						pm.setReferencia(Gerador.gerarReferencia(pd.getTipoPedido().getArea().getCodigo(), pd.getTipoPedido().getCodigo(),""+ nr, "08"));
+						pm.setEntidade(Gerador.gerarEntidade("700", pd.getTipoPedido().getCodigo()));
+						
+						// Gerar REquisitos
+						gerarPedidoRequisitos(lbx_requisitos.getItems(), peticao);
+						
+						// Gerar Instrumentos Legais
+						gerarPedidoInstrumentosLegais(lbx_instrumentoLegal.getItems(), peticao);
+						
+						// Gerar Taxas
+						gerarPedidoTaxas(lbx_taxasPedido.getItems(), peticao);
+						
+						//Gerar PeticaoEtapa
+						gerarPeticaoEtapa(lbx_etapasFluxo.getItems(), peticao);
+
+						Date data = new Date();
+						SimpleDateFormat formatador = new SimpleDateFormat("ddMMyy");
+						String f = formatador.format(data);
+						String nrFact = "" + nr + "" + f;
+						peticao.setNrFactura("" + nrFact);
+						peticao.setNrExpediente("" + nr);
+						peticao.setReferencia(pm.getReferencia());
+						peticao.setEntidade(pm.getEntidade());
+						peticao.setPedido(pm.getPedido());
+						_peticaoService.saveOrUpdate(peticao);
+
+						pm.setPeticao(peticao);
+						_peticaoMaritimoService.saveOrUpdate(pm);
+
+						Executions.getCurrent().getSession().setAttribute("ss_peticaoMaritimo", pm);
+						div_content_out.detach();
+						inc_main.setSrc("/views/Maritimo/segundaViaEmissaoCedulaMaritima.zul");
+
+					}
 					
-					// Gerar REquisitos
-					gerarPedidoRequisitos(lbx_requisitos.getItems(), peticao);
-					
-					// Gerar Instrumentos Legais
-					gerarPedidoInstrumentosLegais(lbx_instrumentoLegal.getItems(), peticao);
-					
-					// Gerar Taxas
-					gerarPedidoTaxas(lbx_taxasPedido.getItems(), peticao);
-					
-					//Gerar PeticaoEtapa
-					gerarPeticaoEtapa(lbx_etapasFluxo.getItems(), peticao);
+					// Averbamento de cedula Maritima
+					if (pd != null && pd.getId() == 45) {
+						PeticaoMaritimo pm = new PeticaoMaritimo();
+						pm.setPedido(pd);
+						pm.setUser(u);
 
-					Date data = new Date();
-					SimpleDateFormat formatador = new SimpleDateFormat("ddMMyy");
-					String f = formatador.format(data);
-					String nrFact = "" + nr + "" + f;
-					peticao.setNrFactura("" + nrFact);
-					peticao.setNrExpediente("" + nr);
-					peticao.setReferencia(pm.getReferencia());
-					peticao.setEntidade(pm.getEntidade());
-					peticao.setPedido(pm.getPedido());
-					_peticaoService.saveOrUpdate(peticao);
+						// Gerar Peticao (temporario)
+						Peticao peticao = new Peticao();
+						peticao.setPeticaoMaritimo(pm);
+						peticao.setDelegacao(del);
+						peticao.setUserLoggado(loggedUser);
+						peticao.setUser(u);
+						if (u.getUtente() != null)peticao.setUtente(u.getUtente().getNome() +" "+ u.getUtente().getApelido());
+						peticao.setTipo("11");
+						peticao.setDescricao(pd.getDescricao());
+						peticao.setValor(pm.getValor());
+						peticao.setLocalizacao("Secretaria");
+						peticao.setEntidade(pm.getEntidade());
+						peticao.setPedido(pm.getPedido());
 
-					pm.setPeticao(peticao);
-					_peticaoMaritimoService.saveOrUpdate(pm);
+						_peticaoService.saveOrUpdate(peticao);
+						long nr = peticao.getId() + 10000;
 
-					Executions.getCurrent().getSession().setAttribute("ss_peticaoMaritimo", pm);
-					div_content_out.detach();
-					inc_main.setSrc("/views/Maritimo/averbamentoCedulaMaritima.zul");
+						pm.setReferencia(Gerador.gerarReferencia(pd.getTipoPedido().getArea().getCodigo(), pd.getTipoPedido().getCodigo(),""+ nr, "08"));
+						pm.setEntidade(Gerador.gerarEntidade("700", pd.getTipoPedido().getCodigo()));
+						
+						// Gerar REquisitos
+						gerarPedidoRequisitos(lbx_requisitos.getItems(), peticao);
+						
+						// Gerar Instrumentos Legais
+						gerarPedidoInstrumentosLegais(lbx_instrumentoLegal.getItems(), peticao);
+						
+						// Gerar Taxas
+						gerarPedidoTaxas(lbx_taxasPedido.getItems(), peticao);
+						
+						//Gerar PeticaoEtapa
+						gerarPeticaoEtapa(lbx_etapasFluxo.getItems(), peticao);
 
-					
-					// Pedido de Exame ou Carta
-				}else if(pd != null && pd.getId() == 46){
-					PeticaoMaritimo pm = new PeticaoMaritimo();
-					pm.setPedido(pd);
-					pm.setUser(u);
+						Date data = new Date();
+						SimpleDateFormat formatador = new SimpleDateFormat("ddMMyy");
+						String f = formatador.format(data);
+						String nrFact = "" + nr + "" + f;
+						peticao.setNrFactura("" + nrFact);
+						peticao.setNrExpediente("" + nr);
+						peticao.setReferencia(pm.getReferencia());
+						peticao.setEntidade(pm.getEntidade());
+						peticao.setPedido(pm.getPedido());
+						_peticaoService.saveOrUpdate(peticao);
 
-					// Gerar Peticao (temporario)
-					Peticao peticao = new Peticao();
-					peticao.setPeticaoMaritimo(pm);
-					peticao.setDelegacao(del);
-					peticao.setUserLoggado(loggedUser);
-					peticao.setUser(u);
-					if (u.getUtente() != null)peticao.setUtente(u.getUtente().getNome() +" "+ u.getUtente().getApelido());
-					peticao.setTipo("11");
-					peticao.setDescricao(pd.getDescricao());
-					peticao.setValor(pm.getValor());
-					peticao.setLocalizacao("Secretaria");
-					peticao.setEntidade(pm.getEntidade());
-					peticao.setPedido(pm.getPedido());
+						pm.setPeticao(peticao);
+						_peticaoMaritimoService.saveOrUpdate(pm);
 
-					_peticaoService.saveOrUpdate(peticao);
-					long nr = peticao.getId() + 10000;
+						Executions.getCurrent().getSession().setAttribute("ss_peticaoMaritimo", pm);
+						div_content_out.detach();
+						inc_main.setSrc("/views/Maritimo/averbamentoCedulaMaritima.zul");
 
-					pm.setReferencia(Gerador.gerarReferencia(pd.getTipoPedido().getArea().getCodigo(), pd.getTipoPedido().getCodigo(),""+ nr, "08"));
-					pm.setEntidade(Gerador.gerarEntidade("700", pd.getTipoPedido().getCodigo()));
-					
-					// Gerar REquisitos
-					gerarPedidoRequisitos(lbx_requisitos.getItems(), peticao);
-					
-					// Gerar Instrumentos Legais
-					gerarPedidoInstrumentosLegais(lbx_instrumentoLegal.getItems(), peticao);
-					
-					// Gerar Taxas
-					gerarPedidoTaxas(lbx_taxasPedido.getItems(), peticao);
-					
-					//Gerar PeticaoEtapa
-					gerarPeticaoEtapa(lbx_etapasFluxo.getItems(), peticao);
+						
+						// Pedido de Exame ou Carta
+					}else if(pd != null && pd.getId() == 46){
+						PeticaoMaritimo pm = new PeticaoMaritimo();
+						pm.setPedido(pd);
+						pm.setUser(u);
 
-					Date data = new Date();
-					SimpleDateFormat formatador = new SimpleDateFormat("ddMMyy");
-					String f = formatador.format(data);
-					String nrFact = "" + nr + "" + f;
-					peticao.setNrFactura("" + nrFact);
-					peticao.setNrExpediente("" + nr);
-					peticao.setReferencia(pm.getReferencia());
-					peticao.setEntidade(pm.getEntidade());
-					peticao.setPedido(pm.getPedido());
-					_peticaoService.saveOrUpdate(peticao);
+						// Gerar Peticao (temporario)
+						Peticao peticao = new Peticao();
+						peticao.setPeticaoMaritimo(pm);
+						peticao.setDelegacao(del);
+						peticao.setUserLoggado(loggedUser);
+						peticao.setUser(u);
+						if (u.getUtente() != null)peticao.setUtente(u.getUtente().getNome() +" "+ u.getUtente().getApelido());
+						peticao.setTipo("11");
+						peticao.setDescricao(pd.getDescricao());
+						peticao.setValor(pm.getValor());
+						peticao.setLocalizacao("Secretaria");
+						peticao.setEntidade(pm.getEntidade());
+						peticao.setPedido(pm.getPedido());
 
-					pm.setPeticao(peticao);
-					_peticaoMaritimoService.saveOrUpdate(pm);
+						_peticaoService.saveOrUpdate(peticao);
+						long nr = peticao.getId() + 10000;
 
-					Executions.getCurrent().getSession().setAttribute("ss_peticaoMaritimo", pm);
-					div_content_out.detach();
-					inc_main.setSrc("/views/Maritimo/pedidoExame.zul");
-				}
+						pm.setReferencia(Gerador.gerarReferencia(pd.getTipoPedido().getArea().getCodigo(), pd.getTipoPedido().getCodigo(),""+ nr, "08"));
+						pm.setEntidade(Gerador.gerarEntidade("700", pd.getTipoPedido().getCodigo()));
+						
+						// Gerar REquisitos
+						gerarPedidoRequisitos(lbx_requisitos.getItems(), peticao);
+						
+						// Gerar Instrumentos Legais
+						gerarPedidoInstrumentosLegais(lbx_instrumentoLegal.getItems(), peticao);
+						
+						// Gerar Taxas
+						gerarPedidoTaxas(lbx_taxasPedido.getItems(), peticao);
+						
+						//Gerar PeticaoEtapa
+						gerarPeticaoEtapa(lbx_etapasFluxo.getItems(), peticao);
+
+						Date data = new Date();
+						SimpleDateFormat formatador = new SimpleDateFormat("ddMMyy");
+						String f = formatador.format(data);
+						String nrFact = "" + nr + "" + f;
+						peticao.setNrFactura("" + nrFact);
+						peticao.setNrExpediente("" + nr);
+						peticao.setReferencia(pm.getReferencia());
+						peticao.setEntidade(pm.getEntidade());
+						peticao.setPedido(pm.getPedido());
+						_peticaoService.saveOrUpdate(peticao);
+
+						pm.setPeticao(peticao);
+						_peticaoMaritimoService.saveOrUpdate(pm);
+
+						Executions.getCurrent().getSession().setAttribute("ss_peticaoMaritimo", pm);
+						div_content_out.detach();
+						inc_main.setSrc("/views/Maritimo/pedidoExame.zul");
+					}
+			
+			
+			// Pedido de Averbamento de Cedula Maritima
+			else if (pd != null && pd.getId() == 15) {
+				PeticaoMaritimo pm = new PeticaoMaritimo();
+				pm.setPedido(pd);
+				pm.setUser(u);
+				_peticaoMaritimoService.create(pm);
+
+				// Gerar Peticao (temporario)
+				Peticao peticao = new Peticao();
+				peticao.setPeticaoMaritimo(pm);
+				peticao.setUser(u);
+				peticao.setDelegacao(del);
+				peticao.setUserLoggado(loggedUser);
+				if (u.getUtente() != null)
+					peticao.setUtente(u.getUtente().getNome() + " "
+							+ u.getUtente().getApelido());
+				peticao.setTipo("3");
+				peticao.setDescricao(pd.getDescricao());
+				peticao.setValor(pm.getValor());
+				peticao.setLocalizacao("Secretaria");
+				peticao.setEntidade(pm.getEntidade());
+				peticao.setPedido(pm.getPedido());
+
+				_peticaoService.saveOrUpdate(peticao);
+				long nr = peticao.getId() + 10000;
+				pm.setReferencia(Gerador.gerarReferencia(pd.getTipoPedido().getArea().getCodigo(), pd.getTipoPedido().getCodigo(), ""+ nr, "08"));
+				pm.setEntidade(Gerador.gerarEntidade("700", pd.getTipoPedido().getCodigo()));
+				
+				// Gerar REquisitos
+				gerarPedidoRequisitos(lbx_requisitos.getItems(), peticao);
+				
+				// Gerar Instrumentos Legais
+				gerarPedidoInstrumentosLegais(lbx_instrumentoLegal.getItems(), peticao);
+				
+				// Gerar Taxas
+				gerarPedidoTaxas(lbx_taxasPedido.getItems(), peticao);
+				
+				//Gerar PeticaoEtapa
+				gerarPeticaoEtapa(lbx_etapasFluxo.getItems(), peticao);
+
+				_peticaoMaritimoService.saveOrUpdate(pm);
+
+				Date data = new Date();
+				SimpleDateFormat formatador = new SimpleDateFormat("ddMMyy");
+				String f = formatador.format(data);
+				String nrFact = "" + nr + "" + f;
+				peticao.setNrFactura("" + nrFact);
+				peticao.setNrExpediente("" + nr);
+				peticao.setReferencia(pm.getReferencia());
+				peticao.setPedido(pm.getPedido());
+				_peticaoService.saveOrUpdate(peticao);
+
+				pm.setPeticao(peticao);
+				_peticaoMaritimoService.saveOrUpdate(pm);
+
+				Executions.getCurrent().getSession()
+						.setAttribute("ss_peticaoMaritimo", pm);
+				div_content_out.detach();
+				inc_main.setSrc("/views/Maritimo/averbamentoCedulaMaritima.zul");
+			
+			
+			}else {
+				// Criar outro tipio de peticao maritima aqui
+				PeticaoMaritimo pm = new PeticaoMaritimo();
+				pm.setPedido(pd);
+				pm.setUser(u);
+
+				// Gerar Peticao (temporario)
+				Peticao peticao = new Peticao();
+				peticao.setPeticaoMaritimo(pm);
+				peticao.setUser(u);
+				peticao.setDelegacao(del);
+				peticao.setUserLoggado(loggedUser);
+				if (u.getUtente() != null)
+					peticao.setUtente(u.getUtente().getNome() + " "
+							+ u.getUtente().getApelido());
+				peticao.setTipo("2");
+				peticao.setDescricao(pd.getDescricao());
+				peticao.setValor(pm.getValor());
+				peticao.setLocalizacao("Secretaria");
+				peticao.setReferencia(pm.getReferencia());
+				peticao.setEntidade(pm.getEntidade());
+				peticao.setPedido(pm.getPedido());
+
+				_peticaoService.saveOrUpdate(peticao);
+				long nr = peticao.getId() + 10000;
+
+				pm.setReferencia(Gerador.gerarReferencia(pd.getTipoPedido().getArea().getCodigo(), pd.getTipoPedido().getCodigo(), ""+ nr, "08"));
+				pm.setEntidade(Gerador.gerarEntidade("700", pd.getTipoPedido().getCodigo()));
+
+				// Gerar REquisitos
+				gerarPedidoRequisitos(lbx_requisitos.getItems(), peticao);
+				
+				// Gerar Instrumentos Legais
+				gerarPedidoInstrumentosLegais(lbx_instrumentoLegal.getItems(), peticao);
+				
+				// Gerar Taxas
+				gerarPedidoTaxas(lbx_taxasPedido.getItems(), peticao);
+				
+				//Gerar PeticaoEtapa
+				gerarPeticaoEtapa(lbx_etapasFluxo.getItems(), peticao);
+
+				Date data = new Date();
+				SimpleDateFormat formatador = new SimpleDateFormat("ddMMyy");
+				String f = formatador.format(data);
+				String nrFact = "" + nr + "" + f;
+				peticao.setNrFactura("" + nrFact);
+				peticao.setNrExpediente("" + nr);
+				peticao.setReferencia(pm.getReferencia());
+				peticao.setPedido(pm.getPedido());
+				_peticaoService.saveOrUpdate(peticao);
+
+				pm.setPeticao(peticao);
+				_peticaoMaritimoService.saveOrUpdate(pm);
+
+				Executions.getCurrent().getSession()
+						.setAttribute("ss_peticaoMaritimo", pm);
+				div_content_out.detach();
+				inc_main.setSrc("/views/Maritimo/peticaoGeralEmpty.zul");
+			}
+		
+		}
 		
 		
-		// Pedido de Averbamento de Cedula Maritima
-		else if (pd != null && pd.getId() == 15) {
-			PeticaoMaritimo pm = new PeticaoMaritimo();
-			pm.setPedido(pd);
-			pm.setUser(u);
-			_peticaoMaritimoService.create(pm);
-
-			// Gerar Peticao (temporario)
-			Peticao peticao = new Peticao();
-			peticao.setPeticaoMaritimo(pm);
-			peticao.setUser(u);
-			peticao.setDelegacao(del);
-			peticao.setUserLoggado(loggedUser);
-			if (u.getUtente() != null)
-				peticao.setUtente(u.getUtente().getNome() + " "
-						+ u.getUtente().getApelido());
-			peticao.setTipo("3");
-			peticao.setDescricao(pd.getDescricao());
-			peticao.setValor(pm.getValor());
-			peticao.setLocalizacao("Secretaria");
-			peticao.setEntidade(pm.getEntidade());
-			peticao.setPedido(pm.getPedido());
-
-			_peticaoService.saveOrUpdate(peticao);
-			long nr = peticao.getId() + 10000;
-			pm.setReferencia(Gerador.gerarReferencia(pd.getTipoPedido().getArea().getCodigo(), pd.getTipoPedido().getCodigo(), ""+ nr, "08"));
-			pm.setEntidade(Gerador.gerarEntidade("700", pd.getTipoPedido().getCodigo()));
+		if(pd.getTipoPedido().getArea().getId()==1) {
+			// Pedido de vistoria de Uma Embarcacao	
 			
-			// Gerar REquisitos
-			gerarPedidoRequisitos(lbx_requisitos.getItems(), peticao);
+			 if(pd != null && pd.getId() == 47){
+				PeticaoEmbarcacao pe = new PeticaoEmbarcacao();
+				pe.setPedido(pd);
+				pe.setUser(u);
+
+				// Gerar Peticao (temporario)
+				Peticao peticao = new Peticao();
+				peticao.setPeticaoEmbarcacao(pe);
+				peticao.setUser(u);
+				peticao.setDelegacao(del);
+				peticao.setUserLoggado(loggedUser);
+				if (u.getUtente() != null)
+					peticao.setUtente(u.getUtente().getNome() + " "
+							+ u.getUtente().getApelido());
+				peticao.setDescricao(pd.getDescricao());
+				peticao.setValor(pe.getValor());
+				peticao.setLocalizacao("Secretaria");
+				peticao.setEntidade(pe.getEntidade());
+				peticao.setPedido(pe.getPedido());
+				peticao.setPedido(pe.getPedido());
+
+				_peticaoService.saveOrUpdate(peticao);
+				long nr = peticao.getId() + 10000;
+
+				pe.setReferencia(Gerador.gerarReferencia(pd.getTipoPedido().getArea().getCodigo(), pd.getTipoPedido().getCodigo(), ""+ nr, "08"));
+				pe.setEntidade(Gerador.gerarEntidade("700", pd.getTipoPedido().getCodigo()));
+				
+				// Gerar REquisitos
+				gerarPedidoRequisitos(lbx_requisitos.getItems(), peticao);
+				
+				// Gerar Instrumentos Legais
+				gerarPedidoInstrumentosLegais(lbx_instrumentoLegal.getItems(), peticao);
+				
+				// Gerar Taxas
+				gerarPedidoTaxas(lbx_taxasPedido.getItems(), peticao);
+				
+				//Gerar PeticaoEtapa
+				gerarPeticaoEtapa(lbx_etapasFluxo.getItems(), peticao);
+
+				Date data = new Date();
+				SimpleDateFormat formatador = new SimpleDateFormat("ddMMyy");
+				String f = formatador.format(data);
+				String nrFact = "" + nr + "" + f;
+				peticao.setNrFactura("" + nrFact);
+				peticao.setNrExpediente("" + nr);
+				peticao.setReferencia(pe.getReferencia());
+				peticao.setPedido(pe.getPedido());
+				_peticaoService.saveOrUpdate(peticao);
+
+				pe.setPeticao(peticao);
+				_peticaoEmbarcacaoService.saveOrUpdate(pe);
+
+				Executions.getCurrent().getDesktop().getSession()
+						.setAttribute("p", peticao);
+				div_content_out.detach();
+				inc_main.setSrc("/views/Embarcacao/vistoriaDeEmbarcacao.zul");
+			}
+			// Pedido de Registo de uma Embarca��o importada
+			else if (pd != null && pd.getId() == 36) {
+				PeticaoEmbarcacao pe = new PeticaoEmbarcacao();
+				pe.setPedido(pd);
+				pe.setUser(u);
+
+				// Gerar Peticao (temporario)
+				Peticao peticao = new Peticao();
+				peticao.setPeticaoEmbarcacao(pe);
+				peticao.setUser(u);
+				peticao.setDelegacao(del);
+				peticao.setUserLoggado(loggedUser);
+				if (u.getUtente() != null)
+					peticao.setUtente(u.getUtente().getNome() + " "
+							+ u.getUtente().getApelido());
+				peticao.setDescricao(pd.getDescricao());
+				peticao.setValor(pe.getValor());
+				peticao.setLocalizacao("Secretaria");
+				peticao.setEntidade(pe.getEntidade());
+				peticao.setPedido(pe.getPedido());
+				peticao.setPedido(pe.getPedido());
+
+				_peticaoService.saveOrUpdate(peticao);
+				long nr = peticao.getId() + 10000;
+
+				pe.setReferencia(Gerador.gerarReferencia(pd.getTipoPedido().getArea().getCodigo(), pd.getTipoPedido().getCodigo(), ""+ nr, "08"));
+				pe.setEntidade(Gerador.gerarEntidade("700", pd.getTipoPedido().getCodigo()));
+				
+				// Gerar REquisitos
+				gerarPedidoRequisitos(lbx_requisitos.getItems(), peticao);
+				
+				// Gerar Instrumentos Legais
+				gerarPedidoInstrumentosLegais(lbx_instrumentoLegal.getItems(), peticao);
+				
+				// Gerar Taxas
+				gerarPedidoTaxas(lbx_taxasPedido.getItems(), peticao);
+				
+				//Gerar PeticaoEtapa
+				gerarPeticaoEtapa(lbx_etapasFluxo.getItems(), peticao);
+
+				Date data = new Date();
+				SimpleDateFormat formatador = new SimpleDateFormat("ddMMyy");
+				String f = formatador.format(data);
+				String nrFact = "" + nr + "" + f;
+				peticao.setNrFactura("" + nrFact);
+				peticao.setNrExpediente("" + nr);
+				peticao.setReferencia(pe.getReferencia());
+				peticao.setPedido(pe.getPedido());
+				_peticaoService.saveOrUpdate(peticao);
+
+				pe.setPeticao(peticao);
+				_peticaoEmbarcacaoService.saveOrUpdate(pe);
+
+				Executions.getCurrent().getDesktop().getSession()
+						.setAttribute("p", peticao);
+				div_content_out.detach();
+				inc_main.setSrc("/views/Embarcacao/embarcacaoImportada.zul");
+			}
+
+			// Pedido de Licen�a de constru��o duma embarca��o
+			else if (pd != null && pd.getId() == 41) {
+				PeticaoEmbarcacao pe = new PeticaoEmbarcacao();
+				pe.setPedido(pd);
+				pe.setUser(u);
+
+				// Gerar Peticao (temporario)
+				Peticao peticao = new Peticao();
+				peticao.setPeticaoEmbarcacao(pe);
+				peticao.setUser(u);
+				peticao.setDelegacao(del);
+				peticao.setUserLoggado(loggedUser);
+				if (u.getUtente() != null)
+					peticao.setUtente(u.getUtente().getNome() + " "
+							+ u.getUtente().getApelido());
+				peticao.setTipo("16");
+				peticao.setDescricao(pd.getDescricao());
+				peticao.setValor(pe.getValor());
+				peticao.setLocalizacao("Secretaria");
+				peticao.setEntidade(pe.getEntidade());
+				peticao.setPedido(pe.getPedido());
+
+				_peticaoService.saveOrUpdate(peticao);
+				long nr = peticao.getId() + 10000;
+
+				pe.setReferencia(Gerador.gerarReferencia(pd.getTipoPedido()
+						.getArea().getCodigo(), pd.getTipoPedido().getCodigo(), ""
+						+ nr, "08"));
+				pe.setEntidade(Gerador.gerarEntidade("700", pd.getTipoPedido()
+						.getCodigo()));
+
+				// Gerar REquisitos
+				gerarPedidoRequisitos(lbx_requisitos.getItems(), peticao);
+				
+				// Gerar Instrumentos Legais
+				gerarPedidoInstrumentosLegais(lbx_instrumentoLegal.getItems(), peticao);
+				
+				// Gerar Taxas
+				gerarPedidoTaxas(lbx_taxasPedido.getItems(), peticao);
+				
+				//Gerar PeticaoEtapa
+				gerarPeticaoEtapa(lbx_etapasFluxo.getItems(), peticao);
+
+				Date data = new Date();
+				SimpleDateFormat formatador = new SimpleDateFormat("ddMMyy");
+				String f = formatador.format(data);
+				String nrFact = "" + nr + "" + f;
+				peticao.setNrFactura("" + nrFact);
+				peticao.setNrExpediente("" + nr);
+				peticao.setReferencia(pe.getReferencia());
+				peticao.setPedido(pe.getPedido());
+				_peticaoService.saveOrUpdate(peticao);
+
+				pe.setPeticao(peticao);
+				_peticaoEmbarcacaoService.saveOrUpdate(pe);
+
+				Executions.getCurrent().getDesktop().getSession()
+						.setAttribute("p", peticao);
+				div_content_out.detach();
+				inc_main.setSrc("/views/Embarcacao/emissaoLicencaConstrucaoEmbarcacao.zul");
+			}
+
+			// Registo de uma embarcacao acabada de construir
+			else if (pd != null && pd.getId() == 37) {
+				PeticaoEmbarcacao pe = new PeticaoEmbarcacao();
+				pe.setPedido(pd);
+				pe.setUser(u);
+
+
+				// Gerar Peticao (temporario)
+				Peticao peticao = new Peticao();
+				peticao.setPeticaoEmbarcacao(pe);
+				peticao.setUser(u);
+				peticao.setDelegacao(del);
+				peticao.setUserLoggado(loggedUser);
+				if (u.getUtente() != null)peticao.setUtente(u.getUtente().getNome() + " "+ u.getUtente().getApelido());
+				peticao.setTipo("13");
+				peticao.setDescricao(pd.getDescricao());
+				peticao.setValor(pe.getValor());
+				peticao.setLocalizacao("Secretaria");
+				peticao.setEntidade(pe.getEntidade());
+				peticao.setPedido(pe.getPedido());
+
+				_peticaoService.saveOrUpdate(peticao);
+				long nr = peticao.getId() + 10000;
+
+				pe.setReferencia(Gerador.gerarReferencia(pd.getTipoPedido()
+						.getArea().getCodigo(), pd.getTipoPedido().getCodigo(), ""
+						+ nr, "08"));
+				pe.setEntidade(Gerador.gerarEntidade("700", pd.getTipoPedido()
+						.getCodigo()));
+				// Gerar REquisitos
+				gerarPedidoRequisitos(lbx_requisitos.getItems(), peticao);
+				
+				// Gerar Instrumentos Legais
+				gerarPedidoInstrumentosLegais(lbx_instrumentoLegal.getItems(), peticao);
+				
+				// Gerar Taxas
+				gerarPedidoTaxas(lbx_taxasPedido.getItems(), peticao);
+				
+				//Gerar PeticaoEtapa
+				gerarPeticaoEtapa(lbx_etapasFluxo.getItems(), peticao);
+
+				Date data = new Date();
+				SimpleDateFormat formatador = new SimpleDateFormat("ddMMyy");
+				String f = formatador.format(data);
+				String nrFact = "" + nr + "" + f;
+				peticao.setNrFactura("" + nrFact);
+				peticao.setNrExpediente("" + nr);
+				peticao.setReferencia(pe.getReferencia());
+				peticao.setPedido(pe.getPedido());
+				_peticaoService.saveOrUpdate(peticao);
+
+				pe.setPeticao(peticao);
+				_peticaoEmbarcacaoService.saveOrUpdate(pe);
+
+				Executions.getCurrent().getDesktop().getSession()
+						.setAttribute("p", peticao);
+				div_content_out.detach();
+				inc_main.setSrc("/views/Embarcacao/registoEmbarcacaoAcabadaConstruir.zul");
+			}
+
+			// Cancelamento de registo de uma embarcacao por ter sido vendida
+			else if (pd != null && pd.getId() == 42) {
+				PeticaoEmbarcacao pe = new PeticaoEmbarcacao();
+				pe.setPedido(pd);
+				pe.setUser(u);
+
+				// Gerar Peticao (temporario)
+				Peticao peticao = new Peticao();
+				peticao.setPeticaoEmbarcacao(pe);
+				peticao.setUser(u);
+				peticao.setDelegacao(del);
+				peticao.setUserLoggado(loggedUser);
+				if (u.getUtente() != null)peticao.setUtente(u.getUtente().getNome() + " "+ u.getUtente().getApelido());
+				peticao.setTipo("17");
+				peticao.setDescricao(pd.getDescricao());
+				peticao.setValor(pe.getValor());
+				peticao.setLocalizacao("Secretaria");
+				peticao.setEntidade(pe.getEntidade());
+				peticao.setPedido(pe.getPedido());
+				_peticaoService.saveOrUpdate(peticao);
+				
+				long nr = peticao.getId() + 10000;
+
+				pe.setReferencia(Gerador.gerarReferencia(pd.getTipoPedido().getArea().getCodigo(), pd.getTipoPedido().getCodigo(), ""+ nr, "08"));
+				pe.setEntidade(Gerador.gerarEntidade("700", pd.getTipoPedido().getCodigo()));
+
+				// Gerar REquisitos
+				gerarPedidoRequisitos(lbx_requisitos.getItems(), peticao);
+				
+				// Gerar Instrumentos Legais
+				gerarPedidoInstrumentosLegais(lbx_instrumentoLegal.getItems(), peticao);
+				
+				// Gerar Taxas
+				gerarPedidoTaxas(lbx_taxasPedido.getItems(), peticao);
+				
+				//Gerar PeticaoEtapa
+				gerarPeticaoEtapa(lbx_etapasFluxo.getItems(), peticao);
+
+				Date data = new Date();
+				SimpleDateFormat formatador = new SimpleDateFormat("ddMMyy");
+				String f = formatador.format(data);
+				String nrFact = "" + nr + "" + f;
+				peticao.setNrFactura("" + nrFact);
+				peticao.setNrExpediente("" + nr);
+				peticao.setReferencia(pe.getReferencia());
+				peticao.setPedido(pe.getPedido());
+				_peticaoService.saveOrUpdate(peticao);
+
+				pe.setPeticao(peticao);
+				_peticaoEmbarcacaoService.saveOrUpdate(pe);
+
+				Executions.getCurrent().getDesktop().getSession().setAttribute("p", peticao);
+				div_content_out.detach();
+				inc_main.setSrc("/views/Embarcacao/cancelamentoRegistoEmbarcacaoVendida.zul");
+			}
+			// Registo de Embarcacao Acabada de Comprar
+			else if (pd != null && pd.getId() == 38){
+				PeticaoEmbarcacao pe = new PeticaoEmbarcacao();
+				pe.setPedido(pd);
+				pe.setUser(u);
+
+				// Gerar Peticao (temporario)
+				Peticao peticao = new Peticao();
+				peticao.setPeticaoEmbarcacao(pe);
+				peticao.setUser(u);
+				peticao.setDelegacao(del);
+				peticao.setUserLoggado(loggedUser);
+				if (u.getUtente() != null)peticao.setUtente(u.getUtente().getNome() + " "+ u.getUtente().getApelido());
+				peticao.setTipo("13");
+				peticao.setDescricao(pd.getDescricao());
+				peticao.setValor(pe.getValor());
+				peticao.setLocalizacao("Secretaria");
+				peticao.setEntidade(pe.getEntidade());
+				peticao.setPedido(pe.getPedido());
+				_peticaoService.saveOrUpdate(peticao);
+				
+				long nr = peticao.getId() + 10000;
+
+				pe.setReferencia(Gerador.gerarReferencia(pd.getTipoPedido().getArea().getCodigo(), pd.getTipoPedido().getCodigo(), ""+ nr, "08"));
+				pe.setEntidade(Gerador.gerarEntidade("700", pd.getTipoPedido().getCodigo()));
+				
+				// Gerar REquisitos
+				gerarPedidoRequisitos(lbx_requisitos.getItems(), peticao);
+				
+				// Gerar Instrumentos Legais
+				gerarPedidoInstrumentosLegais(lbx_instrumentoLegal.getItems(), peticao);
+				
+				// Gerar Taxas
+				gerarPedidoTaxas(lbx_taxasPedido.getItems(), peticao);
+				
+				//Gerar PeticaoEtapa
+				gerarPeticaoEtapa(lbx_etapasFluxo.getItems(), peticao);
+
+				Date data = new Date();
+				SimpleDateFormat formatador = new SimpleDateFormat("ddMMyy");
+				String f = formatador.format(data);
+				String nrFact = "" + nr + "" + f;
+				peticao.setNrFactura("" + nrFact);
+				peticao.setNrExpediente("" + nr);
+				peticao.setReferencia(pe.getReferencia());
+				peticao.setPedido(pe.getPedido());
+				_peticaoService.saveOrUpdate(peticao);
+
+				pe.setPeticao(peticao);
+				_peticaoEmbarcacaoService.saveOrUpdate(pe);
+
+				Executions.getCurrent().getDesktop().getSession().setAttribute("p", peticao);
+				div_content_out.detach();
+				inc_main.setSrc("/views/Embarcacao/registoEmbarcacaoAcabadaComprar.zul");
+			}
 			
-			// Gerar Instrumentos Legais
-			gerarPedidoInstrumentosLegais(lbx_instrumentoLegal.getItems(), peticao);
+			// EMISSAO DE TERMO OU TITULO DE PROPRIEDADE
+			else if (pd != null && pd.getId() == 40){
+				PeticaoEmbarcacao pe = new PeticaoEmbarcacao();
+				pe.setPedido(pd);
+				pe.setUser(u);
+
+				// Gerar Peticao (temporario)
+				Peticao peticao = new Peticao();
+				peticao.setPeticaoEmbarcacao(pe);
+				peticao.setUser(u);
+				peticao.setDelegacao(del);
+				peticao.setUserLoggado(loggedUser);
+				if (u.getUtente() != null)peticao.setUtente(u.getUtente().getNome() + " "+ u.getUtente().getApelido());
+				peticao.setTipo("15");
+				peticao.setDescricao(pd.getDescricao());
+				peticao.setValor(pe.getValor());
+				peticao.setLocalizacao("Secretaria");
+				peticao.setEntidade(pe.getEntidade());
+				peticao.setPedido(pe.getPedido());
+				_peticaoService.saveOrUpdate(peticao);
+				
+				long nr = peticao.getId() + 10000;
+
+				pe.setReferencia(Gerador.gerarReferencia(pd.getTipoPedido().getArea().getCodigo(), pd.getTipoPedido().getCodigo(), ""+ nr, "08"));
+				pe.setEntidade(Gerador.gerarEntidade("700", pd.getTipoPedido().getCodigo()));
+				// Gerar REquisitos
+				gerarPedidoRequisitos(lbx_requisitos.getItems(), peticao);
+				
+				// Gerar Instrumentos Legais
+				gerarPedidoInstrumentosLegais(lbx_instrumentoLegal.getItems(), peticao);
+				
+				// Gerar Taxas
+				gerarPedidoTaxas(lbx_taxasPedido.getItems(), peticao);
+				
+				//Gerar PeticaoEtapa
+				gerarPeticaoEtapa(lbx_etapasFluxo.getItems(), peticao);
+
+				Date data = new Date();
+				SimpleDateFormat formatador = new SimpleDateFormat("ddMMyy");
+				String f = formatador.format(data);
+				String nrFact = "" + nr + "" + f;
+				peticao.setNrFactura("" + nrFact);
+				peticao.setNrExpediente("" + nr);
+				peticao.setReferencia(pe.getReferencia());
+				peticao.setPedido(pe.getPedido());
+				_peticaoService.saveOrUpdate(peticao);
+
+				pe.setPeticao(peticao);
+				_peticaoEmbarcacaoService.saveOrUpdate(pe);
+
+				Executions.getCurrent().getDesktop().getSession().setAttribute("p", peticao);
+				div_content_out.detach();
+				inc_main.setSrc("/views/Embarcacao/emissaoTituloPropriedade.zul");
+			}
+			// EMISSAO DE TERMO OU TITULO DE PROPRIEDADE 2� VIA
+			else if (pd != null && pd.getId() == 39){
+				PeticaoEmbarcacao pe = new PeticaoEmbarcacao();
+				pe.setPedido(pd);
+				pe.setUser(u);
+
+
+				// Gerar Peticao (temporario)
+				Peticao peticao = new Peticao();
+				peticao.setPeticaoEmbarcacao(pe);
+				peticao.setUser(u);
+				peticao.setDelegacao(del);
+				peticao.setUserLoggado(loggedUser);
+				if (u.getUtente() != null)peticao.setUtente(u.getUtente().getNome() + " "+ u.getUtente().getApelido());
+				peticao.setTipo("14");
+				peticao.setDescricao(pd.getDescricao());
+				peticao.setValor(pe.getValor());
+				peticao.setLocalizacao("Secretaria");
+				peticao.setEntidade(pe.getEntidade());
+				peticao.setPedido(pe.getPedido());
+				_peticaoService.saveOrUpdate(peticao);
+				
+				long nr = peticao.getId() + 10000;
+
+				pe.setReferencia(Gerador.gerarReferencia(pd.getTipoPedido().getArea().getCodigo(), pd.getTipoPedido().getCodigo(), ""+ nr, "08"));
+				pe.setEntidade(Gerador.gerarEntidade("700", pd.getTipoPedido().getCodigo()));
+
+				// Gerar REquisitos
+				gerarPedidoRequisitos(lbx_requisitos.getItems(), peticao);
+				
+				// Gerar Instrumentos Legais
+				gerarPedidoInstrumentosLegais(lbx_instrumentoLegal.getItems(), peticao);
+				
+				// Gerar Taxas
+				gerarPedidoTaxas(lbx_taxasPedido.getItems(), peticao);
+				
+				//Gerar PeticaoEtapa
+				gerarPeticaoEtapa(lbx_etapasFluxo.getItems(), peticao);
+
+				Date data = new Date();
+				SimpleDateFormat formatador = new SimpleDateFormat("ddMMyy");
+				String f = formatador.format(data);
+				String nrFact = "" + nr + "" + f;
+				peticao.setNrFactura("" + nrFact);
+				peticao.setNrExpediente("" + nr);
+				peticao.setReferencia(pe.getReferencia());
+				peticao.setPedido(pe.getPedido());
+				_peticaoService.saveOrUpdate(peticao);
+
+				pe.setPeticao(peticao);
+				_peticaoEmbarcacaoService.saveOrUpdate(pe);
+
+				Executions.getCurrent().getDesktop().getSession().setAttribute("p", peticao);
+				div_content_out.detach();
+				inc_main.setSrc("/views/Embarcacao/emissaoTituloPropriedadeSegundaVia.zul");
+			}else {
+				// Criar outro tipio de peticao embarcacao aqui
+				PeticaoEmbarcacao pe = new PeticaoEmbarcacao();
+				pe.setPedido(pd);
+				pe.setUser(u);
+
+				// Gerar Peticao (temporario)
+				Peticao peticao = new Peticao();
+				peticao.setPeticaoEmbarcacao(pe);
+				peticao.setUser(u);
+				peticao.setDelegacao(del);
+				peticao.setUserLoggado(loggedUser);
+				if (u.getUtente() != null)
+					peticao.setUtente(u.getUtente().getNome() + " "
+							+ u.getUtente().getApelido());
+				peticao.setTipo("2");
+				peticao.setDescricao(pd.getDescricao());
+				peticao.setValor(pe.getValor());
+				peticao.setLocalizacao("Secretaria");
+				peticao.setReferencia(pe.getReferencia());
+				peticao.setEntidade(pe.getEntidade());
+				peticao.setPedido(pe.getPedido());
+
+				_peticaoService.saveOrUpdate(peticao);
+				long nr = peticao.getId() + 10000;
+
+				pe.setReferencia(Gerador.gerarReferencia(pd.getTipoPedido().getArea().getCodigo(), pd.getTipoPedido().getCodigo(), ""+ nr, "08"));
+				pe.setEntidade(Gerador.gerarEntidade("700", pd.getTipoPedido().getCodigo()));
+
+				// Gerar REquisitos
+				gerarPedidoRequisitos(lbx_requisitos.getItems(), peticao);
+				
+				// Gerar Instrumentos Legais
+				gerarPedidoInstrumentosLegais(lbx_instrumentoLegal.getItems(), peticao);
+				
+				// Gerar Taxas
+				gerarPedidoTaxas(lbx_taxasPedido.getItems(), peticao);
+				
+				//Gerar PeticaoEtapa
+				gerarPeticaoEtapa(lbx_etapasFluxo.getItems(), peticao);
+
+				Date data = new Date();
+				SimpleDateFormat formatador = new SimpleDateFormat("ddMMyy");
+				String f = formatador.format(data);
+				String nrFact = "" + nr + "" + f;
+				peticao.setNrFactura("" + nrFact);
+				peticao.setNrExpediente("" + nr);
+				peticao.setReferencia(pe.getReferencia());
+				peticao.setPedido(pe.getPedido());
+				_peticaoService.saveOrUpdate(peticao);
+
+				pe.setPeticao(peticao);
+				_peticaoEmbarcacaoService.saveOrUpdate(pe);
+
+				Executions.getCurrent().getSession()
+						.setAttribute("p", pe);
+				div_content_out.detach();
+				inc_main.setSrc("/views/Embarcacao/peticaoGeralEmberacaoEmpty.zul");
+			}
+			// Provisorio
 			
-			// Gerar Taxas
-			gerarPedidoTaxas(lbx_taxasPedido.getItems(), peticao);
-			
-			//Gerar PeticaoEtapa
-			gerarPeticaoEtapa(lbx_etapasFluxo.getItems(), peticao);
-
-			_peticaoMaritimoService.saveOrUpdate(pm);
-
-			Date data = new Date();
-			SimpleDateFormat formatador = new SimpleDateFormat("ddMMyy");
-			String f = formatador.format(data);
-			String nrFact = "" + nr + "" + f;
-			peticao.setNrFactura("" + nrFact);
-			peticao.setNrExpediente("" + nr);
-			peticao.setReferencia(pm.getReferencia());
-			peticao.setPedido(pm.getPedido());
-			_peticaoService.saveOrUpdate(peticao);
-
-			pm.setPeticao(peticao);
-			_peticaoMaritimoService.saveOrUpdate(pm);
-
-			Executions.getCurrent().getSession()
-					.setAttribute("ss_peticaoMaritimo", pm);
-			div_content_out.detach();
-			inc_main.setSrc("/views/Maritimo/averbamentoCedulaMaritima.zul");
+		}
 		
-		// Pedido de vistoria de Uma Embarcacao	
-		}else if(pd != null && pd.getId() == 47){
-			PeticaoEmbarcacao pe = new PeticaoEmbarcacao();
-			pe.setPedido(pd);
-			pe.setUser(u);
-
-			// Gerar Peticao (temporario)
-			Peticao peticao = new Peticao();
-			peticao.setPeticaoEmbarcacao(pe);
-			peticao.setUser(u);
-			peticao.setDelegacao(del);
-			peticao.setUserLoggado(loggedUser);
-			if (u.getUtente() != null)
-				peticao.setUtente(u.getUtente().getNome() + " "
-						+ u.getUtente().getApelido());
-			peticao.setDescricao(pd.getDescricao());
-			peticao.setValor(pe.getValor());
-			peticao.setLocalizacao("Secretaria");
-			peticao.setEntidade(pe.getEntidade());
-			peticao.setPedido(pe.getPedido());
-			peticao.setPedido(pe.getPedido());
-
-			_peticaoService.saveOrUpdate(peticao);
-			long nr = peticao.getId() + 10000;
-
-			pe.setReferencia(Gerador.gerarReferencia(pd.getTipoPedido().getArea().getCodigo(), pd.getTipoPedido().getCodigo(), ""+ nr, "08"));
-			pe.setEntidade(Gerador.gerarEntidade("700", pd.getTipoPedido().getCodigo()));
-			
-			// Gerar REquisitos
-			gerarPedidoRequisitos(lbx_requisitos.getItems(), peticao);
-			
-			// Gerar Instrumentos Legais
-			gerarPedidoInstrumentosLegais(lbx_instrumentoLegal.getItems(), peticao);
-			
-			// Gerar Taxas
-			gerarPedidoTaxas(lbx_taxasPedido.getItems(), peticao);
-			
-			//Gerar PeticaoEtapa
-			gerarPeticaoEtapa(lbx_etapasFluxo.getItems(), peticao);
-
-			Date data = new Date();
-			SimpleDateFormat formatador = new SimpleDateFormat("ddMMyy");
-			String f = formatador.format(data);
-			String nrFact = "" + nr + "" + f;
-			peticao.setNrFactura("" + nrFact);
-			peticao.setNrExpediente("" + nr);
-			peticao.setReferencia(pe.getReferencia());
-			peticao.setPedido(pe.getPedido());
-			_peticaoService.saveOrUpdate(peticao);
-
-			pe.setPeticao(peticao);
-			_peticaoEmbarcacaoService.saveOrUpdate(pe);
-
-			Executions.getCurrent().getDesktop().getSession()
-					.setAttribute("p", peticao);
-			div_content_out.detach();
-			inc_main.setSrc("/views/Embarcacao/vistoriaDeEmbarcacao.zul");
-		}
-		// Pedido de Registo de uma Embarca��o importada
-		else if (pd != null && pd.getId() == 36) {
-			PeticaoEmbarcacao pe = new PeticaoEmbarcacao();
-			pe.setPedido(pd);
-			pe.setUser(u);
-
-			// Gerar Peticao (temporario)
-			Peticao peticao = new Peticao();
-			peticao.setPeticaoEmbarcacao(pe);
-			peticao.setUser(u);
-			peticao.setDelegacao(del);
-			peticao.setUserLoggado(loggedUser);
-			if (u.getUtente() != null)
-				peticao.setUtente(u.getUtente().getNome() + " "
-						+ u.getUtente().getApelido());
-			peticao.setDescricao(pd.getDescricao());
-			peticao.setValor(pe.getValor());
-			peticao.setLocalizacao("Secretaria");
-			peticao.setEntidade(pe.getEntidade());
-			peticao.setPedido(pe.getPedido());
-			peticao.setPedido(pe.getPedido());
-
-			_peticaoService.saveOrUpdate(peticao);
-			long nr = peticao.getId() + 10000;
-
-			pe.setReferencia(Gerador.gerarReferencia(pd.getTipoPedido().getArea().getCodigo(), pd.getTipoPedido().getCodigo(), ""+ nr, "08"));
-			pe.setEntidade(Gerador.gerarEntidade("700", pd.getTipoPedido().getCodigo()));
-			
-			// Gerar REquisitos
-			gerarPedidoRequisitos(lbx_requisitos.getItems(), peticao);
-			
-			// Gerar Instrumentos Legais
-			gerarPedidoInstrumentosLegais(lbx_instrumentoLegal.getItems(), peticao);
-			
-			// Gerar Taxas
-			gerarPedidoTaxas(lbx_taxasPedido.getItems(), peticao);
-			
-			//Gerar PeticaoEtapa
-			gerarPeticaoEtapa(lbx_etapasFluxo.getItems(), peticao);
-
-			Date data = new Date();
-			SimpleDateFormat formatador = new SimpleDateFormat("ddMMyy");
-			String f = formatador.format(data);
-			String nrFact = "" + nr + "" + f;
-			peticao.setNrFactura("" + nrFact);
-			peticao.setNrExpediente("" + nr);
-			peticao.setReferencia(pe.getReferencia());
-			peticao.setPedido(pe.getPedido());
-			_peticaoService.saveOrUpdate(peticao);
-
-			pe.setPeticao(peticao);
-			_peticaoEmbarcacaoService.saveOrUpdate(pe);
-
-			Executions.getCurrent().getDesktop().getSession()
-					.setAttribute("p", peticao);
-			div_content_out.detach();
-			inc_main.setSrc("/views/Embarcacao/embarcacaoImportada.zul");
-		}
-
-		// Pedido de Licen�a de constru��o duma embarca��o
-		else if (pd != null && pd.getId() == 41) {
-			PeticaoEmbarcacao pe = new PeticaoEmbarcacao();
-			pe.setPedido(pd);
-			pe.setUser(u);
-
-			// Gerar Peticao (temporario)
-			Peticao peticao = new Peticao();
-			peticao.setPeticaoEmbarcacao(pe);
-			peticao.setUser(u);
-			peticao.setDelegacao(del);
-			peticao.setUserLoggado(loggedUser);
-			if (u.getUtente() != null)
-				peticao.setUtente(u.getUtente().getNome() + " "
-						+ u.getUtente().getApelido());
-			peticao.setTipo("16");
-			peticao.setDescricao(pd.getDescricao());
-			peticao.setValor(pe.getValor());
-			peticao.setLocalizacao("Secretaria");
-			peticao.setEntidade(pe.getEntidade());
-			peticao.setPedido(pe.getPedido());
-
-			_peticaoService.saveOrUpdate(peticao);
-			long nr = peticao.getId() + 10000;
-
-			pe.setReferencia(Gerador.gerarReferencia(pd.getTipoPedido()
-					.getArea().getCodigo(), pd.getTipoPedido().getCodigo(), ""
-					+ nr, "08"));
-			pe.setEntidade(Gerador.gerarEntidade("700", pd.getTipoPedido()
-					.getCodigo()));
-
-			// Gerar REquisitos
-			gerarPedidoRequisitos(lbx_requisitos.getItems(), peticao);
-			
-			// Gerar Instrumentos Legais
-			gerarPedidoInstrumentosLegais(lbx_instrumentoLegal.getItems(), peticao);
-			
-			// Gerar Taxas
-			gerarPedidoTaxas(lbx_taxasPedido.getItems(), peticao);
-			
-			//Gerar PeticaoEtapa
-			gerarPeticaoEtapa(lbx_etapasFluxo.getItems(), peticao);
-
-			Date data = new Date();
-			SimpleDateFormat formatador = new SimpleDateFormat("ddMMyy");
-			String f = formatador.format(data);
-			String nrFact = "" + nr + "" + f;
-			peticao.setNrFactura("" + nrFact);
-			peticao.setNrExpediente("" + nr);
-			peticao.setReferencia(pe.getReferencia());
-			peticao.setPedido(pe.getPedido());
-			_peticaoService.saveOrUpdate(peticao);
-
-			pe.setPeticao(peticao);
-			_peticaoEmbarcacaoService.saveOrUpdate(pe);
-
-			Executions.getCurrent().getDesktop().getSession()
-					.setAttribute("p", peticao);
-			div_content_out.detach();
-			inc_main.setSrc("/views/Embarcacao/emissaoLicencaConstrucaoEmbarcacao.zul");
-		}
-
-		// Registo de uma embarcacao acabada de construir
-		else if (pd != null && pd.getId() == 37) {
-			PeticaoEmbarcacao pe = new PeticaoEmbarcacao();
-			pe.setPedido(pd);
-			pe.setUser(u);
-
-
-			// Gerar Peticao (temporario)
-			Peticao peticao = new Peticao();
-			peticao.setPeticaoEmbarcacao(pe);
-			peticao.setUser(u);
-			peticao.setDelegacao(del);
-			peticao.setUserLoggado(loggedUser);
-			if (u.getUtente() != null)peticao.setUtente(u.getUtente().getNome() + " "+ u.getUtente().getApelido());
-			peticao.setTipo("13");
-			peticao.setDescricao(pd.getDescricao());
-			peticao.setValor(pe.getValor());
-			peticao.setLocalizacao("Secretaria");
-			peticao.setEntidade(pe.getEntidade());
-			peticao.setPedido(pe.getPedido());
-
-			_peticaoService.saveOrUpdate(peticao);
-			long nr = peticao.getId() + 10000;
-
-			pe.setReferencia(Gerador.gerarReferencia(pd.getTipoPedido()
-					.getArea().getCodigo(), pd.getTipoPedido().getCodigo(), ""
-					+ nr, "08"));
-			pe.setEntidade(Gerador.gerarEntidade("700", pd.getTipoPedido()
-					.getCodigo()));
-			// Gerar REquisitos
-			gerarPedidoRequisitos(lbx_requisitos.getItems(), peticao);
-			
-			// Gerar Instrumentos Legais
-			gerarPedidoInstrumentosLegais(lbx_instrumentoLegal.getItems(), peticao);
-			
-			// Gerar Taxas
-			gerarPedidoTaxas(lbx_taxasPedido.getItems(), peticao);
-			
-			//Gerar PeticaoEtapa
-			gerarPeticaoEtapa(lbx_etapasFluxo.getItems(), peticao);
-
-			Date data = new Date();
-			SimpleDateFormat formatador = new SimpleDateFormat("ddMMyy");
-			String f = formatador.format(data);
-			String nrFact = "" + nr + "" + f;
-			peticao.setNrFactura("" + nrFact);
-			peticao.setNrExpediente("" + nr);
-			peticao.setReferencia(pe.getReferencia());
-			peticao.setPedido(pe.getPedido());
-			_peticaoService.saveOrUpdate(peticao);
-
-			pe.setPeticao(peticao);
-			_peticaoEmbarcacaoService.saveOrUpdate(pe);
-
-			Executions.getCurrent().getDesktop().getSession()
-					.setAttribute("p", peticao);
-			div_content_out.detach();
-			inc_main.setSrc("/views/Embarcacao/registoEmbarcacaoAcabadaConstruir.zul");
-		}
-
-		// Cancelamento de registo de uma embarcacao por ter sido vendida
-		else if (pd != null && pd.getId() == 42) {
-			PeticaoEmbarcacao pe = new PeticaoEmbarcacao();
-			pe.setPedido(pd);
-			pe.setUser(u);
-
-			// Gerar Peticao (temporario)
-			Peticao peticao = new Peticao();
-			peticao.setPeticaoEmbarcacao(pe);
-			peticao.setUser(u);
-			peticao.setDelegacao(del);
-			peticao.setUserLoggado(loggedUser);
-			if (u.getUtente() != null)peticao.setUtente(u.getUtente().getNome() + " "+ u.getUtente().getApelido());
-			peticao.setTipo("17");
-			peticao.setDescricao(pd.getDescricao());
-			peticao.setValor(pe.getValor());
-			peticao.setLocalizacao("Secretaria");
-			peticao.setEntidade(pe.getEntidade());
-			peticao.setPedido(pe.getPedido());
-			_peticaoService.saveOrUpdate(peticao);
-			
-			long nr = peticao.getId() + 10000;
-
-			pe.setReferencia(Gerador.gerarReferencia(pd.getTipoPedido().getArea().getCodigo(), pd.getTipoPedido().getCodigo(), ""+ nr, "08"));
-			pe.setEntidade(Gerador.gerarEntidade("700", pd.getTipoPedido().getCodigo()));
-
-			// Gerar REquisitos
-			gerarPedidoRequisitos(lbx_requisitos.getItems(), peticao);
-			
-			// Gerar Instrumentos Legais
-			gerarPedidoInstrumentosLegais(lbx_instrumentoLegal.getItems(), peticao);
-			
-			// Gerar Taxas
-			gerarPedidoTaxas(lbx_taxasPedido.getItems(), peticao);
-			
-			//Gerar PeticaoEtapa
-			gerarPeticaoEtapa(lbx_etapasFluxo.getItems(), peticao);
-
-			Date data = new Date();
-			SimpleDateFormat formatador = new SimpleDateFormat("ddMMyy");
-			String f = formatador.format(data);
-			String nrFact = "" + nr + "" + f;
-			peticao.setNrFactura("" + nrFact);
-			peticao.setNrExpediente("" + nr);
-			peticao.setReferencia(pe.getReferencia());
-			peticao.setPedido(pe.getPedido());
-			_peticaoService.saveOrUpdate(peticao);
-
-			pe.setPeticao(peticao);
-			_peticaoEmbarcacaoService.saveOrUpdate(pe);
-
-			Executions.getCurrent().getDesktop().getSession().setAttribute("p", peticao);
-			div_content_out.detach();
-			inc_main.setSrc("/views/Embarcacao/cancelamentoRegistoEmbarcacaoVendida.zul");
-		}
-		// Registo de Embarcacao Acabada de Comprar
-		else if (pd != null && pd.getId() == 38){
-			PeticaoEmbarcacao pe = new PeticaoEmbarcacao();
-			pe.setPedido(pd);
-			pe.setUser(u);
-
-			// Gerar Peticao (temporario)
-			Peticao peticao = new Peticao();
-			peticao.setPeticaoEmbarcacao(pe);
-			peticao.setUser(u);
-			peticao.setDelegacao(del);
-			peticao.setUserLoggado(loggedUser);
-			if (u.getUtente() != null)peticao.setUtente(u.getUtente().getNome() + " "+ u.getUtente().getApelido());
-			peticao.setTipo("13");
-			peticao.setDescricao(pd.getDescricao());
-			peticao.setValor(pe.getValor());
-			peticao.setLocalizacao("Secretaria");
-			peticao.setEntidade(pe.getEntidade());
-			peticao.setPedido(pe.getPedido());
-			_peticaoService.saveOrUpdate(peticao);
-			
-			long nr = peticao.getId() + 10000;
-
-			pe.setReferencia(Gerador.gerarReferencia(pd.getTipoPedido().getArea().getCodigo(), pd.getTipoPedido().getCodigo(), ""+ nr, "08"));
-			pe.setEntidade(Gerador.gerarEntidade("700", pd.getTipoPedido().getCodigo()));
-			
-			// Gerar REquisitos
-			gerarPedidoRequisitos(lbx_requisitos.getItems(), peticao);
-			
-			// Gerar Instrumentos Legais
-			gerarPedidoInstrumentosLegais(lbx_instrumentoLegal.getItems(), peticao);
-			
-			// Gerar Taxas
-			gerarPedidoTaxas(lbx_taxasPedido.getItems(), peticao);
-			
-			//Gerar PeticaoEtapa
-			gerarPeticaoEtapa(lbx_etapasFluxo.getItems(), peticao);
-
-			Date data = new Date();
-			SimpleDateFormat formatador = new SimpleDateFormat("ddMMyy");
-			String f = formatador.format(data);
-			String nrFact = "" + nr + "" + f;
-			peticao.setNrFactura("" + nrFact);
-			peticao.setNrExpediente("" + nr);
-			peticao.setReferencia(pe.getReferencia());
-			peticao.setPedido(pe.getPedido());
-			_peticaoService.saveOrUpdate(peticao);
-
-			pe.setPeticao(peticao);
-			_peticaoEmbarcacaoService.saveOrUpdate(pe);
-
-			Executions.getCurrent().getDesktop().getSession().setAttribute("p", peticao);
-			div_content_out.detach();
-			inc_main.setSrc("/views/Embarcacao/registoEmbarcacaoAcabadaComprar.zul");
-		}
-		
-		// EMISSAO DE TERMO OU TITULO DE PROPRIEDADE
-		else if (pd != null && pd.getId() == 40){
-			PeticaoEmbarcacao pe = new PeticaoEmbarcacao();
-			pe.setPedido(pd);
-			pe.setUser(u);
-
-			// Gerar Peticao (temporario)
-			Peticao peticao = new Peticao();
-			peticao.setPeticaoEmbarcacao(pe);
-			peticao.setUser(u);
-			peticao.setDelegacao(del);
-			peticao.setUserLoggado(loggedUser);
-			if (u.getUtente() != null)peticao.setUtente(u.getUtente().getNome() + " "+ u.getUtente().getApelido());
-			peticao.setTipo("15");
-			peticao.setDescricao(pd.getDescricao());
-			peticao.setValor(pe.getValor());
-			peticao.setLocalizacao("Secretaria");
-			peticao.setEntidade(pe.getEntidade());
-			peticao.setPedido(pe.getPedido());
-			_peticaoService.saveOrUpdate(peticao);
-			
-			long nr = peticao.getId() + 10000;
-
-			pe.setReferencia(Gerador.gerarReferencia(pd.getTipoPedido().getArea().getCodigo(), pd.getTipoPedido().getCodigo(), ""+ nr, "08"));
-			pe.setEntidade(Gerador.gerarEntidade("700", pd.getTipoPedido().getCodigo()));
-			// Gerar REquisitos
-			gerarPedidoRequisitos(lbx_requisitos.getItems(), peticao);
-			
-			// Gerar Instrumentos Legais
-			gerarPedidoInstrumentosLegais(lbx_instrumentoLegal.getItems(), peticao);
-			
-			// Gerar Taxas
-			gerarPedidoTaxas(lbx_taxasPedido.getItems(), peticao);
-			
-			//Gerar PeticaoEtapa
-			gerarPeticaoEtapa(lbx_etapasFluxo.getItems(), peticao);
-
-			Date data = new Date();
-			SimpleDateFormat formatador = new SimpleDateFormat("ddMMyy");
-			String f = formatador.format(data);
-			String nrFact = "" + nr + "" + f;
-			peticao.setNrFactura("" + nrFact);
-			peticao.setNrExpediente("" + nr);
-			peticao.setReferencia(pe.getReferencia());
-			peticao.setPedido(pe.getPedido());
-			_peticaoService.saveOrUpdate(peticao);
-
-			pe.setPeticao(peticao);
-			_peticaoEmbarcacaoService.saveOrUpdate(pe);
-
-			Executions.getCurrent().getDesktop().getSession().setAttribute("p", peticao);
-			div_content_out.detach();
-			inc_main.setSrc("/views/Embarcacao/emissaoTituloPropriedade.zul");
-		}
-		// EMISSAO DE TERMO OU TITULO DE PROPRIEDADE 2� VIA
-		else if (pd != null && pd.getId() == 39){
-			PeticaoEmbarcacao pe = new PeticaoEmbarcacao();
-			pe.setPedido(pd);
-			pe.setUser(u);
-
-
-			// Gerar Peticao (temporario)
-			Peticao peticao = new Peticao();
-			peticao.setPeticaoEmbarcacao(pe);
-			peticao.setUser(u);
-			peticao.setDelegacao(del);
-			peticao.setUserLoggado(loggedUser);
-			if (u.getUtente() != null)peticao.setUtente(u.getUtente().getNome() + " "+ u.getUtente().getApelido());
-			peticao.setTipo("14");
-			peticao.setDescricao(pd.getDescricao());
-			peticao.setValor(pe.getValor());
-			peticao.setLocalizacao("Secretaria");
-			peticao.setEntidade(pe.getEntidade());
-			peticao.setPedido(pe.getPedido());
-			_peticaoService.saveOrUpdate(peticao);
-			
-			long nr = peticao.getId() + 10000;
-
-			pe.setReferencia(Gerador.gerarReferencia(pd.getTipoPedido().getArea().getCodigo(), pd.getTipoPedido().getCodigo(), ""+ nr, "08"));
-			pe.setEntidade(Gerador.gerarEntidade("700", pd.getTipoPedido().getCodigo()));
-
-			// Gerar REquisitos
-			gerarPedidoRequisitos(lbx_requisitos.getItems(), peticao);
-			
-			// Gerar Instrumentos Legais
-			gerarPedidoInstrumentosLegais(lbx_instrumentoLegal.getItems(), peticao);
-			
-			// Gerar Taxas
-			gerarPedidoTaxas(lbx_taxasPedido.getItems(), peticao);
-			
-			//Gerar PeticaoEtapa
-			gerarPeticaoEtapa(lbx_etapasFluxo.getItems(), peticao);
-
-			Date data = new Date();
-			SimpleDateFormat formatador = new SimpleDateFormat("ddMMyy");
-			String f = formatador.format(data);
-			String nrFact = "" + nr + "" + f;
-			peticao.setNrFactura("" + nrFact);
-			peticao.setNrExpediente("" + nr);
-			peticao.setReferencia(pe.getReferencia());
-			peticao.setPedido(pe.getPedido());
-			_peticaoService.saveOrUpdate(peticao);
-
-			pe.setPeticao(peticao);
-			_peticaoEmbarcacaoService.saveOrUpdate(pe);
-
-			Executions.getCurrent().getDesktop().getSession().setAttribute("p", peticao);
-			div_content_out.detach();
-			inc_main.setSrc("/views/Embarcacao/emissaoTituloPropriedadeSegundaVia.zul");
-		}
-		// Provisorio
-		else {
-			// Criar outro tipio de peticao aqui
-			PeticaoMaritimo pm = new PeticaoMaritimo();
-			pm.setPedido(pd);
-			pm.setUser(u);
-
-			// Gerar Peticao (temporario)
-			Peticao peticao = new Peticao();
-			peticao.setPeticaoMaritimo(pm);
-			peticao.setUser(u);
-			peticao.setDelegacao(del);
-			peticao.setUserLoggado(loggedUser);
-			if (u.getUtente() != null)
-				peticao.setUtente(u.getUtente().getNome() + " "
-						+ u.getUtente().getApelido());
-			peticao.setTipo("2");
-			peticao.setDescricao(pd.getDescricao());
-			peticao.setValor(pm.getValor());
-			peticao.setLocalizacao("Secretaria");
-			peticao.setReferencia(pm.getReferencia());
-			peticao.setEntidade(pm.getEntidade());
-			peticao.setPedido(pm.getPedido());
-
-			_peticaoService.saveOrUpdate(peticao);
-			long nr = peticao.getId() + 10000;
-
-			pm.setReferencia(Gerador.gerarReferencia(pd.getTipoPedido().getArea().getCodigo(), pd.getTipoPedido().getCodigo(), ""+ nr, "08"));
-			pm.setEntidade(Gerador.gerarEntidade("700", pd.getTipoPedido().getCodigo()));
-
-			// Gerar REquisitos
-			gerarPedidoRequisitos(lbx_requisitos.getItems(), peticao);
-			
-			// Gerar Instrumentos Legais
-			gerarPedidoInstrumentosLegais(lbx_instrumentoLegal.getItems(), peticao);
-			
-			// Gerar Taxas
-			gerarPedidoTaxas(lbx_taxasPedido.getItems(), peticao);
-			
-			//Gerar PeticaoEtapa
-			gerarPeticaoEtapa(lbx_etapasFluxo.getItems(), peticao);
-
-			Date data = new Date();
-			SimpleDateFormat formatador = new SimpleDateFormat("ddMMyy");
-			String f = formatador.format(data);
-			String nrFact = "" + nr + "" + f;
-			peticao.setNrFactura("" + nrFact);
-			peticao.setNrExpediente("" + nr);
-			peticao.setReferencia(pm.getReferencia());
-			peticao.setPedido(pm.getPedido());
-			_peticaoService.saveOrUpdate(peticao);
-
-			pm.setPeticao(peticao);
-			_peticaoMaritimoService.saveOrUpdate(pm);
-
-			Executions.getCurrent().getSession()
-					.setAttribute("ss_peticaoMaritimo", pm);
-			div_content_out.detach();
-			inc_main.setSrc("/views/Maritimo/peticaoGeralEmpty.zul");
-		}
 	}
 	
 	
@@ -1237,75 +1303,87 @@ public class PeticaoServiceImpl extends GenericServiceImpl<Peticao> implements P
 	
 	//Editar Detalhes
 	public void onClickDetalhes(Peticao pet, Include inc_main, Div div_content_out){
-		//Atribuicao de Cedulas maritimas
-		if(pet.getPedido().getId()==(43)){
-			PeticaoMaritimo petM = pet.getPeticaoMaritimo();
-			Executions.getCurrent().getSession().setAttribute("ss_peticaoMaritimo", petM);
-    		div_content_out.detach();
-    		inc_main.setSrc("/views/Maritimo/emissaoCedulaMaritima.zul");
-    		
-		}else if(pet.getPedido().getId()==(46)){
-			PeticaoMaritimo petM = pet.getPeticaoMaritimo();
-			Executions.getCurrent().getSession().setAttribute("ss_peticaoMaritimo", petM);
-    		div_content_out.detach();
-    		inc_main.setSrc("/views/Maritimo/pedidoExame.zul");
 		
-		}
-		
-		else if(pet.getPedido().getId()==(45)){
-			PeticaoMaritimo petM = pet.getPeticaoMaritimo();
-			Executions.getCurrent().getSession().setAttribute("ss_peticaoMaritimo", petM);
-    		div_content_out.detach();
-    		inc_main.setSrc("/views/Maritimo/averbamentoCedulaMaritima.zul");
-		}else if(pet.getPedido().getId()==(44)){
-			Executions.getCurrent().getSession().setAttribute("p", pet);
-    		div_content_out.detach();
-    		inc_main.setSrc("/views/Maritimo/segundaViaEmissaoCedulaMaritima.zul");
-		}else if(pet.getPedido().getId()==(43)){
-			Executions.getCurrent().getSession().setAttribute("p", pet);
-    		div_content_out.detach();
-    		inc_main.setSrc("/views/Maritimo/emissaoCedulaMaritima.zul");
-		}else if(pet.getPedido().getId()==(36)){
-			//PeticaoEmbarcacao petEmb = pet.getPeticaoEmbarcacao();
-			Executions.getCurrent().getSession().setAttribute("p", pet);
-    		div_content_out.detach();
-    		inc_main.setSrc("/views/Embarcacao/embarcacaoImportada.zul");
-		}else if(pet.getPedido().getId()==(37)){
-			//PeticaoEmbarcacao petEmb = pet.getPeticaoEmbarcacao();
-			Executions.getCurrent().getSession().setAttribute("p", pet);
-    		div_content_out.detach();
-    		inc_main.setSrc("/views/Embarcacao/registoEmbarcacaoAcabadaConstruir.zul");
-		}else if(pet.getPedido().getId()==(38)){
-			Executions.getCurrent().getSession().setAttribute("p", pet);
-    		div_content_out.detach();
-    		inc_main.setSrc("/views/Embarcacao/registoEmbarcacaoAcabadaComprar.zul");
-		}else if(pet.getPedido().getId()==(39)){
-			Executions.getCurrent().getSession().setAttribute("p", pet);
-    		div_content_out.detach();
-    		inc_main.setSrc("/views/Embarcacao/emissaoTituloPropriedadeSegundaVia.zul");
-		}else if(pet.getPedido().getId()==(40)){
-			Executions.getCurrent().getSession().setAttribute("p", pet);
-    		div_content_out.detach();
-    		inc_main.setSrc("/views/Embarcacao/emissaoTituloPropriedade.zul");
-		}else if(pet.getPedido().getId()==(41)){
-			Executions.getCurrent().getSession().setAttribute("p", pet);
-    		div_content_out.detach();
-    		inc_main.setSrc("/views/Embarcacao/emissaoLicencaConstrucaoEmbarcacao.zul");
-		}else if(pet.getPedido().getId()==(42)){
-			Executions.getCurrent().getSession().setAttribute("p", pet);
-    		div_content_out.detach();
-    		inc_main.setSrc("/views/Embarcacao/cancelamentoRegistoEmbarcacaoVendida.zul");
-		}else if(pet.getPedido().getId()==(47)){
-			Executions.getCurrent().getSession().setAttribute("p", pet);
-    		div_content_out.detach();
-    		inc_main.setSrc("/views/Embarcacao/vistoriaDeEmbarcacao.zul");
-		}
-		else{
-			Executions.getCurrent().getSession().setAttribute("p", pet);
-    		div_content_out.detach();
-    		inc_main.setSrc("/views/Maritimo/peticaoGeralEmpty.zul");
-		}
+		if(pet.getPedido().getTipoPedido().getArea().getId()==2) {
+			//Atribuicao de Cedulas maritimas
+			if(pet.getPedido().getId()==(43)){
+				PeticaoMaritimo petM = pet.getPeticaoMaritimo();
+				Executions.getCurrent().getSession().setAttribute("ss_peticaoMaritimo", petM);
+	    		div_content_out.detach();
+	    		inc_main.setSrc("/views/Maritimo/emissaoCedulaMaritima.zul");
+	    		
+			}else if(pet.getPedido().getId()==(46)){
+				PeticaoMaritimo petM = pet.getPeticaoMaritimo();
+				Executions.getCurrent().getSession().setAttribute("ss_peticaoMaritimo", petM);
+	    		div_content_out.detach();
+	    		inc_main.setSrc("/views/Maritimo/pedidoExame.zul");
 			
+			}
+			
+			else if(pet.getPedido().getId()==(45)){
+				PeticaoMaritimo petM = pet.getPeticaoMaritimo();
+				Executions.getCurrent().getSession().setAttribute("ss_peticaoMaritimo", petM);
+	    		div_content_out.detach();
+	    		inc_main.setSrc("/views/Maritimo/averbamentoCedulaMaritima.zul");
+			}else{
+				PeticaoMaritimo petM = pet.getPeticaoMaritimo();
+				Executions.getCurrent().getSession().setAttribute("ss_peticaoMaritimo", petM);
+	    		div_content_out.detach();
+	    		inc_main.setSrc("/views/Maritimo/peticaoGeralEmpty.zul");
+			}
+		}
+		
+		if(pet.getPedido().getTipoPedido().getArea().getId()==1) {
+			if(pet.getPedido().getId()==(44)){
+				Executions.getCurrent().getSession().setAttribute("p", pet);
+	    		div_content_out.detach();
+	    		inc_main.setSrc("/views/Maritimo/segundaViaEmissaoCedulaMaritima.zul");
+			}else if(pet.getPedido().getId()==(43)){
+				Executions.getCurrent().getSession().setAttribute("p", pet);
+	    		div_content_out.detach();
+	    		inc_main.setSrc("/views/Maritimo/emissaoCedulaMaritima.zul");
+			}else if(pet.getPedido().getId()==(36)){
+				//PeticaoEmbarcacao petEmb = pet.getPeticaoEmbarcacao();
+				Executions.getCurrent().getSession().setAttribute("p", pet);
+	    		div_content_out.detach();
+	    		inc_main.setSrc("/views/Embarcacao/embarcacaoImportada.zul");
+			}else if(pet.getPedido().getId()==(37)){
+				//PeticaoEmbarcacao petEmb = pet.getPeticaoEmbarcacao();
+				Executions.getCurrent().getSession().setAttribute("p", pet);
+	    		div_content_out.detach();
+	    		inc_main.setSrc("/views/Embarcacao/registoEmbarcacaoAcabadaConstruir.zul");
+			}else if(pet.getPedido().getId()==(38)){
+				Executions.getCurrent().getSession().setAttribute("p", pet);
+	    		div_content_out.detach();
+	    		inc_main.setSrc("/views/Embarcacao/registoEmbarcacaoAcabadaComprar.zul");
+			}else if(pet.getPedido().getId()==(39)){
+				Executions.getCurrent().getSession().setAttribute("p", pet);
+	    		div_content_out.detach();
+	    		inc_main.setSrc("/views/Embarcacao/emissaoTituloPropriedadeSegundaVia.zul");
+			}else if(pet.getPedido().getId()==(40)){
+				Executions.getCurrent().getSession().setAttribute("p", pet);
+	    		div_content_out.detach();
+	    		inc_main.setSrc("/views/Embarcacao/emissaoTituloPropriedade.zul");
+			}else if(pet.getPedido().getId()==(41)){
+				Executions.getCurrent().getSession().setAttribute("p", pet);
+	    		div_content_out.detach();
+	    		inc_main.setSrc("/views/Embarcacao/emissaoLicencaConstrucaoEmbarcacao.zul");
+			}else if(pet.getPedido().getId()==(42)){
+				Executions.getCurrent().getSession().setAttribute("p", pet);
+	    		div_content_out.detach();
+	    		inc_main.setSrc("/views/Embarcacao/cancelamentoRegistoEmbarcacaoVendida.zul");
+			}else if(pet.getPedido().getId()==(47)){
+				Executions.getCurrent().getSession().setAttribute("p", pet);
+	    		div_content_out.detach();
+	    		inc_main.setSrc("/views/Embarcacao/vistoriaDeEmbarcacao.zul");
+			}
+			else{
+				Executions.getCurrent().getSession().setAttribute("p", pet);
+	    		div_content_out.detach();
+	    		inc_main.setSrc("/views/Embarcacao/peticaoGeralEmberacaoEmpty.zul");
+			}
+		}
+		
 			
 	}
 	
@@ -1406,17 +1484,15 @@ public class PeticaoServiceImpl extends GenericServiceImpl<Peticao> implements P
 //			verFacturaMaritimo(_peticaoMaritimo, p, win);
 //    	}
 		
-		if(p.getPedido().getTipoPedido().getArea().getId()==1) {
-			PeticaoEmbarcacao _peticaoEmbarcacao = p.getPeticaoEmbarcacao();
-			verFacturaEmbarcacao(_peticaoEmbarcacao, p, win);
-		}else
-		
 		if(p.getPedido().getTipoPedido().getArea().getId()==2) {
 			PeticaoMaritimo _peticaoMaritimo = p.getPeticaoMaritimo();
 			verFacturaMaritimo(_peticaoMaritimo, p, win);
 		}
 		
-		
+		if(p.getPedido().getTipoPedido().getArea().getId()==1) {
+			PeticaoEmbarcacao _peticaoEmbarcacao = p.getPeticaoEmbarcacao();
+			verFacturaEmbarcacao(_peticaoEmbarcacao, p, win);
+		}
     	
 	}
     	

@@ -199,6 +199,10 @@ public class TratarPeticaoGeralCtrl extends GenericForwardComposer{
 		Peticao p = _peticao;
 		_peticaoService.onClickVerTramitacao(p, win_tratarPeticao);
 	}
+	public void onClickVerRecibo(ForwardEvent e) throws JRException{
+    	Peticao p = (Peticao) _peticao;
+    	_peticaoService.onClickVerRecibo(p, win_tratarPeticao);
+	}
 	
 	public void onClickDarParecer(ForwardEvent e){
 		

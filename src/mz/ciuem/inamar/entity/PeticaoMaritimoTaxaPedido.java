@@ -25,6 +25,17 @@ public class PeticaoMaritimoTaxaPedido extends IdEntity{
 	@JoinColumn(name = "taxaPedido_id", insertable = true, updatable = true, nullable=true)
 	private TaxaPedido taxaPedido;
 	
+	private double valor;
+	
+	
+	public double getValor() {
+		return valor;
+	}
+
+	public void setValor(double valor) {
+		this.valor = valor;
+	}
+
 	private boolean pago;
 
 	public boolean isPago() {

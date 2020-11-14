@@ -173,7 +173,7 @@ public class GerirPeticaoCtrl extends GenericForwardComposer{
    		final Execution ex = Executions.getCurrent();
    		InputStream inputV= ex.getDesktop().getWebApp().getResourceAsStream("/img/inmr.png");       
         mapaParam.put("imagemLogo", inputV);
-        mapaParam.put("listNome", "Pedidos da Secretaria");
+        mapaParam.put("listNome", "Pedidos da Tesouraria");
         @SuppressWarnings("unchecked")
 		List<Peticao> l = (List<Peticao>) lbx_peticao.getListModel();
    		MasterRep.imprimir("/reportParam/reportPedidosListt.jrxml", listPeticao, mapaParam, win_regPedidoExpediente);

@@ -36,9 +36,14 @@
 							   	         	Dar Parecer
 							   	         </button>
 							   	         <button
-							   	         	zclass="btn btn-primary btn-sm" visible="true" type="button"
+							   	         	zclass="btn btn-primary btn-sm" visible="false" type="button"
 							   	         	forward="onClick=onClickVerTramitacao()" width="100%">
 							   	         	Ver Tamitação
+							   	         </button>
+							   	         <button visible="${win._peticao.pago=='true'}"
+							   	         	zclass="btn btn-primary btn-sm" type="button"
+							   	         	width="100%"   forward="onClick=onClickVerRecibo()">
+							   	         	Ver Recibo
 							   	         </button>
 							   	            <button
 							   	         	zclass="btn btn-primary btn-sm" type="button"

@@ -90,7 +90,7 @@
 						<button zclass="btn btn-success btn-sm"
 							autodisable="self,btn_actualizar" type="button" id="btn_gravar" onClick="@command('registarExpedienteSeccaoTecnica')"
 							iconSclass="fa fa-check">
-                      Ok
+                      Submeter
 						</button>
 						<label width="5%"></label>
 						<button zclass="btn btn-info btn-sm"

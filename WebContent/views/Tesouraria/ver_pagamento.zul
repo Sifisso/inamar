@@ -64,7 +64,17 @@
 					</div>
 					<div zclass="box-body">
 						<div class="row">
-					     <div zclass="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+						
+						<div zclass="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+								<x:label>Nr de Documento</x:label><x:label style="color:red">*</x:label>
+								<div class="input-grsoup">
+									<textbox zclass="form-control"  disabled="true"
+										placeholder="Número do Documento"
+										id="txt_nrDocumento" width="100%"/>
+								</div>
+							</div>
+						
+					     <div zclass="col-lg-4 col-md-4 col-sm-12 col-xs-12">
 								<x:label>Valor Recebido</x:label><x:label style="color:red">*</x:label>
 								<div class="input-grsoup">
 									<doublebox zclass="form-control"
@@ -74,22 +84,22 @@
 								</div>
 							</div>
 							
-							<div zclass="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+							<div zclass="col-lg-4 col-md-4 col-sm-12 col-xs-12">
 								<x:label>Data da compensação</x:label><x:label style="color:red">*</x:label>
 								<div class="input-grsoup">
 								<datebox id="dbx_data" format="dd/MM/yyyy"
-									placeholder="Selecione a Data " width="100%" constraint="no future" readonly="true" />
+									placeholder="Selecione a Data " width="100%" constraint="no future" disabled="true" readonly="true" />
 								
 								</div>
 							</div>
 							
 							
-								<div zclass="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+								<div zclass="col-lg-4 col-md-4 col-sm-12 col-xs-12">
 								<x:label>Forma de Pagamento</x:label><x:label style="color:red">*</x:label>
 								<div class="input-grsoup">
 									<combobox width="100%"
 									id="cbx_forma" placeholder="Seleccione a Forma de recepção"
-									  autocomplete="true" readonly="true">
+									  autocomplete="true" readonly="true" disabled="true">
 									  <comboitem label="Numerário" onSelect="cbx_conta.setDisabled(true)"/>
 										<comboitem label="Depósito" />
 										<comboitem label="Transferência" />
@@ -99,12 +109,12 @@
 							</div>
 							
 							
-						<div zclass="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+						<div zclass="col-lg-4 col-md-4 col-sm-12 col-xs-12">
 								<x:label>Banco</x:label><x:label style="color:red">*</x:label>
 								<div class="input-grsoup">
 									<combobox width="100%"
 									id="cbx_conta" placeholder="Seleccione a Conta Bancária"
-									  autocomplete="true" constraint="no empty" value="Nenhuma" readonly="true">
+									  autocomplete="true" disabled="true" constraint="no empty" value="Nenhuma" readonly="true">
 									<comboitem label="BIM" />
 										<comboitem label="BCI" />
 										<comboitem label="Barclays" />
@@ -120,7 +130,7 @@
 							<div zclass="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 							   	<div class="input-grsoup">
 							   	<x:label>Observações</x:label>
-									<textbox zclass="form-control"
+									<textbox disabled="true" zclass="form-control"
 										placeholder="Observações"
 										id="txb_observacoes"  rows="5" />
 								</div>

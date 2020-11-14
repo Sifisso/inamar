@@ -64,7 +64,16 @@
 					</div>
 					<div zclass="box-body">
 						<div class="row">
-					     <div zclass="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+						<div zclass="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+								<x:label>Nr de Documento</x:label><x:label style="color:red">*</x:label>
+								<div class="input-grsoup">
+									<textbox zclass="form-control"
+										placeholder="Número do Documento"
+										id="txt_nrDocumento" width="100%"/>
+								</div>
+							</div>
+						
+					     <div zclass="col-lg-4 col-md-4 col-sm-12 col-xs-12">
 								<x:label>Valor Recebido</x:label><x:label style="color:red">*</x:label>
 								<div class="input-grsoup">
 									<doublebox zclass="form-control"
@@ -74,7 +83,7 @@
 								</div>
 							</div>
 							
-							<div zclass="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+							<div zclass="col-lg-4 col-md-4 col-sm-12 col-xs-12">
 								<x:label>Data da compensação</x:label><x:label style="color:red">*</x:label>
 								<div class="input-grsoup">
 								<datebox id="dbx_data" format="dd/MM/yyyy"
@@ -84,7 +93,7 @@
 							</div>
 							
 							
-								<div zclass="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+								<div zclass="col-lg-4 col-md-4 col-sm-12 col-xs-12">
 								<x:label>Forma de Pagamento</x:label><x:label style="color:red">*</x:label>
 								<div class="input-grsoup">
 									<combobox width="100%"
@@ -99,7 +108,7 @@
 							</div>
 							
 							
-						<div zclass="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+						<div zclass="col-lg-4 col-md-4 col-sm-12 col-xs-12">
 								<x:label>Banco</x:label><x:label style="color:red">*</x:label>
 								<div class="input-grsoup">
 									<combobox width="100%"
