@@ -47,6 +47,9 @@ public class MainVM extends PagVM {
 	@Wire("#sidebar #imgPflSide")
 	private Image imgPflSide;
 
+	
+	
+	
 	// SideBar Menus
 
 	private String initPage;
@@ -74,6 +77,8 @@ public class MainVM extends PagVM {
 	private InstituicaoService _instituicaoService;
 	
 	private Instituicao instituicao;
+	
+	
 
 /*	@WireVariable
 	private AgenteService agenteService;
@@ -113,7 +118,10 @@ public class MainVM extends PagVM {
 	public void init() {
 		menuReset();
 		setInitPage("active");
+		
 		loggeduser = userService.getUser(authentication.getName());
+		
+		
 		Executions.getCurrent().getDesktop().getSession()
 				.setAttribute("ss_utilizador", loggeduser);
 		/*ciclo = new Ciclo();
@@ -1050,6 +1058,23 @@ public class MainVM extends PagVM {
 	}
 	
 	@Command
+	public void alterarSenha() {
+		final HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("target", target);
+		map.put("breadcrumb", ol);
+		target.getChildren().clear();
+		Executions.createComponents(
+				"views/alterar_senha.zul", target, map);
+
+		links = new ArrayList<String>();
+		links.add("Inicio");
+		drawnBreadcrumb("fa fa-sort", "Mais", links);
+
+		menuReset();
+		setMorePage("active");
+	}
+	
+	@Command
 	public void totalPreRegistados() {
 		final HashMap<String, Object> map = new HashMap<String, Object>();
 		map.put("target", target);
@@ -1595,6 +1620,22 @@ public class MainVM extends PagVM {
 		map.put("breadcrumb", ol);
 		target.getChildren().clear();
 		Executions.createComponents("views/Pre-registo/login.zul", target, map);
+
+		links = new ArrayList<String>();
+		links.add("Inicio");
+		drawnBreadcrumb("fa fa-sort", "Mais", links);
+
+		menuReset();
+		setMorePage("active");
+	}
+	
+	@Command
+	public void login() {
+		final HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("target", target);
+		map.put("breadcrumb", ol);
+		target.getChildren().clear();
+		Executions.createComponents("/login.zul", target, map);
 
 		links = new ArrayList<String>();
 		links.add("Inicio");

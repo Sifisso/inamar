@@ -220,7 +220,7 @@
                   		<tabpanel>
                   		
                   					<listbox
-													id="lbx_taxasPedido" multiple="true" checkmark="true" rows="10"
+													id="lbx_taxasPedido" checkmark="true" rows="10"
 													emptyMessage="Sem Dados Registados" disabled="true">
 													<listhead>
 														<listheader

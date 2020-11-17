@@ -250,38 +250,41 @@ public class TratarPeticaoGeralCtrl extends GenericForwardComposer{
 	
 	@SuppressWarnings({ "unchecked" })
 	public void onClickPedirParecer(final ForwardEvent e) {
-		Messagebox.show("Deseja submeter a Parecer da Secção Técnica?", "Parecer",Messagebox.YES|Messagebox.NO, Messagebox.QUESTION, new EventListener() {
-			
-			@Override
-			public void onEvent(Event event) throws Exception {
-				
-				if("onYes".equals(event.getName())){
-					Peticao _pet = (Peticao) _peticao;
-					_pet.setPedeParecer(true);
-					//_pet.setAdmMaritima(false);
-					//_pet.setAdmMaritima2(false);
-					//_pet.setAdmMaritima3(false);
-					_pet.setSeccaoTecnica(true);
-					_pet.setSeccaoTecnicaParecer(true);
-					_pet.setTemRespostaSTecnica(false);
-					_pet.setLocalizacao("Secção Técnica(Parecer)");
-					
-				//	gerarEvento(_pet);
-					_peticaoService.saveOrUpdate(_pet);
-					Clients.showNotification("Parecer Pedido Com Sucesso", "info", lbl_dataentrada, "before_center", 4000, true);
-					onClickClose(e);
-				}
-				onClickClose(e);
-			}
-			
-
-			
-			//vou gerar as outras tarefas aqui
-			private void gerarEvento(Peticao _pet) {
-               // asda;				
-			}
-		});
-		win_tratarPeticaoAd.detach();
+//		Messagebox.show("Deseja submeter a Parecer da Secção Técnica?", "Parecer",Messagebox.YES|Messagebox.NO, Messagebox.QUESTION, new EventListener() {
+//			
+//			@Override
+//			public void onEvent(Event event) throws Exception {
+//				
+//				if("onYes".equals(event.getName())){
+//					Peticao _pet = (Peticao) _peticao;
+//					_pet.setPedeParecer(true);
+//					_pet.setSeccaoTecnica(true);
+//					_pet.setSeccaoTecnicaParecer(true);
+//					_pet.setTemRespostaSTecnica(false);
+//					_pet.setLocalizacao("Secção Técnica(Parecer)");
+//					
+//				//	gerarEvento(_pet);
+//					_peticaoService.saveOrUpdate(_pet);
+//					Clients.showNotification("Parecer Pedido Com Sucesso", "info", lbl_dataentrada, "before_center", 4000, true);
+//					onClickClose(e);
+//				}
+//				onClickClose(e);
+//			}
+//			
+//
+//			
+//			//vou gerar as outras tarefas aqui
+//			private void gerarEvento(Peticao _pet) {
+//               // asda;				
+//			}
+//		});
+		
+		
+		Peticao _pet = (Peticao) _peticao;
+		Map<String, Object> mapContaReceber = new HashMap<String, Object>();
+		mapContaReceber.put("peticao", _pet);
+		Executions.createComponents("/views/AdministradorMaritimo/telinha.zul", win_tratarPeticaoAd, mapContaReceber);
+		
 	}
 
 	@SuppressWarnings({ "unchecked" })

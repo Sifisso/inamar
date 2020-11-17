@@ -77,9 +77,10 @@
                     </x:p>
                   </x:li>
                   
+                  
                   <x:li class="user-body">
                     <div class="col-xs-12 text-center">
-                      <x:a href="#">Alterar Senha</x:a>
+                      <x:a href="#" onClick="@command('alterarSenha')"><x:i class="fa fa-dot-circle-o"></x:i>Alterar Senha</x:a>
                     </div>
                   </x:li>
                   <x:li class="user-footer">

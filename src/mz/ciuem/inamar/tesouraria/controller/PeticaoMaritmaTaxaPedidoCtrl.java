@@ -204,16 +204,34 @@ public class PeticaoMaritmaTaxaPedidoCtrl extends GenericForwardComposer{
 		
 		pmtp.setTaxaPedido((TaxaPedido)cbx_taxaPedido.getSelectedItem().getValue());
 		pmtp.setPeticao(_peticao);
-		_peticaoMaritimoTaxaPedidoService.create(pmtp);
-		_listTaxaPedido.remove((TaxaPedido)cbx_taxaPedido.getSelectedItem().getValue());
-		cbx_taxaPedido.removeChild(cbx_taxaPedido.getSelectedItem());
 		
-		selected_pmtx = null;
-		cbx_taxaPedido.setRawValue(null);
+		boolean existe = false;
 		
-		limparCampos();
-		listarPeticao();
-		showNotifications("Taxa Adicionada com Sucesso", "info");
+		for(PeticaoMaritimoTaxaPedido peticaoMTP: _peticaoMaritimoTaxaPedidos) {
+			
+			if(peticaoMTP.getTaxaPedido().getId()==(pmtp.getTaxaPedido().getId())) {
+				existe=true;
+			}
+			
+		}
+		
+		if(existe == false) {
+			_peticaoMaritimoTaxaPedidoService.create(pmtp);
+			_listTaxaPedido.remove((TaxaPedido)cbx_taxaPedido.getSelectedItem().getValue());
+			cbx_taxaPedido.removeChild(cbx_taxaPedido.getSelectedItem());
+			
+			selected_pmtx = null;
+			cbx_taxaPedido.setRawValue(null);
+			
+			limparCampos();
+			listarPeticao();
+			showNotifications("Taxa Adicionada com Sucesso", "info");
+		}else {
+			showNotifications("Não pode adicionar a mesma taxa mais de uma vez", "error");
+		}
+		
+		
+		
 		
 	}
 	

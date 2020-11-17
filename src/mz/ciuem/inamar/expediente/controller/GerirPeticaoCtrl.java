@@ -123,6 +123,7 @@ public class GerirPeticaoCtrl extends GenericForwardComposer{
 	private Utente utente;
 	private List<Peticao> listPeticao = new ArrayList<Peticao>();
 	private List<TaxaPedido> listTaxaPedido = new ArrayList<>();
+	private ListModel<TaxaPedido> listTaxaPedidoModel;
 	protected User loggeduser;
 	protected Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 	
@@ -233,6 +234,7 @@ public class GerirPeticaoCtrl extends GenericForwardComposer{
 		
 		listTaxaPedido = _taxaPedidoService.getAll();
 		lbx_taxaPedido.setModel(new ListModelList<TaxaPedido>(listTaxaPedido));
+		
 	}
 	
 	public void onSelect$cbx_area(){
@@ -267,6 +269,7 @@ public class GerirPeticaoCtrl extends GenericForwardComposer{
 		//_taxaPedidoService
 	    List<TaxaPedido> listTP = _taxaPedidoService.findByPedido(pedido);
 	    lbx_taxasPedido.setModel(new ListModelList<TaxaPedido>(listTP));
+	    lbx_taxasPedido.setMultiple(true);
 		
 		//_tarefaEtapaService
 	    List<EtapaFluxo> listTE = _etapaFluxoService.findByFluxo(pedido.getFluxo());
