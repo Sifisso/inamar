@@ -33,8 +33,12 @@ public class AbstractCtrl extends GenericForwardComposer {
 	protected Authentication authentication = SecurityContextHolder
 			.getContext().getAuthentication();
 	
+	
+	
 
 	protected User loggeduser;
+	
+	//String del = loggeduser.getFuncionario().getSector().getDelegacaoDepartamento().getDelegacao().getNome();
 
 	private Locale pt = new Locale("pt", "pt");
 

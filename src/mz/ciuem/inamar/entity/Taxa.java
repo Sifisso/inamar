@@ -18,6 +18,8 @@ public class Taxa extends IdEntity{
 	
 	private static final long serialVersionUID = 1L;
 	
+	String admar;
+	
 	@Column (name = "nome")
 	private String nome;
 	
@@ -133,9 +135,13 @@ public class Taxa extends IdEntity{
 		somaTxaEmolumento = valor+emolumento;
 		return somaTxaEmolumento;
 	}
-	
-	
-	
-	
+
+	public String getAdmar() {
+		return admar;
+	}
+
+	public void setAdmar(String admar) {
+		this.admar = admar;
+	}
 	
 }

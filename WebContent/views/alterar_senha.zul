@@ -24,7 +24,7 @@
 									</div>
 									<div class="form-group">
 										<x:label>Senha</x:label>
-										<textbox zclass="form-control"
+										<textbox zclass="form-control" readonly="true"
 											type="password" placeholder="Senha" id="tbx_senha"
 											constraint="no empty : Nao pode ser vazio nem conter apenas espaços em branco!" />
 										<checkbox label="Alterar Senha"
@@ -35,6 +35,15 @@
 											id="chx_activo" visible="false">
 										</checkbox>
 									</div>
+									
+									<div class="form-group"
+										 visible="true">
+										<x:label>Senha Actual</x:label>
+										<textbox zclass="form-control"
+											placeholder="Senha Actual" id="tbx_senhaActual"
+											constraint="no empty : Nao pode ser vazio nem conter apenas espaços em branco!" />
+									</div>
+									
 									<div class="form-group"
 										id="div_alterarSenha" visible="true">
 										<x:label>Nova Senha</x:label>
@@ -48,10 +57,10 @@
 									</div>
 								</div>
 								<div zclass="box-footer">
-									<div align="right">
-										<button
+									<div align="center">
+										<button href="j_spring_security_logout"
 											zclass="btn btn-danger btn-sm" type="button"
-											id="btn_cancelar" iconSclass="fa fa-undo">
+											 iconSclass="fa fa-undo">
 											Cancelar
 										</button>
 										<label width="5%"></label>

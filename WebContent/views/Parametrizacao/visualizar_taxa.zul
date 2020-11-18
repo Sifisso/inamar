@@ -1,0 +1,219 @@
+<zk xmlns:x="xhtml" xmlns:zk="zk">
+	<window apply="mz.ciuem.inamar.controller.VisualizarTaxaCtrl" id="win_regTaxa">
+		<div class="row">
+			<div zclass="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+				<div zclass="box box-default">
+					<div zclass="box-header">
+						<x:label class="box-title"
+							style="font-family:Georgia,serif;color:#4E443C; font-variant: small-caps; text-transform: none; font-weight: 100; margin-bottom: 0;">
+							Taxas
+						</x:label>
+					</div>
+					<div zclass="box-body">
+                        
+                        <x:hr/>
+
+						<div class="row">
+							<div
+								zclass="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+								<listbox id="lbx_taxa"
+									checkmark="true" rows="10">
+									<listhead>
+										<listheader label="#"
+											width="5%" />
+											<listheader label="Área"
+											sort="auto(nome)" />
+										<listheader label="Nome"
+											sort="auto(nome)" />
+										<listheader label="Taxa"
+											sort="auto(valor)" width="12%"/>
+											<listheader label="Emolumento"
+											sort="auto(emolumento)" width="12%"/>
+										<listheader label="Valor Total(MZN)" 
+											sort="auto(valor)" width="12%"/>
+									</listhead>
+									<template name="model">
+										<listitem>
+											<listcell></listcell>
+											<listcell
+												label="${each.subArea.area.nome}" />
+										  	<listcell
+												label="${each.nome}" />
+												<listcell
+												label="${each.valor}0 MZN" />
+												<listcell
+												label="${each.emolumento}0 MZN" />
+													<listcell
+												label="${(each.emolumento)+(each.valor)}0 MZN" />
+												
+										</listitem>
+									</template>
+								</listbox>
+							</div>
+						</div>
+
+
+					</div>
+					<div zclass="box-footer">
+					  <div align="center">
+	                     <button zclass="btn btn-warning btn-sm"
+							type="button" id="btn_imprimir" iconSclass="fa fa-print">
+
+							Imprimir PDF
+						</button>
+					  </div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+
+		<!-- Modal Candidato-->
+		<x:div class="modal fade" id="myModal" tabindex="-1"
+			role="dialog" aria-labelledby="myModalLabel">
+			<x:div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<x:button type="button" class="close"
+							data-dismiss="modal" aria-label="Close">
+							x
+						</x:button>
+						<x:h4 class="modal-title" id="myModalLabel">
+							Nova Taxa/Emolumentos
+						</x:h4>
+					</div>
+					<div class="modal-body">
+									<div zclass="box-header">
+									<div zclass="box-body">
+		                        <div zclass="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="background-color:#3c8dbc">
+		                            <div zclass="col-md-2">
+		                            </div>
+		                            <div zclass="col-md-8">
+		                            <div align="center">
+		                            <label id="lbl_descricao2" style="color:white" class="box-title"></label>
+		                            </div>
+		                            </div>
+		                            <div zclass="col-md-2">
+		                            </div>
+								</div>
+								</div>
+								
+						
+					</div>
+
+
+						<div class="row">
+							
+								<div
+								zclass="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+								<x:label>Taxa Activa?</x:label>
+								<div class="input-group">
+									<radiogroup>
+										<radio label="Sim"
+											style="margin-left:5px" checked="true" id="rbx_actSim" />
+										<radio label="Não"
+											style="margin-left:15px"  id="rbx_actNao" />
+									</radiogroup>
+								</div>
+
+							</div>
+							
+							<div
+								zclass="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+
+								<x:label>Nome de Taxa</x:label>
+								<div class="input-group">
+									<textbox zclass="form-control"
+										placeholder="Nome da Taxa"
+										constraint="no empty : Não pode ser vazio nem conter apenas espaços em branco!"
+										id="txb_nome" />
+									<x:span class="input-group-addon">
+										<x:i class="fa  fa-edit"></x:i>
+									</x:span>
+								</div>
+							</div>
+
+							<div
+								zclass="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+								<x:label>Valor de Taxa</x:label>
+								<div class="input-group">
+									<doublebox zclass="form-control"
+										placeholder="0.00"
+										constraint="no empty : Não pode ser vazio nem conter apenas espaços em branco!"
+										id="dbx_valor" />
+									<x:span class="input-group-addon">
+										<x:i class="fa  fa-edit"></x:i>
+									</x:span>
+								</div>
+								
+							</div>
+							<separator></separator>
+							
+								<div
+								zclass="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+								<x:label>Emulumento</x:label>
+								<div class="input-group">
+									<doublebox zclass="form-control"
+										placeholder="0.00"
+										constraint="no empty : Não pode ser vazio nem conter apenas espaços em branco!"
+										id="txb_emolumentos" />
+									<x:span class="input-group-addon">
+										<x:i class="fa  fa-edit"></x:i>
+									</x:span>
+								</div>
+								
+							</div>
+					
+							
+							<div
+								zclass="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+										<x:label>Descricao</x:label>
+								<div class="input-group">
+									<textbox zclass="form-control"
+										placeholder="Descricao da Taxa"
+										constraint="no empty : Não pode ser vazio nem conter apenas espaços em branco!"
+										id="txb_descricao" rows="3"/>
+									<x:span class="input-group-addon">
+										<x:i class="fa  fa-edit"></x:i>
+									</x:span>
+								</div>
+								
+								</div>
+
+						</div>
+
+
+					</div>
+
+					<div class="modal-footer">
+
+						<div align="center">
+
+							<button zclass="btn btn-success btn-sm "
+								type="button" id="btn_gravar" iconSclass="fa  fa-save">
+								Gravar
+							</button>
+							<label width="5%"></label>
+							<button zclass="btn btn-info btn-sm "
+								type="button" visible="false" id="btn_actualizar"
+								iconSclass="fa  fa-refresh">
+								Actualizar
+							</button>
+
+							<label width="5%"></label>
+							<button zclass="btn btn-danger btn-sm "
+								type="button" id="btn_cancelar" iconSclass="fa  fa-undo">
+								Cancelar
+							</button>
+
+						</div>
+
+					</div>
+				</div>
+			</x:div>
+		</x:div>
+
+	</window>
+</zk>

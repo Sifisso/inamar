@@ -214,7 +214,7 @@ public class TratarPeticaoGeralCtrl extends GenericForwardComposer{
 	
 	@SuppressWarnings({ "unchecked" })
 	public void onClickEncaminhar(final ForwardEvent e) {
-		Messagebox.show("Deseja encaminhar para o Utente?", "Entrega",Messagebox.YES|Messagebox.NO, Messagebox.QUESTION, new EventListener() {
+		Messagebox.show("Deseja confirmar o levantamento?", "Levantamento",Messagebox.YES|Messagebox.NO, Messagebox.QUESTION, new EventListener() {
 			
 			@Override
 			public void onEvent(Event event) throws Exception {
@@ -224,7 +224,7 @@ public class TratarPeticaoGeralCtrl extends GenericForwardComposer{
 					_pet.setRealizada(true);
 					_pet.setLocalizacao("Finalizado");
 					_peticaoService.saveOrUpdate(_pet);
-					Clients.showNotification("Pedido Encaminhado Com Sucesso", "info", lbl_dataentrada, "before_center", 4000, true);
+					Clients.showNotification("Confirmado", "info", lbl_dataentrada, "before_center", 4000, true);
 				}
 			}
 		});

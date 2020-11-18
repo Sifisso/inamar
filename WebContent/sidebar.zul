@@ -60,6 +60,7 @@
 						<x:li if="${sec:isAnyGranted('GESTÃO_DE_SECTOR,E_SUPER_ADMINISTRADOR')}" ><x:a href="#" onClick="@command('registarSector')"><x:i class="fa fa-dot-circle-o"></x:i>Sector/Area</x:a></x:li>
 						<x:li if="${sec:isAnyGranted('PARAM_EMBARCACOES,E_SUPER_ADMINISTRADOR')}"><x:a href="#" onClick="@command('registarServicoDestino')"><x:i class="fa fa-dot-circle-o"></x:i>Servico Destino</x:a></x:li>
 						<x:li if="${sec:isAnyGranted('PARAM_FLUXO,E_SUPER_ADMINISTRADOR')}"><x:a href="#" onClick="@command('registarTarefa')"><x:i class="fa fa-dot-circle-o"></x:i>Tarefa</x:a></x:li>
+						<x:li if="${sec:isAnyGranted('PARAM_FLUXO,E_SUPER_ADMINISTRADOR')}"><x:a href="#" onClick="@command('visualizarTaxas')"><x:i class="fa fa-dot-circle-o"></x:i>Taxas</x:a></x:li>
 						<x:li if="${sec:isAnyGranted('PARAM_EMBARCACOES,E_SUPER_ADMINISTRADOR')}"><x:a href="#" onClick="@command('registarTipoCombustivel')"><x:i class="fa fa-dot-circle-o"></x:i>Tipo Combustivel</x:a></x:li>
 					    <x:li if="${sec:isAnyGranted('PARAM_LICENCA,E_SUPER_ADMINISTRADOR')}"><x:a href="#" onClick="@command('registarTipoEmbarcacao')"><x:i class="fa fa-dot-circle-o"></x:i>Tipo de Embarcação</x:a></x:li> 
 						<x:li if="${sec:isAnyGranted('PARAM_PEDIDO,E_SUPER_ADMINISTRADOR')}"><x:a href="#" onClick="@command('registarTipoRquisito')"><x:i class="fa fa-dot-circle-o"></x:i>Tipo de Requisito</x:a></x:li>

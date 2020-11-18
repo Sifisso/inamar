@@ -46,6 +46,16 @@
               <x:span class="icon-bar"></x:span>
           </x:a>
           
+           <x:div class="navbar-left">
+            <x:ul sclass="nav navbar-nav">
+              <x:li class="dropdown user user-menu">
+                <x:a href="#">
+                  <x:span></x:span>
+                </x:a>
+                </x:li>
+                </x:ul>
+                </x:div>
+           
       
          
           <x:div class="navbar-right">

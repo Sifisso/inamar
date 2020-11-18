@@ -1,26 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="CicloLocal" pageWidth="595" pageHeight="842" columnWidth="475" leftMargin="60" rightMargin="60" topMargin="20" bottomMargin="20" uuid="4da41461-b689-4659-93ec-9064c8bf1433">
 	<property name="ireport.zoom" value="1.6500000000000083"/>
-	<property name="ireport.x" value="0"/>
+	<property name="ireport.x" value="16"/>
 	<property name="ireport.y" value="0"/>
 	<parameter name="imagemLogo" class="java.io.InputStream"/>
 	<parameter name="listNome" class="java.lang.String"/>
 	<parameter name="valorTaxa" class="java.lang.String"/>
+	<field name="subArea.area.nome" class="java.lang.String"/>
+	<field name="nome" class="java.lang.String"/>
+	<field name="valor" class="java.lang.Double"/>
 	<field name="admar" class="java.lang.String"/>
-	<field name="area" class="java.lang.String"/>
-	<field name="tipoPeticao" class="java.lang.String"/>
-	<field name="quantidade" class="java.lang.String"/>
+	<field name="emolumento" class="java.lang.Double"/>
 	<group name="delegacao">
 		<groupExpression><![CDATA[$F{admar}]]></groupExpression>
 		<groupHeader>
 			<band height="13">
-				<textField>
-					<reportElement mode="Opaque" x="-2" y="0" width="477" height="13" uuid="435bf2a0-7af0-4672-b17f-3255246dde85"/>
-					<textElement>
-						<font fontName="Times New Roman" size="9" isBold="true" isItalic="true"/>
-					</textElement>
-					<textFieldExpression><![CDATA[$F{admar}]]></textFieldExpression>
-				</textField>
 				<line>
 					<reportElement x="0" y="12" width="475" height="1" uuid="6dd02fcf-1bc5-409c-8b82-37d9a6bfe07b"/>
 					<graphicElement>
@@ -47,7 +41,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="10" isBold="true"/>
 				</textElement>
-				<text><![CDATA[TOTAL DE PETIÇÕES POR DELEGAÇÃO]]></text>
+				<text><![CDATA[TOTAL DE TAXAS POR ÁREA]]></text>
 			</staticText>
 			<image scaleImage="FillFrame" hAlign="Center">
 				<reportElement x="206" y="4" width="60" height="60" uuid="13cf9d15-c762-4c14-8dd5-4227032a8e36"/>
@@ -59,7 +53,7 @@
 		<band splitType="Stretch"/>
 	</pageHeader>
 	<columnHeader>
-		<band height="46" splitType="Stretch">
+		<band height="45" splitType="Stretch">
 			<rectangle>
 				<reportElement x="0" y="30" width="475" height="15" forecolor="#CCFFFF" uuid="da67abc4-c4a1-4d1f-a7c7-94e4afba51a6"/>
 				<graphicElement>
@@ -67,18 +61,18 @@
 				</graphicElement>
 			</rectangle>
 			<staticText>
-				<reportElement x="3" y="30" width="246" height="13" uuid="5bf74122-095c-4287-a079-025296ebc253"/>
+				<reportElement x="3" y="30" width="104" height="13" uuid="5bf74122-095c-4287-a079-025296ebc253"/>
 				<textElement textAlignment="Left">
 					<font fontName="Times New Roman" size="10" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Delegação]]></text>
+				<text><![CDATA[Área]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="252" y="33" width="211" height="12" uuid="e855f030-1fc5-4ab1-969c-46ae5f1cc0c0"/>
+				<reportElement x="108" y="31" width="156" height="12" uuid="e855f030-1fc5-4ab1-969c-46ae5f1cc0c0"/>
 				<textElement textAlignment="Center">
 					<font fontName="Times New Roman" size="10" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Petições]]></text>
+				<text><![CDATA[Nome]]></text>
 			</staticText>
 			<line>
 				<reportElement x="0" y="44" width="475" height="1" uuid="db9998cf-0ea3-4f40-bd9f-39de36b9bd04"/>
@@ -86,36 +80,72 @@
 					<pen lineWidth="1.0"/>
 				</graphicElement>
 			</line>
+			<staticText>
+				<reportElement x="264" y="31" width="59" height="12" uuid="c362b135-fe5b-4f11-93fe-69b0affb86b5"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Valor]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="323" y="31" width="59" height="12" uuid="67329f76-eeb8-4191-b927-026f1b8ac2fc"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Emolumento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="382" y="31" width="90" height="12" uuid="7494b900-a07a-47a9-a9fe-915ec62cd049"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Valor  Total]]></text>
+			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
 		<band height="14" splitType="Stretch">
-			<textField>
-				<reportElement x="3" y="2" width="231" height="12" uuid="7492430a-8f9e-4ca6-ab88-71a68b220928"/>
-				<textElement>
-					<font fontName="Times New Roman" size="8" isBold="true" isItalic="false" isStrikeThrough="false" isPdfEmbedded="false"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{area}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="254" y="2" width="211" height="12" uuid="990904d5-fbf7-41d3-afb6-b4c5c34f8670"/>
-				<textElement textAlignment="Center">
-					<font fontName="Times New Roman" size="8" isBold="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{quantidade}]]></textFieldExpression>
-			</textField>
-			<line>
-				<reportElement x="244" y="-1" width="1" height="15" uuid="76859265-0dc1-4f4d-9411-1e0e40f964a2"/>
-				<graphicElement>
-					<pen lineWidth="1.5"/>
-				</graphicElement>
-			</line>
 			<line>
 				<reportElement x="0" y="13" width="475" height="1" uuid="380bf418-dcfc-411e-baa9-58b82e4a0e16"/>
 				<graphicElement>
 					<pen lineWidth="1.0"/>
 				</graphicElement>
 			</line>
+			<textField>
+				<reportElement x="107" y="1" width="156" height="13" uuid="4ee78193-d1b0-4881-a7c8-12fd609075ec"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nome}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="264" y="1" width="59" height="13" uuid="6e6823d8-d857-43cf-a5a5-d748d4421992"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{valor}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="323" y="1" width="59" height="13" uuid="cace296e-7646-46dd-9061-f1a285e1983d"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{emolumento}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="382" y="1" width="90" height="11" uuid="1cdbd2bc-29b4-4d0c-8f9d-cbbec3fc6fbb"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{emolumento}+$F{valor}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="1" width="108" height="13" uuid="0cefb74c-70ef-4707-a9df-4d35ca2a21cf"/>
+				<textElement>
+					<font fontName="Times New Roman" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{subArea.area.nome}]]></textFieldExpression>
+			</textField>
 		</band>
 	</detail>
 	<columnFooter>
