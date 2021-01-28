@@ -36,7 +36,7 @@
 		<property name="password" value="root"></property>
 		<!-- 196.3.97.133 -->
 		<property name="jdbcUrl"
-			value="jdbc:mysql://localhost/inamar_db_h?sessionVariables=sql_mode=only_full_group_by" />
+			value="jdbc:mysql://localhost/inamar_db?sessionVariables=sql_mode=only_full_group_by" />
 		<property name="maxPoolSize" value="25"></property>
 		<property name="minPoolSize" value="3"></property>
 		<property name="maxStatements" value="25"></property>
@@ -86,7 +86,7 @@
 		<property name="host" value="smtp.gmail.com"/>
 		<property name="port" value="25"/>
 		<property name="username" value="root"/>
-		<property name="password" value=""/>
+		<property name="password" value="root"/>
 		<property name="javaMailProperties">
 			<props>
 				<prop key="mail.transport.protocol">smtp</prop>

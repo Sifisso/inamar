@@ -227,9 +227,13 @@
 															width="5%">
 														</listheader>
 														<listheader
+															label="Nome da taxa"/>
+														<listheader width="12%"
 															label="Taxa"/>
-														<listheader
-															label="Valor"/>
+														<listheader width="12%"
+															label="Emolumento"/>
+														<listheader width="12%"
+															label="Valor Total"/>		
 														<listheader
 															label="Activo" width="10%" align="center"/>
 													</listhead>
@@ -241,7 +245,12 @@
 															<listcell
 																label="${each.taxa.nome}" />
 															<listcell
-																label="${each.taxa.valor}Mtn" />
+																label="${each.taxa.valor}0 MZN" />
+															<listcell
+																label="${each.taxa.emolumento}0 MZN" />
+															<listcell
+																label="${(each.taxa.emolumento)+(each.taxa.valor)}0 MZN" />
+
 
 															<listcell>
 																<div
